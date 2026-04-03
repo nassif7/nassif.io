@@ -1,0 +1,114 @@
+.contact {
+  padding: 80px 3rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: start;
+}
+
+.sub {
+  font-size: 14px;
+  color: var(--mid);
+  font-weight: 300;
+  line-height: 1.7;
+  margin-bottom: 32px;
+}
+
+.links { display: flex; flex-direction: column; }
+
+.linkRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border);
+  text-decoration: none;
+  color: inherit;
+  transition: padding-left 0.2s;
+}
+
+.linkRow:hover { padding-left: 8px; }
+.linkRow:hover .linkArrow { color: var(--accent); }
+
+.linkName {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--black);
+  letter-spacing: 0.04em;
+}
+
+.linkHandle {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.linkArrow {
+  font-size: 14px;
+  color: var(--border);
+  transition: color 0.15s;
+}
+
+.form { display: flex; flex-direction: column; }
+
+.field {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid var(--border);
+  padding: 12px 0;
+  transition: border-color 0.15s;
+}
+
+.field:focus-within { border-color: var(--black); }
+
+.fieldLabel {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+
+.input,
+.textarea {
+  background: transparent;
+  border: none;
+  outline: none;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  color: var(--black);
+  resize: none;
+  font-weight: 300;
+}
+
+.input::placeholder,
+.textarea::placeholder {
+  color: var(--muted);
+  font-style: italic;
+}
+
+.btn {
+  margin-top: 24px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: var(--black);
+  color: var(--bg);
+  padding: 12px 24px;
+  border: none;
+  cursor: pointer;
+  align-self: flex-start;
+  transition: background 0.2s;
+}
+
+.btn:hover { background: var(--accent); }
+.btn:disabled { opacity: 0.6; cursor: default; }
+
+@media (max-width: 640px) {
+  .contact { grid-template-columns: 1fr; }
+}

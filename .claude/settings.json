@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node -e \"const T = require\\(''/Users/nassif/projects_26/nassif-website/node_modules/@base_ui/react/Tooltip''\\); console.log\\(Object.keys\\(T\\)\\)\")",
+      "Bash(ls \"/Users/nassif/projects_26/nassif-website/{src\")",
+      "Bash(sed -i '' 's/--accent: #2B4BB6/--accent: #6B8CB5/' /Users/nassif/projects_26/nassif-website/src/styles/globals.css)",
+      "Bash(sed -i '' 's/--accent-dark: #1C3A96/--accent-dark: #4A6E9A/' /Users/nassif/projects_26/nassif-website/src/styles/globals.css)",
+      "Bash(sed -i '' 's/--accent: #6B8CB5/--accent: #5B8FAD/' /Users/nassif/projects_26/nassif-website/src/styles/globals.css)",
+      "Bash(sed -i '' 's/--accent-dark: #4A6E9A/--accent-dark: #3D7396/' /Users/nassif/projects_26/nassif-website/src/styles/globals.css)",
+      "Bash(curl -s https://robbowen.digital/)"
+    ]
+  }
+}

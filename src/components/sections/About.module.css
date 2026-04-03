@@ -1,0 +1,31 @@
+.about {
+  padding: 80px 3rem;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 64px;
+  border-top: 1px solid var(--border);
+  align-items: start;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.right {}
+
+.body {
+  font-size: 15px;
+  color: var(--mid);
+  line-height: 1.85;
+  font-weight: 300;
+  max-width: 520px;
+}
+
+.body p + p { margin-top: 12px; }
+
+.body strong {
+  color: var(--black);
+  font-weight: 500;
+}
+
+@media (max-width: 640px) {
+  .about { grid-template-columns: 1fr; gap: 24px; }
+}

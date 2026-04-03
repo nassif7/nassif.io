@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,400;0,500;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Instrument+Serif:ital@0;1&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:            #F4F2ED;
+  --bg-soft:       #EDEAE3;
+  --bg-tint:       #E5E1D8;
+  --black:         #0F0F0E;
+  --mid:           #5C5955;
+  --muted:         #A09C96;
+  --border:        #DDD9D2;
+  --border-strong: #C8C4BC;
+  --accent:        #C8472B;
+  --accent-dark:   #A33520;
+  --font-sans:     'DM Sans', sans-serif;
+  --font-mono:     'DM Mono', monospace;
+  --font-serif:    'Instrument Serif', serif;
+}
+
+html { scroll-behavior: smooth; }
+
+/* everything scrolls over the fixed grid/dots */
+main > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* sections after hero get a translucent bg so grid shows faintly */
+main > *:not(:first-child) {
+  background: rgba(244, 242, 237, 0.88);
+  backdrop-filter: blur(1px);
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--bg);
+  color: var(--black);
+  font-size: 15px;
+  line-height: 1.6;
+  overflow-x: hidden;
+}

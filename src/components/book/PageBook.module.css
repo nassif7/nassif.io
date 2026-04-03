@@ -1,0 +1,38 @@
+.book {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  flex: 1;
+  overflow: hidden;
+}
+
+.page {
+  position: absolute;
+  inset: 0;
+  overflow: auto;
+}
+
+@keyframes outUp {
+  from { transform: translateY(0); }
+  to   { transform: translateY(-100%); }
+}
+
+@keyframes inUp {
+  from { transform: translateY(100%); }
+  to   { transform: translateY(0); }
+}
+
+@keyframes outDown {
+  from { transform: translateY(0); }
+  to   { transform: translateY(100%); }
+}
+
+@keyframes inDown {
+  from { transform: translateY(-100%); }
+  to   { transform: translateY(0); }
+}
+
+.slideOutUp   { animation: outUp  0.4s cubic-bezier(0.4,0,0.2,1) forwards; }
+.slideInUp    { animation: inUp   0.4s cubic-bezier(0.4,0,0.2,1) forwards; }
+.slideOutDown { animation: outDown 0.4s cubic-bezier(0.4,0,0.2,1) forwards; }
+.slideInDown  { animation: inDown  0.4s cubic-bezier(0.4,0,0.2,1) forwards; }
