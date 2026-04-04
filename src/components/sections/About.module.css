@@ -3,7 +3,7 @@
   display: grid;
   grid-template-columns: 1fr 2fr;
   gap: 64px;
-  border-top: 1px solid var(--border);
+  border-top: none;
   align-items: start;
   max-width: 1100px;
   margin: 0 auto;

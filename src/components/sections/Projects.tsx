@@ -19,17 +19,19 @@ export function Projects() {
         <a href="/projects" className={shared.seeAll}>All projects →</a>
       </div>
 
-      <div className={styles.list}>
+      <div className={styles.grid}>
         {PROJECTS.map(project => (
           <button
             key={project.num}
-            className={styles.row}
+            className={styles.card}
             onClick={() => setOpen(project)}
           >
+            <div className={styles.cardTop}>
+              <span className={styles.type}>{project.type}</span>
+              <span className={styles.arrow}>↗</span>
+            </div>
             <span className={styles.name}>{project.name}</span>
-            <span className={styles.type}>{project.type}</span>
-            <span className={styles.year}>2024</span>
-            <span className={styles.arrow}>↗</span>
+            <span className={styles.desc}>{project.desc}</span>
           </button>
         ))}
       </div>
