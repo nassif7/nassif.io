@@ -22,3 +22,4 @@ yarn-error.log*
 # vercel
 .vercel
 .claude/
+package-lock.json

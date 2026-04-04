@@ -32,7 +32,7 @@ const variants = {
 }
 
 const transition = {
-  y:       { type: 'spring', stiffness: 280, damping: 32 },
+  y:       { type: 'spring' as const, stiffness: 280, damping: 32 },
   opacity: { duration: 0.2 },
   scale:   { duration: 0.3 },
 }
