@@ -41,6 +41,8 @@
 /* logomark — top, in normal flow */
 .logoMark {
   display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
   padding-top: 10vh;
   position: relative;
@@ -281,38 +283,50 @@
 }
 
 
-.lineSwing {
-  transform-origin: 55px 35px;
-  animation: lineSwing 2s linear infinite;
+.logoText {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.4em;
+  font-family: var(--font-mono);
+  font-size: clamp(48px, 8vw, 96px);
+  font-weight: 400;
+  color: var(--black);
+  line-height: 1;
+  user-select: none;
 }
 
-@keyframes lineSwing {
-  0% {
-    transform: rotate(0deg);
-  }
-  12.5% {
-    transform: rotate(9.9deg);
-  }
-  25% {
-    transform: rotate(14deg);
-  }
-  37.5% {
-    transform: rotate(9.9deg);
-  }
-  50% {
-    transform: rotate(0deg);
-  }
-  62.5% {
-    transform: rotate(-9.9deg);
-  }
-  75% {
-    transform: rotate(-14deg);
-  }
-  87.5% {
-    transform: rotate(-9.9deg);
-  }
-  100% {
-    transform: rotate(0deg);
-  }
+.logoTime {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  text-align: center;
+  margin-top: 10px;
+}
+
+.logoTime span {
+  opacity: 0.5;
+  font-size: 10px;
+}
+
+.logoLetter {
+  display: inline-block;
+  width: 1.1ch;
+  text-align: center;
+}
+
+.logoPipe {
+  display: inline-block;
+  width: 5px;
+  height: 0.75em;
+  background: var(--accent);
+  margin-bottom: 0.2em;
+  transform-origin: 50% 100%;
+  animation: pipeSwing 0.65s ease-in-out infinite;
+}
+
+@keyframes pipeSwing {
+  0%, 100% { transform: rotate(-20deg); }
+  50%       { transform: rotate(20deg); }
 }
 

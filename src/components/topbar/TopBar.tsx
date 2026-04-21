@@ -17,7 +17,7 @@ const SOCIAL = [
 export function TopBar() {
   return (
     <aside className={styles.sidebar}>
-      <a className={styles.logo} href="#">n<em>/</em>N</a>
+      <a className={styles.logo} href="#">n<em>|</em>N</a>
 
       <nav className={styles.nav}>
         {LINKS.map(l => (
