@@ -4,11 +4,19 @@ import { useEffect, useState } from 'react'
 import styles from './Hero.module.css'
 
 export function Hero() {
+  const ROLES = ['Frontend Engineer', 'App Builder', 'Product Crafter']
+
   const [upper, setUpper] = useState(false)
+  const [roleIndex, setRoleIndex] = useState(0)
   const [time, setTime] = useState({ h: '00', m: '00', s: '00', gmt: '' })
 
   useEffect(() => {
     const id = setInterval(() => setUpper((u) => !u), 1000)
+    return () => clearInterval(id)
+  }, [])
+
+  useEffect(() => {
+    const id = setInterval(() => setRoleIndex((i) => (i + 1) % ROLES.length), 3000)
     return () => clearInterval(id)
   }, [])
 
@@ -30,7 +38,7 @@ export function Hero() {
 
   return (
     <section className={styles.hero} id="home">
-      <span className={styles.roleTag}>Building since forever</span>
+      <span className={styles.roleTag}>Built with intention, shipped with hope.</span>
 
       <div className={styles.logoMark} aria-hidden="true">
         <div className={styles.logoText}>
@@ -44,53 +52,10 @@ export function Hero() {
       <div className={styles.main}>
         <div className={styles.nameBlock}>
           <h1 className={styles.name}>Nassif.</h1>
-          <p className={styles.sub}>Frontend Engineer</p>
+          <p className={styles.sub}>{ROLES[roleIndex]}</p>
         </div>
       </div>
 
-      <div className={styles.strip}>
-        <div className={styles.stripItem}>
-          <span className={styles.stripLabel}>Based in</span>
-          <span className={styles.stripValue}>Berlin, DE</span>
-        </div>
-        <div className={styles.ticker}>
-          <div className={styles.tickerTrack}>
-            {[
-              'React',
-              'TypeScript',
-              'Next.js',
-              'Node.js',
-              'Tailwind',
-              'React Native',
-              'PostgreSQL',
-              'Framer Motion',
-              'Figma',
-              'Git',
-            ].map((t, i) => (
-              <span key={i} className={styles.tickerItem}>
-                {t}
-              </span>
-            ))}
-            {[
-              'React',
-              'TypeScript',
-              'Next.js',
-              'Node.js',
-              'Tailwind',
-              'React Native',
-              'PostgreSQL',
-              'Framer Motion',
-              'Figma',
-              'Git',
-            ].map((t, i) => (
-              <span key={`b${i}`} className={styles.tickerItem}>
-                {t}
-              </span>
-            ))}
-          </div>
-        </div>
-        <div className={styles.stripRight}>Available for projects</div>
-      </div>
     </section>
   )
 }

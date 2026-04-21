@@ -24,10 +24,14 @@
 
 .roleTag {
   position: absolute;
-  right: 1.5rem;
-  bottom: 60px;
-  transform: rotate(90deg);
-  transform-origin: right bottom;
+  top: 72px;
+  right: 0;
+  width: 24px;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
   font-family: var(--font-mono);
   font-size: 9px;
   letter-spacing: 0.18em;
@@ -35,7 +39,6 @@
   color: var(--accent);
   opacity: 0.6;
   white-space: nowrap;
-  z-index: 1;
 }
 
 /* logomark — top, in normal flow */
@@ -82,6 +85,18 @@
   opacity: 0;
   animation: fadeUp 0.7s ease forwards;
   animation-delay: 0.3s;
+}
+
+.tagline {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: clamp(11px, 1.2vw, 14px);
+  color: var(--muted);
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  opacity: 0;
+  animation: fadeUp 0.7s ease forwards;
+  animation-delay: 0.5s;
 }
 
 .sub {
@@ -288,7 +303,7 @@
   align-items: flex-end;
   gap: 0.4em;
   font-family: var(--font-mono);
-  font-size: clamp(48px, 8vw, 96px);
+  font-size: clamp(72px, 13vw, 150px);
   font-weight: 400;
   color: var(--black);
   line-height: 1;
