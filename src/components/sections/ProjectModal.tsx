@@ -16,7 +16,7 @@ interface Props {
 
 export function ProjectModal({ project, onClose }: Props) {
   const [active, setActive] = useState(0)
-  const images = 'images' in project ? project.images as string[] : []
+  const images = 'images' in project ? [...project.images] as string[] : []
   const longDesc = 'longDesc' in project ? project.longDesc as string : ''
 
   useEffect(() => {
