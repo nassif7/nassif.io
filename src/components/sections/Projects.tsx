@@ -5,6 +5,7 @@ import { AnimatePresence } from 'framer-motion'
 import { PROJECTS } from '@/lib/data'
 import shared from './section.module.css'
 import styles from './Writing.module.css'
+import projectStyles from './Projects.module.css'
 import { ProjectModal } from './ProjectModal'
 
 type Project = typeof PROJECTS[number]
@@ -43,6 +44,24 @@ export function Projects() {
             <span className={styles.arrow}>{p.wip ? '…' : '↗'}</span>
           </div>
         ))}
+        <div className={projectStyles.dots}>
+          <span /><span /><span />
+        </div>
+        <a
+          href="mailto:hallo@nassif.pro"
+          className={`${styles.row} ${projectStyles.cta}`}
+          style={{ textDecoration: 'none' }}
+        >
+          <span className={styles.num}>0{PROJECTS.length + 1}</span>
+          <div className={styles.rowMain}>
+            <span className={styles.title}>Your next project</span>
+            <span className={styles.excerpt}>Got something in mind? Let's build it together.</span>
+          </div>
+          <div className={styles.rowMeta}>
+            <span className={styles.tag}>Let's talk</span>
+          </div>
+          <span className={styles.arrow}>↗</span>
+        </a>
       </div>
 
       <AnimatePresence>
