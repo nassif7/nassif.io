@@ -56,13 +56,16 @@ export function Hero() {
           <div className={styles.body}>
             <p>
               Frontend engineer with a thing for <strong>detail</strong>, a low tolerance for bad UX,
-              and a high tolerance for ambiguity. I've been doing this long enough to know the rules —
+              and a high tolerance for ambiguity. I've been doing this long enough to know the rules,
               which ones to follow, and which ones to break on purpose.
             </p>
             <p>
               I work at the intersection of design and engineering. I care about <strong>how things feel</strong>,
               not just how they function. The invisible half-pixel. The transition that's 20ms too slow.
               The copy that's technically correct but feels wrong.
+            </p>
+            <p>
+              Syrian, based in Berlin. Still more curious than tired.
             </p>
             <p>Still growing. Still figuring it out. That's probably not changing.</p>
           </div>

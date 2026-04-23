@@ -114,3 +114,14 @@
   transition: transform 0.2s, color 0.15s;
   display: inline-block;
 }
+
+.cta {
+  background: var(--bg-soft);
+  padding-left: 12px;
+  padding-right: 12px;
+  border-radius: 4px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.cta:hover { padding-left: 20px; }

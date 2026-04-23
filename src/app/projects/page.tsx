@@ -44,6 +44,17 @@ export default function ProjectsPage() {
             <span className={styles.arrow}>↗</span>
           </div>
         ))}
+        <a href="mailto:hallo@nassif.pro" className={`${styles.row} ${styles.cta}`}>
+          <span className={styles.num}>0{PROJECTS.length + 1}</span>
+          <div className={styles.rowMain}>
+            <span className={styles.rowTitle}>Your next project</span>
+            <span className={styles.excerpt}>Got an idea? Get in touch.</span>
+          </div>
+          <div className={styles.rowMeta}>
+            <span className={styles.tag}>Let's talk</span>
+          </div>
+          <span className={styles.arrow}>↗</span>
+        </a>
       </div>
 
       <AnimatePresence>

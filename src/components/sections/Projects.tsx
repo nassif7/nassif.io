@@ -45,9 +45,6 @@ export function Projects() {
             <span className={styles.arrow}>{p.wip && !p.brainstorm ? '…' : '↗'}</span>
           </div>
         ))}
-        <div className={projectStyles.dots}>
-          <span /><span /><span />
-        </div>
         <a
           href="mailto:hallo@nassif.pro"
           className={`${styles.row} ${projectStyles.cta}`}

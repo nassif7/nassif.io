@@ -98,7 +98,7 @@
 
 .avatar {
   flex-shrink: 0;
-  filter: grayscale(100%);
+  filter: contrast(0.8) saturate(0.4) opacity(0.85);
   mix-blend-mode: multiply;
   object-fit: cover;
   width: clamp(160px, 18vw, 260px) !important;
