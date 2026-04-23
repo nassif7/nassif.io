@@ -18,6 +18,7 @@ export function ProjectModal({ project, onClose }: Props) {
   const [active, setActive] = useState(0)
   const images = 'images' in project ? [...project.images] as string[] : []
   const longDesc = 'longDesc' in project ? project.longDesc as string : ''
+  const isBrainstorm = 'brainstorm' in project && project.brainstorm
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -57,7 +58,16 @@ export function ProjectModal({ project, onClose }: Props) {
 
           {/* images panel */}
           <div className={styles.imagePanel}>
-            {images.length > 0 ? (
+            {isBrainstorm ? (
+              <div className={styles.brainstorm}>
+                <span className={styles.brainstormLabel}>// early concept</span>
+                <p>Integrity</p>
+                <p>Autonomy</p>
+                <p>Awareness</p>
+                <p>Accountability</p>
+                <p>Courage</p>
+              </div>
+            ) : images.length > 0 ? (
               <>
                 <div className={styles.imageMain}>
                   {active > 0 && (

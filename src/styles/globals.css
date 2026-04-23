@@ -20,17 +20,25 @@
 
 html { scroll-behavior: smooth; }
 
-/* everything scrolls over the fixed grid/dots */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border) 1px, transparent 1px);
+  background-size: 48px 48px;
+  opacity: 0.35;
+  pointer-events: none;
+  z-index: 0;
+}
+
 main > * {
   position: relative;
   z-index: 1;
+  background: var(--bg);
 }
 
-/* sections after hero get a translucent bg so grid shows faintly */
-main > *:not(:first-child) {
-  background: rgba(244, 242, 237, 0.88);
-  backdrop-filter: blur(1px);
-}
 
 body {
   font-family: var(--font-sans);

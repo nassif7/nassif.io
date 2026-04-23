@@ -1,38 +1,15 @@
 'use client'
 
+import Image from 'next/image'
 import { useEffect, useState } from 'react'
 import styles from './Hero.module.css'
 
 export function Hero() {
-  const ROLES = ['Frontend Engineer', 'App Builder', 'Product Crafter']
-
   const [upper, setUpper] = useState(false)
-  const [roleIndex, setRoleIndex] = useState(0)
-  const [time, setTime] = useState({ h: '00', m: '00', s: '00', gmt: '' })
+  const date = new Date().toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' })
 
   useEffect(() => {
     const id = setInterval(() => setUpper((u) => !u), 1000)
-    return () => clearInterval(id)
-  }, [])
-
-  useEffect(() => {
-    const id = setInterval(() => setRoleIndex((i) => (i + 1) % ROLES.length), 3000)
-    return () => clearInterval(id)
-  }, [])
-
-  useEffect(() => {
-    const tick = () => {
-      const now = new Date()
-      const offset = -now.getTimezoneOffset() / 60
-      setTime({
-        h: String(now.getHours()).padStart(2, '0'),
-        m: String(now.getMinutes()).padStart(2, '0'),
-        s: String(now.getSeconds()).padStart(2, '0'),
-        gmt: `GMT+${offset}`,
-      })
-    }
-    tick()
-    const id = setInterval(tick, 1000)
     return () => clearInterval(id)
   }, [])
 
@@ -40,22 +17,56 @@ export function Hero() {
     <section className={styles.hero} id="home">
       <span className={styles.roleTag}>Built with intention, shipped with hope.</span>
 
+      {/* logoMark — kept for later use
       <div className={styles.logoMark} aria-hidden="true">
         <div className={styles.logoText}>
           <span className={styles.logoLetter}>{upper ? 'N' : 'n'}</span>
           <span className={styles.logoPipe} />
           <span className={styles.logoLetter}>{upper ? 'n' : 'N'}</span>
         </div>
-        <p className={styles.logoTime}>{time.h}:{time.m}:{time.s} <span>{time.gmt}</span></p>
+        <p className={styles.logoTime}>— kept for later —</p>
       </div>
+      */}
 
-      <div className={styles.main}>
-        <div className={styles.nameBlock}>
-          <h1 className={styles.name}>Nassif.</h1>
-          <p className={styles.sub}>{ROLES[roleIndex]}</p>
+      <div className={styles.masthead}>
+          <span className={styles.mastheadLeft}>berlin - de</span>
+          <div className={styles.mastheadLogo} aria-hidden="true">
+            <span>{upper ? 'N' : 'n'}</span>
+            <span className={styles.logoPipe} />
+            <span>{upper ? 'n' : 'N'}</span>
+          </div>
+          <span className={styles.mastheadDate}>{date}</span>
         </div>
-      </div>
 
+        <div className={styles.headline}>
+          <h1 className={styles.name}>n.Nassif</h1>
+          <p className={styles.deck}>Professional button-maker. Powered by coffee and boredom.</p>
+        </div>
+
+        <div className={styles.rule} />
+
+        <div className={styles.article}>
+          <Image
+            src="/avatar.png"
+            alt="Nassif"
+            width={260}
+            height={260}
+            className={styles.avatar}
+          />
+          <div className={styles.body}>
+            <p>
+              Frontend engineer with a thing for <strong>detail</strong>, a low tolerance for bad UX,
+              and a high tolerance for ambiguity. I've been doing this long enough to know the rules —
+              which ones to follow, and which ones to break on purpose.
+            </p>
+            <p>
+              I work at the intersection of design and engineering. I care about <strong>how things feel</strong>,
+              not just how they function. The invisible half-pixel. The transition that's 20ms too slow.
+              The copy that's technically correct but feels wrong.
+            </p>
+            <p>Still growing. Still figuring it out. That's probably not changing.</p>
+          </div>
+        </div>
     </section>
   )
 }

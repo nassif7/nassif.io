@@ -17,6 +17,7 @@ export function Projects() {
     <section id="work" className={shared.section}>
       <div className={shared.sectionHeader}>
         <span className={shared.label}>Selected work</span>
+        <a href="/projects" className={shared.seeAll}>All projects →</a>
       </div>
 
       <h2 className={shared.heading}>Things I've shipped.</h2>
@@ -27,8 +28,8 @@ export function Projects() {
           <div
             key={p.num}
             className={styles.row}
-            style={{ opacity: p.wip ? 0.45 : 1, cursor: p.wip ? 'default' : 'pointer' }}
-            onClick={() => !p.wip && setOpen(p)}
+            style={{ opacity: p.brainstorm ? 0.5 : p.wip ? 0.45 : 1, cursor: (p.wip && !p.brainstorm) ? 'default' : 'pointer' }}
+            onClick={() => (!p.wip || p.brainstorm) && setOpen(p)}
           >
             <span className={styles.num}>0{i + 1}</span>
             <div className={styles.rowMain}>
@@ -41,7 +42,7 @@ export function Projects() {
                 <span className={styles.date}>{p.stack.join(' · ')}</span>
               )}
             </div>
-            <span className={styles.arrow}>{p.wip ? '…' : '↗'}</span>
+            <span className={styles.arrow}>{p.wip && !p.brainstorm ? '…' : '↗'}</span>
           </div>
         ))}
         <div className={projectStyles.dots}>
