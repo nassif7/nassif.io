@@ -3,7 +3,6 @@
 import styles from './TopBar.module.css'
 
 const LINKS = [
-  { label: 'About',   href: '#about'   },
   { label: 'Work',    href: '#work'    },
   { label: 'Writing', href: '#writing' },
   { label: 'Contact', href: 'mailto:hallo@nassif.pro' },

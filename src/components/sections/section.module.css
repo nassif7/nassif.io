@@ -53,3 +53,7 @@
 }
 
 .seeAll:hover { color: var(--black); }
+
+@media (max-width: 640px) {
+  .section { padding: 32px 1rem; }
+}

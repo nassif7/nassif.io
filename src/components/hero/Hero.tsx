@@ -32,7 +32,7 @@ export function Hero() {
           <span className={styles.mastheadLeft}>berlin - de</span>
           <div className={styles.mastheadLogo} aria-hidden="true">
             <span>{upper ? 'N' : 'n'}</span>
-            <span className={styles.logoPipe} />
+            <span className={styles.logoPipe}>{upper ? '\\' : '/'}</span>
             <span>{upper ? 'n' : 'N'}</span>
           </div>
           <span className={styles.mastheadDate}>{date}</span>

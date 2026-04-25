@@ -125,3 +125,23 @@
 }
 
 .cta:hover { padding-left: 20px; }
+
+@media (max-width: 640px) {
+  .page { padding: 72px 1rem 3rem; }
+
+  .row {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-start;
+  }
+
+  .num { display: none; }
+  .arrow { display: none; }
+
+  .rowMeta {
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+  }
+}

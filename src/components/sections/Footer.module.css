@@ -15,3 +15,11 @@
   color: var(--muted);
   letter-spacing: 0.06em;
 }
+
+@media (max-width: 640px) {
+  .footer {
+    flex-direction: column;
+    gap: 6px;
+    padding: 20px 1rem;
+  }
+}

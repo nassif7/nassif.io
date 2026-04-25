@@ -61,6 +61,11 @@
   gap: 16px;
 }
 
+@media (max-width: 768px) {
+  .sidebar { display: none; }
+  .sidebarRight { display: none; }
+}
+
 .available {
   font-family: var(--font-mono);
   font-size: 13px;

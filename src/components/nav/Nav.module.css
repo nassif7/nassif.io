@@ -6,12 +6,33 @@
   height: 52px;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   padding: 0 2rem;
   z-index: 300;
   box-shadow: 0 2px 20px rgba(0, 0, 0, 0.35);
   transition: background 0.2s, box-shadow 0.2s;
 }
+
+.logo {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.25em;
+  transition: color 0.15s;
+}
+
+.logo:hover { color: #ffffff; }
+
+.logo em {
+  font-style: normal;
+}
+
+.navScrolled .logo { color: var(--black); }
 
 .navScrolled {
   background: rgba(255, 255, 255, 0.92);
@@ -72,13 +93,64 @@
   font-weight: 500;
 }
 
-.activeStroke {
-  position: absolute;
-  left: 8px;
-  right: 8px;
-  bottom: 0px;
-  width: calc(100% - 16px);
-  height: 8px;
-  display: block;
-  pointer-events: none;
+
+.sayHello {
+  display: none;
+}
+
+@media (min-width: 769px) {
+  .nav { display: none; }
+}
+
+@media (max-width: 768px) {
+  .nav {
+    background: rgba(244, 242, 237, 0.96);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    padding: 0 1rem;
+  }
+
+  .navList { display: none; }
+
+  .logo { color: var(--black); }
+  .logo:hover { color: var(--black); }
+
+  .sayHello {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.15s;
+    white-space: nowrap;
+  }
+
+  .sayHello::before {
+    content: '';
+    display: block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #4CAF50;
+    animation: pulse 2s ease-in-out infinite;
+    flex-shrink: 0;
+  }
+
+  .sayHello:hover { color: var(--black); }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0.3; }
+  }
+
+  .navItem {
+    color: var(--mid);
+    padding: 6px 7px;
+    font-size: 11px;
+  }
+
+  .navItem:hover { color: var(--black); }
+  .navItemActive { color: var(--black); }
 }

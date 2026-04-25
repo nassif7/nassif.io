@@ -96,3 +96,21 @@
   transition: transform 0.2s, color 0.15s;
   display: inline-block;
 }
+
+@media (max-width: 640px) {
+  .row {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-start;
+  }
+
+  .num { display: none; }
+  .arrow { display: none; }
+
+  .rowMeta {
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+  }
+}

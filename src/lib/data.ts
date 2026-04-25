@@ -1,10 +1,6 @@
 export const NAV_LINKS = [
-  { label: 'Home', href: '#' },
-  { label: 'About', href: '#about' },
-  { label: 'Projects', href: '#projects' },
-  { label: 'Stack', href: '#stack' },
+  { label: 'Work', href: '#work' },
   { label: 'Writing', href: '#writing' },
-  { label: 'Contact', href: '#contact' },
 ] as const
 
 export const STACK_ITEMS = [

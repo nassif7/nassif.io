@@ -46,21 +46,13 @@
   font-weight: 500;
   color: var(--black);
   letter-spacing: -0.02em;
+  text-transform: none;
 }
 
 .logoPipe {
-  display: inline-block;
-  width: 4px;
-  height: 0.75em;
-  background: var(--accent);
-  transform-origin: 50% 100%;
-  animation: pipeSwing 0.65s ease-in-out infinite;
+  color: var(--accent);
 }
 
-@keyframes pipeSwing {
-  0%, 100% { transform: rotate(-20deg); }
-  50%       { transform: rotate(20deg); }
-}
 
 .headline {
   padding: 40px 0 24px;
@@ -120,4 +112,50 @@
 .body strong {
   color: var(--black);
   font-weight: 500;
+}
+
+/* Below full desktop: drop to single column */
+@media (max-width: 1100px) {
+  .body {
+    column-count: 1;
+    column-rule: none;
+  }
+
+  .avatar {
+    width: clamp(130px, 15vw, 180px) !important;
+    height: clamp(130px, 15vw, 180px) !important;
+  }
+}
+
+/* Mobile nav visible, sidebar hidden: clear the nav bar */
+@media (max-width: 768px) and (min-width: 641px) {
+  .hero {
+    padding-top: 64px;
+  }
+}
+
+/* Phone */
+@media (max-width: 640px) {
+  .hero {
+    padding: 52px 1rem 3rem;
+  }
+
+  .roleTag {
+    display: none;
+  }
+
+  .article {
+    display: block;
+  }
+
+  .avatar {
+    float: left;
+    width: 90px !important;
+    height: 90px !important;
+    margin: 0 16px 4px 0;
+  }
+
+  .body {
+    column-count: unset;
+  }
 }
