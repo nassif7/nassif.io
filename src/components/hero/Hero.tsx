@@ -1,17 +1,7 @@
-'use client'
-
-import Image from 'next/image'
-import { useEffect, useState } from 'react'
 import styles from './Hero.module.css'
 
 export function Hero() {
-  const [upper, setUpper] = useState(false)
   const date = new Date().toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' })
-
-  useEffect(() => {
-    const id = setInterval(() => setUpper((u) => !u), 1000)
-    return () => clearInterval(id)
-  }, [])
 
   return (
     <section className={styles.hero} id="home">
@@ -29,30 +19,27 @@ export function Hero() {
       */}
 
       <div className={styles.masthead}>
-          <span className={styles.mastheadLeft}>berlin - de</span>
-          <div className={styles.mastheadLogo} aria-hidden="true">
-            <span>{upper ? 'N' : 'n'}</span>
-            <span className={styles.logoPipe}>{upper ? '\\' : '/'}</span>
-            <span>{upper ? 'n' : 'N'}</span>
-          </div>
-          <span className={styles.mastheadDate}>{date}</span>
+        <span className={styles.mastheadLeft}>berlin · {date}</span>
+        <div className={styles.mastheadLogo} aria-hidden="true">
+          <span>n</span>
+          <span className={styles.logoPipe}>/</span>
+          <span>N</span>
         </div>
+        <a href="mailto:hallo@nassif.pro" className={styles.mastheadHello}>
+          say hello →
+        </a>
+      </div>
 
         <div className={styles.headline}>
-          <h1 className={styles.name}>n.Nassif</h1>
+          <h1 className={styles.name}>
+            <span className={styles.nameFirst}>nassif</span> Nassif
+          </h1>
           <p className={styles.deck}>Professional button-maker. Powered by coffee and boredom.</p>
         </div>
 
         <div className={styles.rule} />
 
         <div className={styles.article}>
-          <Image
-            src="/avatar.png"
-            alt="Nassif"
-            width={260}
-            height={260}
-            className={styles.avatar}
-          />
           <div className={styles.body}>
             <p>
               Frontend engineer with a thing for <strong>detail</strong>, a low tolerance for bad UX,
@@ -68,6 +55,10 @@ export function Hero() {
               Syrian, based in Berlin. Still more curious than tired.
             </p>
             <p>Still growing. Still figuring it out. That's probably not changing.</p>
+          </div>
+          <div className={styles.ctaBlock}>
+            <span className={styles.ctaLabel}>you have an idea</span>
+            <a href="mailto:hallo@nassif.pro" className={styles.ctaLine}>let's get in touch →</a>
           </div>
         </div>
     </section>

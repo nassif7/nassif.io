@@ -17,8 +17,6 @@ export function TopBar() {
   return (
     <>
       <aside className={styles.sidebar}>
-        <a className={styles.logo} href="/">n<em>|</em>N</a>
-
         <nav className={styles.nav}>
           {LINKS.map(l => (
             <a key={l.label} href={l.href} className={styles.navLink}>
@@ -28,11 +26,6 @@ export function TopBar() {
         </nav>
       </aside>
 
-      <aside className={styles.sidebarRight}>
-        <a href="mailto:hallo@nassif.pro" className={styles.available} aria-label="Send email">
-          say hello →
-        </a>
-      </aside>
     </>
   )
 }
