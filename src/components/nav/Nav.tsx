@@ -38,9 +38,8 @@ const handleClick = (href: string) => {
   return (
     <nav className={clsx(styles.nav, { [styles.navScrolled]: scrolled })} aria-label="Main navigation">
       <a
-        href="#"
+        href="/"
         className={styles.logo}
-        onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }) }}
         aria-label="Home"
       >
         n<em aria-hidden="true">|</em>N

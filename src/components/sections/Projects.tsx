@@ -1,17 +1,10 @@
-'use client'
-
-import { useState } from 'react'
-import { AnimatePresence } from 'framer-motion'
-import { PROJECTS } from '@/lib/data'
+import { getAllProjects } from '@/lib/projects'
 import shared from './section.module.css'
 import styles from './Writing.module.css'
 import projectStyles from './Projects.module.css'
-import { ProjectModal } from './ProjectModal'
-
-type Project = typeof PROJECTS[number]
 
 export function Projects() {
-  const [open, setOpen] = useState<Project | null>(null)
+  const projects = getAllProjects()
 
   return (
     <section id="work" className={shared.section}>
@@ -24,12 +17,12 @@ export function Projects() {
       <p className={shared.intro}>Side projects and work in progress. Small but deliberate.</p>
 
       <div className={styles.list}>
-        {PROJECTS.map((p, i) => (
-          <div
-            key={p.num}
+        {projects.map((p, i) => (
+          <a
+            key={p.slug}
+            href={`/projects/${p.slug}`}
             className={styles.row}
-            style={{ opacity: p.brainstorm ? 0.5 : p.wip ? 0.45 : 1, cursor: (p.wip && !p.brainstorm) ? 'default' : 'pointer' }}
-            onClick={() => (!p.wip || p.brainstorm) && setOpen(p)}
+            style={{ opacity: p.brainstorm ? 0.5 : 1 }}
           >
             <span className={styles.num}>0{i + 1}</span>
             <div className={styles.rowMain}>
@@ -42,15 +35,14 @@ export function Projects() {
                 <span className={styles.date}>{p.stack.join(' · ')}</span>
               )}
             </div>
-            <span className={styles.arrow}>{p.wip && !p.brainstorm ? '…' : '↗'}</span>
-          </div>
+            <span className={styles.arrow}>{p.wip ? '…' : '↗'}</span>
+          </a>
         ))}
         <a
           href="mailto:hallo@nassif.pro"
           className={`${styles.row} ${projectStyles.cta}`}
-          style={{ textDecoration: 'none' }}
         >
-          <span className={styles.num}>0{PROJECTS.length + 1}</span>
+          <span className={styles.num}>0{projects.length + 1}</span>
           <div className={styles.rowMain}>
             <span className={styles.title}>Your next project</span>
             <span className={styles.excerpt}>Got something in mind? Let's build it together.</span>
@@ -61,10 +53,6 @@ export function Projects() {
           <span className={styles.arrow}>↗</span>
         </a>
       </div>
-
-      <AnimatePresence>
-        {open && <ProjectModal project={open} onClose={() => setOpen(null)} />}
-      </AnimatePresence>
     </section>
   )
 }

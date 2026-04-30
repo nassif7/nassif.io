@@ -104,9 +104,11 @@
 
 @media (max-width: 768px) {
   .nav {
-    background: rgba(244, 242, 237, 0.96);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+    position: relative;
+    background: var(--bg);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    box-shadow: none;
     padding: 0 1rem;
   }
 
