@@ -207,7 +207,15 @@
 /* Phone */
 @media (max-width: 640px) {
   .hero {
-    padding: 16px 1rem 3rem;
+    padding: 4px 1rem 3rem;
+  }
+
+  .masthead {
+    padding: 12px 0 12px;
+  }
+
+  .mastheadLeft {
+    display: none;
   }
 
   .roleTag {

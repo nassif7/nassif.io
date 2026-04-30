@@ -1,7 +1,6 @@
 import styles from './Hero.module.css'
 
 export function Hero() {
-  const date = new Date().toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' })
 
   return (
     <section className={styles.hero} id="home">
@@ -19,7 +18,7 @@ export function Hero() {
       */}
 
       <div className={styles.masthead}>
-        <span className={styles.mastheadLeft}>berlin · {date}</span>
+        <span className={styles.mastheadLeft}>berlin</span>
         <div className={styles.mastheadLogo} aria-hidden="true">
           <span>n</span>
           <span className={styles.logoPipe}>/</span>
