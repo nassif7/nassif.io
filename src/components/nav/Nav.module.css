@@ -120,32 +120,21 @@
   .sayHello {
     display: flex;
     align-items: center;
-    gap: 8px;
     font-family: var(--font-mono);
     font-size: 11px;
-    color: var(--muted);
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--bg);
+    background: var(--black);
     text-decoration: none;
-    transition: color 0.15s;
+    padding: 7px 14px;
+    border-radius: 3px;
+    transition: background 0.2s;
     white-space: nowrap;
   }
 
-  .sayHello::before {
-    content: '';
-    display: block;
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: #4CAF50;
-    animation: pulse 2s ease-in-out infinite;
-    flex-shrink: 0;
-  }
-
-  .sayHello:hover { color: var(--black); }
-
-  @keyframes pulse {
-    0%, 100% { opacity: 1; }
-    50%       { opacity: 0.3; }
-  }
+  .sayHello:hover { background: var(--accent); color: var(--bg); }
 
   .navItem {
     color: var(--mid);

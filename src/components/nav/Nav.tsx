@@ -70,7 +70,7 @@ const handleClick = (href: string) => {
           </li>
         ))}
       </ul>
-      <a href="mailto:hallo@nassif.pro" className={styles.sayHello}>say hello →</a>
+      <a href="mailto:hallo@nassif.pro" className={styles.sayHello}>Get in touch</a>
     </nav>
   )
 }
