@@ -1,15 +1,8 @@
-'use client'
-
-import { useState } from 'react'
-import { AnimatePresence } from 'framer-motion'
-import { PROJECTS } from '@/lib/data'
-import { ProjectModal } from '@/components/sections/ProjectModal'
+import { getAllProjects } from '@/lib/projects'
 import styles from './projects.module.css'
 
-type Project = typeof PROJECTS[number]
-
 export default function ProjectsPage() {
-  const [open, setOpen] = useState<Project | null>(null)
+  const projects = getAllProjects()
 
   return (
     <main className={styles.page}>
@@ -20,15 +13,12 @@ export default function ProjectsPage() {
       </header>
 
       <div className={styles.list}>
-        {PROJECTS.map((p, i) => (
-          <div
-            key={p.num}
+        {projects.map((p, i) => (
+          <a
+            key={p.slug}
+            href={`/projects/${p.slug}`}
             className={styles.row}
-            style={{
-              opacity: p.brainstorm ? 0.5 : 1,
-              cursor: 'pointer',
-            }}
-            onClick={() => setOpen(p)}
+            style={{ opacity: p.brainstorm ? 0.5 : 1 }}
           >
             <span className={styles.num}>0{i + 1}</span>
             <div className={styles.rowMain}>
@@ -42,10 +32,10 @@ export default function ProjectsPage() {
               )}
             </div>
             <span className={styles.arrow}>↗</span>
-          </div>
+          </a>
         ))}
         <a href="mailto:hallo@nassif.pro" className={`${styles.row} ${styles.cta}`}>
-          <span className={styles.num}>0{PROJECTS.length + 1}</span>
+          <span className={styles.num}>0{projects.length + 1}</span>
           <div className={styles.rowMain}>
             <span className={styles.rowTitle}>Your next project</span>
             <span className={styles.excerpt}>Got an idea? Get in touch.</span>
@@ -56,10 +46,6 @@ export default function ProjectsPage() {
           <span className={styles.arrow}>↗</span>
         </a>
       </div>
-
-      <AnimatePresence>
-        {open && <ProjectModal project={open} onClose={() => setOpen(null)} />}
-      </AnimatePresence>
     </main>
   )
 }

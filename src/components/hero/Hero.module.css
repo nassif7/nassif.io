@@ -127,17 +127,17 @@
   }
 }
 
-/* Mobile nav visible, sidebar hidden: clear the nav bar */
+/* Mobile nav visible, sidebar hidden */
 @media (max-width: 768px) and (min-width: 641px) {
   .hero {
-    padding-top: 64px;
+    padding-top: 16px;
   }
 }
 
 /* Phone */
 @media (max-width: 640px) {
   .hero {
-    padding: 52px 1rem 3rem;
+    padding: 16px 1rem 3rem;
   }
 
   .roleTag {
