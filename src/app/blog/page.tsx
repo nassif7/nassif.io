@@ -6,7 +6,7 @@ export default function BlogPage() {
   return (
     <main className={styles.page}>
       <header className={styles.header}>
-        <a href="/" className={styles.back}>← nassif.io</a>
+        <a href="/" className={styles.back}>← nassif.pro</a>
         <h1 className={styles.title}>Writing</h1>
         <p className={styles.sub}>Thoughts on politics, philosophy, tech, and whatever else.</p>
       </header>

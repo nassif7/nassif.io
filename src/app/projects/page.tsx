@@ -7,7 +7,7 @@ export default function ProjectsPage() {
   return (
     <main className={styles.page}>
       <header className={styles.header}>
-        <a href="/" className={styles.back}>← nassif.io</a>
+        <a href="/" className={styles.back}>← nassif.pro</a>
         <h1 className={styles.title}>Work.</h1>
         <p className={styles.sub}>Selected projects — shipped, in progress, and still forming.</p>
       </header>
