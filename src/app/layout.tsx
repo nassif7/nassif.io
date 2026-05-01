@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import '@/styles/globals.css'
 import { TopBar } from '@/components/topbar/TopBar'
 import { Analytics } from '@vercel/analytics/next';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 export const metadata: Metadata = {
   title: 'Nassif Nassif — Frontend Engineer',
@@ -19,6 +20,8 @@ export default function RootLayout({
         <TopBar />
         {children}
         <Analytics />
+        <SpeedInsights />
+
       </body>
     </html>
   )
