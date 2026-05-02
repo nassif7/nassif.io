@@ -39,7 +39,7 @@ export function Projects() {
           </a>
         ))}
         <a
-          href="mailto:hallo@nassif.pro"
+          href="mailto:hello@nassif.pro"
           className={`${styles.row} ${projectStyles.cta}`}
         >
           <span className={styles.num}>0{projects.length + 1}</span>

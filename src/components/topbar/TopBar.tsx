@@ -5,7 +5,7 @@ import styles from './TopBar.module.css'
 const LINKS = [
   { label: 'Work',    href: '#work'    },
   { label: 'Writing', href: '#writing' },
-  { label: 'Contact', href: 'mailto:hallo@nassif.pro' },
+  { label: 'Contact', href: 'mailto:hello@nassif.pro' },
 ]
 
 const SOCIAL = [

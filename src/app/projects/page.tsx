@@ -34,7 +34,7 @@ export default function ProjectsPage() {
             <span className={styles.arrow}>↗</span>
           </a>
         ))}
-        <a href="mailto:hallo@nassif.pro" className={`${styles.row} ${styles.cta}`}>
+        <a href="mailto:hello@nassif.pro" className={`${styles.row} ${styles.cta}`}>
           <span className={styles.num}>0{projects.length + 1}</span>
           <div className={styles.rowMain}>
             <span className={styles.rowTitle}>Your next project</span>

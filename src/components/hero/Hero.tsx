@@ -24,7 +24,7 @@ export function Hero() {
           <span className={styles.logoPipe}>/</span>
           <span>N</span>
         </div>
-        <a href="mailto:hallo@nassif.pro" className={styles.mastheadHello}>
+        <a href="mailto:hello@nassif.pro" className={styles.mastheadHello}>
           say hello →
         </a>
       </div>
@@ -57,7 +57,7 @@ export function Hero() {
           </div>
           <div className={styles.ctaBlock}>
             <span className={styles.ctaLabel}>you have an idea</span>
-            <a href="mailto:hallo@nassif.pro" className={styles.ctaLine}>let's get in touch →</a>
+            <a href="mailto:hello@nassif.pro" className={styles.ctaLine}>let's get in touch →</a>
           </div>
         </div>
     </section>
