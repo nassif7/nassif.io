@@ -14,8 +14,8 @@ images:
   - /projects/bookmarX/bookmarX4.avif
   - /projects/bookmarX/bookmarX5.avif
   - /projects/bookmarX/bookmarX6.avif
-link: https://github.com/nassif7/bookmarX
-linkLabel: View on GitHub
+link: https://chromewebstore.google.com/detail/bookmarx/lpgfdocpjecjdagbjcbomobccfeaefep
+linkLabel: Get on Chrome Web Store
 privacyPolicy: /projects/bookmarx/privacy
 wip: false
 brainstorm: false
@@ -31,4 +31,4 @@ The bookmark detail view shows the full tweet, lets you assign or create a colle
 
 The UI lives in Chrome's Side Panel. Built with React and TypeScript, with light, dark, and system themes and a customizable accent color.
 
-Still in progress. Available on GitHub now.
+Available on the Chrome Web Store.
