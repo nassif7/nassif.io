@@ -12,7 +12,7 @@ export default function OneMorePrivacy() {
       <header className={styles.header}>
         <span className={styles.label}>oneMore</span>
         <h1 className={styles.title}>Privacy Policy</h1>
-        <p className={styles.date}>Last updated: May 10, 2025</p>
+        <p className={styles.date}>Last updated: May 10, 2026</p>
       </header>
 
       <div className={styles.body}>
