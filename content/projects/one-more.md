@@ -16,6 +16,7 @@ images:
   - /projects/one-more/one-more6.avif
 link: null
 linkLabel: null
+privacyPolicy: /projects/one-more/privacy
 wip: false
 brainstorm: false
 ---
