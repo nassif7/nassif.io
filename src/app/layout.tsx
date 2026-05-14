@@ -1,6 +1,8 @@
 import type { Metadata } from 'next'
 import '@/styles/globals.css'
 import { TopBar } from '@/components/topbar/TopBar'
+import { Masthead } from '@/components/masthead/Masthead'
+import { Footer } from '@/components/sections/Footer'
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 
@@ -18,7 +20,9 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <TopBar />
+        <Masthead />
         {children}
+        <Footer />
         <Analytics />
         <SpeedInsights />
 

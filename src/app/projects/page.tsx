@@ -1,10 +1,12 @@
 import { getAllProjects } from '@/lib/projects'
+import { DonateBar } from '@/components/DonateBar'
 import styles from './projects.module.css'
 
 export default function ProjectsPage() {
   const projects = getAllProjects()
 
   return (
+    <>
     <main className={styles.page}>
       <header className={styles.header}>
         <a href="/" className={styles.back}>← nassif.pro</a>
@@ -46,6 +48,10 @@ export default function ProjectsPage() {
           <span className={styles.arrow}>↗</span>
         </a>
       </div>
+
     </main>
+
+    <DonateBar text="If you use something I built and it's been useful to you, consider buying me a coffee — it helps me keep making things." />
+    </>
   )
 }

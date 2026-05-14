@@ -17,18 +17,6 @@ export function Hero() {
       </div>
       */}
 
-      <div className={styles.masthead}>
-        <span className={styles.mastheadLeft}>berlin</span>
-        <div className={styles.mastheadLogo} aria-hidden="true">
-          <span>n</span>
-          <span className={styles.logoPipe}>/</span>
-          <span>N</span>
-        </div>
-        <a href="mailto:hello@nassif.pro" className={styles.mastheadHello}>
-          say hello →
-        </a>
-      </div>
-
         <div className={styles.headline}>
           <h1 className={styles.name}>
             <span className={styles.nameFirst}>nassif</span> Nassif

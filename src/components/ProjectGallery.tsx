@@ -10,6 +10,9 @@ interface Classes {
   galleryThumbs: string
   thumb: string
   thumbActive: string
+  dots?: string
+  dot?: string
+  dotActive?: string
 }
 
 interface Props {
@@ -42,17 +45,29 @@ export function ProjectGallery({ images, name, classes }: Props) {
         )}
       </div>
       {images.length > 1 && (
-        <div className={classes.galleryThumbs}>
-          {images.map((src, i) => (
-            <button
-              key={i}
-              className={`${classes.thumb} ${i === active ? classes.thumbActive : ''}`}
-              onClick={() => setActive(i)}
-            >
-              <img src={src} alt="" />
-            </button>
-          ))}
-        </div>
+        <>
+          <div className={classes.galleryThumbs}>
+            {images.map((src, i) => (
+              <button
+                key={i}
+                className={`${classes.thumb} ${i === active ? classes.thumbActive : ''}`}
+                onClick={() => setActive(i)}
+              >
+                <img src={src} alt="" />
+              </button>
+            ))}
+          </div>
+          <div className={classes.dots}>
+            {images.map((_, i) => (
+              <button
+                key={i}
+                className={`${classes.dot} ${i === active ? classes.dotActive : ''}`}
+                onClick={() => setActive(i)}
+                aria-label={`Go to image ${i + 1}`}
+              />
+            ))}
+          </div>
+        </>
       )}
     </div>
   )

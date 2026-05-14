@@ -1,5 +1,6 @@
 import { getProject, getAllProjects } from '@/lib/projects'
 import { ProjectGallery } from '@/components/ProjectGallery'
+import { DonateBar } from '@/components/DonateBar'
 import styles from './project.module.css'
 import { notFound } from 'next/navigation'
 
@@ -23,6 +24,7 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
   const paragraphs = project.content.split('\n\n').filter(Boolean)
 
   return (
+    <>
     <main className={styles.page}>
       <a href="/projects" className={styles.back}>← All projects</a>
 
@@ -54,6 +56,9 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
               galleryThumbs: styles.galleryThumbs,
               thumb: styles.thumb,
               thumbActive: styles.thumbActive,
+              dots: styles.dots,
+              dot: styles.dot,
+              dotActive: styles.dotActive,
             }}
           />
           ) : (
@@ -86,5 +91,7 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
         </div>
       </div>
     </main>
+    <DonateBar text={`Do you like ${project.name}? If it's been useful to you, consider buying me a coffee — it helps me keep making things.`} />
+    </>
   )
 }

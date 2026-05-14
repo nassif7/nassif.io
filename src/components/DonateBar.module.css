@@ -1,0 +1,54 @@
+.donateBar {
+  position: fixed;
+  bottom: 56px;
+  left: 0;
+  right: 0;
+  background: var(--bg);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.donate {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 16px 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.donateText {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--muted);
+  line-height: 1.7;
+  letter-spacing: 0.03em;
+}
+
+.kofi {
+  display: inline-block;
+  padding: 10px 20px;
+  background: #FF5E5B;
+  color: #fff;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-decoration: none;
+  border-radius: 6px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: opacity 0.15s;
+}
+
+.kofi:hover { opacity: 0.85; }
+
+@media (max-width: 640px) {
+  .donate {
+    padding: 12px 1rem;
+    gap: 12px;
+  }
+
+  .donateText { display: none; }
+}

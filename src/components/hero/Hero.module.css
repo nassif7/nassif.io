@@ -24,66 +24,6 @@
   white-space: nowrap;
 }
 
-.masthead {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 32px 0 16px;
-  border-bottom: 2px solid var(--black);
-  font-family: var(--font-mono);
-  font-size: 10px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--muted);
-}
-
-.mastheadLogo {
-  display: flex;
-  align-items: center;
-  gap: 0.3em;
-  font-family: var(--font-mono);
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--black);
-  letter-spacing: -0.02em;
-  text-transform: none;
-}
-
-.logoPipe {
-  color: var(--accent);
-}
-
-.mastheadHello {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  color: var(--muted);
-  text-transform: none;
-  letter-spacing: 0.04em;
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  transition: color 0.15s;
-}
-
-.mastheadHello::before {
-  content: '';
-  display: block;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: #4CAF50;
-  animation: pulse 2s ease-in-out infinite;
-  flex-shrink: 0;
-}
-
-.mastheadHello:hover { color: var(--black); }
-
-@keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50%       { opacity: 0.3; }
-}
-
 
 .headline {
   padding: 40px 0 24px;
@@ -208,14 +148,6 @@
 @media (max-width: 640px) {
   .hero {
     padding: 4px 1rem 3rem;
-  }
-
-  .masthead {
-    padding: 12px 0 12px;
-  }
-
-  .mastheadLeft {
-    display: none;
   }
 
   .roleTag {

@@ -1,7 +1,7 @@
 .page {
   max-width: 860px;
   margin: 0 auto;
-  padding: 80px 3rem;
+  padding: 80px 3rem 220px;
   min-height: 100vh;
 }
 
@@ -128,8 +128,9 @@
 
 .cta:hover { padding-left: 20px; }
 
+
 @media (max-width: 640px) {
-  .page { padding: 72px 1rem 3rem; }
+  .page { padding: 72px 1rem 200px; }
 
   .row {
     display: flex;
@@ -146,4 +147,5 @@
     align-items: center;
     gap: 12px;
   }
+
 }

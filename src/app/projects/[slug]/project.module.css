@@ -121,6 +121,30 @@
 .thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .thumbActive { border-color: var(--accent); }
 
+.dots {
+  display: none;
+  justify-content: center;
+  gap: 6px;
+  padding: 10px 0;
+  border: 1px solid var(--border);
+  border-top: none;
+  border-radius: 0 0 6px 6px;
+  background: var(--bg-soft);
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--border);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.dotActive { background: var(--accent); }
+
 .brainstorm {
   background: var(--bg-soft);
   border: 1px solid var(--border);
@@ -224,4 +248,7 @@
   }
 
   .info { position: static; }
+
+  .galleryThumbs { display: none; }
+  .dots { display: flex; }
 }
