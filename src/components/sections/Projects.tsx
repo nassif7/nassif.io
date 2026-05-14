@@ -17,7 +17,7 @@ export function Projects() {
       <p className={shared.intro}>Side projects and work in progress. Small but deliberate.</p>
 
       <div className={styles.list}>
-        {projects.map((p, i) => (
+        {projects.filter(p => !p.brainstorm).map((p, i) => (
           <a
             key={p.slug}
             href={`/projects/${p.slug}`}

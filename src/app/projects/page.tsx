@@ -15,7 +15,7 @@ export default function ProjectsPage() {
       </header>
 
       <div className={styles.list}>
-        {projects.map((p, i) => (
+        {projects.filter(p => !p.brainstorm).map((p, i) => (
           <a
             key={p.slug}
             href={`/projects/${p.slug}`}
