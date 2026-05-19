@@ -14,8 +14,9 @@ images:
   - /projects/one-more/one-more4.avif
   - /projects/one-more/one-more5.avif
   - /projects/one-more/one-more6.avif
-link: null
-linkLabel: null
+link: https://apps.apple.com/us/app/onemore-smoke-tracker/id6766982502
+linkLabel: Download on the App Store
+androidComingSoon: true
 privacyPolicy: /projects/one-more/privacy
 wip: false
 brainstorm: false

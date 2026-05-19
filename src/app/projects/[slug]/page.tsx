@@ -3,6 +3,7 @@ import { ProjectGallery } from '@/components/ProjectGallery'
 import { DonateBar } from '@/components/DonateBar'
 import styles from './project.module.css'
 import { notFound } from 'next/navigation'
+import { FaApple, FaGooglePlay } from 'react-icons/fa'
 
 export async function generateStaticParams() {
   return getAllProjects().map(p => ({ slug: p.slug }))
@@ -77,16 +78,33 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
             </div>
           )}
 
-          {project.link && (
-            <a href={project.link} target="_blank" rel="noopener noreferrer" className={styles.link}>
-              {project.linkLabel}
-            </a>
-          )}
-
           {project.privacyPolicy && (
             <a href={project.privacyPolicy} className={styles.link}>
               Privacy Policy
             </a>
+          )}
+
+          {(project.link || project.androidComingSoon) && (
+            <div className={styles.storeLinks}>
+              {project.link && (
+                <a href={project.link} target="_blank" rel="noopener noreferrer" className={styles.storeBtn}>
+                  <FaApple className={styles.storeIcon} />
+                  <span className={styles.storeMeta}>
+                    <span className={styles.storeSmall}>Download on the</span>
+                    <span className={styles.storeBig}>App Store</span>
+                  </span>
+                </a>
+              )}
+              {project.androidComingSoon && (
+                <div className={styles.storeBtnDisabled}>
+                  <FaGooglePlay className={styles.storeIcon} />
+                  <span className={styles.storeMeta}>
+                    <span className={styles.storeSmall}>Coming soon on</span>
+                    <span className={styles.storeBig}>Google Play</span>
+                  </span>
+                </div>
+              )}
+            </div>
           )}
         </div>
       </div>
