@@ -5,7 +5,7 @@ tag: "Philosophy"
 excerpt: "Camus asks us to imagine Sisyphus happy. It sounds simple until you actually try to live it. The croissant understood this before any of us did."
 ---
 
-Every morning you choose. Bread is there, reliable, functional, asking nothing except that you keep going. The croissant is also there. It is not asking you to keep going. It is asking something harder.
+Every morning you choose. Bread is there, reliable, functional, asking nothing except that you keep going. The croissant is also there. It is not asking you to keep going. It is asking something subtler.
 
 Camus asks us to imagine Sisyphus happy. It sounds simple until you actually try to live it. The croissant understood this before any of us did.
 
