@@ -14,6 +14,7 @@ export type ProjectMeta = {
   images: string[]
   link: string | null
   linkLabel: string | null
+  appStoreLink: string | null
   androidComingSoon: boolean
   privacyPolicy: string | null
   wip: boolean
@@ -42,6 +43,7 @@ export function getAllProjects(): ProjectMeta[] {
         images: data.images ?? [],
         link: data.link ?? null,
         linkLabel: data.linkLabel ?? null,
+        appStoreLink: data.appStoreLink ?? null,
         androidComingSoon: data.androidComingSoon ?? false,
         privacyPolicy: data.privacyPolicy ?? null,
         wip: data.wip ?? false,
@@ -64,6 +66,7 @@ export function getProject(slug: string): Project {
     images: data.images ?? [],
     link: data.link ?? null,
     linkLabel: data.linkLabel ?? null,
+    appStoreLink: data.appStoreLink ?? null,
     androidComingSoon: data.androidComingSoon ?? false,
     privacyPolicy: data.privacyPolicy ?? null,
     wip: data.wip ?? false,

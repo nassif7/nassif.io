@@ -84,10 +84,16 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
             </a>
           )}
 
-          {(project.link || project.androidComingSoon) && (
+          {project.link && (
+            <a href={project.link} target="_blank" rel="noopener noreferrer" className={styles.link}>
+              {project.linkLabel}
+            </a>
+          )}
+
+          {(project.appStoreLink || project.androidComingSoon) && (
             <div className={styles.storeLinks}>
-              {project.link && (
-                <a href={project.link} target="_blank" rel="noopener noreferrer" className={styles.storeBtn}>
+              {project.appStoreLink && (
+                <a href={project.appStoreLink} target="_blank" rel="noopener noreferrer" className={styles.storeBtn}>
                   <FaApple className={styles.storeIcon} />
                   <span className={styles.storeMeta}>
                     <span className={styles.storeSmall}>Download on the</span>

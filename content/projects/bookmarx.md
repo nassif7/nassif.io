@@ -9,11 +9,15 @@ stack:
   - Vite
   - Chrome MV3
 images:
-  - /projects/bookmarX/bookmarX2.avif
-  - /projects/bookmarX/bookmarX3.avif
-  - /projects/bookmarX/bookmarX4.avif
-  - /projects/bookmarX/bookmarX5.avif
-  - /projects/bookmarX/bookmarX6.avif
+  - /projects/bookmarX/bookmarx01.avif
+  - /projects/bookmarX/bookmarx02.avif
+  - /projects/bookmarX/bookmarx03.avif
+  - /projects/bookmarX/bookmarx04.avif
+  - /projects/bookmarX/bookmarx05.avif
+  - /projects/bookmarX/bookmarx06.avif
+  - /projects/bookmarX/bookmarx07.avif
+  - /projects/bookmarX/bookmarx08.avif
+  - /projects/bookmarX/bookmarx09.avif
 link: https://chromewebstore.google.com/detail/bookmarx/lpgfdocpjecjdagbjcbomobccfeaefep
 linkLabel: Get on Chrome Web Store
 privacyPolicy: /projects/bookmarx/privacy
