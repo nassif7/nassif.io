@@ -1,6 +1,7 @@
 ---
 title: "On the politics of interface design"
 date: "2025-03-15"
+hidden: true
 tag: "Politics"
 excerpt: "Every button is a decision. Every form is a stance. Design is never neutral."
 ---

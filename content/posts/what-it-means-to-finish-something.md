@@ -1,6 +1,7 @@
 ---
 title: "What it means to finish something"
 date: "2025-02-20"
+hidden: true
 tag: "Philosophy"
 excerpt: "I have a graveyard of half-built things. I think most developers do."
 ---

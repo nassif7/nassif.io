@@ -1,8 +1,11 @@
+import { getAllPosts } from '@/lib/posts'
 import styles from './blog.module.css'
 
 export const metadata = { title: 'Writing — Nassif Nassif' }
 
 export default function BlogPage() {
+  const posts = getAllPosts()
+
   return (
     <main className={styles.page}>
       <header className={styles.header}>
@@ -11,9 +14,23 @@ export default function BlogPage() {
         <p className={styles.sub}>Thoughts on politics, philosophy, tech, and whatever else.</p>
       </header>
 
-      <div className={styles.empty}>
-        <span className={styles.emptyLabel}>// nothing published yet</span>
-        <p>Working on it. Writing takes longer than shipping.</p>
+      <div className={styles.list}>
+        {posts.map((post, i) => (
+          <a key={post.slug} href={`/blog/${post.slug}`} className={styles.row}>
+            <span className={styles.num}>{String(i + 1).padStart(2, '0')}</span>
+            <div className={styles.rowMain}>
+              <span className={styles.postTitle}>{post.title}</span>
+              <span className={styles.excerpt}>{post.excerpt}</span>
+            </div>
+            <div className={styles.rowMeta}>
+              <span className={styles.tag}>{post.tag}</span>
+              <span className={styles.date}>
+                {new Date(post.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })}
+              </span>
+            </div>
+            <span className={styles.arrow}>↗</span>
+          </a>
+        ))}
       </div>
     </main>
   )

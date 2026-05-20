@@ -1,6 +1,7 @@
 ---
 title: "The frontend is never just frontend"
 date: "2025-01-10"
+hidden: true
 tag: "Tech"
 excerpt: "You can't separate the UI from the system it lives in. Anyone who tells you otherwise hasn't shipped enough."
 ---

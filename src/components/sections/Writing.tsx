@@ -1,7 +1,10 @@
+import { getAllPosts } from '@/lib/posts'
 import shared from './section.module.css'
 import styles from './Writing.module.css'
 
-export function Writing() {
+export async function Writing() {
+  const posts = getAllPosts()
+
   return (
     <section id="writing" className={shared.section}>
       <div className={shared.sectionHeader}>
@@ -11,9 +14,23 @@ export function Writing() {
       <h2 className={shared.heading}>Things I think about.</h2>
       <p className={shared.intro}>Politics, philosophy, tech, and the occasional rant. Honest opinions, written slowly.</p>
 
-      <div className={styles.empty}>
-        <span className={styles.emptyLabel}>// nothing published yet</span>
-        <p>Working on it. Writing takes longer than shipping.</p>
+      <div className={styles.list}>
+        {posts.map((post, i) => (
+          <a key={post.slug} href={`/blog/${post.slug}`} className={styles.row}>
+            <span className={styles.num}>{String(i + 1).padStart(2, '0')}</span>
+            <div className={styles.rowMain}>
+              <span className={styles.title}>{post.title}</span>
+              <span className={styles.excerpt}>{post.excerpt}</span>
+            </div>
+            <div className={styles.rowMeta}>
+              <span className={styles.tag}>{post.tag}</span>
+              <span className={styles.date}>
+                {new Date(post.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })}
+              </span>
+            </div>
+            <span className={styles.arrow}>↗</span>
+          </a>
+        ))}
       </div>
     </section>
   )

@@ -26,8 +26,9 @@ export function getAllPosts(): PostMeta[] {
       const slug = f.replace(/\.md$/, '')
       const raw = fs.readFileSync(path.join(POSTS_DIR, f), 'utf8')
       const { data } = matter(raw)
-      return { slug, title: data.title, date: data.date, tag: data.tag, excerpt: data.excerpt }
+      return { slug, title: data.title, date: data.date, tag: data.tag, excerpt: data.excerpt, hidden: !!data.hidden }
     })
+    .filter(p => !p.hidden)
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
 }
 
