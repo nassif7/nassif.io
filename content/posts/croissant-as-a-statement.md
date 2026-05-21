@@ -3,6 +3,7 @@ title: "Croissant as a statement"
 date: "2026-05-20"
 tag: "Philosophy"
 excerpt: "Camus asks us to imagine Sisyphus happy. It sounds simple until you actually try to live it. The croissant understood this before any of us did."
+hidden: true
 ---
 
 Every morning you choose. Bread is there, reliable, functional, asking nothing except that you keep going. The croissant is also there. It is not asking you to keep going. It is asking something subtler.
