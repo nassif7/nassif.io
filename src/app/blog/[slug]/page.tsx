@@ -1,4 +1,5 @@
 import { getPost, getAllPosts } from '@/lib/posts'
+import { notFound } from 'next/navigation'
 import styles from './post.module.css'
 
 export async function generateStaticParams() {
@@ -12,6 +13,8 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 
 export default async function PostPage({ params }: { params: { slug: string } }) {
   const post = await getPost(params.slug)
+
+  if (post.hidden) notFound()
 
   return (
     <main className={styles.page}>

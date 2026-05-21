@@ -32,7 +32,7 @@ export function getAllPosts(): PostMeta[] {
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
 }
 
-export async function getPost(slug: string): Promise<Post> {
+export async function getPost(slug: string): Promise<Post & { hidden?: boolean }> {
   const raw = fs.readFileSync(path.join(POSTS_DIR, `${slug}.md`), 'utf8')
   const { data, content } = matter(raw)
   const processed = await remark().use(html).process(content)
@@ -43,5 +43,6 @@ export async function getPost(slug: string): Promise<Post> {
     tag: data.tag,
     excerpt: data.excerpt,
     content: processed.toString(),
+    hidden: !!data.hidden,
   }
 }
