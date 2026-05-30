@@ -2,8 +2,8 @@ import { getAllProjects } from '@/lib/projects'
 import { DonateBar } from '@/components/DonateBar'
 import styles from './projects.module.css'
 
-export default function ProjectsPage() {
-  const projects = getAllProjects()
+export default async function ProjectsPage() {
+  const projects = await getAllProjects()
 
   return (
     <>

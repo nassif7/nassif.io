@@ -1,28 +1,30 @@
 import { getProject, getAllProjects } from '@/lib/projects'
+import { urlForImage } from '@/sanity/lib/image'
 import { ProjectGallery } from '@/components/ProjectGallery'
 import { DonateBar } from '@/components/DonateBar'
+import { PortableText } from '@portabletext/react'
 import styles from './project.module.css'
 import { notFound } from 'next/navigation'
 import { FaApple, FaGooglePlay } from 'react-icons/fa'
 
 export async function generateStaticParams() {
-  return getAllProjects().map(p => ({ slug: p.slug }))
+  const projects = await getAllProjects()
+  return projects.map(p => ({ slug: p.slug }))
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }) {
-  const project = getProject(params.slug)
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params
+  const project = await getProject(slug)
+  if (!project) return {}
   return { title: `${project.name} — Nassif Nassif` }
 }
 
-export default function ProjectPage({ params }: { params: { slug: string } }) {
-  let project
-  try {
-    project = getProject(params.slug)
-  } catch {
-    notFound()
-  }
+export default async function ProjectPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params
+  const project = await getProject(slug)
+  if (!project) notFound()
 
-  const paragraphs = project.content.split('\n\n').filter(Boolean)
+  const imageUrls: string[] = (project.images ?? []).map((img: any) => urlForImage(img))
 
   return (
     <>
@@ -45,23 +47,23 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
               <p>Accountability</p>
               <p>Courage</p>
             </div>
-          ) : project.images.length > 0 ? (
+          ) : imageUrls.length > 0 ? (
             <ProjectGallery
-            images={project.images}
-            name={project.name}
-            classes={{
-              gallery: styles.gallery,
-              galleryMain: styles.galleryMain,
-              arrowLeft: styles.arrowLeft,
-              arrowRight: styles.arrowRight,
-              galleryThumbs: styles.galleryThumbs,
-              thumb: styles.thumb,
-              thumbActive: styles.thumbActive,
-              dots: styles.dots,
-              dot: styles.dot,
-              dotActive: styles.dotActive,
-            }}
-          />
+              images={imageUrls}
+              name={project.name}
+              classes={{
+                gallery: styles.gallery,
+                galleryMain: styles.galleryMain,
+                arrowLeft: styles.arrowLeft,
+                arrowRight: styles.arrowRight,
+                galleryThumbs: styles.galleryThumbs,
+                thumb: styles.thumb,
+                thumbActive: styles.thumbActive,
+                dots: styles.dots,
+                dot: styles.dot,
+                dotActive: styles.dotActive,
+              }}
+            />
           ) : (
             <div className={styles.noImage}>// photos coming soon</div>
           )}
@@ -69,7 +71,10 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
 
         <div className={styles.info}>
           <div className={styles.desc}>
-            {paragraphs.map((para, i) => <p key={i}>{para}</p>)}
+            {project.body?.length > 0
+              ? <PortableText value={project.body} />
+              : <p>{project.desc}</p>
+            }
           </div>
 
           {project.stack.length > 0 && (

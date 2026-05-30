@@ -1,31 +1,20 @@
 import type { Metadata } from 'next'
 import '@/styles/globals.css'
-import { TopBar } from '@/components/topbar/TopBar'
-import { Masthead } from '@/components/masthead/Masthead'
-import { Footer } from '@/components/sections/Footer'
-import { Analytics } from '@vercel/analytics/next';
-import { SpeedInsights } from '@vercel/speed-insights/next';
+import { Analytics } from '@vercel/analytics/next'
+import { SpeedInsights } from '@vercel/speed-insights/next'
 
 export const metadata: Metadata = {
   title: 'Nassif Nassif — Frontend Engineer',
   description: 'Frontend engineer based in Berlin. I build interfaces that feel good to use.',
 }
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <body>
-        <TopBar />
-        <Masthead />
         {children}
-        <Footer />
         <Analytics />
         <SpeedInsights />
-
       </body>
     </html>
   )

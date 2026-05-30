@@ -1,20 +1,25 @@
 import { getPost, getAllPosts } from '@/lib/posts'
+import { PortableText } from '@portabletext/react'
 import { notFound } from 'next/navigation'
 import styles from './post.module.css'
 
 export async function generateStaticParams() {
-  return getAllPosts().map(p => ({ slug: p.slug }))
+  const posts = await getAllPosts()
+  return posts.map(p => ({ slug: p.slug }))
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }) {
-  const post = await getPost(params.slug)
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params
+  const post = await getPost(slug)
+  if (!post) return {}
   return { title: `${post.title} — Nassif Nassif` }
 }
 
-export default async function PostPage({ params }: { params: { slug: string } }) {
-  const post = await getPost(params.slug)
+export default async function PostPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params
+  const post = await getPost(slug)
 
-  if (post.hidden) notFound()
+  if (!post || post.hidden) notFound()
 
   return (
     <main className={styles.page}>
@@ -31,10 +36,9 @@ export default async function PostPage({ params }: { params: { slug: string } })
         <p className={styles.excerpt}>{post.excerpt}</p>
       </header>
 
-      <div
-        className={styles.body}
-        dangerouslySetInnerHTML={{ __html: post.content }}
-      />
+      <div className={styles.body}>
+        <PortableText value={post.body} />
+      </div>
     </main>
   )
 }

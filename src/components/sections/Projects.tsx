@@ -3,8 +3,8 @@ import shared from './section.module.css'
 import styles from './Writing.module.css'
 import projectStyles from './Projects.module.css'
 
-export function Projects() {
-  const projects = getAllProjects()
+export async function Projects() {
+  const projects = await getAllProjects()
 
   return (
     <section id="work" className={shared.section}>

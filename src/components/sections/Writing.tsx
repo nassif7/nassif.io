@@ -3,7 +3,7 @@ import shared from './section.module.css'
 import styles from './Writing.module.css'
 
 export async function Writing() {
-  const posts = getAllPosts()
+  const posts = await getAllPosts()
 
   return (
     <section id="writing" className={shared.section}>
