@@ -1,4 +1,4 @@
-export const revalidate = 3600
+export const dynamic = 'force-dynamic'
 
 import { getAllPosts } from '@/lib/posts'
 import styles from './blog.module.css'

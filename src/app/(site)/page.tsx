@@ -1,4 +1,4 @@
-export const revalidate = 3600
+export const dynamic = 'force-dynamic'
 
 import { Hero } from '@/components/hero/Hero'
 import { Projects } from '@/components/sections/Projects'

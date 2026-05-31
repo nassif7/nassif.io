@@ -1,4 +1,4 @@
-export const revalidate = 3600
+export const dynamic = 'force-dynamic'
 
 import { getAllProjects } from '@/lib/projects'
 import { DonateBar } from '@/components/DonateBar'
