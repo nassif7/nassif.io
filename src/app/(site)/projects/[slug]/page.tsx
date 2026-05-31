@@ -1,7 +1,6 @@
 import { getProject, getAllProjects } from '@/lib/projects'
 import { urlForImage } from '@/sanity/lib/image'
 import { ProjectGallery } from '@/components/ProjectGallery'
-import { DonateBar } from '@/components/DonateBar'
 import { PortableText } from '@portabletext/react'
 import styles from './project.module.css'
 import { notFound } from 'next/navigation'
@@ -120,7 +119,6 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
         </div>
       </div>
     </main>
-    <DonateBar text={`Do you like ${project.name}? If it's been useful to you, consider buying me a coffee — it helps me keep making things.`} />
     </>
   )
 }

@@ -1,7 +1,6 @@
 export const dynamic = 'force-dynamic'
 
 import { getAllProjects } from '@/lib/projects'
-import { DonateBar } from '@/components/DonateBar'
 import styles from './projects.module.css'
 
 export default async function ProjectsPage() {
@@ -52,8 +51,6 @@ export default async function ProjectsPage() {
       </div>
 
     </main>
-
-    <DonateBar text="If you use something I built and it's been useful to you, consider buying me a coffee — it helps me keep making things." />
     </>
   )
 }
