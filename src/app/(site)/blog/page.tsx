@@ -1,3 +1,5 @@
+export const revalidate = 3600
+
 import { getAllPosts } from '@/lib/posts'
 import styles from './blog.module.css'
 

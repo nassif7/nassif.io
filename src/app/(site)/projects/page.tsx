@@ -1,3 +1,5 @@
+export const revalidate = 3600
+
 import { getAllProjects } from '@/lib/projects'
 import { DonateBar } from '@/components/DonateBar'
 import styles from './projects.module.css'

@@ -1,3 +1,5 @@
+export const revalidate = 3600
+
 import { Hero } from '@/components/hero/Hero'
 import { Projects } from '@/components/sections/Projects'
 import { Writing } from '@/components/sections/Writing'
