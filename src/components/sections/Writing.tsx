@@ -21,12 +21,12 @@ export async function Writing() {
             <div className={styles.rowMain}>
               <span className={styles.title}>{post.title}</span>
               <span className={styles.excerpt}>{post.excerpt}</span>
-            </div>
-            <div className={styles.rowMeta}>
-              <span className={styles.tag}>{post.tag}</span>
-              <span className={styles.date}>
-                {new Date(post.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })}
-              </span>
+              <div className={styles.rowMeta}>
+                <span className={styles.tag}>{post.tags?.join(' · ')}</span>
+                <span className={styles.date}>
+                  {new Date(post.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })}
+                </span>
+              </div>
             </div>
             <span className={styles.arrow}>↗</span>
           </a>

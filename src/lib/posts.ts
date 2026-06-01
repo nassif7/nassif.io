@@ -1,13 +1,19 @@
 import { client, getDraftClient } from '@/sanity/lib/client'
-import { allPostsQuery, postBySlugQuery } from '@/sanity/lib/queries'
+import { allPostsQuery, allCollectionsQuery, postBySlugQuery } from '@/sanity/lib/queries'
 import { draftMode } from 'next/headers'
+
+export type Collection = {
+  slug: string
+  title: string
+}
 
 export type PostMeta = {
   slug: string
   title: string
   date: string
-  tag: string
+  tags?: string[]
   excerpt: string
+  collections?: Collection[]
 }
 
 export type Post = PostMeta & {
@@ -17,6 +23,10 @@ export type Post = PostMeta & {
 
 export async function getAllPosts(): Promise<PostMeta[]> {
   return client.fetch(allPostsQuery, {}, { next: { tags: ['post'] } })
+}
+
+export async function getAllCollections(): Promise<Collection[]> {
+  return client.fetch(allCollectionsQuery, {}, { next: { tags: ['collection'] } })
 }
 
 export async function getPost(slug: string): Promise<Post | null> {

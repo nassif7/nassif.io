@@ -1,12 +1,20 @@
 import { groq } from 'next-sanity'
 
+export const allCollectionsQuery = groq`
+  *[_type == "collection"] | order(title asc) {
+    "slug": slug.current,
+    title,
+  }
+`
+
 export const allPostsQuery = groq`
   *[_type == "post" && !hidden] | order(date desc) {
     "slug": slug.current,
     title,
     date,
-    tag,
+    tags,
     excerpt,
+    "collections": collections[]->{ "slug": slug.current, title },
   }
 `
 
@@ -15,10 +23,11 @@ export const postBySlugQuery = groq`
     "slug": slug.current,
     title,
     date,
-    tag,
+    tags,
     excerpt,
     hidden,
     body,
+    "collections": collections[]->{ "slug": slug.current, title },
   }
 `
 
@@ -29,6 +38,7 @@ export const allProjectsQuery = groq`
     type,
     num,
     desc,
+    categories,
     stack,
     images,
     link,
@@ -48,6 +58,7 @@ export const projectBySlugQuery = groq`
     type,
     num,
     desc,
+    categories,
     stack,
     images,
     link,

@@ -28,12 +28,12 @@ export async function Projects() {
             <div className={styles.rowMain}>
               <span className={styles.title}>{p.name}</span>
               <span className={styles.excerpt}>{p.desc}</span>
-            </div>
-            <div className={styles.rowMeta}>
-              <span className={styles.tag}>{p.type}</span>
-              {p.stack.length > 0 && (
-                <span className={styles.date}>{p.stack.join(' · ')}</span>
-              )}
+              <div className={styles.rowMeta}>
+                <span className={styles.tag}>{p.type}</span>
+                {p.stack.length > 0 && (
+                  <span className={styles.date}>{p.stack.join(' · ')}</span>
+                )}
+              </div>
             </div>
             <span className={styles.arrow}>{p.wip ? '…' : '↗'}</span>
           </a>
@@ -46,9 +46,9 @@ export async function Projects() {
           <div className={styles.rowMain}>
             <span className={styles.title}>Your next project</span>
             <span className={styles.excerpt}>Got something in mind? Let's build it together.</span>
-          </div>
-          <div className={styles.rowMeta}>
-            <span className={styles.tag}>Let's talk</span>
+            <div className={styles.rowMeta}>
+              <span className={styles.tag}>Let's talk</span>
+            </div>
           </div>
           <span className={styles.arrow}>↗</span>
         </a>

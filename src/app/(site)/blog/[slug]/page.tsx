@@ -27,7 +27,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
 
       <header className={styles.header}>
         <div className={styles.meta}>
-          <span className={styles.tag}>{post.tag}</span>
+          <span className={styles.tag}>{post.tags?.join(' · ')}</span>
           <span className={styles.date}>
             {new Date(post.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}
           </span>

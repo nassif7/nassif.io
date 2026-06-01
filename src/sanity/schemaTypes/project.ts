@@ -10,6 +10,7 @@ export default defineType({
     defineField({ name: 'type', type: 'string' }),
     defineField({ name: 'num', type: 'string' }),
     defineField({ name: 'desc', type: 'text', rows: 2 }),
+    defineField({ name: 'categories', type: 'array', of: [{ type: 'string' }] }),
     defineField({ name: 'stack', type: 'array', of: [{ type: 'string' }] }),
     defineField({ name: 'images', type: 'array', of: [{ type: 'image', options: { hotspot: true } }] }),
     defineField({ name: 'link', type: 'url' }),

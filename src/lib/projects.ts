@@ -8,6 +8,7 @@ export type ProjectMeta = {
   type: string
   num: string
   desc: string
+  categories?: string[]
   stack: string[]
   images: any[]
   link: string | null
