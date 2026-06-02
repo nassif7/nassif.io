@@ -126,14 +126,14 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
           )}
         </div>
       </div>
-      <div className={styles.cta}>
+      <section className={styles.cta}>
         <CallToAction
           label="got a similar idea?"
           heading="Let's build something together."
           href={`mailto:n_nassif@icloud.com?subject=Re: ${encodeURIComponent(project.name)}`}
           buttonText="Contact me →"
         />
-      </div>
+      </section>
     </main>
     </>
   )

@@ -1,9 +1,0 @@
-.section {
-  max-width: 860px;
-  margin: 0 auto;
-  padding: 2rem 4rem;
-}
-
-@media (max-width: 640px) {
-  .section { padding: 48px 1rem; }
-}

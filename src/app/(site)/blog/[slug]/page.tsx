@@ -42,14 +42,14 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
         <PortableText value={post.body} />
       </ProseBody>
 
-      <div className={styles.cta}>
+      <section className={styles.cta}>
         <CallToAction
           label="have something to say?"
           heading="Send me your thoughts."
           href={`mailto:n_nassif@icloud.com?subject=Re: ${encodeURIComponent(post.title)}`}
           buttonText="Write me →"
         />
-      </div>
+      </section>
     </main>
   )
 }

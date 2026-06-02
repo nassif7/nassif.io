@@ -1,7 +1,7 @@
 export const dynamic = 'force-dynamic'
 
 import { getAllProjects } from '@/lib/projects'
-import { GetInTouch } from '@/components/sections/GetInTouch'
+import { CallToAction } from '@/components/cta/CallToAction'
 import { PageHeader } from '@/components/layout/PageHeader'
 import { ListItem } from '@/components/list/ListItem'
 import { FilterTabs } from '@/components/ui/FilterTabs'
@@ -19,7 +19,6 @@ export default async function ProjectsPage({ searchParams }: { searchParams: Pro
     : visible
 
   return (
-    <>
     <main className={styles.page}>
       <PageHeader title="Work." sub="Selected projects — shipped, in progress, and still forming." />
 
@@ -50,8 +49,15 @@ export default async function ProjectsPage({ searchParams }: { searchParams: Pro
           />
         ))}
       </div>
+
+      <section className={styles.cta}>
+        <CallToAction
+          label="you have an idea"
+          heading="Let's get in touch."
+          href="mailto:n_nassif@icloud.com"
+          buttonText="Write me →"
+        />
+      </section>
     </main>
-    <GetInTouch />
-    </>
   )
 }

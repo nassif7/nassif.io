@@ -1,3 +1,5 @@
 .cta {
-  padding: 4rem;
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 2rem 4rem;
 }

@@ -1,7 +1,13 @@
 .page {
   max-width: 1024px;
   margin: 0 auto;
-  padding: 40px 4rem 0;
+  padding: 40px 4rem 80px;
+}
+
+.cta {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 2rem 4rem;
 }
 
 
