@@ -2,6 +2,7 @@ export const dynamic = 'force-dynamic'
 
 import { getAllProjects } from '@/lib/projects'
 import { GetInTouch } from '@/components/sections/GetInTouch'
+import { PageHeader } from '@/components/layout/PageHeader'
 import styles from './projects.module.css'
 
 export default async function ProjectsPage({ searchParams }: { searchParams: Promise<{ category?: string }> }) {
@@ -18,11 +19,7 @@ export default async function ProjectsPage({ searchParams }: { searchParams: Pro
   return (
     <>
     <main className={styles.page}>
-      <header className={styles.header}>
-        <a href="/" className={styles.back}>← nassif.pro</a>
-        <h1 className={styles.title}>Work.</h1>
-        <p className={styles.sub}>Selected projects — shipped, in progress, and still forming.</p>
-      </header>
+      <PageHeader title="Work." sub="Selected projects — shipped, in progress, and still forming." />
 
       {allCategories.length > 0 && (
         <div className={styles.filters}>

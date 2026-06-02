@@ -1,6 +1,7 @@
 export const dynamic = 'force-dynamic'
 
 import { getAllPosts, getAllCollections } from '@/lib/posts'
+import { PageHeader } from '@/components/layout/PageHeader'
 import styles from './blog.module.css'
 
 export const metadata = { title: 'Writing — Nassif Nassif' }
@@ -15,11 +16,7 @@ export default async function BlogPage({ searchParams }: { searchParams: Promise
 
   return (
     <main className={styles.page}>
-      <header className={styles.header}>
-        <a href="/" className={styles.back}>← nassif.pro</a>
-        <h1 className={styles.title}>Writing</h1>
-        <p className={styles.sub}>Thoughts on politics, philosophy, tech, and whatever else.</p>
-      </header>
+      <PageHeader title="Writing" sub="Thoughts on politics, philosophy, tech, and whatever else." />
 
       {collections.length > 0 && (
         <div className={styles.filters}>
