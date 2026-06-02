@@ -118,6 +118,18 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
           )}
         </div>
       </div>
+      <div className={styles.cta}>
+        <div className={styles.ctaText}>
+          <span className={styles.ctaLabel}>// got a similar idea?</span>
+          <p className={styles.ctaHeading}>Let&apos;s build something together.</p>
+        </div>
+        <a
+          href={`mailto:n_nassif@icloud.com?subject=Re: ${encodeURIComponent(project.name)}`}
+          className={styles.ctaBtn}
+        >
+          Contact me →
+        </a>
+      </div>
     </main>
     </>
   )

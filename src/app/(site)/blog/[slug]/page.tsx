@@ -39,6 +39,19 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
       <div className={styles.body}>
         <PortableText value={post.body} />
       </div>
+
+      <div className={styles.cta}>
+        <div className={styles.ctaText}>
+          <span className={styles.ctaLabel}>// have something to say?</span>
+          <p className={styles.ctaHeading}>Send me your thoughts.</p>
+        </div>
+        <a
+          href={`mailto:n_nassif@icloud.com?subject=Re: ${encodeURIComponent(post.title)}`}
+          className={styles.ctaBtn}
+        >
+          Write me →
+        </a>
+      </div>
     </main>
   )
 }

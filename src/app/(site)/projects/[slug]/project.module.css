@@ -300,6 +300,60 @@
   letter-spacing: -0.01em;
 }
 
+.cta {
+  margin-top: 72px;
+  padding: 40px 48px;
+  border: 1px solid var(--border-strong);
+  border-radius: 4px;
+  background: var(--bg-soft);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+.ctaText {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ctaLabel {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.ctaHeading {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(22px, 2.8vw, 34px);
+  font-weight: 400;
+  color: var(--black);
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+.ctaBtn {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--black);
+  text-decoration: none;
+  border: 1px solid var(--black);
+  padding: 11px 22px;
+  border-radius: 2px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: background 0.15s, color 0.15s;
+}
+.ctaBtn:hover {
+  background: var(--black);
+  color: var(--bg);
+}
+
 @media (max-width: 768px) {
   .page { padding: 72px 1.25rem 80px; }
 
@@ -312,4 +366,10 @@
 
   .galleryThumbs { display: none; }
   .dots { display: flex; }
+
+  .cta {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 28px 24px;
+  }
 }
