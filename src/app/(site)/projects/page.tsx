@@ -3,6 +3,7 @@ export const dynamic = 'force-dynamic'
 import { getAllProjects } from '@/lib/projects'
 import { GetInTouch } from '@/components/sections/GetInTouch'
 import { PageHeader } from '@/components/layout/PageHeader'
+import { ListItem } from '@/components/list/ListItem'
 import styles from './projects.module.css'
 
 export default async function ProjectsPage({ searchParams }: { searchParams: Promise<{ category?: string }> }) {
@@ -38,24 +39,17 @@ export default async function ProjectsPage({ searchParams }: { searchParams: Pro
 
       <div className={styles.list}>
         {filtered.map((p, i) => (
-          <a
+          <ListItem
             key={p.slug}
+            type="project"
             href={`/projects/${p.slug}`}
-            className={styles.row}
-          >
-            <span className={styles.num}>0{i + 1}</span>
-            <div className={styles.rowMain}>
-              <span className={styles.rowTitle}>{p.name}</span>
-              <span className={styles.excerpt}>{p.desc}</span>
-              <div className={styles.rowMeta}>
-                <span className={styles.tag}>{p.type}</span>
-                {p.stack.length > 0 && (
-                  <span className={styles.date}>{p.stack.join(' · ')}</span>
-                )}
-              </div>
-            </div>
-            <span className={styles.arrow}>↗</span>
-          </a>
+            num={i + 1}
+            title={p.name}
+            excerpt={p.desc}
+            category={p.type}
+            stack={p.stack.join(' · ')}
+            wip={p.wip}
+          />
         ))}
       </div>
     </main>
