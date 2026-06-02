@@ -1,4 +1,5 @@
 import styles from './Hero.module.css'
+import { HeroName } from './HeroName'
 
 export function Hero() {
 
@@ -17,12 +18,11 @@ export function Hero() {
       </div>
       */}
 
-        <div className={styles.headline}>
-          <h1 className={styles.name}>
-            <span className={styles.nameFirst}>nassif</span> Nassif
-          </h1>
-          <p className={styles.deck}>Professional button-maker. Powered by coffee and boredom.</p>
-        </div>
+        <HeroName
+          firstName="nassif"
+          lastName="Nassif"
+          slogan="Professional button-maker. Powered by coffee and boredom."
+        />
 
         <div className={styles.rule} />
 
