@@ -1,4 +1,6 @@
 import { getAllProjects } from '@/lib/projects'
+import { ListItem } from '@/components/list/ListItem'
+import { SectionHeader } from './SectionHeader'
 import shared from './section.module.css'
 import styles from './Writing.module.css'
 
@@ -7,35 +9,27 @@ export async function Projects() {
 
   return (
     <section id="work" className={shared.section}>
-      <div className={shared.sectionHeader}>
-        <span className={shared.label}>Selected work</span>
-        <a href="/projects" className={shared.seeAll}>All projects →</a>
-      </div>
-
-      <h2 className={shared.heading}>Things I've shipped.</h2>
-      <p className={shared.intro}>Side projects and work in progress. Small but deliberate.</p>
+      <SectionHeader
+        label="Selected work"
+        linkHref="/projects"
+        linkText="All projects →"
+        title="Things I've shipped."
+        intro="Side projects and work in progress. Small but deliberate."
+      />
 
       <div className={styles.list}>
         {projects.filter(p => !p.brainstorm).map((p, i) => (
-          <a
+          <ListItem
             key={p.slug}
+            type="project"
             href={`/projects/${p.slug}`}
-            className={styles.row}
-            style={{ opacity: p.brainstorm ? 0.5 : 1 }}
-          >
-            <span className={styles.num}>0{i + 1}</span>
-            <div className={styles.rowMain}>
-              <span className={styles.title}>{p.name}</span>
-              <span className={styles.excerpt}>{p.desc}</span>
-              <div className={styles.rowMeta}>
-                <span className={styles.tag}>{p.type}</span>
-                {p.stack.length > 0 && (
-                  <span className={styles.date}>{p.stack.join(' · ')}</span>
-                )}
-              </div>
-            </div>
-            <span className={styles.arrow}>{p.wip ? '…' : '↗'}</span>
-          </a>
+            num={i + 1}
+            title={p.name}
+            excerpt={p.desc}
+            category={p.type}
+            stack={p.stack.join(' · ')}
+            wip={p.wip}
+          />
         ))}
       </div>
     </section>

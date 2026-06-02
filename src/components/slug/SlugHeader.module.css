@@ -1,16 +1,3 @@
-.back {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.08em;
-  color: var(--accent);
-  text-decoration: none;
-  display: inline-block;
-  margin-bottom: 40px;
-  transition: color 0.15s;
-}
-
-.back:hover { color: var(--accent-dark); }
-
 .header {
   margin-bottom: 48px;
 }
@@ -33,4 +20,13 @@
   color: var(--black);
   letter-spacing: -0.02em;
   line-height: 1;
+}
+
+.excerpt {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--mid);
+  line-height: 1.8;
+  margin-top: 16px;
 }

@@ -1,13 +1,13 @@
-.section {
-  max-width: 860px;
-  margin: 0 auto;
-  padding: 2rem 4rem;
+.container {
+  padding: 2rem 0;
 }
 
 .box {
+  max-width: 860px;
+  margin: 0 auto;
   background: var(--black);
   border-radius: 4px;
-  padding: 56px 64px;
+  padding: 28px 64px;
   display: flex;
   flex-direction: column;
   gap: 24px;
@@ -33,7 +33,7 @@
 .heading {
   font-family: var(--font-serif);
   font-style: italic;
-  font-size: clamp(28px, 3.6vw, 42px);
+  font-size: clamp(28px, 3.6vw, 38px);
   font-weight: 400;
   color: var(--bg);
   letter-spacing: -0.02em;
@@ -60,9 +60,11 @@
 }
 
 @media (max-width: 640px) {
-  .section { padding: 48px 1rem; }
-
-  .box { padding: 40px 32px; }
+  .box {
+    max-width: 100%;
+    border-radius: 0;
+    padding: 28px 24px;
+  }
 
   .row {
     flex-direction: column;
