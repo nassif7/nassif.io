@@ -3,6 +3,7 @@ export const dynamic = 'force-dynamic'
 import { getAllPosts, getAllCollections } from '@/lib/posts'
 import { PageHeader } from '@/components/layout/PageHeader'
 import { ListItem } from '@/components/list/ListItem'
+import { FilterTabs } from '@/components/ui/FilterTabs'
 import styles from './blog.module.css'
 
 export const metadata = { title: 'Writing — Nassif Nassif' }
@@ -20,18 +21,15 @@ export default async function BlogPage({ searchParams }: { searchParams: Promise
       <PageHeader title="Writing" sub="Thoughts on politics, philosophy, tech, and whatever else." />
 
       {collections.length > 0 && (
-        <div className={styles.filters}>
-          <a href="/blog" className={`${styles.filter} ${!activeSlug ? styles.filterActive : ''}`}>All</a>
-          {collections.map(c => (
-            <a
-              key={c.slug}
-              href={`/blog?collection=${c.slug}`}
-              className={`${styles.filter} ${activeSlug === c.slug ? styles.filterActive : ''}`}
-            >
-              {c.title}
-            </a>
-          ))}
-        </div>
+        <FilterTabs
+          allHref="/blog"
+          allActive={!activeSlug}
+          items={collections.map(c => ({
+            label: c.title,
+            href: `/blog?collection=${c.slug}`,
+            active: activeSlug === c.slug,
+          }))}
+        />
       )}
 
       <div className={styles.list}>

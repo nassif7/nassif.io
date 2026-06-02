@@ -5,34 +5,6 @@
 }
 
 
-.filters {
-  display: flex;
-  gap: 8px;
-  margin-bottom: 40px;
-  flex-wrap: wrap;
-}
-
-.filter {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--muted);
-  text-decoration: none;
-  padding: 6px 12px;
-  border: 1px solid var(--border);
-  transition: color 0.15s, border-color 0.15s;
-}
-
-.filter:hover {
-  color: var(--black);
-  border-color: var(--black);
-}
-
-.filterActive {
-  color: var(--black);
-  border-color: var(--black);
-}
 
 .list {}
 

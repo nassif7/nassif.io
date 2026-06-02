@@ -4,6 +4,7 @@ import { getAllProjects } from '@/lib/projects'
 import { GetInTouch } from '@/components/sections/GetInTouch'
 import { PageHeader } from '@/components/layout/PageHeader'
 import { ListItem } from '@/components/list/ListItem'
+import { FilterTabs } from '@/components/ui/FilterTabs'
 import styles from './projects.module.css'
 
 export default async function ProjectsPage({ searchParams }: { searchParams: Promise<{ category?: string }> }) {
@@ -23,18 +24,15 @@ export default async function ProjectsPage({ searchParams }: { searchParams: Pro
       <PageHeader title="Work." sub="Selected projects — shipped, in progress, and still forming." />
 
       {allCategories.length > 0 && (
-        <div className={styles.filters}>
-          <a href="/projects" className={`${styles.filter} ${!activeCategory ? styles.filterActive : ''}`}>All</a>
-          {allCategories.map(cat => (
-            <a
-              key={cat}
-              href={`/projects?category=${encodeURIComponent(cat)}`}
-              className={`${styles.filter} ${activeCategory === cat ? styles.filterActive : ''}`}
-            >
-              {cat}
-            </a>
-          ))}
-        </div>
+        <FilterTabs
+          allHref="/projects"
+          allActive={!activeCategory}
+          items={allCategories.map(cat => ({
+            label: cat,
+            href: `/projects?category=${encodeURIComponent(cat)}`,
+            active: activeCategory === cat,
+          }))}
+        />
       )}
 
       <div className={styles.list}>

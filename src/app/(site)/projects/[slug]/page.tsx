@@ -5,6 +5,8 @@ import { PortableText } from '@portabletext/react'
 import { ProseBody } from '@/components/prose/ProseBody'
 import { CallToAction } from '@/components/cta/CallToAction'
 import { SlugHeader } from '@/components/slug/SlugHeader'
+import { BackLink } from '@/components/layout/BackLink'
+import page from '@/components/layout/SlugPage.module.css'
 import styles from './project.module.css'
 import { notFound } from 'next/navigation'
 import { FaApple, FaGooglePlay } from 'react-icons/fa'
@@ -30,8 +32,8 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
 
   return (
     <>
-    <main className={styles.page}>
-      <a href="/projects" className={styles.back}>← All projects</a>
+    <main className={page.page}>
+      <BackLink href="/projects" label="All projects" />
 
       <SlugHeader
         type="project"

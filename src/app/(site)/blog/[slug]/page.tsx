@@ -3,9 +3,10 @@ import { PortableText } from '@portabletext/react'
 import { ProseBody } from '@/components/prose/ProseBody'
 import { CallToAction } from '@/components/cta/CallToAction'
 import { SlugHeader } from '@/components/slug/SlugHeader'
+import { BackLink } from '@/components/layout/BackLink'
 import { notFound } from 'next/navigation'
-import layout from '@/app/(site)/projects/[slug]/project.module.css'
-import styles from './post.module.css'
+import page from '@/components/layout/SlugPage.module.css'
+import styles from '@/app/(site)/projects/[slug]/project.module.css'
 
 export async function generateStaticParams() {
   const posts = await getAllPosts()
@@ -26,8 +27,8 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
   if (!post || post.hidden) notFound()
 
   return (
-    <main className={layout.page}>
-      <a href="/blog" className={layout.back}>← Writing</a>
+    <main className={page.page}>
+      <BackLink href="/blog" label="Writing" />
 
       <SlugHeader
         type="post"
@@ -41,7 +42,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
         <PortableText value={post.body} />
       </ProseBody>
 
-      <div className={layout.cta}>
+      <div className={styles.cta}>
         <CallToAction
           label="have something to say?"
           heading="Send me your thoughts."
