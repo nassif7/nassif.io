@@ -1,6 +1,7 @@
 import { getPost, getAllPosts } from '@/lib/posts'
 import { PortableText } from '@portabletext/react'
 import { ProseBody } from '@/components/prose/ProseBody'
+import { CallToAction } from '@/components/cta/CallToAction'
 import { notFound } from 'next/navigation'
 import layout from '@/app/(site)/projects/[slug]/project.module.css'
 import styles from './post.module.css'
@@ -40,16 +41,12 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
       </ProseBody>
 
       <div className={layout.cta}>
-        <div className={layout.ctaText}>
-          <span className={layout.ctaLabel}>// have something to say?</span>
-          <p className={layout.ctaHeading}>Send me your thoughts.</p>
-        </div>
-        <a
+        <CallToAction
+          label="have something to say?"
+          heading="Send me your thoughts."
           href={`mailto:n_nassif@icloud.com?subject=Re: ${encodeURIComponent(post.title)}`}
-          className={layout.ctaBtn}
-        >
-          Write me →
-        </a>
+          buttonText="Write me →"
+        />
       </div>
     </main>
   )

@@ -3,6 +3,7 @@ import { urlForImage } from '@/sanity/lib/image'
 import { ProjectGallery } from '@/components/ProjectGallery'
 import { PortableText } from '@portabletext/react'
 import { ProseBody } from '@/components/prose/ProseBody'
+import { CallToAction } from '@/components/cta/CallToAction'
 import styles from './project.module.css'
 import { notFound } from 'next/navigation'
 import { FaApple, FaGooglePlay } from 'react-icons/fa'
@@ -122,16 +123,12 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
         </div>
       </div>
       <div className={styles.cta}>
-        <div className={styles.ctaText}>
-          <span className={styles.ctaLabel}>// got a similar idea?</span>
-          <p className={styles.ctaHeading}>Let&apos;s build something together.</p>
-        </div>
-        <a
+        <CallToAction
+          label="got a similar idea?"
+          heading="Let's build something together."
           href={`mailto:n_nassif@icloud.com?subject=Re: ${encodeURIComponent(project.name)}`}
-          className={styles.ctaBtn}
-        >
-          Contact me →
-        </a>
+          buttonText="Contact me →"
+        />
       </div>
     </main>
     </>
