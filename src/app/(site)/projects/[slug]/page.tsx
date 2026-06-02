@@ -4,6 +4,7 @@ import { ProjectGallery } from '@/components/ProjectGallery'
 import { PortableText } from '@portabletext/react'
 import { ProseBody } from '@/components/prose/ProseBody'
 import { CallToAction } from '@/components/cta/CallToAction'
+import { SlugHeader } from '@/components/slug/SlugHeader'
 import styles from './project.module.css'
 import { notFound } from 'next/navigation'
 import { FaApple, FaGooglePlay } from 'react-icons/fa'
@@ -32,10 +33,11 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
     <main className={styles.page}>
       <a href="/projects" className={styles.back}>← All projects</a>
 
-      <header className={styles.header}>
-        <span className={styles.label}>{project.num} — {project.type}</span>
-        <h1 className={styles.name}>{project.name}</h1>
-      </header>
+      <SlugHeader
+        type="project"
+        category={project.type}
+        title={project.name}
+      />
 
       <div className={styles.body}>
         <div className={styles.left}>

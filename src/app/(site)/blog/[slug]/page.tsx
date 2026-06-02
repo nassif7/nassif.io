@@ -2,6 +2,7 @@ import { getPost, getAllPosts } from '@/lib/posts'
 import { PortableText } from '@portabletext/react'
 import { ProseBody } from '@/components/prose/ProseBody'
 import { CallToAction } from '@/components/cta/CallToAction'
+import { SlugHeader } from '@/components/slug/SlugHeader'
 import { notFound } from 'next/navigation'
 import layout from '@/app/(site)/projects/[slug]/project.module.css'
 import styles from './post.module.css'
@@ -28,13 +29,13 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
     <main className={layout.page}>
       <a href="/blog" className={layout.back}>← Writing</a>
 
-      <header className={layout.header}>
-        <span className={layout.label}>
-          {post.tags?.join(' · ')} — {new Date(post.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}
-        </span>
-        <h1 className={layout.name}>{post.title}</h1>
-        <p className={styles.excerpt}>{post.excerpt}</p>
-      </header>
+      <SlugHeader
+        type="post"
+        tags={post.tags?.join(' · ') ?? ''}
+        date={new Date(post.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}
+        title={post.title}
+        excerpt={post.excerpt}
+      />
 
       <ProseBody>
         <PortableText value={post.body} />

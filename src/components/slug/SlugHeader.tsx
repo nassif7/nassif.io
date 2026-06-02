@@ -1,20 +1,33 @@
 import styles from './SlugHeader.module.css'
 
-interface SlugHeaderProps {
-  backHref: string
-  backLabel: string
-  label: string
+interface ProjectHeader {
+  type: 'project'
+  category: string
   title: string
 }
 
-export function SlugHeader({ backHref, backLabel, label, title }: SlugHeaderProps) {
+interface PostHeader {
+  type: 'post'
+  tags: string
+  date: string
+  title: string
+  excerpt: string
+}
+
+type SlugHeaderProps = ProjectHeader | PostHeader
+
+export function SlugHeader(props: SlugHeaderProps) {
+  const label = props.type === 'project'
+    ? props.category
+    : `${props.tags} — ${props.date}`
+
   return (
-    <>
-      <a href={backHref} className={styles.back}>{backLabel}</a>
-      <header className={styles.header}>
-        <span className={styles.label}>{label}</span>
-        <h1 className={styles.title}>{title}</h1>
-      </header>
-    </>
+    <header className={styles.header}>
+      <span className={styles.label}>{label}</span>
+      <h1 className={styles.title}>{props.title}</h1>
+      {props.type === 'post' && (
+        <p className={styles.excerpt}>{props.excerpt}</p>
+      )}
+    </header>
   )
 }

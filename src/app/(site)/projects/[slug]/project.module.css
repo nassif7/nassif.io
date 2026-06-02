@@ -16,28 +16,6 @@
 }
 .back:hover { color: var(--accent-dark); }
 
-.header {
-  margin-bottom: 48px;
-}
-
-.label {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--muted);
-  display: block;
-  margin-bottom: 10px;
-}
-
-.name {
-  font-family: var(--font-hand);
-  font-size: clamp(48px, 7vw, 80px);
-  font-weight: 700;
-  color: var(--black);
-  letter-spacing: -0.02em;
-  line-height: 1;
-}
 
 .body {
   display: grid;
