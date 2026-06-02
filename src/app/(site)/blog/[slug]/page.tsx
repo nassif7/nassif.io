@@ -1,6 +1,8 @@
 import { getPost, getAllPosts } from '@/lib/posts'
 import { PortableText } from '@portabletext/react'
+import { ProseBody } from '@/components/prose/ProseBody'
 import { notFound } from 'next/navigation'
+import layout from '@/app/(site)/projects/[slug]/project.module.css'
 import styles from './post.module.css'
 
 export async function generateStaticParams() {
@@ -22,32 +24,29 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
   if (!post || post.hidden) notFound()
 
   return (
-    <main className={styles.page}>
-      <a href="/blog" className={styles.back}>← Writing</a>
+    <main className={layout.page}>
+      <a href="/blog" className={layout.back}>← Writing</a>
 
-      <header className={styles.header}>
-        <div className={styles.meta}>
-          <span className={styles.tag}>{post.tags?.join(' · ')}</span>
-          <span className={styles.date}>
-            {new Date(post.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}
-          </span>
-        </div>
-        <h1 className={styles.title}>{post.title}</h1>
+      <header className={layout.header}>
+        <span className={layout.label}>
+          {post.tags?.join(' · ')} — {new Date(post.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}
+        </span>
+        <h1 className={layout.name}>{post.title}</h1>
         <p className={styles.excerpt}>{post.excerpt}</p>
       </header>
 
-      <div className={styles.body}>
+      <ProseBody>
         <PortableText value={post.body} />
-      </div>
+      </ProseBody>
 
-      <div className={styles.cta}>
-        <div className={styles.ctaText}>
-          <span className={styles.ctaLabel}>// have something to say?</span>
-          <p className={styles.ctaHeading}>Send me your thoughts.</p>
+      <div className={layout.cta}>
+        <div className={layout.ctaText}>
+          <span className={layout.ctaLabel}>// have something to say?</span>
+          <p className={layout.ctaHeading}>Send me your thoughts.</p>
         </div>
         <a
           href={`mailto:n_nassif@icloud.com?subject=Re: ${encodeURIComponent(post.title)}`}
-          className={styles.ctaBtn}
+          className={layout.ctaBtn}
         >
           Write me →
         </a>

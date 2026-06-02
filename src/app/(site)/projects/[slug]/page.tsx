@@ -2,6 +2,7 @@ import { getProject, getAllProjects } from '@/lib/projects'
 import { urlForImage } from '@/sanity/lib/image'
 import { ProjectGallery } from '@/components/ProjectGallery'
 import { PortableText } from '@portabletext/react'
+import { ProseBody } from '@/components/prose/ProseBody'
 import styles from './project.module.css'
 import { notFound } from 'next/navigation'
 import { FaApple, FaGooglePlay } from 'react-icons/fa'
@@ -70,10 +71,12 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
 
         <div className={styles.info}>
           <div className={styles.desc}>
-            {project.body?.length > 0
-              ? <PortableText value={project.body} />
-              : <p>{project.desc}</p>
-            }
+            <ProseBody>
+              {project.body?.length > 0
+                ? <PortableText value={project.body} />
+                : <p>{project.desc}</p>
+              }
+            </ProseBody>
           </div>
 
           {project.stack.length > 0 && (
