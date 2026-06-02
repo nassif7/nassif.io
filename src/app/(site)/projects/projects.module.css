@@ -1,26 +1,25 @@
 .page {
-  max-width: 860px;
+  max-width: 1024px;
   margin: 0 auto;
-  padding: 80px 3rem 220px;
-  min-height: 100vh;
+  padding: 40px 4rem 0;
 }
 
 .header {
-  margin-bottom: 64px;
+  margin-bottom: 32px;
 }
 
 .back {
   font-family: var(--font-mono);
   font-size: 11px;
   letter-spacing: 0.08em;
-  color: var(--muted);
+  color: var(--accent);
   text-decoration: none;
   display: inline-block;
   margin-bottom: 40px;
   transition: color 0.15s;
 }
 
-.back:hover { color: var(--black); }
+.back:hover { color: var(--accent-dark); }
 
 .title {
   font-family: var(--font-serif);
@@ -160,7 +159,7 @@
 
 
 @media (max-width: 640px) {
-  .page { padding: 72px 1rem 200px; }
+  .page { padding: 32px 1.25rem 80px; }
 
   .row {
     grid-template-columns: 1fr auto;

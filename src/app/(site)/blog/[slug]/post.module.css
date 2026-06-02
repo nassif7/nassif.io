@@ -1,7 +1,7 @@
 .page {
-  max-width: 680px;
+  max-width: 1024px;
   margin: 0 auto;
-  padding: 80px 3rem 120px;
+  padding: 40px 4rem 120px;
 }
 
 .back {
@@ -94,10 +94,13 @@
 }
 
 .cta {
-  margin-top: 72px;
+  margin: 72px auto 0;
+  max-width: 860px;
   padding: 40px 48px;
   border-radius: 4px;
   background: var(--black);
+  position: relative;
+  z-index: 1;
   display: flex;
   align-items: center;
   justify-content: space-between;

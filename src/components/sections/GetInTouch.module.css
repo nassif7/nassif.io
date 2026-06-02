@@ -1,7 +1,7 @@
 .section {
   max-width: 860px;
   margin: 0 auto;
-  padding: 0 3rem 72px;
+  padding: 2rem 4rem;
 }
 
 .box {
@@ -11,6 +11,8 @@
   display: flex;
   flex-direction: column;
   gap: 24px;
+  position: relative;
+  z-index: 1;
 }
 
 .label {
@@ -58,7 +60,7 @@
 }
 
 @media (max-width: 640px) {
-  .section { padding: 0 1rem 56px; }
+  .section { padding: 48px 1rem; }
 
   .box { padding: 40px 32px; }
 

@@ -1,6 +1,7 @@
 export const dynamic = 'force-dynamic'
 
 import { getAllProjects } from '@/lib/projects'
+import { GetInTouch } from '@/components/sections/GetInTouch'
 import styles from './projects.module.css'
 
 export default async function ProjectsPage({ searchParams }: { searchParams: Promise<{ category?: string }> }) {
@@ -15,6 +16,7 @@ export default async function ProjectsPage({ searchParams }: { searchParams: Pro
     : visible
 
   return (
+    <>
     <main className={styles.page}>
       <header className={styles.header}>
         <a href="/" className={styles.back}>← nassif.pro</a>
@@ -60,5 +62,7 @@ export default async function ProjectsPage({ searchParams }: { searchParams: Pro
         ))}
       </div>
     </main>
+    <GetInTouch />
+    </>
   )
 }

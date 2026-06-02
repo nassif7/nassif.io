@@ -1,8 +1,8 @@
 import styles from './GetInTouch.module.css'
 
-export function GetInTouch() {
+export function GetInTouch({ className }: { className?: string }) {
   return (
-    <section className={styles.section}>
+    <section className={`${styles.section}${className ? ` ${className}` : ''}`}>
       <div className={styles.box}>
         <span className={styles.label}>// you have an idea</span>
         <div className={styles.row}>
