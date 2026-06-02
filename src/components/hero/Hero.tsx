@@ -43,11 +43,8 @@ export function Hero() {
             </p>
             <p>Still growing. Still figuring it out. That's probably not changing.</p>
           </div>
-          <div className={styles.ctaBlock}>
-            <span className={styles.ctaLabel}>you have an idea</span>
-            <a href="mailto:hello@nassif.pro" className={styles.ctaLine}>let's get in touch →</a>
-          </div>
         </div>
+
     </section>
   )
 }

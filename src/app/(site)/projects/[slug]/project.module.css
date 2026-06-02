@@ -303,9 +303,8 @@
 .cta {
   margin-top: 72px;
   padding: 40px 48px;
-  border: 1px solid var(--border-strong);
   border-radius: 4px;
-  background: var(--bg-soft);
+  background: var(--black);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -331,7 +330,7 @@
   font-style: italic;
   font-size: clamp(22px, 2.8vw, 34px);
   font-weight: 400;
-  color: var(--black);
+  color: var(--bg);
   letter-spacing: -0.02em;
   line-height: 1.15;
 }
@@ -341,8 +340,8 @@
   font-size: 11px;
   letter-spacing: 0.08em;
   color: var(--black);
+  background: var(--bg);
   text-decoration: none;
-  border: 1px solid var(--black);
   padding: 11px 22px;
   border-radius: 2px;
   white-space: nowrap;
@@ -350,7 +349,7 @@
   transition: background 0.15s, color 0.15s;
 }
 .ctaBtn:hover {
-  background: var(--black);
+  background: var(--accent);
   color: var(--bg);
 }
 

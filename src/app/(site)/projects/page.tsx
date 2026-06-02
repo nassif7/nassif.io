@@ -58,17 +58,6 @@ export default async function ProjectsPage({ searchParams }: { searchParams: Pro
             <span className={styles.arrow}>↗</span>
           </a>
         ))}
-        <a href="mailto:hello@nassif.pro" className={`${styles.row} ${styles.cta}`}>
-          <span className={styles.num}>0{filtered.length + 1}</span>
-          <div className={styles.rowMain}>
-            <span className={styles.rowTitle}>Your next project</span>
-            <span className={styles.excerpt}>Got an idea? Get in touch.</span>
-            <div className={styles.rowMeta}>
-              <span className={styles.tag}>Let's talk</span>
-            </div>
-          </div>
-          <span className={styles.arrow}>↗</span>
-        </a>
       </div>
     </main>
   )

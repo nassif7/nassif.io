@@ -1,7 +1,6 @@
 import { getAllProjects } from '@/lib/projects'
 import shared from './section.module.css'
 import styles from './Writing.module.css'
-import projectStyles from './Projects.module.css'
 
 export async function Projects() {
   const projects = await getAllProjects()
@@ -38,20 +37,6 @@ export async function Projects() {
             <span className={styles.arrow}>{p.wip ? '…' : '↗'}</span>
           </a>
         ))}
-        <a
-          href="mailto:hello@nassif.pro"
-          className={`${styles.row} ${projectStyles.cta}`}
-        >
-          <span className={styles.num}>0{projects.length + 1}</span>
-          <div className={styles.rowMain}>
-            <span className={styles.title}>Your next project</span>
-            <span className={styles.excerpt}>Got something in mind? Let's build it together.</span>
-            <div className={styles.rowMeta}>
-              <span className={styles.tag}>Let's talk</span>
-            </div>
-          </div>
-          <span className={styles.arrow}>↗</span>
-        </a>
       </div>
     </section>
   )

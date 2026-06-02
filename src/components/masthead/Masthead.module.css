@@ -1,13 +1,12 @@
 .masthead {
-  max-width: 860px;
-  margin: 0 auto;
-  padding: 32px 3rem 16px;
+  padding: 40px 3rem 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   border-bottom: 2px solid var(--black);
+  margin-bottom: 56px;
   font-family: var(--font-mono);
-  font-size: 10px;
+  font-size: 13px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--muted);
@@ -18,7 +17,7 @@
   align-items: center;
   gap: 0.3em;
   font-family: var(--font-mono);
-  font-size: 13px;
+  font-size: 20px;
   font-weight: 500;
   color: var(--black);
   letter-spacing: -0.02em;
@@ -32,22 +31,22 @@
 
 .mastheadHello {
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: 13px;
   color: var(--muted);
   text-transform: none;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.06em;
   text-decoration: none;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   transition: color 0.15s;
 }
 
 .mastheadHello::before {
   content: '';
   display: block;
-  width: 6px;
-  height: 6px;
+  width: 7px;
+  height: 7px;
   border-radius: 50%;
   background: #4CAF50;
   animation: pulse 2s ease-in-out infinite;
@@ -63,7 +62,8 @@
 
 @media (max-width: 640px) {
   .masthead {
-    padding: 12px 1rem 12px;
+    padding: 20px 1rem 16px;
+    margin-bottom: 32px;
   }
 
   .mastheadLeft {

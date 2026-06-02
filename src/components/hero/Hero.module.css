@@ -68,35 +68,59 @@
 }
 
 .ctaBlock {
+  margin-top: 72px;
+  padding: 40px 48px;
+  border: 1px solid var(--border-strong);
+  border-radius: 4px;
+  background: var(--bg-soft);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+.ctaText {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  padding-top: 24px;
-  border-top: 1px solid var(--border);
+  gap: 12px;
 }
 
 .ctaLabel {
   font-family: var(--font-mono);
   font-size: 10px;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--muted);
+  color: var(--accent);
 }
 
-.ctaLine {
+.ctaHeading {
   font-family: var(--font-serif);
   font-style: italic;
-  font-size: 28px;
+  font-size: clamp(28px, 3.5vw, 44px);
   font-weight: 400;
   color: var(--black);
-  text-decoration: none;
-  letter-spacing: -0.01em;
-  transition: color 0.15s;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
 }
 
-.ctaLine:hover { color: var(--accent); }
+.ctaBtn {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--black);
+  text-decoration: none;
+  border: 1px solid var(--black);
+  padding: 12px 24px;
+  border-radius: 2px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: background 0.15s, color 0.15s;
+}
 
-.heroCta:hover { background: var(--accent); }
+.ctaBtn:hover {
+  background: var(--black);
+  color: var(--bg);
+}
 
 .avatar {
   flex-shrink: 0;
@@ -167,5 +191,12 @@
 
   .body {
     column-count: unset;
+  }
+
+  .ctaBlock {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 28px 24px;
+    margin-top: 48px;
   }
 }
