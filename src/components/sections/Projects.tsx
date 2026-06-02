@@ -1,5 +1,6 @@
 import { getAllProjects } from '@/lib/projects'
 import { ListItem } from '@/components/list/ListItem'
+import { SectionHeader } from './SectionHeader'
 import shared from './section.module.css'
 import styles from './Writing.module.css'
 
@@ -8,13 +9,13 @@ export async function Projects() {
 
   return (
     <section id="work" className={shared.section}>
-      <div className={shared.sectionHeader}>
-        <span className={shared.label}>Selected work</span>
-        <a href="/projects" className={shared.seeAll}>All projects →</a>
-      </div>
-
-      <h2 className={shared.heading}>Things I've shipped.</h2>
-      <p className={shared.intro}>Side projects and work in progress. Small but deliberate.</p>
+      <SectionHeader
+        label="Selected work"
+        linkHref="/projects"
+        linkText="All projects →"
+        title="Things I've shipped."
+        intro="Side projects and work in progress. Small but deliberate."
+      />
 
       <div className={styles.list}>
         {projects.filter(p => !p.brainstorm).map((p, i) => (

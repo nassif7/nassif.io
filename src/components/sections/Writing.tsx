@@ -1,5 +1,6 @@
 import { getAllPosts } from '@/lib/posts'
 import { ListItem } from '@/components/list/ListItem'
+import { SectionHeader } from './SectionHeader'
 import shared from './section.module.css'
 import styles from './Writing.module.css'
 
@@ -8,12 +9,13 @@ export async function Writing() {
 
   return (
     <section id="writing" className={shared.section}>
-      <div className={shared.sectionHeader}>
-        <span className={shared.label}>Writing</span>
-        <a href="/blog" className={shared.seeAll}>All posts →</a>
-      </div>
-      <h2 className={shared.heading}>Things I think about.</h2>
-      <p className={shared.intro}>Politics, philosophy, tech, and the occasional rant. Honest opinions, written slowly.</p>
+      <SectionHeader
+        label="Writing"
+        linkHref="/blog"
+        linkText="All posts →"
+        title="Things I think about."
+        intro="Politics, philosophy, tech, and the occasional rant. Honest opinions, written slowly."
+      />
 
       <div className={styles.list}>
         {posts.map((post, i) => (
