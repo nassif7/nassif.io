@@ -8,16 +8,14 @@ import styles from './home.module.css'
 
 export default function Home() {
   return (
-    <main>
+    <main className={styles.main}>
       <Hero />
-      <section className={styles.cta}>
-        <CallToAction
-          label="you have an idea"
-          heading="Let's get in touch."
-          href="mailto:n_nassif@icloud.com"
-          buttonText="Write me →"
-        />
-      </section>
+      <CallToAction
+        label="you have an idea"
+        heading="Let's get in touch."
+        href="mailto:n_nassif@icloud.com"
+        buttonText="Write me →"
+      />
       <Projects />
       <Writing />
     </main>

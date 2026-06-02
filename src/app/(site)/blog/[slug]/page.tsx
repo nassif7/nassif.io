@@ -6,7 +6,6 @@ import { SlugHeader } from '@/components/slug/SlugHeader'
 import { BackLink } from '@/components/layout/BackLink'
 import { notFound } from 'next/navigation'
 import page from '@/components/layout/SlugPage.module.css'
-import styles from '@/app/(site)/projects/[slug]/project.module.css'
 
 export async function generateStaticParams() {
   const posts = await getAllPosts()
@@ -28,28 +27,28 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
 
   return (
     <main className={page.page}>
-      <BackLink href="/blog" label="Writing" />
+      <div className={page.content}>
+        <BackLink href="/blog" label="Writing" />
 
-      <SlugHeader
-        type="post"
-        tags={post.tags?.join(' · ') ?? ''}
-        date={new Date(post.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}
-        title={post.title}
-        excerpt={post.excerpt}
-      />
-
-      <ProseBody>
-        <PortableText value={post.body} />
-      </ProseBody>
-
-      <section className={styles.cta}>
-        <CallToAction
-          label="have something to say?"
-          heading="Send me your thoughts."
-          href={`mailto:n_nassif@icloud.com?subject=Re: ${encodeURIComponent(post.title)}`}
-          buttonText="Write me →"
+        <SlugHeader
+          type="post"
+          tags={post.tags?.join(' · ') ?? ''}
+          date={new Date(post.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}
+          title={post.title}
+          excerpt={post.excerpt}
         />
-      </section>
+
+        <ProseBody>
+          <PortableText value={post.body} />
+        </ProseBody>
+      </div>
+
+      <CallToAction
+        label="have something to say?"
+        heading="Send me your thoughts."
+        href={`mailto:n_nassif@icloud.com?subject=Re: ${encodeURIComponent(post.title)}`}
+        buttonText="Write me →"
+      />
     </main>
   )
 }

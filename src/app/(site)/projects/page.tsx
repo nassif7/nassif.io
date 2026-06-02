@@ -50,14 +50,12 @@ export default async function ProjectsPage({ searchParams }: { searchParams: Pro
         ))}
       </div>
 
-      <section className={styles.cta}>
-        <CallToAction
-          label="you have an idea"
-          heading="Let's get in touch."
-          href="mailto:n_nassif@icloud.com"
-          buttonText="Write me →"
-        />
-      </section>
+      <CallToAction
+        label="you have an idea"
+        heading="Let's get in touch."
+        href="mailto:n_nassif@icloud.com"
+        buttonText="Write me →"
+      />
     </main>
   )
 }

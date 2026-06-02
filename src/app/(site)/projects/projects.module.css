@@ -1,115 +1,12 @@
 .page {
   max-width: 1024px;
   margin: 0 auto;
-  padding: 40px 4rem 80px;
 }
 
-.cta {
-  max-width: 860px;
-  margin: 0 auto;
-  padding: 2rem 4rem;
+.list {
+  padding: 0 4rem;
 }
-
-
-
-.list {}
-
-.row {
-  display: grid;
-  grid-template-columns: 32px 1fr auto;
-  gap: 24px;
-  align-items: center;
-  padding: 24px 0;
-  border-top: 1px solid var(--border);
-  cursor: pointer;
-  text-decoration: none;
-  color: inherit;
-  transition: padding-left 0.2s;
-}
-
-.row:last-child { border-bottom: 1px solid var(--border); }
-.row:hover { padding-left: 8px; }
-.row:hover .rowTitle { color: var(--accent); }
-.row:hover .arrow { transform: translate(3px, -3px); color: var(--accent); }
-
-.num {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  color: var(--border);
-  letter-spacing: 0.08em;
-  padding-top: 3px;
-}
-
-.rowMain {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  min-width: 0;
-}
-
-.rowTitle {
-  font-size: 18px;
-  font-weight: 500;
-  letter-spacing: -0.2px;
-  color: var(--black);
-  transition: color 0.15s;
-}
-
-.excerpt {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  color: var(--muted);
-  line-height: 1.6;
-}
-
-.rowMeta {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-top: 8px;
-}
-
-.tag {
-  font-family: var(--font-mono);
-  font-size: 9px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--accent);
-}
-
-.date {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  color: var(--muted);
-}
-
-.arrow {
-  font-size: 16px;
-  color: var(--muted);
-  transition: transform 0.2s, color 0.15s;
-  display: inline-block;
-}
-
-.cta {
-  background: var(--bg-soft);
-  padding-left: 12px;
-  padding-right: 12px;
-  border-radius: 4px;
-  text-decoration: none;
-  color: inherit;
-}
-
-.cta:hover { padding-left: 20px; }
-
 
 @media (max-width: 640px) {
-  .page { padding: 32px 1.25rem 80px; }
-
-  .row {
-    grid-template-columns: 1fr auto;
-    gap: 12px;
-  }
-
-  .num { display: none; }
-  .arrow { display: none; }
+  .list { padding: 0 1.25rem; }
 }

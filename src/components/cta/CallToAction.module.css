@@ -1,4 +1,10 @@
+.container {
+  padding: 2rem 0;
+}
+
 .box {
+  max-width: 860px;
+  margin: 0 auto;
   background: var(--black);
   border-radius: 4px;
   padding: 28px 64px;
@@ -54,7 +60,11 @@
 }
 
 @media (max-width: 640px) {
-  .box { padding: 20px 32px; }
+  .box {
+    max-width: 100%;
+    border-radius: 0;
+    padding: 28px 24px;
+  }
 
   .row {
     flex-direction: column;

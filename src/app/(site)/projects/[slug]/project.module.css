@@ -253,11 +253,6 @@
   letter-spacing: -0.01em;
 }
 
-.cta {
-  margin: 72px auto 0;
-  max-width: 860px;
-  padding: 0 4rem;
-}
 
 
 @media (max-width: 768px) {
@@ -273,9 +268,4 @@
   .galleryThumbs { display: none; }
   .dots { display: flex; }
 
-  .cta {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 28px 24px;
-  }
 }

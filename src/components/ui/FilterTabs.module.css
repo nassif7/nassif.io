@@ -1,8 +1,13 @@
 .filters {
   display: flex;
   gap: 8px;
+  padding: 0 4rem;
   margin-bottom: 40px;
   flex-wrap: wrap;
+}
+
+@media (max-width: 640px) {
+  .filters { padding: 0 1.25rem; }
 }
 
 .filter {
