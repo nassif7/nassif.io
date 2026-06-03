@@ -1,3 +1,6 @@
+'use client'
+
+import posthog from 'posthog-js'
 import styles from './DonateBar.module.css'
 
 interface Props {
@@ -9,7 +12,13 @@ export function DonateBar({ text }: Props) {
     <div className={styles.donateBar}>
       <div className={styles.donate}>
         <p className={styles.donateText}>{text}</p>
-        <a href="https://ko-fi.com/nn498137" target="_blank" rel="noopener noreferrer" className={styles.kofi}>
+        <a
+          href="https://ko-fi.com/nn498137"
+          target="_blank"
+          rel="noopener noreferrer"
+          className={styles.kofi}
+          onClick={() => posthog.capture('ko_fi_clicked')}
+        >
           Support me on Ko-fi
         </a>
       </div>
