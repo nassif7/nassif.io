@@ -6,10 +6,11 @@ import { ProseBody } from '@/components/prose/ProseBody'
 import { CallToAction } from '@/components/cta/CallToAction'
 import { SlugHeader } from '@/components/slug/SlugHeader'
 import { BackLink } from '@/components/layout/BackLink'
+import { PostHogPageView } from '@/components/analytics/PostHogPageView'
+import { ProjectLinks } from '@/components/analytics/ProjectLinks'
 import page from '@/components/layout/SlugPage.module.css'
 import styles from './project.module.css'
 import { notFound } from 'next/navigation'
-import { FaApple, FaGooglePlay } from 'react-icons/fa'
 
 export async function generateStaticParams() {
   const projects = await getAllProjects()
@@ -32,6 +33,8 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
 
   return (
     <main className={page.page}>
+      <PostHogPageView event="project_viewed" properties={{ project_name: project.name, project_type: project.type, slug }} />
+
       <div className={page.content}>
         <BackLink href="/projects" label="All projects" />
 
@@ -90,38 +93,14 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
               </div>
             )}
 
-            {project.privacyPolicy && (
-              <a href={project.privacyPolicy} className={styles.link}>Privacy Policy</a>
-            )}
-
-            {project.link && (
-              <a href={project.link} target="_blank" rel="noopener noreferrer" className={styles.link}>
-                {project.linkLabel}
-              </a>
-            )}
-
-            {(project.appStoreLink || project.androidComingSoon) && (
-              <div className={styles.storeLinks}>
-                {project.appStoreLink && (
-                  <a href={project.appStoreLink} target="_blank" rel="noopener noreferrer" className={styles.storeBtn}>
-                    <FaApple className={styles.storeIcon} />
-                    <span className={styles.storeMeta}>
-                      <span className={styles.storeSmall}>Download on the</span>
-                      <span className={styles.storeBig}>App Store</span>
-                    </span>
-                  </a>
-                )}
-                {project.androidComingSoon && (
-                  <div className={styles.storeBtnDisabled}>
-                    <FaGooglePlay className={styles.storeIcon} />
-                    <span className={styles.storeMeta}>
-                      <span className={styles.storeSmall}>Coming soon on</span>
-                      <span className={styles.storeBig}>Google Play</span>
-                    </span>
-                  </div>
-                )}
-              </div>
-            )}
+            <ProjectLinks
+              projectName={project.name}
+              link={project.link ?? undefined}
+              linkLabel={project.linkLabel ?? undefined}
+              privacyPolicy={project.privacyPolicy ?? undefined}
+              appStoreLink={project.appStoreLink ?? undefined}
+              androidComingSoon={project.androidComingSoon}
+            />
           </div>
         </div>
       </div>

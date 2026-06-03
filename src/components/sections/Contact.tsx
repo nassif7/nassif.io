@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import posthog from 'posthog-js'
 import shared from './section.module.css'
 import styles from './Contact.module.css'
 
@@ -27,9 +28,17 @@ export function Contact() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form),
       })
-      setStatus(res.ok ? 'sent' : 'error')
-    } catch {
+      if (res.ok) {
+        setStatus('sent')
+        posthog.capture('contact_form_submitted')
+      } else {
+        setStatus('error')
+        posthog.capture('contact_form_failed', { status_code: res.status })
+      }
+    } catch (err) {
       setStatus('error')
+      posthog.captureException(err)
+      posthog.capture('contact_form_failed', { error: String(err) })
     }
   }
 
@@ -43,7 +52,8 @@ export function Contact() {
         <p className={styles.sub}>Open for collaborations, contracts, and good conversations.</p>
         <div className={styles.links}>
           {LINKS.map(l => (
-            <a key={l.name} href={l.href} target="_blank" rel="noopener noreferrer" className={styles.linkRow}>
+            <a key={l.name} href={l.href} target="_blank" rel="noopener noreferrer" className={styles.linkRow}
+              onClick={() => posthog.capture('social_link_clicked', { link_name: l.name, href: l.href })}>
               <span className={styles.linkName}>{l.name}</span>
               <span className={styles.linkHandle}>{l.handle}</span>
               <span className={styles.linkArrow}>↗</span>

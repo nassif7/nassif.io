@@ -4,6 +4,7 @@ import { ProseBody } from '@/components/prose/ProseBody'
 import { CallToAction } from '@/components/cta/CallToAction'
 import { SlugHeader } from '@/components/slug/SlugHeader'
 import { BackLink } from '@/components/layout/BackLink'
+import { PostHogPageView } from '@/components/analytics/PostHogPageView'
 import { notFound } from 'next/navigation'
 import page from '@/components/layout/SlugPage.module.css'
 
@@ -27,6 +28,8 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
 
   return (
     <main className={page.page}>
+      <PostHogPageView event="post_viewed" properties={{ post_title: post.title, slug, tags: post.tags?.join(', ') }} />
+
       <div className={page.content}>
         <BackLink href="/blog" label="Writing" />
 
