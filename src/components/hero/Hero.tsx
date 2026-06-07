@@ -29,19 +29,17 @@ export function Hero() {
         <div className={styles.article}>
           <div className={styles.body}>
             <p>
-              Frontend engineer with a thing for <strong>detail</strong>, a low tolerance for bad UX,
-              and a high tolerance for ambiguity. I've been doing this long enough to know the rules,
-              which ones to follow, and which ones to break on purpose.
+              Frontend engineer focused on building products that are simple, clear, and reliable.
             </p>
             <p>
-              I work at the intersection of design and engineering. I care about <strong>how things feel</strong>,
-              not just how they function. The invisible half-pixel. The transition that's 20ms too slow.
-              The copy that's technically correct but feels wrong.
+              I work between design and engineering, translating ideas into interfaces that people can
+              understand without thinking about them. Good software shouldn't need explanations.
+              It should feel obvious.
             </p>
             <p>
-              Syrian, based in Berlin. Still more curious than tired.
+              Over the years I've learned that most problems aren't technical. They're usually about
+              reducing complexity, making better decisions, and knowing what to leave out.
             </p>
-            <p>Still growing. Still figuring it out. That's probably not changing.</p>
           </div>
         </div>
 

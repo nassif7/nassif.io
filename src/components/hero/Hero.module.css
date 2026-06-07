@@ -136,9 +136,7 @@
   color: var(--mid);
   line-height: 1.85;
   font-weight: 300;
-  column-count: 2;
-  column-gap: 32px;
-  column-rule: 1px solid var(--border);
+  column-count: 1;
 }
 
 .body p + p { margin-top: 12px; }
@@ -148,13 +146,7 @@
   font-weight: 500;
 }
 
-/* Below full desktop: drop to single column */
 @media (max-width: 1100px) {
-  .body {
-    column-count: 1;
-    column-rule: none;
-  }
-
   .avatar {
     width: clamp(130px, 15vw, 180px) !important;
     height: clamp(130px, 15vw, 180px) !important;
@@ -187,10 +179,6 @@
     width: 90px !important;
     height: 90px !important;
     margin: 0 16px 4px 0;
-  }
-
-  .body {
-    column-count: unset;
   }
 
   .ctaBlock {
