@@ -2,19 +2,22 @@ import { client, getDraftClient } from '@/sanity/lib/client'
 import { allProjectsQuery, projectBySlugQuery } from '@/sanity/lib/queries'
 import { draftMode } from 'next/headers'
 
+export type ProjectLink = {
+  _key: string
+  platform: string
+  url?: string | null
+  comingSoon?: boolean
+}
+
 export type ProjectMeta = {
   slug: string
   name: string
   type: string
-  num: string
   desc: string
   categories?: string[]
   stack: string[]
   images: any[]
-  link: string | null
-  linkLabel: string | null
-  appStoreLink: string | null
-  androidComingSoon: boolean
+  links: ProjectLink[]
   privacyPolicy: string | null
   wip: boolean
   brainstorm: boolean

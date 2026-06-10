@@ -32,19 +32,15 @@ export const postBySlugQuery = groq`
 `
 
 export const allProjectsQuery = groq`
-  *[_type == "project"] | order(num asc) {
+  *[_type == "project"] | order(_createdAt asc) {
     "slug": slug.current,
     name,
     type,
-    num,
     desc,
     categories,
     stack,
     images,
-    link,
-    linkLabel,
-    appStoreLink,
-    androidComingSoon,
+    links,
     privacyPolicy,
     wip,
     brainstorm,
@@ -56,15 +52,11 @@ export const projectBySlugQuery = groq`
     "slug": slug.current,
     name,
     type,
-    num,
     desc,
     categories,
     stack,
     images,
-    link,
-    linkLabel,
-    appStoreLink,
-    androidComingSoon,
+    links,
     privacyPolicy,
     wip,
     brainstorm,

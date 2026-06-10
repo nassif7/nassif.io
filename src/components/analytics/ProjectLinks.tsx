@@ -1,57 +1,98 @@
 'use client'
 
 import posthog from 'posthog-js'
-import { FaApple, FaGooglePlay } from 'react-icons/fa'
+import { FaApple, FaGooglePlay, FaChrome, FaGithub, FaGlobe, FaNpm } from 'react-icons/fa'
+import type { ProjectLink } from '@/lib/projects'
 import styles from '@/app/(site)/projects/[slug]/project.module.css'
+
+const STORE_PLATFORMS = ['App Store', 'Google Play']
+
+function PlatformIcon({ platform }: { platform: string }) {
+  switch (platform) {
+    case 'App Store': return <FaApple className={styles.storeIcon} />
+    case 'Google Play': return <FaGooglePlay className={styles.storeIcon} />
+    case 'Chrome Web Store': return <FaChrome className={styles.storeIcon} />
+    case 'GitHub': return <FaGithub className={styles.storeIcon} />
+    case 'npm': return <FaNpm className={styles.storeIcon} />
+    default: return <FaGlobe className={styles.storeIcon} />
+  }
+}
+
+function storeLabel(platform: string): { small: string; big: string } {
+  switch (platform) {
+    case 'App Store': return { small: 'Download on the', big: 'App Store' }
+    case 'Google Play': return { small: 'Get it on', big: 'Google Play' }
+    default: return { small: 'Available on', big: platform }
+  }
+}
 
 interface Props {
   projectName: string
-  link?: string
-  linkLabel?: string
-  privacyPolicy?: string
-  appStoreLink?: string
-  androidComingSoon?: boolean
+  links: ProjectLink[]
+  privacyPolicy?: string | null
 }
 
-export function ProjectLinks({ projectName, link, linkLabel, privacyPolicy, appStoreLink, androidComingSoon }: Props) {
-  const handleClick = (linkType: string) => {
-    posthog.capture('project_link_clicked', { project_name: projectName, link_type: linkType })
+export function ProjectLinks({ projectName, links, privacyPolicy }: Props) {
+  const handleClick = (platform: string) => {
+    posthog.capture('project_link_clicked', { project_name: projectName, platform })
   }
+
+  const storeLinks = links.filter(l => STORE_PLATFORMS.includes(l.platform))
+  const regularLinks = links.filter(l => !STORE_PLATFORMS.includes(l.platform))
 
   return (
     <>
       {privacyPolicy && (
-        <a href={privacyPolicy} className={styles.link} onClick={() => handleClick('privacy_policy')}>
+        <a href={privacyPolicy} className={styles.link} onClick={() => handleClick('Privacy Policy')}>
           Privacy Policy
         </a>
       )}
 
-      {link && (
-        <a href={link} target="_blank" rel="noopener noreferrer" className={styles.link} onClick={() => handleClick('external')}>
-          {linkLabel}
+      {regularLinks.map(l => (
+        <a
+          key={l._key}
+          href={l.url!}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={styles.link}
+          onClick={() => handleClick(l.platform)}
+        >
+          {l.platform}
         </a>
-      )}
+      ))}
 
-      {(appStoreLink || androidComingSoon) && (
+      {storeLinks.length > 0 && (
         <div className={styles.storeLinks}>
-          {appStoreLink && (
-            <a href={appStoreLink} target="_blank" rel="noopener noreferrer" className={styles.storeBtn} onClick={() => handleClick('app_store')}>
-              <FaApple className={styles.storeIcon} />
-              <span className={styles.storeMeta}>
-                <span className={styles.storeSmall}>Download on the</span>
-                <span className={styles.storeBig}>App Store</span>
-              </span>
-            </a>
-          )}
-          {androidComingSoon && (
-            <div className={styles.storeBtnDisabled}>
-              <FaGooglePlay className={styles.storeIcon} />
-              <span className={styles.storeMeta}>
-                <span className={styles.storeSmall}>Coming soon on</span>
-                <span className={styles.storeBig}>Google Play</span>
-              </span>
-            </div>
-          )}
+          {storeLinks.map(l => {
+            const label = storeLabel(l.platform)
+            if (l.comingSoon) {
+              return (
+                <div key={l._key} className={styles.storeBtnDisabled}>
+                  <PlatformIcon platform={l.platform} />
+                  <span className={styles.storeMeta}>
+                    <span className={styles.storeSmall}>Coming soon on</span>
+                    <span className={styles.storeBig}>{l.platform}</span>
+                  </span>
+                </div>
+              )
+            }
+            return (
+              <a
+                key={l._key}
+                href={l.url!}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.storeBtn}
+                onClick={() => handleClick(l.platform)}
+              >
+                <PlatformIcon platform={l.platform} />
+                <span className={styles.storeMeta}>
+                  <span className={styles.storeSmall}>{label.small}</span>
+                  <span className={styles.storeBig}>{label.big}</span>
+                </span>
+              </a>
+            )
+          })}
         </div>
       )}
     </>

@@ -95,11 +95,8 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
 
             <ProjectLinks
               projectName={project.name}
-              link={project.link ?? undefined}
-              linkLabel={project.linkLabel ?? undefined}
-              privacyPolicy={project.privacyPolicy ?? undefined}
-              appStoreLink={project.appStoreLink ?? undefined}
-              androidComingSoon={project.androidComingSoon}
+              links={project.links ?? []}
+              privacyPolicy={project.privacyPolicy}
             />
           </div>
         </div>
