@@ -1,5 +1,5 @@
 import { getPost, getAllPosts } from '@/lib/posts'
-import { PortableText } from '@portabletext/react'
+import { RichText } from '@payloadcms/richtext-lexical/react'
 import { ProseBody } from '@/components/prose/ProseBody'
 import { CallToAction } from '@/components/cta/CallToAction'
 import { SlugHeader } from '@/components/slug/SlugHeader'
@@ -42,7 +42,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
         />
 
         <ProseBody>
-          <PortableText value={post.body} />
+          <RichText data={post.body} />
         </ProseBody>
       </div>
 

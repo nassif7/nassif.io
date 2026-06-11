@@ -50,7 +50,7 @@ export function ProjectLinks({ projectName, links, privacyPolicy }: Props) {
 
       {regularLinks.map(l => (
         <a
-          key={l._key}
+          key={l.id ?? l.platform}
           href={l.url!}
           target="_blank"
           rel="noopener noreferrer"
@@ -67,7 +67,7 @@ export function ProjectLinks({ projectName, links, privacyPolicy }: Props) {
             const label = storeLabel(l.platform)
             if (l.comingSoon) {
               return (
-                <div key={l._key} className={styles.storeBtnDisabled}>
+                <div key={l.id ?? l.platform} className={styles.storeBtnDisabled}>
                   <PlatformIcon platform={l.platform} />
                   <span className={styles.storeMeta}>
                     <span className={styles.storeSmall}>Coming soon on</span>
@@ -78,7 +78,7 @@ export function ProjectLinks({ projectName, links, privacyPolicy }: Props) {
             }
             return (
               <a
-                key={l._key}
+                key={l.id ?? l.platform}
                 href={l.url!}
                 target="_blank"
                 rel="noopener noreferrer"

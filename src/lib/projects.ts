@@ -1,22 +1,22 @@
-import { client, getDraftClient } from '@/sanity/lib/client'
-import { allProjectsQuery, projectBySlugQuery } from '@/sanity/lib/queries'
-import { draftMode } from 'next/headers'
+import { getPayload } from 'payload'
+import configPromise from '@payload-config'
 
 export type ProjectLink = {
-  _key: string
+  id?: string
   platform: string
   url?: string | null
   comingSoon?: boolean
 }
 
 export type ProjectMeta = {
+  id: string
   slug: string
   name: string
   type: string
   desc: string
   categories?: string[]
   stack: string[]
-  images: any[]
+  images: string[]
   links: ProjectLink[]
   privacyPolicy: string | null
   wip: boolean
@@ -24,18 +24,50 @@ export type ProjectMeta = {
 }
 
 export type Project = ProjectMeta & {
-  body: any[]
+  body: any
+}
+
+function normalizeProject(doc: any): ProjectMeta {
+  return {
+    id: doc.id,
+    slug: doc.slug,
+    name: doc.name,
+    type: doc.type ?? '',
+    desc: doc.desc ?? '',
+    categories: doc.categories?.map((c: { category: string }) => c.category) ?? [],
+    stack: doc.stack?.map((s: { item: string }) => s.item) ?? [],
+    images: doc.images?.map((img: { url: string }) => img.url) ?? [],
+    links: doc.links?.map((l: any) => ({
+      id: l.id,
+      platform: l.platform,
+      url: l.url ?? null,
+      comingSoon: l.comingSoon ?? false,
+    })) ?? [],
+    privacyPolicy: doc.privacyPolicy ?? null,
+    wip: doc.wip ?? false,
+    brainstorm: doc.brainstorm ?? false,
+  }
 }
 
 export async function getAllProjects(): Promise<ProjectMeta[]> {
-  return client.fetch(allProjectsQuery, {}, { next: { tags: ['project'] } })
+  const payload = await getPayload({ config: configPromise })
+  const { docs } = await payload.find({
+    collection: 'projects',
+    sort: 'createdAt',
+  })
+  return docs.map(normalizeProject)
 }
 
 export async function getProject(slug: string): Promise<Project | null> {
-  const { isEnabled } = await draftMode()
-  if (isEnabled) {
-    const token = process.env.SANITY_API_READ_TOKEN!
-    return getDraftClient(token).fetch(projectBySlugQuery, { slug })
+  const payload = await getPayload({ config: configPromise })
+  const { docs } = await payload.find({
+    collection: 'projects',
+    where: { slug: { equals: slug } },
+  })
+  if (!docs[0]) return null
+  const doc = docs[0]
+  return {
+    ...normalizeProject(doc),
+    body: doc.body,
   }
-  return client.fetch(projectBySlugQuery, { slug }, { next: { tags: [`project:${slug}`] } })
 }

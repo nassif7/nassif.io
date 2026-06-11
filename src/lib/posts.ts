@@ -1,13 +1,14 @@
-import { client, getDraftClient } from '@/sanity/lib/client'
-import { allPostsQuery, allCollectionsQuery, postBySlugQuery } from '@/sanity/lib/queries'
-import { draftMode } from 'next/headers'
+import { getPayload } from 'payload'
+import configPromise from '@payload-config'
 
 export type Collection = {
+  id: string
   slug: string
   title: string
 }
 
 export type PostMeta = {
+  id: string
   slug: string
   title: string
   date: string
@@ -18,22 +19,57 @@ export type PostMeta = {
 
 export type Post = PostMeta & {
   hidden?: boolean
-  body: any[]
+  body: any
+}
+
+function normalizePost(doc: any): PostMeta {
+  return {
+    id: doc.id,
+    slug: doc.slug,
+    title: doc.title,
+    date: doc.date,
+    tags: doc.tags?.map((t: { tag: string }) => t.tag) ?? [],
+    excerpt: doc.excerpt ?? '',
+    collections: doc.collections?.map((c: any) => ({
+      id: c.id,
+      slug: c.slug,
+      title: c.title,
+    })) ?? [],
+  }
 }
 
 export async function getAllPosts(): Promise<PostMeta[]> {
-  return client.fetch(allPostsQuery, {}, { next: { tags: ['post'] } })
+  const payload = await getPayload({ config: configPromise })
+  const { docs } = await payload.find({
+    collection: 'posts',
+    where: { hidden: { equals: false } },
+    sort: '-date',
+    depth: 1,
+  })
+  return docs.map(normalizePost)
 }
 
 export async function getAllCollections(): Promise<Collection[]> {
-  return client.fetch(allCollectionsQuery, {}, { next: { tags: ['collection'] } })
+  const payload = await getPayload({ config: configPromise })
+  const { docs } = await payload.find({
+    collection: 'post-collections',
+    sort: 'title',
+  })
+  return docs.map((c: any) => ({ id: c.id, slug: c.slug, title: c.title }))
 }
 
 export async function getPost(slug: string): Promise<Post | null> {
-  const { isEnabled } = await draftMode()
-  if (isEnabled) {
-    const token = process.env.SANITY_API_READ_TOKEN!
-    return getDraftClient(token).fetch(postBySlugQuery, { slug })
+  const payload = await getPayload({ config: configPromise })
+  const { docs } = await payload.find({
+    collection: 'posts',
+    where: { slug: { equals: slug } },
+    depth: 1,
+  })
+  if (!docs[0]) return null
+  const doc = docs[0]
+  return {
+    ...normalizePost(doc),
+    hidden: doc.hidden ?? false,
+    body: doc.body,
   }
-  return client.fetch(postBySlugQuery, { slug }, { next: { tags: [`post:${slug}`] } })
 }

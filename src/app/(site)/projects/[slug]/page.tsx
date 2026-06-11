@@ -1,7 +1,6 @@
 import { getProject, getAllProjects } from '@/lib/projects'
-import { urlForImage } from '@/sanity/lib/image'
 import { ProjectGallery } from '@/components/ProjectGallery'
-import { PortableText } from '@portabletext/react'
+import { RichText } from '@payloadcms/richtext-lexical/react'
 import { ProseBody } from '@/components/prose/ProseBody'
 import { CallToAction } from '@/components/cta/CallToAction'
 import { SlugHeader } from '@/components/slug/SlugHeader'
@@ -29,7 +28,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
   const project = await getProject(slug)
   if (!project) notFound()
 
-  const imageUrls: string[] = (project.images ?? []).map((img: any) => urlForImage(img))
+  const imageUrls: string[] = project.images ?? []
 
   return (
     <main className={page.page}>
@@ -81,7 +80,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
             <div className={styles.desc}>
               <ProseBody>
                 {project.body?.length > 0
-                  ? <PortableText value={project.body} />
+                  ? <RichText data={project.body} />
                   : <p>{project.desc}</p>
                 }
               </ProseBody>
