@@ -36,8 +36,7 @@ export default buildConfig({
   }),
   plugins: [
     vercelBlobStorage({
-      // Only active when deployed on Vercel — local dev uses filesystem (staticDir)
-      enabled: !!process.env.VERCEL && !!process.env.BLOB_READ_WRITE_TOKEN,
+      enabled: !!process.env.BLOB_READ_WRITE_TOKEN,
       collections: { media: true },
       token: process.env.BLOB_READ_WRITE_TOKEN || '',
     }),
