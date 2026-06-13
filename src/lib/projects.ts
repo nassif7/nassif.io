@@ -19,7 +19,10 @@ export type ProjectMeta = {
   images: string[]
   links: ProjectLink[]
   privacyPolicy: string | null
+  hidden: boolean
   featured: boolean
+  featuredImage: string | null
+  featuredOrder: number
   wip: boolean
   brainstorm: boolean
 }
@@ -37,7 +40,10 @@ function normalizeProject(doc: any): ProjectMeta {
     desc: doc.desc ?? '',
     categories: doc.categories?.map((c: { category: string }) => c.category) ?? [],
     stack: doc.stack?.map((s: { item: string }) => s.item) ?? [],
-    images: doc.images?.map((img: { url: string }) => img.url) ?? [],
+    images: doc.images?.map((img: any) => {
+      if (typeof img.image === 'object' && img.image?.url) return img.image.url
+      return img.url ?? null
+    }).filter(Boolean) ?? [],
     links: doc.links?.map((l: any) => ({
       id: l.id,
       platform: l.platform,
@@ -45,7 +51,12 @@ function normalizeProject(doc: any): ProjectMeta {
       comingSoon: l.comingSoon ?? false,
     })) ?? [],
     privacyPolicy: doc.privacyPolicy ?? null,
+    hidden: doc.hidden ?? false,
     featured: doc.featured ?? false,
+    featuredImage: typeof doc.featuredImage === 'object' && doc.featuredImage !== null
+      ? (doc.featuredImage as any).url ?? null
+      : doc.featuredImage ?? null,
+    featuredOrder: doc.featuredOrder ?? 0,
     wip: doc.wip ?? false,
     brainstorm: doc.brainstorm ?? false,
   }
@@ -55,7 +66,9 @@ export async function getAllProjects(): Promise<ProjectMeta[]> {
   const payload = await getPayload({ config: configPromise })
   const { docs } = await payload.find({
     collection: 'projects',
+    where: { hidden: { not_equals: true } },
     sort: 'createdAt',
+    depth: 1,
   })
   return docs.map(normalizeProject)
 }
@@ -65,7 +78,8 @@ export async function getFeaturedProjects(): Promise<ProjectMeta[]> {
   const { docs } = await payload.find({
     collection: 'projects',
     where: { featured: { equals: true } },
-    sort: 'createdAt',
+    sort: 'featuredOrder',
+    depth: 1,
   })
   return docs.map(normalizeProject)
 }
@@ -75,6 +89,7 @@ export async function getProject(slug: string): Promise<Project | null> {
   const { docs } = await payload.find({
     collection: 'projects',
     where: { slug: { equals: slug } },
+    depth: 1,
   })
   if (!docs[0]) return null
   const doc = docs[0]

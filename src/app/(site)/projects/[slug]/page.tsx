@@ -79,7 +79,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
           <div className={styles.info}>
             <div className={styles.desc}>
               <ProseBody>
-                {project.body?.length > 0
+                {project.body?.root?.children?.length > 0
                   ? <RichText data={project.body} />
                   : <p>{project.desc}</p>
                 }

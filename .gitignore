@@ -19,6 +19,9 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+# local media uploads (production uses Vercel Blob)
+public/media/
+
 # vercel
 .vercel
 .claude/
