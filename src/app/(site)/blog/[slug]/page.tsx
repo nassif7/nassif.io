@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic'
+
 import { getPost, getAllPosts } from '@/lib/posts'
 import { RichText } from '@payloadcms/richtext-lexical/react'
 import { ProseBody } from '@/components/prose/ProseBody'

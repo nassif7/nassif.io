@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic'
+
 import { getProject, getAllProjects } from '@/lib/projects'
 import { ProjectGallery } from '@/components/ProjectGallery'
 import { RichText } from '@payloadcms/richtext-lexical/react'
