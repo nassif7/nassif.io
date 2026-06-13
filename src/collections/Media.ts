@@ -7,7 +7,9 @@ const dirname = path.dirname(fileURLToPath(import.meta.url))
 export const Media: CollectionConfig = {
   slug: 'media',
   upload: {
-    staticDir: path.resolve(dirname, '../../public/media'),
+    staticDir: process.env.VERCEL
+      ? '/tmp/payload-media'
+      : path.resolve(dirname, '../../public/media'),
     formatOptions: {
       format: 'webp',
       options: { quality: 80 },
