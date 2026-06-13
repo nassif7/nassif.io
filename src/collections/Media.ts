@@ -8,6 +8,14 @@ export const Media: CollectionConfig = {
   slug: 'media',
   upload: {
     staticDir: path.resolve(dirname, '../../public/media'),
+    formatOptions: {
+      format: 'webp',
+      options: { quality: 80 },
+    },
+    resizeOptions: {
+      width: 2400,
+      withoutEnlargement: true,
+    },
   },
   fields: [
     { name: 'alt', type: 'text' },
