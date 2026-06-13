@@ -19,6 +19,7 @@ export type ProjectMeta = {
   images: string[]
   links: ProjectLink[]
   privacyPolicy: string | null
+  featured: boolean
   wip: boolean
   brainstorm: boolean
 }
@@ -44,6 +45,7 @@ function normalizeProject(doc: any): ProjectMeta {
       comingSoon: l.comingSoon ?? false,
     })) ?? [],
     privacyPolicy: doc.privacyPolicy ?? null,
+    featured: doc.featured ?? false,
     wip: doc.wip ?? false,
     brainstorm: doc.brainstorm ?? false,
   }
@@ -53,6 +55,16 @@ export async function getAllProjects(): Promise<ProjectMeta[]> {
   const payload = await getPayload({ config: configPromise })
   const { docs } = await payload.find({
     collection: 'projects',
+    sort: 'createdAt',
+  })
+  return docs.map(normalizeProject)
+}
+
+export async function getFeaturedProjects(): Promise<ProjectMeta[]> {
+  const payload = await getPayload({ config: configPromise })
+  const { docs } = await payload.find({
+    collection: 'projects',
+    where: { featured: { equals: true } },
     sort: 'createdAt',
   })
   return docs.map(normalizeProject)

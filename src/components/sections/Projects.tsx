@@ -1,16 +1,16 @@
-import { getAllProjects } from '@/lib/projects'
+import { getFeaturedProjects } from '@/lib/projects'
 import { ListItem } from '@/components/list/ListItem'
 import { SectionHeader } from './SectionHeader'
 import shared from './section.module.css'
 import styles from './Writing.module.css'
 
 export async function Projects() {
-  const projects = await getAllProjects()
+  const projects = await getFeaturedProjects()
 
   return (
     <section id="work" className={shared.section}>
       <SectionHeader
-        label="Selected work"
+        label="Featured work"
         linkHref="/projects"
         linkText="All projects →"
         title="Things I've shipped."
@@ -18,7 +18,7 @@ export async function Projects() {
       />
 
       <div className={styles.list}>
-        {projects.filter(p => !p.brainstorm).map((p, i) => (
+        {projects.map((p, i) => (
           <ListItem
             key={p.slug}
             type="project"

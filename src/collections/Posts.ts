@@ -4,7 +4,7 @@ export const Posts: CollectionConfig = {
   slug: 'posts',
   admin: {
     useAsTitle: 'title',
-    defaultColumns: ['title', 'date', 'hidden', 'updatedAt'],
+    defaultColumns: ['title', 'date', 'featured', 'hidden', 'updatedAt'],
   },
   fields: [
     { name: 'title', type: 'text', required: true },
@@ -22,6 +22,7 @@ export const Posts: CollectionConfig = {
       hasMany: true,
     },
     { name: 'excerpt', type: 'textarea' },
+    { name: 'featured', type: 'checkbox', defaultValue: false },
     { name: 'hidden', type: 'checkbox', defaultValue: false },
     { name: 'body', type: 'richText' },
   ],

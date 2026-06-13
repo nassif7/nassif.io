@@ -4,7 +4,7 @@ export const Projects: CollectionConfig = {
   slug: 'projects',
   admin: {
     useAsTitle: 'name',
-    defaultColumns: ['name', 'type', 'wip', 'brainstorm', 'updatedAt'],
+    defaultColumns: ['name', 'type', 'featured', 'wip', 'brainstorm', 'updatedAt'],
   },
   fields: [
     { name: 'name', type: 'text', required: true },
@@ -54,6 +54,7 @@ export const Projects: CollectionConfig = {
       type: 'text',
       admin: { description: 'Full public URL, e.g. https://nassif.io/projects/one-more/privacy' },
     },
+    { name: 'featured', type: 'checkbox', defaultValue: false },
     { name: 'wip', type: 'checkbox', defaultValue: false },
     { name: 'brainstorm', type: 'checkbox', defaultValue: false },
     { name: 'body', type: 'richText' },

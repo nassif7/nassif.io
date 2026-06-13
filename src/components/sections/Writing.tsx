@@ -1,11 +1,11 @@
-import { getAllPosts } from '@/lib/posts'
+import { getFeaturedPosts } from '@/lib/posts'
 import { ListItem } from '@/components/list/ListItem'
 import { SectionHeader } from './SectionHeader'
 import shared from './section.module.css'
 import styles from './Writing.module.css'
 
 export async function Writing() {
-  const posts = await getAllPosts()
+  const posts = await getFeaturedPosts()
 
   return (
     <section id="writing" className={shared.section}>

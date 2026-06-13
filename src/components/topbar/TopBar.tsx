@@ -3,8 +3,8 @@
 import styles from './TopBar.module.css'
 
 const LINKS = [
-  { label: 'Work',    href: '#work'    },
-  { label: 'Writing', href: '#writing' },
+  { label: 'Work',    href: '/projects' },
+  { label: 'Writing', href: '/blog'     },
   { label: 'Contact', href: 'mailto:hello@nassif.pro' },
 ]
 

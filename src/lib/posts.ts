@@ -49,6 +49,22 @@ export async function getAllPosts(): Promise<PostMeta[]> {
   return docs.map(normalizePost)
 }
 
+export async function getFeaturedPosts(): Promise<PostMeta[]> {
+  const payload = await getPayload({ config: configPromise })
+  const { docs } = await payload.find({
+    collection: 'posts',
+    where: {
+      and: [
+        { featured: { equals: true } },
+        { hidden: { equals: false } },
+      ],
+    },
+    sort: '-date',
+    depth: 1,
+  })
+  return docs.map(normalizePost)
+}
+
 export async function getAllCollections(): Promise<Collection[]> {
   const payload = await getPayload({ config: configPromise })
   const { docs } = await payload.find({
