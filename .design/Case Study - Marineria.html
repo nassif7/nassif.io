@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Marineria.it — Case study · Nassif Nassif</title>
+<link rel="stylesheet" href="styles/nassif.css">
+<style>
+.cs-hd{padding:56px 0 0}
+.cs-back{display:inline-flex;align-items:center;gap:9px;font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:38px}
+.cs-back:hover{color:var(--ink)}
+.cs-top{display:grid;grid-template-columns:repeat(12,1fr);gap:0 32px;padding-bottom:40px}
+.cs-t{grid-column:1/9}
+.cs-t .display{font-size:clamp(40px,5vw,70px);margin:24px 0 22px}
+.cs-x{grid-column:10/13;display:flex;flex-direction:column;gap:0;align-self:end}
+.cs-x div{padding:11px 0;border-top:1px solid var(--line)}
+.cs-x dd{font-family:var(--mono);font-size:11.5px;color:var(--ink);margin-top:4px}
+.cs-hero{border-top:1px solid var(--ink);border-bottom:1px solid var(--line);background:var(--paper-3);aspect-ratio:21/9;overflow:hidden;display:flex;align-items:center;justify-content:center;gap:clamp(24px,4vw,64px);padding:38px}
+.cs-hero img{height:auto;width:auto;max-height:clamp(210px,26vw,330px);object-fit:contain;filter:saturate(.82);box-shadow:0 4px 30px rgba(24,20,16,.16)}
+
+.cs-body{display:grid;grid-template-columns:repeat(12,1fr);gap:0 32px;padding:80px 0 0}
+.cs-aside{grid-column:1/4;position:sticky;top:110px;align-self:start}
+.cs-aside ul{list-style:none;display:flex;flex-direction:column;border-top:1px solid var(--ink);margin-top:14px}
+.cs-aside li{border-bottom:1px solid var(--line)}
+.cs-aside a{display:block;padding:10px 0;font-size:13.5px;color:var(--mid);font-weight:300}
+.cs-aside a:hover{color:var(--ink)}
+.cs-main{grid-column:5/12}
+.cs-sec{padding-bottom:56px;margin-bottom:56px;border-bottom:1px solid var(--line)}
+.cs-sec:last-child{border-bottom:none}
+.cs-sec h2{font-size:29px;font-weight:500;letter-spacing:-.028em;line-height:1.12;margin:14px 0 20px}
+.cs-sec p{font-size:16.5px;color:var(--mid);font-weight:300;line-height:1.78;margin-bottom:16px;max-width:36em}
+.cs-sec p strong{color:var(--ink);font-weight:500}
+.pull{border-left:2px solid var(--rust);padding:4px 0 4px 24px;margin:30px 0;font-size:20px;font-weight:400;letter-spacing:-.015em;line-height:1.45;color:var(--ink);max-width:28em}
+.spec{display:grid;grid-template-columns:repeat(2,1fr);gap:0 32px;margin:32px 0;border-top:1px solid var(--line)}
+.spec div{padding:14px 0;border-bottom:1px solid var(--line)}
+.spec dd{font-size:14.5px;color:var(--ink);margin-top:4px;font-weight:400}
+figure{margin:36px 0}
+figure img{width:100%;border:1px solid var(--line);background:var(--paper-3);filter:saturate(.78)}
+figure.shots{background:var(--paper-3);border:1px solid var(--line);padding:28px}
+figure.shots .row{display:flex;gap:22px;justify-content:center}
+figure.shots img{width:auto;max-height:420px;border:none;background:none;box-shadow:0 3px 22px rgba(24,20,16,.15)}
+figure.shots figcaption{border-top:1px solid var(--line-2);margin-top:24px}
+figcaption{font-family:var(--mono);font-size:10.5px;color:var(--muted);letter-spacing:.04em;margin-top:11px;padding-top:9px;border-top:1px solid var(--line)}
+.outs{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--ink);margin-top:28px}
+.outs div{padding:20px 22px 22px;border-left:1px solid var(--line);border-bottom:1px solid var(--line)}
+.outs div:first-child{border-left:none;padding-left:0}
+.outs strong{display:block;font-size:24px;font-weight:500;letter-spacing:-.03em;margin-bottom:5px}
+
+.next{border-top:2px solid var(--ink);padding:52px 0}
+.next .wrap{display:grid;grid-template-columns:repeat(12,1fr);gap:32px;align-items:center}
+.next-l{grid-column:1/9}
+.next-l h3{font-size:34px;font-weight:500;letter-spacing:-.032em;margin-top:12px}
+.next-r{grid-column:10/13;justify-self:end}
+
+@media(max-width:900px){
+.cs-t,.cs-x,.cs-aside,.cs-main,.next-l,.next-r{grid-column:1/7}
+.cs-x{margin-top:30px}
+.cs-aside{position:static;display:none}
+.cs-body{padding-top:52px}
+.cs-hero{aspect-ratio:4/3;padding:24px;gap:18px}
+.cs-hero img{max-height:none;height:auto;max-width:44%}
+figure.shots{padding:18px;gap:14px}
+figure.shots img{max-height:300px}
+.spec,.outs{grid-template-columns:1fr}
+.outs div{border-left:none;padding-left:0}
+.next-r{justify-self:start;margin-top:20px}
+}
+</style>
+</head>
+<body>
+
+<div class="util"><div class="wrap">
+<span><b>Berlin</b> · CET</span>
+<span class="util-r"><span><span class="dot"></span>Available for Q4 2026</span><a href="mailto:hello@nassif.pro" style="color:inherit">hello@nassif.pro</a></span>
+</div></div>
+
+<header class="mast"><div class="wrap">
+<a href="Homepage.html" class="logo">n<i>/</i>N</a><span class="logo-sub">Frontend Engineer</span>
+<nav class="main">
+<a href="Homepage.html#work" class="on">Work</a><a href="Homepage.html#services">Services</a><a href="Homepage.html#track">Track record</a><a href="Homepage.html#writing">Writing</a><a href="CV.html">CV</a>
+</nav>
+<a href="mailto:hello@nassif.pro" class="btn btn-fill mast-cta">Start a project</a>
+</div></header>
+
+<main>
+
+<section class="cs-hd"><div class="wrap">
+<a href="Homepage.html#index" class="cs-back">← Work index</a>
+<div class="cs-top">
+<div class="cs-t">
+<div class="eyebrow"><span class="n">Case 01</span>Client work · Mobile</div>
+<h1 class="display">Marineria.it</h1>
+<p class="lead">A recruitment app for the Italian maritime industry, serving three different audiences from a single codebase — and telling candidates the truth when they don't qualify.</p>
+</div>
+<dl class="cs-x">
+<div><dt class="meta-k">Client</dt><dd>Marineria.it</dd></div>
+<div><dt class="meta-k">Year</dt><dd class="tnum">2026</dd></div>
+<div><dt class="meta-k">Role</dt><dd>Lead frontend</dd></div>
+<div><dt class="meta-k">Platforms</dt><dd>iOS · Android</dd></div>
+<div><dt class="meta-k">Status</dt><dd>Shipped</dd></div>
+</dl>
+</div>
+</div></section>
+
+<div class="cs-hero"><img src="public/projects/marineria/marineria1.avif" alt="Marineria.it app — login and job listing screens"><img src="public/projects/marineria/marineria3.avif" alt="Marineria.it app — crew profile and application screens"></div>
+
+<div class="wrap"><div class="cs-body">
+<aside class="cs-aside">
+<div class="meta-k">Contents</div>
+<ul>
+<li><a href="#brief">01 — The brief</a></li>
+<li><a href="#problem">02 — The problem</a></li>
+<li><a href="#approach">03 — Approach</a></li>
+<li><a href="#build">04 — What I built</a></li>
+<li><a href="#outcome">05 — Outcome</a></li>
+</ul>
+</aside>
+
+<div class="cs-main">
+
+<section class="cs-sec" id="brief">
+<div class="eyebrow"><span class="n">01</span>The brief</div>
+<h2>A web recruitment platform needed to become a mobile product.</h2>
+<p>Marineria.it is an established Italian maritime recruitment platform. Ship operators post positions; crew members — deckhands, engineers, officers — apply for them. The business worked on the web, but the people using it don't sit at desks. They're on vessels, in ports, between contracts, on phones.</p>
+<p>The brief was a native-feeling app for iOS and Android covering the full platform: browsing, applying, profile management, and the recruiter-side tooling. <strong>One codebase, two stores, two languages.</strong></p>
+<dl class="spec">
+<div><dt class="meta-k">Audiences</dt><dd>Guests, crew members, recruiters</dd></div>
+<div><dt class="meta-k">Languages</dt><dd>Italian and English, in-app toggle</dd></div>
+<div><dt class="meta-k">Auth</dt><dd>OTP or password, registration inline</dd></div>
+<div><dt class="meta-k">Stack</dt><dd>TypeScript, React Native, Expo</dd></div>
+</dl>
+</section>
+
+<section class="cs-sec" id="problem">
+<div class="eyebrow"><span class="n">02</span>The problem</div>
+<h2>Three audiences, opposite needs, one app.</h2>
+<p>Most recruitment apps solve for one side of the market and treat the other as an admin panel. Here both sides were first-class, plus a third group that mattered commercially: people who wanted to look before committing to anything.</p>
+<p>Guests needed to browse and filter the entire job board without an account — the platform's supply of candidates depends on it. Crew needed to build a profile once and apply repeatedly with it. Recruiters needed the inverse: search across candidates by skill and location, then make contact directly.</p>
+<p class="pull">The hard part wasn't the feature list. It was making three products feel like one, without a mode switch the user has to reason about.</p>
+</section>
+
+<section class="cs-sec" id="approach">
+<div class="eyebrow"><span class="n">03</span>Approach</div>
+<h2>Let the account type shape the app, not a menu.</h2>
+<p>Rather than a role picker at launch, the app resolves capability from the session and lets each surface adapt. A guest sees the board and a prompt where an action would be. A crew member sees the same board with apply enabled. A recruiter sees the board plus the candidate search it mirrors.</p>
+<p>Registration lives inside the login screen instead of behind a separate flow — the moment someone needs an account is the moment they're trying to do something, so the account creation happens there rather than as a detour.</p>
+<figure class="shots">
+<div class="row">
+<img src="public/projects/marineria/marineria3.avif" alt="Job listing and filtering screen">
+<img src="public/projects/marineria/marineria1.avif" alt="Login screen with OTP and guest browsing">
+</div>
+<figcaption>Fig. 01 — The board is the shared surface across all three audiences; capability changes, layout doesn't.</figcaption>
+</figure>
+</section>
+
+<section class="cs-sec" id="build">
+<div class="eyebrow"><span class="n">04</span>What I built</div>
+<h2>The parts that decide whether an app gets used twice.</h2>
+<p><strong>Real-time listings with filters</strong> that hold their state across navigation, because a candidate scanning a board and opening a role expects to come back to the same list.</p>
+<p><strong>Honest qualification feedback.</strong> When a crew member doesn't meet a position's requirements, the app says which requirement and why — instead of accepting the application into silence. This was the decision I pushed hardest for, and the one most likely to be cut by default.</p>
+<p><strong>Role-targeted push notifications:</strong> crew are notified when a matching position is posted, recruiters when someone applies. Two audiences, two triggers, one notification layer.</p>
+<p><strong>Bilingual throughout,</strong> with the toggle in settings rather than a launch-time choice — maritime crews are multinational and language preference isn't a property of the device.</p>
+</section>
+
+<section class="cs-sec" id="outcome">
+<div class="eyebrow"><span class="n">05</span>Outcome</div>
+<h2>Shipped to both stores, in both languages.</h2>
+<p>The app went live on iOS and Android with the full platform available on mobile, including guest browsing that requires no account at all. The single-codebase decision held: feature work ships to both platforms at once, and the recruiter tooling did not need a separate product.</p>
+<div class="outs">
+<div><strong class="tnum">2</strong><span class="meta-k">Platforms, one codebase</span></div>
+<div><strong class="tnum">3</strong><span class="meta-k">Audiences, no mode switch</span></div>
+<div><strong class="tnum">2</strong><span class="meta-k">Languages, toggleable</span></div>
+</div>
+</section>
+
+</div>
+</div></div>
+
+<section class="next"><div class="wrap">
+<div class="next-l">
+<div class="eyebrow"><span class="n">Next</span>Case 02 · Side project</div>
+<h3>BookMarquee — a knowledge base with no backend</h3>
+</div>
+<div class="next-r"><a href="Homepage.html#work" class="btn">Read next →</a></div>
+</div></section>
+
+<section class="dark cta-band" style="padding:0"><div class="wrap" style="display:grid;grid-template-columns:repeat(12,1fr);gap:0 32px;padding:76px 40px;align-items:center">
+<div style="grid-column:1/8">
+<div class="eyebrow">Next step</div>
+<h2 style="font-size:clamp(28px,3.4vw,42px);font-weight:500;letter-spacing:-.03em;line-height:1.08;margin:18px 0 14px">Got something with this shape?</h2>
+<p class="lead">Available for contract and full-time work from Q4 2026 — Berlin, or remote across European hours.</p>
+</div>
+<div style="grid-column:9/13;display:flex;flex-direction:column;gap:12px">
+<a href="mailto:hello@nassif.pro" class="btn btn-inv" style="justify-content:space-between">Write me <span>→</span></a>
+<a href="CV.html" class="btn btn-inv" style="justify-content:space-between">Download CV <span>↓</span></a>
+</div>
+</div></section>
+
+<footer><div class="wrap">
+<div class="foot-bar" style="border-top:none;padding:22px 0">
+<span>n|N · Nassif Nassif · Berlin · 2026</span>
+<span>Professional button-maker.</span>
+</div>
+</div></footer>
+
+</main>
+</body>
+</html>

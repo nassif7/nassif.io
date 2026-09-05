@@ -12,6 +12,25 @@ export const Projects: CollectionConfig = {
     { name: 'type', type: 'text' },
     { name: 'desc', type: 'textarea' },
     {
+      name: 'year',
+      type: 'text',
+      admin: { description: 'Work-index year column, e.g. "2026" or "Ongoing"' },
+    },
+    { name: 'client', type: 'text', admin: { description: 'Case study only, e.g. "Marineria.it"' } },
+    { name: 'role', type: 'text', admin: { description: 'e.g. "Lead frontend"' } },
+    { name: 'platforms', type: 'text', admin: { description: 'e.g. "iOS · Android"' } },
+    { name: 'status', type: 'text', admin: { description: 'e.g. "Shipped", "In progress"' } },
+    {
+      name: 'statusVariant',
+      type: 'select',
+      defaultValue: 'default',
+      options: [
+        { label: 'Default', value: 'default' },
+        { label: 'Live', value: 'live' },
+        { label: 'In progress', value: 'wip' },
+      ],
+    },
+    {
       name: 'categories',
       type: 'array',
       fields: [{ name: 'category', type: 'text', required: true }],
@@ -87,6 +106,18 @@ export const Projects: CollectionConfig = {
     },
     { name: 'wip', type: 'checkbox', defaultValue: false, admin: { position: 'sidebar' } },
     { name: 'brainstorm', type: 'checkbox', defaultValue: false, admin: { position: 'sidebar' } },
+    {
+      name: 'order',
+      type: 'number',
+      defaultValue: 0,
+      admin: { position: 'sidebar', description: 'Work index display order' },
+    },
+    {
+      name: 'caseStudy',
+      type: 'checkbox',
+      defaultValue: false,
+      admin: { position: 'sidebar', description: 'Render the full case-study template' },
+    },
     { name: 'body', type: 'richText' },
   ],
 }

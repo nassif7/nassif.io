@@ -9,6 +9,7 @@ import { SlugHeader } from '@/components/slug/SlugHeader'
 import { BackLink } from '@/components/layout/BackLink'
 import { PostHogPageView } from '@/components/analytics/PostHogPageView'
 import { ProjectLinks } from '@/components/analytics/ProjectLinks'
+import { CaseStudy } from '@/components/case-study/CaseStudy'
 import page from '@/components/layout/SlugPage.module.css'
 import styles from './project.module.css'
 import { notFound } from 'next/navigation'
@@ -29,6 +30,10 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
   const { slug } = await params
   const project = await getProject(slug)
   if (!project) notFound()
+
+  if (project.caseStudy) {
+    return <CaseStudy project={project} />
+  }
 
   const imageUrls: string[] = project.images ?? []
 

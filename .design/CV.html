@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Nassif Nassif — CV</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+doc-page:not(:defined){visibility:hidden}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--ink:#000000;--mid:#4A4A4A;--muted:#767676;--line:#E3E3E3;--line-2:#C7C7C7;--rust:#2E2BA8;--sans:'DM Sans',system-ui,sans-serif;--mono:'DM Mono',ui-monospace,monospace}
+doc-page{color:var(--ink);font-family:var(--sans);font-size:9.8pt;line-height:1.52}
+a{color:var(--ink);text-decoration:none}
+a:hover{color:var(--rust)}
+.mk{font-family:var(--mono);font-size:6.9pt;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.tnum{font-variant-numeric:tabular-nums}
+.fill{color:#8A8A8A;font-style:italic;font-weight:300}
+
+.hd{display:grid;grid-template-columns:1fr auto;gap:24px;align-items:end;border-bottom:2px solid var(--ink);padding-bottom:11px}
+.hd h1{font-size:25pt;font-weight:500;letter-spacing:-.035em;line-height:.95}
+.hd .role{font-family:var(--mono);font-size:7.8pt;font-weight:500;letter-spacing:.17em;text-transform:uppercase;color:var(--rust);margin-top:7px}
+.hd .contact{text-align:right;font-family:var(--mono);font-size:7.7pt;line-height:1.78;color:var(--mid)}
+.logo{font-family:var(--mono);font-size:12.5pt;font-weight:500;letter-spacing:-.03em;color:var(--ink);margin-bottom:5px;display:block}
+.logo i{font-style:normal;color:var(--rust)}
+
+.intro{padding:10px 0 11px;border-bottom:1px solid var(--line);font-size:9.8pt;font-weight:300;color:var(--mid);line-height:1.58}
+.intro b{font-weight:500;color:var(--ink)}
+
+.strip{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--line);break-inside:avoid}
+.strip div{padding:8px 14px;border-left:1px solid var(--line)}
+.strip div:first-child{border-left:none;padding-left:0}
+.strip dd{font-size:9.2pt;margin-top:2px}
+
+h2.s{font-family:var(--mono);font-size:7.1pt;font-weight:500;letter-spacing:.19em;text-transform:uppercase;color:var(--rust);border-bottom:1px solid var(--ink);padding-bottom:5px;margin:16px 0 9px}
+
+.item{padding-bottom:9px;margin-bottom:9px;border-bottom:1px solid var(--line);break-inside:avoid;orphans:3;widows:3}
+.item:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+.item-top{display:flex;justify-content:space-between;align-items:baseline;gap:16px}
+.item h3{font-size:10.8pt;font-weight:600;letter-spacing:-.014em}
+.item .org{font-family:var(--mono);font-size:7.4pt;font-weight:500;letter-spacing:.13em;text-transform:uppercase;color:var(--rust);margin-bottom:2px}
+.item .when{font-family:var(--mono);font-size:7.6pt;color:var(--mid);white-space:nowrap;letter-spacing:.04em;text-align:right}
+.item ul{list-style:none;margin-top:5px;display:flex;flex-direction:column;gap:3.5px}
+.item li{font-size:9.3pt;font-weight:300;color:var(--mid);line-height:1.52;display:flex;gap:8px}
+.item li::before{content:'//';font-family:var(--mono);font-size:7.4pt;color:var(--line-2);flex-shrink:0;padding-top:1.5px}
+.stack-l{display:flex;flex-wrap:wrap;gap:3.5px;margin-top:6px}
+.tag{font-family:var(--mono);font-size:7.2pt;letter-spacing:.05em;border:1px solid var(--line-2);color:var(--mid);padding:2.5px 6px}
+.tag.pri{border-color:var(--ink);color:var(--ink)}
+
+.rows{display:flex;flex-direction:column}
+.rows>div{display:flex;justify-content:space-between;gap:16px;align-items:baseline;padding:6px 0;border-bottom:1px solid var(--line);break-inside:avoid}
+.rows>div:last-child{border-bottom:none}
+.rows dt{font-weight:300;color:var(--mid);font-size:9.3pt;line-height:1.45}
+.rows dt b{font-weight:500;color:var(--ink)}
+.rows dd{font-family:var(--mono);font-size:7.6pt;color:var(--muted);white-space:nowrap;letter-spacing:.04em}
+
+.two{display:grid;grid-template-columns:1fr 1fr;gap:0 30px;break-inside:avoid}
+.sub-k{font-family:var(--mono);font-size:6.6pt;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);display:block;margin:9px 0 5px}
+.sub-k:first-child{margin-top:0}
+.note{font-size:9.2pt;font-weight:300;color:var(--mid);line-height:1.58}
+
+.foot{display:flex;justify-content:space-between;font-family:var(--mono);font-size:7pt;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);border-top:1px solid var(--line);padding-top:8px}
+</style>
+</head>
+<body>
+<doc-page margin="0.58in" size="a4">
+
+<div slot="footer" class="foot"><span>Nassif Nassif · Curriculum Vitae</span><span>nassif.pro · 2026</span></div>
+
+<div class="hd">
+<div>
+<span class="logo">n<i>/</i>N</span>
+<h1>Nassif Nassif</h1>
+<div class="role">Software Engineer · Platform · Product · UX</div>
+</div>
+<div class="contact">hello@nassif.pro<br>+49 176 80815884<br>nassif.pro<br>github.com/nassif7</div>
+</div>
+
+<p class="intro">A systems thinker with <b>8 years of experience building software across corporate platforms, startups, and independent projects.</b> AI-native in my workflow while staying grounded in the fundamentals. I'm driven by turning complex problems into simple, intuitive solutions.</p>
+
+<dl class="strip">
+<div><dt class="mk">Location</dt><dd>Berlin, Germany</dd></div>
+<div><dt class="mk">Availability</dt><dd>Q4 2026</dd></div>
+<div><dt class="mk">Engagement</dt><dd>Contract / Full-time</dd></div>
+<div><dt class="mk">Remote</dt><dd>CET hours</dd></div>
+</dl>
+
+<h2 class="s">Experience</h2>
+
+<div class="item">
+<div class="org">Verbraucherzentrale Bundesverband</div>
+<div class="item-top"><h3>Software Developer UI/UX</h3><span class="when">Dec 2022 — Sep 2025</span></div>
+<ul>
+<li>Collaborated with designers and backend developers to ensure seamless integration of design and functionality.</li>
+<li>Optimized forms to make them more configurable and dynamic.</li>
+<li>Conducted code reviews and provided constructive feedback to improve code quality.</li>
+</ul>
+</div>
+
+<div class="item">
+<div class="org">LQ Enterprise</div>
+<div class="item-top"><h3>Software Developer</h3><span class="when">Mar 2019 — Nov 2022</span></div>
+<ul>
+<li>Contributed to the company's central UI component library, used across multiple product teams.</li>
+<li>Built dynamic form generators within the platform.</li>
+<li>Developed real-time features using WebSockets and SignalR for live data updates.</li>
+</ul>
+</div>
+
+<div class="item">
+<div class="org">kloeckner.i</div>
+<div class="item-top"><h3>Software Engineer</h3><span class="when">Jul 2017 — Feb 2019</span></div>
+<ul>
+<li>Contributed to several web applications using Phoenix, Rails, Ember, and Vue.js.</li>
+<li>Set up automated tests to increase efficiency and provide faster feedback to the team.</li>
+<li>Led feature releases in the production environment.</li>
+</ul>
+</div>
+
+<div class="item">
+<div class="org">ReDI School of Digital Integration</div>
+<div class="item-top"><h3>Volunteer Instructor</h3><span class="when">Spring 2017</span></div>
+<ul><li>Taught web development fundamentals to students with refugee and migration backgrounds.</li></ul>
+</div>
+
+<div class="item">
+<div class="org">Arvato Bertelsmann</div>
+<div class="item-top"><h3>Content Moderator</h3><span class="when">Nov 2016 — May 2017</span></div>
+<ul><li>Moderated Arabic-language online content, ensuring quality and accuracy.</li></ul>
+</div>
+
+<h2 class="s">Projects</h2>
+
+<div class="item">
+<div class="item-top"><h3>Marineria.it</h3><span class="when tnum">2026</span></div>
+<ul><li>Development of a bilingual mobile app (iOS/Android) using React Native. Focused on UI design and API integration with OTP authentication.</li></ul>
+<div class="stack-l"><span class="tag pri">Mobile.UX</span><span class="tag pri">React.Native</span><span class="tag">REST.API</span><span class="tag">OTP</span><span class="tag">i18next</span></div>
+</div>
+
+<div class="item">
+<div class="item-top"><h3>OneMore</h3><span class="when tnum">2026</span></div>
+<ul><li>Cigarette tracking app built with React Native and Expo. Deliberately minimal design: log each cigarette, see the real number, no streaks or artificial gamification. Live on the App Store.</li></ul>
+<div class="stack-l"><span class="tag pri">Mobile.UX</span><span class="tag pri">React.Native</span><span class="tag">Expo</span></div>
+</div>
+
+<div class="item">
+<div class="item-top"><h3>Keen Studio</h3><span class="when">Ongoing</span></div>
+<ul><li>Cross-platform UI generation system for React and React Native, enforcing design decisions at the type level via generateTheme() and createUI(). Component library and theme engine live; CLI and visual configurator in active development to reduce setup friction and enforce consistency across projects.</li></ul>
+<div class="stack-l"><span class="tag pri">React</span><span class="tag pri">React.Native</span><span class="tag pri">TypeScript</span><span class="tag">Design.Tokens</span><span class="tag">Turborepo</span></div>
+</div>
+
+<div class="item">
+<div class="item-top"><h3>BookMarquee</h3><span class="when tnum">2026</span></div>
+<ul><li>Chrome and Firefox extension (Manifest V3) to organize and manage Twitter/X bookmarks.</li></ul>
+<div class="stack-l"><span class="tag pri">React</span><span class="tag pri">TypeScript</span><span class="tag">Vite</span><span class="tag">Chrome/Firefox.MV3</span></div>
+</div>
+
+<div class="item">
+<div class="item-top"><h3>Wahl-O-Mat</h3><span class="when tnum">2019</span></div>
+<ul><li>Analysis of interface issues and creation of interactive Figma prototypes. Validation of new design concepts through direct user feedback.</li></ul>
+<div class="stack-l"><span class="tag pri">User.Research</span><span class="tag">Figma.Prototyping</span><span class="tag">UX.Analysis</span></div>
+</div>
+
+<h2 class="s">Expertise</h2>
+<div class="two">
+<div>
+<span class="sub-k">Core stack</span>
+<div class="stack-l">
+<span class="tag pri">TypeScript</span><span class="tag pri">JavaScript (ES6+)</span><span class="tag pri">React</span><span class="tag pri">React Native</span><span class="tag pri">Expo</span><span class="tag pri">Next.js</span><span class="tag">Redux Toolkit</span><span class="tag">REST APIs</span><span class="tag">GraphQL</span><span class="tag">Radix UI</span><span class="tag">HTML5/CSS3</span><span class="tag">Sass/SCSS</span><span class="tag">Design Systems</span><span class="tag">Git/GitHub</span>
+</div>
+<span class="sub-k">Tooling &amp; testing</span>
+<div class="stack-l">
+<span class="tag">TanStack Query</span><span class="tag">Apollo Client</span><span class="tag">Vite</span><span class="tag">Webpack</span><span class="tag">Jest</span><span class="tag">Vitest</span><span class="tag">React Testing Library</span><span class="tag">Cypress</span><span class="tag">Playwright</span><span class="tag">Storybook</span><span class="tag">pnpm Workspaces</span><span class="tag">Turborepo</span><span class="tag">Sentry</span><span class="tag">Node.js</span><span class="tag">Postman</span><span class="tag">Claude Code</span><span class="tag">Microfrontend</span><span class="tag">CI/CD pipelines</span><span class="tag">Base UI</span><span class="tag">Gluestack</span>
+</div>
+</div>
+<div>
+<span class="sub-k">Familiar with</span>
+<div class="stack-l">
+<span class="tag">Vue.js</span><span class="tag">Tailwind CSS</span><span class="tag">React Native Reanimated</span><span class="tag">i18next</span><span class="tag">Fastify</span><span class="tag">Browser Extensions (MV3)</span><span class="tag">Supabase</span><span class="tag">WebSockets</span><span class="tag">Recharts</span><span class="tag">Core Web Vitals</span><span class="tag">Docker</span><span class="tag">SQL/NoSQL</span><span class="tag">Firebase</span><span class="tag">Drizzle</span><span class="tag">SQLite</span>
+</div>
+<span class="sub-k">Languages</span>
+<dl class="rows">
+<div><dt>English</dt><dd>C1</dd></div>
+<div><dt>German</dt><dd>B2</dd></div>
+<div><dt>Arabic</dt><dd>Native</dd></div>
+</dl>
+<span class="sub-k">Interests</span>
+<p class="note">Reading, writing, chess, bouldering, football, F1, design, and photography.</p>
+</div>
+</div>
+
+<h2 class="s">Education &amp; courses</h2>
+<dl class="rows">
+<div><dt><b>Syrian Virtual University</b> — B.Sc. Information Technology</dt><dd class="tnum">2006 — 2009</dd></div>
+<div><dt><b>Tishreen University</b> — Diploma, Computer Science</dt><dd class="tnum">2002 — 2005</dd></div>
+<div><dt><b>ReDI School</b> — Creative Web Dev / React</dt><dd class="tnum">Nov 2016 — Mar 2017</dd></div>
+</dl>
+
+</doc-page>
+<script src="doc-page.js"></script>
+</body>
+</html>

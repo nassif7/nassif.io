@@ -1,23 +1,28 @@
 export const dynamic = 'force-dynamic'
 
 import { Hero } from '@/components/hero/Hero'
-import { CallToAction } from '@/components/cta/CallToAction'
+import { Services } from '@/components/sections/Services'
 import { Projects } from '@/components/sections/Projects'
+import { WorkIndex } from '@/components/sections/WorkIndex'
+import { TrackRecord } from '@/components/sections/TrackRecord'
 import { Writing } from '@/components/sections/Writing'
-import styles from './home.module.css'
+import { DarkCta } from '@/components/cta/DarkCta'
 
 export default function Home() {
   return (
-    <main className={styles.main}>
+    <main>
       <Hero />
-      <CallToAction
-        label="you have an idea"
-        heading="Let's get in touch."
-        href="mailto:n_nassif@icloud.com"
-        buttonText="Write me →"
-      />
+      <Services />
       <Projects />
+      <WorkIndex />
+      <TrackRecord />
       <Writing />
+      <DarkCta
+        num="07"
+        eyebrow="Next step"
+        heading="You have an idea. I've shipped eight years of them."
+        lead="Available for contract and full-time work from Q4 2026 — Berlin, or remote across European hours."
+      />
     </main>
   )
 }

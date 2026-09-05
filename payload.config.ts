@@ -11,6 +11,7 @@ import { Posts } from './src/collections/Posts'
 import { Projects } from './src/collections/Projects'
 import { PostCollections } from './src/collections/PostCollections'
 import { Media } from './src/collections/Media'
+import { Experience } from './src/collections/Experience'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -22,7 +23,7 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Users, Posts, Projects, PostCollections, Media],
+  collections: [Users, Posts, Projects, PostCollections, Media, Experience],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {

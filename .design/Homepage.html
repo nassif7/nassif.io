@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Nassif Nassif — Frontend Engineer, Berlin</title>
+<link rel="stylesheet" href="styles/nassif.css">
+<style>
+.hero{padding:78px 0 0}
+.hero-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:0 32px;align-items:end;padding-bottom:44px}
+.hero-l{grid-column:1/9}
+.hero-r{grid-column:9/13;border-left:1px solid var(--line);padding-left:32px}
+.hero .display{margin:26px 0 24px}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:34px}
+.facts{display:flex;flex-direction:column}
+.fact{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:11px 0;border-top:1px solid var(--line);align-items:baseline}
+.fact:first-child{border-top:none;padding-top:0}
+.fact dd{font-size:13px;color:var(--ink);font-weight:400;text-align:right}
+.portrait{width:100%;aspect-ratio:1;object-fit:cover;filter:grayscale(1) contrast(.94) brightness(1.04);mix-blend-mode:multiply;margin-bottom:26px;border:1px solid var(--line)}
+.hero-strip{border-top:1px solid var(--ink);border-bottom:1px solid var(--line);display:grid;grid-template-columns:repeat(4,1fr)}
+.hero-strip div{padding:20px 24px 22px;border-left:1px solid var(--line)}
+.hero-strip div:first-child{border-left:none;padding-left:0}
+.hero-strip strong{display:block;font-size:26px;font-weight:500;letter-spacing:-.03em;margin-bottom:4px}
+
+.caps{display:grid;grid-template-columns:repeat(3,1fr);gap:0}
+.cap{padding:0 32px;border-left:1px solid var(--line)}
+.cap:first-child{border-left:none;padding-left:0}
+.cap:last-child{padding-right:0}
+.cap h3{margin:14px 0 10px}
+.cap p{font-size:14.5px;color:var(--mid);font-weight:300;line-height:1.7}
+.cap ul{list-style:none;margin-top:20px;border-top:1px solid var(--line);display:flex;flex-direction:column}
+.cap li{font-family:var(--mono);font-size:11px;color:var(--muted);padding:9px 0;border-bottom:1px solid var(--line);display:flex;gap:10px}
+.cap li::before{content:'—';color:var(--line-2)}
+
+.case{display:grid;grid-template-columns:repeat(12,1fr);gap:0 32px;padding:44px 0;border-top:1px solid var(--line)}
+.case:first-of-type{border-top:none;padding-top:0}
+.case-img{grid-column:1/7;background:var(--paper-3);border:1px solid var(--line);overflow:hidden;aspect-ratio:16/11}
+.case-img img{width:100%;height:100%;object-fit:cover;filter:saturate(.72) contrast(.98);transition:transform .5s ease,filter .5s ease}
+.case:hover .case-img img{transform:scale(1.028);filter:saturate(1) contrast(1)}
+.case-b{grid-column:8/13;display:flex;flex-direction:column;align-items:flex-start}
+.case-b h3{font-size:31px;font-weight:500;letter-spacing:-.03em;margin:16px 0 12px;line-height:1.1}
+.case-b p{font-size:15px;color:var(--mid);font-weight:300;line-height:1.72}
+.case-meta{display:grid;grid-template-columns:1fr 1fr;gap:0 24px;width:100%;margin:26px 0 24px;border-top:1px solid var(--line)}
+.case-meta div{padding:13px 0;border-bottom:1px solid var(--line)}
+.case-meta dd{font-family:var(--mono);font-size:11.5px;color:var(--ink);margin-top:4px}
+.case-alt .case-img{grid-column:7/13;order:2}
+.case-alt .case-b{grid-column:1/6;order:1}
+.case-mobile .case-img{grid-column:1/5;aspect-ratio:9/16;display:flex;align-items:center;justify-content:center;padding:24px;background:var(--paper-3)}
+.case-mobile .case-img img{height:100%;width:auto;object-fit:contain;box-shadow:0 3px 22px rgba(24,20,16,.15)}
+.case-mobile .case-b{grid-column:6/13;justify-content:center}
+
+.tl{display:flex;flex-direction:column}
+.tl-row{display:grid;grid-template-columns:96px 1fr;gap:32px;padding:22px 0;border-top:1px solid var(--line);align-items:baseline}
+.tl-row:last-child{border-bottom:1px solid var(--line)}
+.tl-y{font-family:var(--mono);font-size:13px;font-weight:500;color:var(--rust);letter-spacing:.04em;position:relative}
+.tl-b{display:grid;grid-template-columns:1fr 1.1fr;gap:32px;align-items:baseline}
+.tl-b h3{font-size:16.5px;font-weight:500;letter-spacing:-.012em}
+.tl-b p{font-size:13.5px;color:var(--muted);font-weight:300;line-height:1.65}
+.tl-tag{font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);display:block;margin-top:5px}
+
+.cta-band .wrap{display:grid;grid-template-columns:repeat(12,1fr);gap:0 32px;padding:80px 40px;align-items:center}
+.cta-l{grid-column:1/8}
+.cta-r{grid-column:9/13;display:flex;flex-direction:column;gap:12px;align-items:stretch}
+.cta-r .btn{justify-content:space-between}
+.cta-band h2{font-size:clamp(30px,3.6vw,46px);font-weight:500;letter-spacing:-.03em;line-height:1.06;margin:20px 0 16px}
+
+footer{border-top:2px solid var(--ink);padding:52px 0 0}
+.foot-g{display:grid;grid-template-columns:repeat(12,1fr);gap:32px;padding-bottom:44px}
+.foot-brand{grid-column:1/5}
+.foot-col{grid-column:span 2}
+.foot-col:nth-of-type(2){grid-column:6/8}
+.foot-col ul{list-style:none;margin-top:14px;display:flex;flex-direction:column;gap:9px}
+.foot-col a{font-size:13.5px;color:var(--mid);font-weight:300}
+.foot-col a:hover{color:var(--ink)}
+.foot-bar{border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;padding:16px 0 22px;font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);gap:20px;flex-wrap:wrap}
+
+@media(max-width:900px){
+.hero-l,.hero-r,.case-img,.case-b,.case-alt .case-img,.case-alt .case-b,.case-mobile .case-img,.case-mobile .case-b,.cta-l,.cta-r,.foot-brand,.foot-col,.foot-col:nth-of-type(2){grid-column:1/7}
+.case-mobile .case-img{aspect-ratio:4/3;padding:18px}
+.hero-r{border-left:none;border-top:1px solid var(--line);padding-left:0;padding-top:26px;margin-top:30px}
+.portrait{max-width:150px}
+.hero-strip{grid-template-columns:repeat(2,1fr)}
+.hero-strip div{border-left:none;border-top:1px solid var(--line);padding-left:0}
+.hero-strip div:nth-child(1),.hero-strip div:nth-child(2){border-top:none}
+.caps{grid-template-columns:1fr}
+.cap{padding:0;border-left:none;border-top:1px solid var(--line);padding-top:24px;margin-top:24px}
+.cap:first-child{border-top:none;margin-top:0;padding-top:0}
+.case-img{margin-bottom:20px;order:1!important}
+.case-b{order:2!important}
+.case-meta,.tl-b{grid-template-columns:1fr}
+.tl-row{grid-template-columns:60px 1fr;gap:18px}
+.cta-band .wrap{padding:56px 22px}
+.cta-r{margin-top:28px}
+.idx-hide{display:none}
+}
+</style>
+</head>
+<body>
+
+<div class="util"><div class="wrap">
+<span><b>Berlin</b> · CET</span>
+<span class="util-r"><span><span class="dot"></span>Available for Q4 2026</span><a href="mailto:hello@nassif.pro" style="color:inherit">hello@nassif.pro</a></span>
+</div></div>
+
+<header class="mast"><div class="wrap">
+<a href="Homepage.html" class="logo">n<i>/</i>N</a><span class="logo-sub">Software Engineer</span>
+<nav class="main">
+<a href="#work" class="on">Work</a><a href="#services">Services</a><a href="#track">Track record</a><a href="#writing">Writing</a><a href="CV.html">CV</a>
+</nav>
+<a href="mailto:hello@nassif.pro" class="btn btn-fill mast-cta">Start a project</a>
+</div></header>
+
+<main>
+
+<section class="hero"><div class="wrap">
+<div class="hero-grid">
+<div class="hero-l">
+<div class="eyebrow"><span class="n">01</span>Nassif Nassif — Software Engineer</div>
+<h1 class="display">Good software shouldn't need explanations.</h1>
+<p class="lead">A systems thinker with eight years building software across corporate platforms, startups, and independent projects. I work between design and engineering, turning complex problems into simple, intuitive solutions.</p>
+<div class="hero-actions">
+<a href="#work" class="btn">View work index</a>
+<a href="CV.html" class="btn btn-ghost">Download CV</a>
+</div>
+</div>
+<div class="hero-r">
+<img src="public/avatar.png" alt="Nassif Nassif" class="portrait">
+<dl class="facts">
+<div class="fact"><dt class="meta-k">Based in</dt><dd>Berlin, Germany</dd></div>
+<div class="fact"><dt class="meta-k">Focus</dt><dd>Platform · Product · UX</dd></div>
+<div class="fact"><dt class="meta-k">Engagements</dt><dd>Contract · Full-time</dd></div>
+<div class="fact"><dt class="meta-k">Languages</dt><dd>EN C1 · DE B2 · AR native</dd></div>
+</dl>
+</div>
+</div>
+<div class="hero-strip">
+<div><strong class="tnum">8</strong><span class="meta-k">Years building software</span></div>
+<div><strong class="tnum">3</strong><span class="meta-k">Companies shipped for</span></div>
+<div><strong class="tnum">2</strong><span class="meta-k">Apps in public stores</span></div>
+<div><strong>React · RN</strong><span class="meta-k">Primary platforms</span></div>
+</div>
+</div></section>
+
+<section class="band" id="services"><div class="wrap">
+<div class="sechead">
+<div class="l"><div class="eyebrow"><span class="n">02</span>Services</div></div>
+<div class="r"><h2 class="sec">What I'm hired for.</h2><p class="lead">Three kinds of work, all the same discipline: reduce complexity, decide well, know what to leave out.</p></div>
+</div>
+<div class="caps">
+<div class="cap">
+<div class="meta-k">01 / Web</div>
+<h3>Product interfaces</h3>
+<p>Application UI, dashboards, and marketing surfaces built to hold up as the product grows — not just as the first screen ships.</p>
+<ul><li>Next.js &amp; React builds</li><li>Component libraries</li><li>Accessibility &amp; performance</li><li>CMS integration</li></ul>
+</div>
+<div class="cap">
+<div class="meta-k">02 / Systems</div>
+<h3>Design systems &amp; tooling</h3>
+<p>Consistency enforced by the type system rather than left to convention. Systems that make the correct thing the easiest thing to build.</p>
+<ul><li>Token architecture</li><li>Typed component APIs</li><li>Generation tooling</li><li>Documentation &amp; adoption</li></ul>
+</div>
+<div class="cap">
+<div class="meta-k">03 / Mobile</div>
+<h3>Mobile applications</h3>
+<p>Cross-platform iOS and Android products from first screen to store listing, including the parts nobody enjoys: auth, push, review.</p>
+<ul><li>React Native &amp; Expo</li><li>Real-time data</li><li>Push notifications</li><li>App Store submission</li></ul>
+</div>
+</div>
+</div></section>
+
+<section class="band" id="work" style="padding-top:0"><div class="wrap">
+<div class="sechead">
+<div class="l"><div class="eyebrow"><span class="n">03</span>Selected work</div></div>
+<div class="r"><h2 class="sec">Two projects, in detail.</h2><p class="lead">Client products where the constraints were real and the decisions are worth reading about.</p></div>
+<div class="x"><a href="#index" class="meta" style="color:var(--rust)">Full index ↓</a></div>
+</div>
+
+<a href="Case Study - Marineria.html" class="case case-mobile" style="color:inherit">
+<div class="case-img"><img src="public/projects/marineria/marineria1.avif" alt="Marineria.it mobile app screens"></div>
+<div class="case-b">
+<div class="eyebrow"><span class="n">01</span>Client work · 2026</div>
+<h3>Marineria.it</h3>
+<p>A mobile app for an Italian maritime recruitment platform. Three audiences — guests, crew, and recruiters — on one codebase, with real-time listings and honest rejection feedback instead of silence.</p>
+<dl class="case-meta">
+<div><dt class="meta-k">Role</dt><dd>Lead frontend</dd></div>
+<div><dt class="meta-k">Platforms</dt><dd>iOS · Android</dd></div>
+<div><dt class="meta-k">Stack</dt><dd>TypeScript · React Native · Expo</dd></div>
+<div><dt class="meta-k">Status</dt><dd>Shipped</dd></div>
+</dl>
+<span class="btn btn-ghost">Read case study →</span>
+</div>
+</a>
+
+<a href="Case Study - Marineria.html" class="case case-alt" style="color:inherit">
+<div class="case-img"><img src="public/projects/bookmarquee/bookmarquee01.avif" alt="BookMarquee Chrome extension side panel"></div>
+<div class="case-b">
+<div class="eyebrow"><span class="n">02</span>Side project · 2026</div>
+<h3>BookMarquee</h3>
+<p>X gives third parties no bookmark API, so the extension intercepts the browser's own GraphQL traffic, syncs incrementally, and stores everything locally. Zero backend, no account, nothing leaves the machine.</p>
+<dl class="case-meta">
+<div><dt class="meta-k">Role</dt><dd>Sole designer &amp; engineer</dd></div>
+<div><dt class="meta-k">Surface</dt><dd>Chrome Side Panel</dd></div>
+<div><dt class="meta-k">Stack</dt><dd>React · TypeScript · Vite · MV3</dd></div>
+<div><dt class="meta-k">Status</dt><dd>On the Chrome Web Store</dd></div>
+</dl>
+<span class="btn btn-ghost">Read case study →</span>
+</div>
+</a>
+</div></section>
+
+<section class="band" id="index" style="padding-top:0"><div class="wrap">
+<div class="sechead">
+<div class="l"><div class="eyebrow"><span class="n">04</span>Work index</div></div>
+<div class="r"><h2 class="sec">Everything, on one page.</h2></div>
+<div class="x"><span class="meta">7 entries</span></div>
+</div>
+<table class="idx">
+<thead><tr><th class="ix-y">Year</th><th>Project</th><th class="idx-hide">Type</th><th class="idx-hide">Stack</th><th>Status</th><th></th></tr></thead>
+<tbody>
+<tr><td class="ix-y">Ongoing</td><td><div class="ix-n">Keen Studio</div><div class="ix-d">Cross-platform UI generation system enforcing design decisions at the type level via generateTheme() and createUI(). Component library and theme engine live; CLI and visual configurator in development.</div></td><td class="idx-hide"><span class="ix-t">Dev tools</span></td><td class="idx-hide ix-s">TypeScript · React · RN</td><td><span class="pill wip">In progress</span></td><td><span class="ix-arrow">↗</span></td></tr>
+<tr><td class="ix-y tnum">2026</td><td><div class="ix-n">Discrep</div><div class="ix-d">A framework and tool for closing the gap between stated values and actual behaviour — by showing the pattern rather than prescribing the fix.</div></td><td class="idx-hide"><span class="ix-t">Concept</span></td><td class="idx-hide ix-s">—</td><td><span class="pill">Position paper</span></td><td><span class="ix-arrow">↗</span></td></tr>
+<tr><td class="ix-y tnum">2026</td><td><div class="ix-n">BookMarquee</div><div class="ix-d">A Chrome extension turning X bookmarks into a searchable, local-only knowledge base. No backend, no account.</div></td><td class="idx-hide"><span class="ix-t">Side project</span></td><td class="idx-hide ix-s">React · TS · Vite · MV3</td><td><span class="pill live">Published</span></td><td><span class="ix-arrow">↗</span></td></tr>
+<tr><td class="ix-y tnum">2026</td><td><div class="ix-n">oneMore</div><div class="ix-d">A cigarette tracker built to make you notice, not to make you quit. No streaks, no lectures.</div></td><td class="idx-hide"><span class="ix-t">Side project</span></td><td class="idx-hide ix-s">TypeScript · React Native · Expo</td><td><span class="pill live">App Store</span></td><td><span class="ix-arrow">↗</span></td></tr>
+<tr><td class="ix-y tnum">2026</td><td><div class="ix-n">Marineria.it</div><div class="ix-d">Mobile app for a maritime recruitment platform. Real-time listings, crew profiles, recruiter tooling, iOS and Android.</div></td><td class="idx-hide"><span class="ix-t">Client work</span></td><td class="idx-hide ix-s">TypeScript · React Native · Expo</td><td><span class="pill live">Shipped</span></td><td><span class="ix-arrow">↗</span></td></tr>
+<tr><td class="ix-y tnum">2019</td><td><div class="ix-n">Wahl-O-Mat</div><div class="ix-d">Interface analysis and interactive Figma prototypes for Germany’s voting-advice tool, validated through direct user feedback.</div></td><td class="idx-hide"><span class="ix-t">UX research</span></td><td class="idx-hide ix-s">Figma · User research</td><td><span class="pill">Delivered</span></td><td><span class="ix-arrow">↗</span></td></tr>
+<tr><td class="ix-y tnum">2023</td><td><div class="ix-n">Moviemiento</div><div class="ix-d">Custom bilingual WordPress theme for a Berlin cinema non-profit that screens films from bicycles. Hand-written PHP and CSS, no page builder.</div></td><td class="idx-hide"><span class="ix-t">Client work</span></td><td class="idx-hide ix-s">PHP · WordPress</td><td><span class="pill live">Live</span></td><td><span class="ix-arrow">↗</span></td></tr>
+</tbody>
+</table>
+</div></section>
+
+<section class="band" id="track" style="padding-top:0"><div class="wrap">
+<div class="sechead">
+<div class="l"><div class="eyebrow"><span class="n">05</span>Track record</div></div>
+<div class="r"><h2 class="sec">What shipped, and when.</h2></div>
+</div>
+<div class="tl">
+<div class="tl-row"><div class="tl-y tnum">2026</div><div class="tl-b"><div><h3>Three products shipped independently</h3><span class="tl-tag">Marineria.it · oneMore · BookMarquee</span></div><p>A client mobile app on both stores, an App Store release of my own, and a cross-browser extension — designed, built, and submitted end to end.</p></div></div>
+<div class="tl-row"><div class="tl-y">Ongoing</div><div class="tl-b"><div><h3>Keen Studio in development</h3><span class="tl-tag">Design systems · Product</span></div><p>Component library and theme engine live; CLI and visual configurator in active development.</p></div></div>
+<div class="tl-row"><div class="tl-y tnum">2022–25</div><div class="tl-b"><div><h3>Software Developer UI/UX</h3><span class="tl-tag">Verbraucherzentrale Bundesverband</span></div><p>Bridged design and backend on a national consumer-protection platform; made complex forms configurable and dynamic.</p></div></div>
+<div class="tl-row"><div class="tl-y tnum">2019–22</div><div class="tl-b"><div><h3>Software Developer</h3><span class="tl-tag">LQ Enterprise</span></div><p>Built the central UI component library used across multiple product teams, plus dynamic form generators and real-time features.</p></div></div>
+<div class="tl-row"><div class="tl-y tnum">2017–19</div><div class="tl-b"><div><h3>Software Engineer</h3><span class="tl-tag">kloeckner.i</span></div><p>Shipped web applications across Phoenix, Rails, Ember, and Vue.js; introduced automated testing and led production releases.</p></div></div>
+<div class="tl-row"><div class="tl-y tnum">2017</div><div class="tl-b"><div><h3>Volunteer instructor</h3><span class="tl-tag">ReDI School of Digital Integration</span></div><p>Taught web development fundamentals to students with refugee and migration backgrounds.</p></div></div>
+</div>
+</div></section>
+
+<section class="band" id="writing" style="padding-top:0"><div class="wrap">
+<div class="sechead">
+<div class="l"><div class="eyebrow"><span class="n">06</span>Writing</div></div>
+<div class="r"><h2 class="sec">Notes on the work.</h2><p class="lead">Interface ethics, engineering culture, and the occasional detour. Written slowly.</p></div>
+<div class="x"><span class="meta">4 posts</span></div>
+</div>
+<table class="idx">
+<thead><tr><th class="ix-y">Date</th><th>Title</th><th class="idx-hide">Topic</th><th></th></tr></thead>
+<tbody>
+<tr><td class="ix-y tnum">May 2026</td><td><div class="ix-n">Croissant as a statement</div><div class="ix-d">Camus asks us to imagine Sisyphus happy. It sounds simple until you try to live it.</div></td><td class="idx-hide"><span class="ix-t">Philosophy</span></td><td><span class="ix-arrow">↗</span></td></tr>
+<tr><td class="ix-y tnum">Mar 2025</td><td><div class="ix-n">On the politics of interface design</div><div class="ix-d">Every button is a decision. Every form is a stance. Design is never neutral.</div></td><td class="idx-hide"><span class="ix-t">Politics</span></td><td><span class="ix-arrow">↗</span></td></tr>
+<tr><td class="ix-y tnum">Feb 2025</td><td><div class="ix-n">What it means to finish something</div><div class="ix-d">I have a graveyard of half-built things. I think most developers do.</div></td><td class="idx-hide"><span class="ix-t">Philosophy</span></td><td><span class="ix-arrow">↗</span></td></tr>
+<tr><td class="ix-y tnum">Jan 2025</td><td><div class="ix-n">The frontend is never just frontend</div><div class="ix-d">You can't separate the UI from the system it lives in. Anyone who says otherwise hasn't shipped enough.</div></td><td class="idx-hide"><span class="ix-t">Engineering</span></td><td><span class="ix-arrow">↗</span></td></tr>
+</tbody>
+</table>
+</div></section>
+
+<section class="dark cta-band"><div class="wrap">
+<div class="cta-l">
+<div class="eyebrow"><span class="n">07</span>Next step</div>
+<h2>You have an idea. I've shipped eight years of them.</h2>
+<p class="lead">Available for contract and full-time work from Q4 2026 — Berlin, or remote across European hours.</p>
+</div>
+<div class="cta-r">
+<a href="mailto:hello@nassif.pro" class="btn btn-inv">Write me <span>→</span></a>
+<a href="CV.html" class="btn btn-inv">Download CV <span>↓</span></a>
+</div>
+</div></section>
+
+</main>
+
+<footer><div class="wrap">
+<div class="foot-g">
+<div class="foot-brand">
+<a href="Homepage.html" class="logo">n<i>/</i>N</a>
+<p class="body-c" style="font-size:13.5px;margin-top:14px;max-width:24em">Software engineer in Berlin, building interfaces that feel obvious.</p>
+</div>
+<div class="foot-col"><div class="meta-k">Site</div><ul><li><a href="#work">Selected work</a></li><li><a href="#index">Work index</a></li><li><a href="#services">Services</a></li><li><a href="#writing">Writing</a></li><li><a href="CV.html">CV</a></li></ul></div>
+<div class="foot-col"><div class="meta-k">Elsewhere</div><ul><li><a href="https://github.com/nassif7">GitHub</a></li><li><a href="https://linkedin.com/in/nassif">LinkedIn</a></li><li><a href="mailto:hello@nassif.pro">Email</a></li></ul></div>
+<div class="foot-col" style="grid-column:11/13"><div class="meta-k">Status</div><ul><li><span class="body-c" style="font-size:13.5px"><span class="dot"></span>Available Q4 2026</span></li><li><span class="body-c" style="font-size:13.5px">Berlin · CET</span></li></ul></div>
+</div>
+<div class="foot-bar">
+<span>n|N · Nassif Nassif · Berlin · 2026</span>
+<span>Professional button-maker.</span>
+</div>
+</div></footer>
+
+</body>
+</html>

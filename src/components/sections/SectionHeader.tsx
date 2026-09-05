@@ -1,22 +1,29 @@
 import styles from './section.module.css'
 
 interface SectionHeaderProps {
-  label: string
-  linkHref: string
-  linkText: string
+  num: string
+  eyebrow: string
   title: string
-  intro: string
+  lead?: string
+  meta?: string
+  metaHref?: string
 }
 
-export function SectionHeader({ label, linkHref, linkText, title, intro }: SectionHeaderProps) {
+export function SectionHeader({ num, eyebrow, title, lead, meta, metaHref }: SectionHeaderProps) {
   return (
-    <>
-      <div className={styles.sectionHeader}>
-        <span className={styles.label}>{label}</span>
-        <a href={linkHref} className={styles.seeAll}>{linkText}</a>
+    <div className={styles.sechead}>
+      <div className={styles.l}>
+        <div className="eyebrow"><span className="n">{num}</span>{eyebrow}</div>
       </div>
-      <h2 className={styles.heading}>{title}</h2>
-      <p className={styles.intro}>{intro}</p>
-    </>
+      <div className={styles.r}>
+        <h2 className="sec">{title}</h2>
+        {lead && <p className="lead">{lead}</p>}
+      </div>
+      {meta && (
+        <div className={styles.x}>
+          {metaHref ? <a href={metaHref} className="meta">{meta}</a> : <span className="meta">{meta}</span>}
+        </div>
+      )}
+    </div>
   )
 }

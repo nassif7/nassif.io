@@ -25,6 +25,14 @@ export type ProjectMeta = {
   featuredOrder: number
   wip: boolean
   brainstorm: boolean
+  year: string
+  client: string | null
+  role: string | null
+  platforms: string | null
+  status: string
+  statusVariant: 'default' | 'live' | 'wip'
+  order: number
+  caseStudy: boolean
 }
 
 export type Project = ProjectMeta & {
@@ -59,6 +67,14 @@ function normalizeProject(doc: any): ProjectMeta {
     featuredOrder: doc.featuredOrder ?? 0,
     wip: doc.wip ?? false,
     brainstorm: doc.brainstorm ?? false,
+    year: doc.year ?? '',
+    client: doc.client ?? null,
+    role: doc.role ?? null,
+    platforms: doc.platforms ?? null,
+    status: doc.status ?? '',
+    statusVariant: doc.statusVariant ?? 'default',
+    order: doc.order ?? 0,
+    caseStudy: doc.caseStudy ?? false,
   }
 }
 
@@ -67,7 +83,7 @@ export async function getAllProjects(): Promise<ProjectMeta[]> {
   const { docs } = await payload.find({
     collection: 'projects',
     where: { hidden: { not_equals: true } },
-    sort: 'createdAt',
+    sort: 'order',
     depth: 1,
   })
   return docs.map(normalizeProject)
