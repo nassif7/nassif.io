@@ -1,7 +1,8 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import clsx from 'clsx'
+import { useMobileNavItems } from './MobileNavContext'
 import styles from './Masthead.module.css'
 
 const LINKS = [
@@ -14,9 +15,24 @@ const LINKS = [
 
 const SECTION_IDS = ['work', 'services', 'index', 'track', 'writing']
 
+const HOME_NAV_ITEMS = [
+  { num: '01', label: 'Home', href: '/#home' },
+  { num: '02', label: 'Services', href: '/#services' },
+  { num: '03', label: 'Selected work', href: '/#work' },
+  { num: '04', label: 'Work index', href: '/#index' },
+  { num: '05', label: 'Track record', href: '/#track' },
+  { num: '06', label: 'Writing', href: '/#writing' },
+]
+
+const PANEL_ID = 'mobile-nav-panel'
+
 export function Masthead() {
   const [active, setActive] = useState('')
   const [menuOpen, setMenuOpen] = useState(false)
+  const toggleRef = useRef<HTMLButtonElement>(null)
+  const firstLinkRef = useRef<HTMLAnchorElement>(null)
+  const pageNavItems = useMobileNavItems()
+  const navItems = pageNavItems ?? HOME_NAV_ITEMS
 
   useEffect(() => {
     const onScroll = () => {
@@ -36,6 +52,33 @@ export function Masthead() {
     document.body.style.overflow = menuOpen ? 'hidden' : ''
     return () => { document.body.style.overflow = '' }
   }, [menuOpen])
+
+  useEffect(() => {
+    if (menuOpen) firstLinkRef.current?.focus()
+  }, [menuOpen])
+
+  useEffect(() => {
+    if (!menuOpen) return
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') closeMenu()
+    }
+    window.addEventListener('keydown', onKeyDown)
+    return () => window.removeEventListener('keydown', onKeyDown)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [menuOpen])
+
+  useEffect(() => {
+    const onResize = () => {
+      if (window.innerWidth > 900) setMenuOpen(false)
+    }
+    window.addEventListener('resize', onResize)
+    return () => window.removeEventListener('resize', onResize)
+  }, [])
+
+  const closeMenu = () => {
+    setMenuOpen(false)
+    toggleRef.current?.focus()
+  }
 
   const isOn = (href: string) => {
     if (href === '/cv') return false
@@ -63,33 +106,61 @@ export function Masthead() {
           </a>
 
           <button
+            ref={toggleRef}
             type="button"
             className={styles.menuBtn}
             aria-label={menuOpen ? 'Close menu' : 'Open menu'}
             aria-expanded={menuOpen}
+            aria-controls={PANEL_ID}
             onClick={() => setMenuOpen(o => !o)}
           >
-            <span className={clsx(styles.menuIcon, { [styles.menuIconOpen]: menuOpen })} />
+            <span className={styles.menuIcon} aria-hidden="true">
+              <span />
+              <span />
+            </span>
           </button>
         </div>
       </header>
 
       {menuOpen && (
-        <div className={styles.drawer}>
-          <nav className={styles.drawerNav}>
-            {LINKS.map(l => (
-              <a key={l.href} href={l.href} onClick={() => setMenuOpen(false)}>
-                {l.label}
+        <div id={PANEL_ID} className={styles.panel} role="dialog" aria-modal="true" aria-label="Site navigation">
+          <div className={clsx(styles.panelHead, 'wrap')}>
+            <a href="/" className="logo" onClick={closeMenu}>n<i>/</i>N</a>
+            <button type="button" className={styles.closeBtn} aria-label="Close menu" onClick={closeMenu}>
+              <span className={styles.closeIcon} aria-hidden="true" />
+            </button>
+          </div>
+
+          <div className={clsx(styles.panelBody, 'wrap')}>
+            <nav className={styles.panelNav}>
+              {navItems.map((item, i) => (
+                <a
+                  key={item.href + item.label}
+                  href={item.href}
+                  ref={i === 0 ? firstLinkRef : undefined}
+                  onClick={closeMenu}
+                >
+                  {item.num && <span className={styles.panelNum}>{item.num}</span>}
+                  {item.label}
+                </a>
+              ))}
+            </nav>
+
+            <div className={styles.panelCtas}>
+              <a href="mailto:hello@nassif.pro" className="btn btn-fill" onClick={closeMenu}>
+                Start a project
               </a>
-            ))}
-          </nav>
-          <a
-            href="mailto:hello@nassif.pro"
-            className="btn btn-fill"
-            onClick={() => setMenuOpen(false)}
-          >
-            Start a project
-          </a>
+              <a href="/cv" className="btn btn-ghost" onClick={closeMenu}>
+                Download CV
+              </a>
+            </div>
+
+            <div className={styles.panelInfo}>
+              <span><b>Berlin</b> · CET</span>
+              <span className={styles.panelAvail}><span className={styles.dot} />Available for Q4 2026</span>
+              <a href="mailto:hello@nassif.pro">hello@nassif.pro</a>
+            </div>
+          </div>
         </div>
       )}
     </>

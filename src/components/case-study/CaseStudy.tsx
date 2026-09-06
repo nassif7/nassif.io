@@ -3,6 +3,7 @@
 import { Fragment, useEffect, useState } from 'react'
 import Link from 'next/link'
 import { DarkCta } from '@/components/cta/DarkCta'
+import { useSetMobileNav } from '@/components/masthead/MobileNavContext'
 import type { ProjectMeta } from '@/lib/projects'
 import { marineriaCaseStudy } from '@/content/case-studies/marineria'
 import styles from './CaseStudy.module.css'
@@ -27,6 +28,15 @@ interface Props {
 export function CaseStudy({ project }: Props) {
   const cs = CASE_STUDIES[project.slug]
   const [active, setActive] = useState(cs?.sections[0]?.id ?? '')
+
+  useSetMobileNav(
+    cs
+      ? [
+          ...cs.sections.map(s => ({ num: s.num, label: s.eyebrow, href: `#${s.id}` })),
+          { num: '', label: 'Work index', href: '/#index' },
+        ]
+      : []
+  )
 
   useEffect(() => {
     if (!cs) return

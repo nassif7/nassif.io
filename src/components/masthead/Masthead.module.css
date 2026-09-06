@@ -45,14 +45,14 @@
 }
 .main a:hover { color: var(--ink); }
 .main a.on { color: var(--ink); font-weight: 500; }
-.on { color: var(--ink); font-weight: 500; }
 
 .cta { margin-left: 18px; }
 
+/* ---- toggle: two unequal rules in a 44px hit area ---- */
 .menuBtn {
   display: none;
-  width: 28px;
-  height: 28px;
+  width: 44px;
+  height: 44px;
   border: none;
   background: none;
   cursor: pointer;
@@ -61,49 +61,134 @@
   justify-content: center;
   flex-shrink: 0;
 }
-.menuIcon,
-.menuIcon::before,
-.menuIcon::after {
-  display: block;
-  width: 20px;
-  height: 1px;
-  background: var(--ink);
-  transition: transform .2s, opacity .2s;
-}
-.menuIcon { position: relative; }
-.menuIcon::before,
-.menuIcon::after { content: ''; position: absolute; left: 0; }
-.menuIcon::before { top: -6px; }
-.menuIcon::after { top: 6px; }
-.menuIconOpen { background: transparent; }
-.menuIconOpen::before { transform: translateY(6px) rotate(45deg); }
-.menuIconOpen::after { transform: translateY(-6px) rotate(-45deg); }
-
-.drawer {
-  position: fixed;
-  top: 66px;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: var(--paper);
-  border-top: 1px solid var(--line);
-  padding: 28px var(--gut);
+.menuIcon {
   display: flex;
   flex-direction: column;
-  gap: 28px;
-  z-index: 49;
-  overflow-y: auto;
+  align-items: flex-end;
+  gap: 6px;
 }
-.drawerNav { display: flex; flex-direction: column; }
-.drawerNav a {
-  font-size: 20px;
-  font-weight: 500;
-  color: var(--ink);
-  padding: 16px 0;
+.menuIcon span {
+  display: block;
+  height: 1.5px;
+  background: var(--ink);
+}
+.menuIcon span:first-child { width: 22px; }
+.menuIcon span:last-child { width: 14px; }
+
+.closeBtn {
+  width: 44px;
+  height: 44px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.closeIcon { position: relative; width: 20px; height: 20px; }
+.closeIcon::before, .closeIcon::after {
+  content: '';
+  position: absolute;
+  top: 50%; left: 0;
+  width: 100%; height: 1.5px;
+  background: var(--ink);
+}
+.closeIcon::before { transform: rotate(45deg); }
+.closeIcon::after { transform: rotate(-45deg); }
+
+/* ---- full-screen mobile nav panel ---- */
+.panel {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  background: var(--paper);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  animation: panelIn .18s ease-out;
+}
+@keyframes panelIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.panelHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 66px;
+  flex-shrink: 0;
   border-bottom: 1px solid var(--line);
 }
-.drawer :global(.btn-fill) {
-  align-self: flex-start;
+
+.panelBody {
+  display: flex;
+  flex-direction: column;
+  padding-top: 12px;
+  padding-bottom: 40px;
+}
+
+.panelNav {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--ink);
+}
+.panelNav a {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  font-size: 26px;
+  font-weight: 500;
+  letter-spacing: -.015em;
+  color: var(--ink);
+  padding: 18px 0;
+  border-bottom: 1px solid var(--line);
+}
+.panelNum {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.panelCtas {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 28px;
+}
+.panelCtas :global(.btn) { justify-content: center; }
+
+.panelInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 32px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.panelInfo b { font-weight: 500; color: var(--mid); }
+.panelInfo a { color: var(--muted); }
+.panelAvail { display: flex; align-items: center; }
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #4E7A3C;
+  display: inline-block;
+  margin-right: 8px;
+}
+
+@media (min-width: 901px) {
+  .panel { display: none; }
 }
 
 @media (max-width: 1120px) {
@@ -113,11 +198,11 @@
 }
 
 @media (max-width: 900px) {
-  .main { display: none; }
-  .mast .cta { display: none; }
+  .main, .cta { display: none; }
   .menuBtn { display: flex; }
 }
 
-@media (min-width: 901px) {
-  .drawer { display: none; }
+@media (max-width: 560px) {
+  .mast :global(.wrap) { height: 58px; }
+  .panelHead { height: 58px; }
 }

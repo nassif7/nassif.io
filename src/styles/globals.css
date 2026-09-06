@@ -22,7 +22,7 @@
   --maxw: 1240px;
 }
 
-html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
 
 body {
   font-family: var(--font-sans);
@@ -31,11 +31,18 @@ body {
   font-size: 16px;
   line-height: 1.65;
   text-wrap: pretty;
+  overflow-x: hidden;
 }
 
 a { color: var(--accent); text-decoration: none; transition: color .15s; }
 a:hover { color: var(--ink); }
 img { display: block; max-width: 100%; }
+
+/* anchor targets sit under the sticky masthead */
+section[id] { scroll-margin-top: 78px; }
+@media (max-width: 560px) {
+  section[id] { scroll-margin-top: 66px; }
+}
 
 /* ---- structure ---- */
 .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 var(--gut); }
@@ -62,8 +69,8 @@ img { display: block; max-width: 100%; }
   line-height: 1;
   text-wrap: balance;
 }
-@media (max-width: 480px) {
-  .display { font-size: clamp(32px, 9.5vw, 42px); }
+@media (max-width: 560px) {
+  .display { font-size: clamp(33px, 9vw, 42px); }
 }
 h2.sec {
   font-size: clamp(27px, 3vw, 40px);
@@ -119,6 +126,10 @@ h3 { font-size: 19px; font-weight: 600; letter-spacing: -.015em; line-height: 1.
   transition: background .18s, color .18s, border-color .18s;
 }
 .btn:hover { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+@media (max-width: 560px) {
+  /* 15px vertical padding + line-height clears the 44px touch-target minimum */
+  .btn { padding: 15px 18px; }
+}
 .btn-fill { background: var(--ink); color: var(--paper); }
 .btn-fill:hover { background: var(--accent); border-color: var(--accent); color: #fff; }
 .btn-ghost { border-color: var(--line-2); color: var(--mid); }
@@ -127,6 +138,7 @@ h3 { font-size: 19px; font-weight: 600; letter-spacing: -.015em; line-height: 1.
 .btn-inv:hover { background: var(--paper); color: var(--ink); border-color: var(--paper); }
 
 /* ---- index tables (work index, writing) ---- */
+.idx-scroll { overflow-x: auto; }
 table.idx { width: 100%; border-collapse: collapse; }
 table.idx th {
   font-family: var(--font-mono);
@@ -145,7 +157,7 @@ table.idx tr:hover .ix-n { color: var(--ink); }
 table.idx tr:hover .ix-arrow { color: var(--accent); transform: translate(3px, -3px); }
 .ix-y { font-family: var(--font-mono); font-size: 12px; color: var(--muted); width: 70px; }
 .ix-n { font-size: 17px; font-weight: 500; letter-spacing: -.018em; color: var(--ink); transition: color .15s; }
-.ix-d { font-size: 13.5px; color: var(--muted); font-weight: 300; margin-top: 3px; max-width: 44em; }
+.ix-d { font-size: 13.5px; color: var(--muted); font-weight: 300; margin-top: 3px; max-width: 44em; overflow-wrap: anywhere; }
 .ix-t { font-family: var(--font-mono); font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); white-space: nowrap; }
 .ix-s { font-family: var(--font-mono); font-size: 11px; color: var(--mid); }
 .ix-arrow { color: var(--line-2); font-size: 15px; display: inline-block; transition: transform .2s, color .15s; text-align: right; }
@@ -175,4 +187,32 @@ table.idx tr:hover .ix-arrow { color: var(--accent); transform: translate(3px, -
 @media (max-width: 900px) {
   :root { --gut: 22px; }
   .idx-hide { display: none; }
+}
+
+@media (max-width: 560px) {
+  :root { --gut: 18px; }
+
+  /* A 6-column table can't survive 390px. Restructure each row into a
+     two-line card: year + status/type on line one, name + description
+     spanning line two. Target by content (:has), not column position, so
+     the same rules serve the work index (6 cols) and writing (4 cols). */
+  .idx-scroll { overflow-x: visible; }
+  table.idx thead { display: none; }
+  table.idx, table.idx tbody, table.idx tr, table.idx td { display: block; width: auto; }
+  table.idx tr {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: baseline;
+    row-gap: 6px;
+    column-gap: 12px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  table.idx td { padding: 0; border-bottom: none; grid-row: 1; }
+  /* re-hidden at higher specificity than the `display:block` rule above */
+  table.idx td.idx-hide { display: none; }
+  table.idx td:has(.ix-y) { grid-column: 1; }
+  table.idx td:has(.pill) { grid-column: 3; justify-self: end; }
+  table.idx td:has(.ix-arrow) { display: none; }
+  table.idx td:has(.ix-n) { grid-column: 1 / -1; grid-row: 2; }
 }

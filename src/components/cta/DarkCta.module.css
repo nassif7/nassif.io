@@ -25,6 +25,6 @@
 
 @media (max-width: 900px) {
   .wrap { grid-template-columns: repeat(6, 1fr); padding: 56px 22px; }
-  .l, .r { grid-column: 1 / 7; }
+  .l, .r { grid-column: 1 / -1; }
   .r { margin-top: 28px; }
 }

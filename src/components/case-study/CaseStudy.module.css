@@ -107,7 +107,8 @@
 .nextR { grid-column: 10 / 13; justify-self: end; }
 
 @media (max-width: 900px) {
-  .t, .x, .aside, .main, .nextL, .nextR { grid-column: 1 / 7; }
+  .top, .body, .next :global(.wrap) { grid-template-columns: repeat(6, 1fr); }
+  .t, .x, .aside, .main, .nextL, .nextR { grid-column: 1 / -1; }
   .x { margin-top: 30px; }
   .aside { position: static; display: none; }
   .body { padding-top: 52px; }
@@ -118,4 +119,10 @@
   .spec, .outs { grid-template-columns: 1fr; }
   .outs div { border-left: none; padding-left: 0; }
   .nextR { justify-self: start; margin-top: 20px; }
+}
+
+@media (max-width: 560px) {
+  .hero { aspect-ratio: 3 / 4; padding: 20px; }
+  .hero img { max-width: 100%; }
+  .hero img:not(:first-child) { display: none; }
 }

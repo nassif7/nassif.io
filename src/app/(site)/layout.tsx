@@ -6,6 +6,7 @@ import { SpeedInsights } from '@vercel/speed-insights/next'
 import { PostHogProvider } from '@/components/analytics/PostHogProvider'
 import { UtilityBar } from '@/components/utilitybar/UtilityBar'
 import { Masthead } from '@/components/masthead/Masthead'
+import { MobileNavProvider } from '@/components/masthead/MobileNavContext'
 import { Footer } from '@/components/sections/Footer'
 import styles from './site.module.css'
 
@@ -33,12 +34,14 @@ export default function SiteLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className={`${dmSans.variable} ${dmMono.variable}`}>
       <body>
         <PostHogProvider>
-          <div className={styles.wrapper}>
-            <UtilityBar />
-            <Masthead />
-            {children}
-            <Footer />
-          </div>
+          <MobileNavProvider>
+            <div className={styles.wrapper}>
+              <UtilityBar />
+              <Masthead />
+              {children}
+              <Footer />
+            </div>
+          </MobileNavProvider>
         </PostHogProvider>
         <Analytics />
         <SpeedInsights />

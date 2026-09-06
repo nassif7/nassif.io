@@ -16,33 +16,35 @@ export async function Writing() {
           lead="Interface ethics, engineering culture, and the occasional detour. Written slowly."
           meta={`${posts.length} ${posts.length === 1 ? 'post' : 'posts'}`}
         />
-        <table className="idx">
-          <thead>
-            <tr>
-              <th className="ix-y">Date</th>
-              <th>Title</th>
-              <th className="idx-hide">Topic</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            {posts.map(post => (
-              <tr key={post.slug}>
-                <td className="ix-y">
-                  {new Date(post.date).toLocaleDateString('en-GB', { month: 'short', year: 'numeric' })}
-                </td>
-                <td>
-                  <Link href={`/blog/${post.slug}`}>
-                    <div className="ix-n">{post.title}</div>
-                    <div className="ix-d">{post.excerpt}</div>
-                  </Link>
-                </td>
-                <td className="idx-hide"><span className="ix-t">{post.tags?.[0] ?? ''}</span></td>
-                <td><span className="ix-arrow">↗</span></td>
+        <div className="idx-scroll">
+          <table className="idx">
+            <thead>
+              <tr>
+                <th className="ix-y">Date</th>
+                <th>Title</th>
+                <th className="idx-hide">Topic</th>
+                <th></th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {posts.map(post => (
+                <tr key={post.slug}>
+                  <td className="ix-y">
+                    {new Date(post.date).toLocaleDateString('en-GB', { month: 'short', year: 'numeric' })}
+                  </td>
+                  <td>
+                    <Link href={`/blog/${post.slug}`}>
+                      <div className="ix-n">{post.title}</div>
+                      <div className="ix-d">{post.excerpt}</div>
+                    </Link>
+                  </td>
+                  <td className="idx-hide"><span className="ix-t">{post.tags?.[0] ?? ''}</span></td>
+                  <td><span className="ix-arrow">↗</span></td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     </section>
   )

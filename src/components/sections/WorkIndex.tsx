@@ -18,35 +18,37 @@ export async function WorkIndex() {
           title="Everything, on one page."
           meta={`${projects.length} entries`}
         />
-        <table className="idx">
-          <thead>
-            <tr>
-              <th className="ix-y">Year</th>
-              <th>Project</th>
-              <th className="idx-hide">Type</th>
-              <th className="idx-hide">Stack</th>
-              <th>Status</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            {projects.map(p => (
-              <tr key={p.slug}>
-                <td className={clsx('ix-y', /^\d+$/.test(p.year) && 'tnum')}>{p.year}</td>
-                <td>
-                  <Link href={`/projects/${p.slug}`}>
-                    <div className="ix-n">{p.name}</div>
-                    <div className="ix-d">{p.desc}</div>
-                  </Link>
-                </td>
-                <td className="idx-hide"><span className="ix-t">{p.type}</span></td>
-                <td className="idx-hide ix-s">{p.stack.join(' · ') || '—'}</td>
-                <td><span className={clsx('pill', p.statusVariant !== 'default' && p.statusVariant)}>{p.status}</span></td>
-                <td><span className="ix-arrow">↗</span></td>
+        <div className="idx-scroll">
+          <table className="idx">
+            <thead>
+              <tr>
+                <th className="ix-y">Year</th>
+                <th>Project</th>
+                <th className="idx-hide">Type</th>
+                <th className="idx-hide">Stack</th>
+                <th>Status</th>
+                <th></th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {projects.map(p => (
+                <tr key={p.slug}>
+                  <td className={clsx('ix-y', /^\d+$/.test(p.year) && 'tnum')}>{p.year}</td>
+                  <td>
+                    <Link href={`/projects/${p.slug}`}>
+                      <div className="ix-n">{p.name}</div>
+                      <div className="ix-d">{p.desc}</div>
+                    </Link>
+                  </td>
+                  <td className="idx-hide"><span className="ix-t">{p.type}</span></td>
+                  <td className="idx-hide ix-s">{p.stack.join(' · ') || '—'}</td>
+                  <td><span className={clsx('pill', p.statusVariant !== 'default' && p.statusVariant)}>{p.status}</span></td>
+                  <td><span className="ix-arrow">↗</span></td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     </section>
   )

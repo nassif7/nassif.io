@@ -60,13 +60,19 @@
 .caseMobile .caseB { grid-column: 6 / 13; justify-content: center; }
 
 @media (max-width: 900px) {
+  .case { grid-template-columns: repeat(6, 1fr); }
   .caseImg, .caseB,
   .caseAlt .caseImg, .caseAlt .caseB,
   .caseMobile .caseImg, .caseMobile .caseB {
-    grid-column: 1 / 7;
+    grid-column: 1 / -1;
   }
   .caseMobile .caseImg { aspect-ratio: 4 / 3; padding: 18px; }
   .caseImg { margin-bottom: 20px; order: 1 !important; }
   .caseB { order: 2 !important; }
   .caseMeta { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 560px) {
+  /* taller frame keeps the portrait phone screenshot legible */
+  .caseMobile .caseImg { aspect-ratio: 4 / 5; }
 }

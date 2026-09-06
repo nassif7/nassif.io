@@ -69,5 +69,11 @@
 
 @media (max-width: 900px) {
   .grid { grid-template-columns: repeat(6, 1fr); }
-  .brand, .col, .col:nth-of-type(2), .status { grid-column: 1 / 7; }
+  .brand, .col, .col:nth-of-type(2), .status { grid-column: 1 / -1; }
+}
+
+@media (max-width: 560px) {
+  .grid { grid-template-columns: repeat(2, 1fr); gap: 28px 20px; }
+  .brand, .status { grid-column: 1 / -1; }
+  .col, .col:nth-of-type(2) { grid-column: auto; }
 }
