@@ -64,13 +64,20 @@ export type Project = ProjectMeta & {
   caseStudyContent: CaseStudyContent | null
 }
 
+function resolveImageUrl(img: any): string | null {
+  if (typeof img.image === 'object' && img.image?.url) return img.image.url
+  return img.url ?? null
+}
+
 function normalizeCaseStudyContent(cs: any): CaseStudyContent | null {
   if (!cs) return null
   return {
     eyebrow: cs.eyebrow ?? '',
     category: cs.category ?? '',
     lead: cs.lead ?? '',
-    heroImages: (cs.heroImages ?? []).map((img: any) => ({ src: img.url, alt: img.alt ?? '' })),
+    heroImages: (cs.heroImages ?? [])
+      .map((img: any) => ({ src: resolveImageUrl(img), alt: img.alt ?? '' }))
+      .filter((img: { src: string | null }) => img.src),
     sections: (cs.sections ?? []).map((s: any) => ({
       sectionId: s.sectionId,
       num: s.num,
@@ -80,7 +87,9 @@ function normalizeCaseStudyContent(cs: any): CaseStudyContent | null {
       pullQuote: s.pullQuote || null,
       spec: (s.spec ?? []).map((row: any) => ({ k: row.k, v: row.v })),
       figureCaption: s.figureCaption || null,
-      figureImages: (s.figureImages ?? []).map((img: any) => ({ src: img.url, alt: img.alt ?? '' })),
+      figureImages: (s.figureImages ?? [])
+        .map((img: any) => ({ src: resolveImageUrl(img), alt: img.alt ?? '' }))
+        .filter((img: { src: string | null }) => img.src),
       outcomes: (s.outcomes ?? []).map((o: any) => ({ value: o.value, label: o.label })),
     })),
     nextEyebrow: cs.nextEyebrow ?? '',

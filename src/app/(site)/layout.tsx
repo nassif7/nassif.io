@@ -27,9 +27,12 @@ const dmMono = DM_Mono({
   display: 'swap',
 })
 
-export const metadata: Metadata = {
-  title: 'Nassif Nassif — Software Engineer, Berlin',
-  description: 'Software engineer based in Berlin. Eight years building software across corporate platforms, startups, and independent projects.',
+export async function generateMetadata(): Promise<Metadata> {
+  const settings = await getSettings()
+  return {
+    title: settings.seoTitle,
+    description: settings.seoDescription,
+  }
 }
 
 export default async function SiteLayout({ children }: { children: React.ReactNode }) {

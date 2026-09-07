@@ -51,6 +51,8 @@ const SETTINGS = {
   timezone: 'CET',
   availability: 'Available for Q4 2026',
   role: 'Software Engineer',
+  seoTitle: 'Nassif Nassif — Software Engineer, Berlin',
+  seoDescription: 'Software engineer based in Berlin. Eight years building software across corporate platforms, startups, and independent projects.',
   github: 'https://github.com/nassif7',
   linkedin: 'https://linkedin.com/in/nassif',
   footerTagline: 'Software engineer in Berlin, building interfaces that feel obvious.',

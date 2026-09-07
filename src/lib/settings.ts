@@ -8,6 +8,8 @@ export type Settings = {
   timezone: string
   availability: string
   role: string
+  seoTitle: string
+  seoDescription: string
   github: string | null
   linkedin: string | null
   footerTagline: string
@@ -26,6 +28,8 @@ export const getSettings = cache(async (): Promise<Settings> => {
     timezone: doc.timezone,
     availability: doc.availability,
     role: doc.role,
+    seoTitle: doc.seoTitle ?? '',
+    seoDescription: doc.seoDescription ?? '',
     github: doc.github ?? null,
     linkedin: doc.linkedin ?? null,
     footerTagline: doc.footerTagline ?? '',

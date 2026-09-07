@@ -9,6 +9,16 @@ export const Settings: GlobalConfig = {
     { name: 'timezone', type: 'text', required: true, admin: { description: 'e.g. "CET"' } },
     { name: 'availability', type: 'text', required: true, admin: { description: 'e.g. "Available for Q4 2026"' } },
     { name: 'role', type: 'text', required: true, admin: { description: 'Masthead tagline, e.g. "Software Engineer"' } },
+    {
+      name: 'seoTitle',
+      type: 'text',
+      admin: { description: 'Browser tab title, e.g. "Nassif Nassif — Software Engineer, Berlin"' },
+    },
+    {
+      name: 'seoDescription',
+      type: 'textarea',
+      admin: { description: 'SEO meta description' },
+    },
     { name: 'github', type: 'text' },
     { name: 'linkedin', type: 'text' },
     { name: 'footerTagline', type: 'textarea' },

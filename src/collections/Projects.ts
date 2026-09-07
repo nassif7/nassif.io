@@ -133,7 +133,12 @@ export const Projects: CollectionConfig = {
           name: 'heroImages',
           type: 'array',
           fields: [
-            { name: 'url', type: 'text', required: true },
+            { name: 'image', type: 'upload', relationTo: 'media' },
+            {
+              name: 'url',
+              type: 'text',
+              admin: { description: 'Legacy URL. Leave blank if using upload above.' },
+            },
             { name: 'alt', type: 'text' },
           ],
         },
@@ -160,7 +165,12 @@ export const Projects: CollectionConfig = {
               name: 'figureImages',
               type: 'array',
               fields: [
-                { name: 'url', type: 'text', required: true },
+                { name: 'image', type: 'upload', relationTo: 'media' },
+                {
+                  name: 'url',
+                  type: 'text',
+                  admin: { description: 'Legacy URL. Leave blank if using upload above.' },
+                },
                 { name: 'alt', type: 'text' },
               ],
             },
