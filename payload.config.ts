@@ -12,6 +12,8 @@ import { Projects } from './src/collections/Projects'
 import { PostCollections } from './src/collections/PostCollections'
 import { Media } from './src/collections/Media'
 import { Experience } from './src/collections/Experience'
+import { Settings } from './src/globals/Settings'
+import { Homepage } from './src/globals/Homepage'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -24,6 +26,7 @@ export default buildConfig({
     },
   },
   collections: [Users, Posts, Projects, PostCollections, Media, Experience],
+  globals: [Settings, Homepage],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {

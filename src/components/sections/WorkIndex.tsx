@@ -1,13 +1,15 @@
 import Link from 'next/link'
 import clsx from 'clsx'
 import { getAllProjects } from '@/lib/projects'
+import { getHomepage } from '@/lib/homepage'
 import { SectionHeader } from './SectionHeader'
 import shared from './section.module.css'
 
 export async function WorkIndex() {
   // Only projects curated for the redesign (year set) appear in the index —
   // e.g. "Bone Page & Kohle und Meer" predates it and isn't included yet.
-  const projects = (await getAllProjects()).filter(p => p.year)
+  const [allProjects, homepage] = await Promise.all([getAllProjects(), getHomepage()])
+  const projects = allProjects.filter(p => p.year)
 
   return (
     <section id="index" className={shared.band} style={{ paddingTop: 0 }}>
@@ -15,7 +17,7 @@ export async function WorkIndex() {
         <SectionHeader
           num="04"
           eyebrow="Work index"
-          title="Everything, on one page."
+          title={homepage.indexSectionTitle}
           meta={`${projects.length} entries`}
         />
         <div className="idx-scroll">

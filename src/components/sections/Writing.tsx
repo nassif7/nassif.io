@@ -1,10 +1,11 @@
 import Link from 'next/link'
 import { getFeaturedPosts } from '@/lib/posts'
+import { getHomepage } from '@/lib/homepage'
 import { SectionHeader } from './SectionHeader'
 import shared from './section.module.css'
 
 export async function Writing() {
-  const posts = await getFeaturedPosts()
+  const [posts, homepage] = await Promise.all([getFeaturedPosts(), getHomepage()])
 
   return (
     <section id="writing" className={shared.band} style={{ paddingTop: 0 }}>
@@ -12,8 +13,8 @@ export async function Writing() {
         <SectionHeader
           num="06"
           eyebrow="Writing"
-          title="Notes on the work."
-          lead="Interface ethics, engineering culture, and the occasional detour. Written slowly."
+          title={homepage.writingSectionTitle}
+          lead={homepage.writingSectionLead}
           meta={`${posts.length} ${posts.length === 1 ? 'post' : 'posts'}`}
         />
         <div className="idx-scroll">

@@ -1,38 +1,26 @@
 'use client'
 
-import { Fragment, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import Link from 'next/link'
+import { RichText } from '@payloadcms/richtext-lexical/react'
 import { DarkCta } from '@/components/cta/DarkCta'
 import { useSetMobileNav } from '@/components/masthead/MobileNavContext'
-import type { ProjectMeta } from '@/lib/projects'
-import { marineriaCaseStudy } from '@/content/case-studies/marineria'
+import type { Project } from '@/lib/projects'
 import styles from './CaseStudy.module.css'
 
-const CASE_STUDIES: Record<string, typeof marineriaCaseStudy> = {
-  marineria: marineriaCaseStudy,
-}
-
-function renderInline(text: string) {
-  const parts = text.split(/(\*\*.+?\*\*)/g)
-  return parts.map((part, i) =>
-    part.startsWith('**') && part.endsWith('**')
-      ? <strong key={i}>{part.slice(2, -2)}</strong>
-      : <Fragment key={i}>{part}</Fragment>
-  )
-}
-
 interface Props {
-  project: ProjectMeta
+  project: Project
+  cta: { email: string; eyebrow: string; heading: string; lead: string }
 }
 
-export function CaseStudy({ project }: Props) {
-  const cs = CASE_STUDIES[project.slug]
-  const [active, setActive] = useState(cs?.sections[0]?.id ?? '')
+export function CaseStudy({ project, cta }: Props) {
+  const cs = project.caseStudyContent
+  const [active, setActive] = useState(cs?.sections[0]?.sectionId ?? '')
 
   useSetMobileNav(
     cs
       ? [
-          ...cs.sections.map(s => ({ num: s.num, label: s.eyebrow, href: `#${s.id}` })),
+          ...cs.sections.map(s => ({ num: s.num, label: s.eyebrow, href: `#${s.sectionId}` })),
           { num: '', label: 'Work index', href: '/#index' },
         ]
       : []
@@ -43,8 +31,8 @@ export function CaseStudy({ project }: Props) {
     const onScroll = () => {
       let current = active
       for (const s of cs.sections) {
-        const el = document.getElementById(s.id)
-        if (el && window.scrollY >= el.offsetTop - 160) current = s.id
+        const el = document.getElementById(s.sectionId)
+        if (el && window.scrollY >= el.offsetTop - 160) current = s.sectionId
       }
       setActive(current)
     }
@@ -64,7 +52,7 @@ export function CaseStudy({ project }: Props) {
           <div className={styles.top}>
             <div className={styles.t}>
               <div className="eyebrow"><span className="n">{cs.eyebrow}</span>{cs.category}</div>
-              <h1 className={`display ${styles.title}`}>{cs.title}</h1>
+              <h1 className={`display ${styles.title}`}>{project.name}</h1>
               <p className="lead">{cs.lead}</p>
             </div>
             <dl className={styles.x}>
@@ -90,8 +78,8 @@ export function CaseStudy({ project }: Props) {
             <div className="meta-k">Contents</div>
             <ul>
               {cs.sections.map(s => (
-                <li key={s.id} data-active={active === s.id || undefined}>
-                  <a href={`#${s.id}`}>{s.num} — {s.eyebrow}</a>
+                <li key={s.sectionId} data-active={active === s.sectionId || undefined}>
+                  <a href={`#${s.sectionId}`}>{s.num} — {s.eyebrow}</a>
                 </li>
               ))}
             </ul>
@@ -99,27 +87,27 @@ export function CaseStudy({ project }: Props) {
 
           <div className={styles.main}>
             {cs.sections.map(s => (
-              <section key={s.id} className={styles.sec} id={s.id}>
+              <section key={s.sectionId} className={styles.sec} id={s.sectionId}>
                 <div className="eyebrow"><span className="n">{s.num}</span>{s.eyebrow}</div>
                 <h2>{s.heading}</h2>
-                {s.paragraphs.map((p, i) => <p key={i}>{renderInline(p)}</p>)}
+                {s.body && <RichText data={s.body} />}
                 {s.pullQuote && <p className={styles.pull}>{s.pullQuote}</p>}
-                {s.spec && (
+                {s.spec.length > 0 && (
                   <dl className={styles.spec}>
                     {s.spec.map(row => (
                       <div key={row.k}><dt className="meta-k">{row.k}</dt><dd>{row.v}</dd></div>
                     ))}
                   </dl>
                 )}
-                {s.figure && (
+                {s.figureImages.length > 0 && (
                   <figure className={styles.shots}>
                     <div className={styles.shotsRow}>
-                      {s.figure.images.map(img => <img key={img.src} src={img.src} alt={img.alt} />)}
+                      {s.figureImages.map(img => <img key={img.src} src={img.src} alt={img.alt} />)}
                     </div>
-                    <figcaption>{s.figure.caption}</figcaption>
+                    {s.figureCaption && <figcaption>{s.figureCaption}</figcaption>}
                   </figure>
                 )}
-                {s.outcomes && (
+                {s.outcomes.length > 0 && (
                   <div className={styles.outs}>
                     {s.outcomes.map(o => (
                       <div key={o.label}><strong className="tnum">{o.value}</strong><span className="meta-k">{o.label}</span></div>
@@ -132,22 +120,25 @@ export function CaseStudy({ project }: Props) {
         </div>
       </div>
 
-      <section className={styles.next}>
-        <div className="wrap">
-          <div className={styles.nextL}>
-            <div className="eyebrow">{cs.next.eyebrow}</div>
-            <h3>{cs.next.title}</h3>
+      {cs.nextHref && (
+        <section className={styles.next}>
+          <div className="wrap">
+            <div className={styles.nextL}>
+              <div className="eyebrow">{cs.nextEyebrow}</div>
+              <h3>{cs.nextTitle}</h3>
+            </div>
+            <div className={styles.nextR}>
+              <Link href={cs.nextHref} className="btn">Read next →</Link>
+            </div>
           </div>
-          <div className={styles.nextR}>
-            <Link href={cs.next.href} className="btn">Read next →</Link>
-          </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       <DarkCta
-        eyebrow="Next step"
-        heading="Got something with this shape?"
-        lead="Available for contract and full-time work from Q4 2026 — Berlin, or remote across European hours."
+        eyebrow={cta.eyebrow}
+        heading={cta.heading}
+        lead={cta.lead}
+        email={cta.email}
       />
     </main>
   )

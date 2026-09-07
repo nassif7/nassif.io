@@ -1,6 +1,7 @@
 export const dynamic = 'force-dynamic'
 
 import { getProject, getAllProjects } from '@/lib/projects'
+import { getSettings } from '@/lib/settings'
 import { ProjectGallery } from '@/components/ProjectGallery'
 import { RichText } from '@payloadcms/richtext-lexical/react'
 import { ProseBody } from '@/components/prose/ProseBody'
@@ -32,7 +33,18 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
   if (!project) notFound()
 
   if (project.caseStudy) {
-    return <CaseStudy project={project} />
+    const settings = await getSettings()
+    return (
+      <CaseStudy
+        project={project}
+        cta={{
+          email: settings.email,
+          eyebrow: settings.caseStudyCtaEyebrow,
+          heading: settings.caseStudyCtaHeading,
+          lead: settings.caseStudyCtaLead,
+        }}
+      />
+    )
   }
 
   const imageUrls: string[] = project.images ?? []

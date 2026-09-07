@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic'
+
 import type { Metadata } from 'next'
 import { DM_Sans, DM_Mono } from 'next/font/google'
 import '@/styles/globals.css'
@@ -8,6 +10,7 @@ import { UtilityBar } from '@/components/utilitybar/UtilityBar'
 import { Masthead } from '@/components/masthead/Masthead'
 import { MobileNavProvider } from '@/components/masthead/MobileNavContext'
 import { Footer } from '@/components/sections/Footer'
+import { getSettings } from '@/lib/settings'
 import styles from './site.module.css'
 
 const dmSans = DM_Sans({
@@ -29,7 +32,9 @@ export const metadata: Metadata = {
   description: 'Software engineer based in Berlin. Eight years building software across corporate platforms, startups, and independent projects.',
 }
 
-export default function SiteLayout({ children }: { children: React.ReactNode }) {
+export default async function SiteLayout({ children }: { children: React.ReactNode }) {
+  const settings = await getSettings()
+
   return (
     <html lang="en" className={`${dmSans.variable} ${dmMono.variable}`}>
       <body>
@@ -37,7 +42,13 @@ export default function SiteLayout({ children }: { children: React.ReactNode }) 
           <MobileNavProvider>
             <div className={styles.wrapper}>
               <UtilityBar />
-              <Masthead />
+              <Masthead
+                email={settings.email}
+                role={settings.role}
+                location={settings.location}
+                timezone={settings.timezone}
+                availability={settings.availability}
+              />
               {children}
               <Footer />
             </div>

@@ -118,6 +118,67 @@ export const Projects: CollectionConfig = {
       defaultValue: false,
       admin: { position: 'sidebar', description: 'Render the full case-study template' },
     },
+    {
+      name: 'caseStudyContent',
+      type: 'group',
+      admin: {
+        description: 'Case study page content',
+        condition: (data) => Boolean(data?.caseStudy),
+      },
+      fields: [
+        { name: 'eyebrow', type: 'text', admin: { description: 'e.g. "Case 01"' } },
+        { name: 'category', type: 'text', admin: { description: 'e.g. "Client work · Mobile"' } },
+        { name: 'lead', type: 'textarea' },
+        {
+          name: 'heroImages',
+          type: 'array',
+          fields: [
+            { name: 'url', type: 'text', required: true },
+            { name: 'alt', type: 'text' },
+          ],
+        },
+        {
+          name: 'sections',
+          type: 'array',
+          fields: [
+            { name: 'sectionId', type: 'text', required: true, admin: { description: 'Anchor id, e.g. "brief"' } },
+            { name: 'num', type: 'text', required: true, admin: { description: 'e.g. "01"' } },
+            { name: 'eyebrow', type: 'text', required: true, admin: { description: 'e.g. "The brief"' } },
+            { name: 'heading', type: 'text', required: true },
+            { name: 'body', type: 'richText' },
+            { name: 'pullQuote', type: 'textarea' },
+            {
+              name: 'spec',
+              type: 'array',
+              fields: [
+                { name: 'k', type: 'text', required: true },
+                { name: 'v', type: 'text', required: true },
+              ],
+            },
+            { name: 'figureCaption', type: 'text' },
+            {
+              name: 'figureImages',
+              type: 'array',
+              fields: [
+                { name: 'url', type: 'text', required: true },
+                { name: 'alt', type: 'text' },
+              ],
+            },
+            {
+              name: 'outcomes',
+              type: 'array',
+              fields: [
+                { name: 'value', type: 'text', required: true },
+                { name: 'label', type: 'text', required: true },
+              ],
+            },
+          ],
+        },
+        { name: 'nextEyebrow', type: 'text', admin: { description: 'e.g. "Case 02 · Side project"' } },
+        { name: 'nextTitle', type: 'text' },
+        { name: 'nextHref', type: 'text', admin: { description: 'e.g. "/projects/bookmarquee"' } },
+      ],
+    },
     { name: 'body', type: 'richText' },
   ],
 }

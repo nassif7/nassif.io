@@ -1,13 +1,16 @@
+import { getSettings } from '@/lib/settings'
 import styles from './Footer.module.css'
 
-export function Footer() {
+export async function Footer() {
+  const settings = await getSettings()
+
   return (
     <footer className={styles.footer}>
       <div className="wrap">
         <div className={styles.grid}>
           <div className={styles.brand}>
             <a href="/" className="logo">n<i>/</i>N</a>
-            <p className={styles.tagline}>Software engineer in Berlin, building interfaces that feel obvious.</p>
+            <p className={styles.tagline}>{settings.footerTagline}</p>
           </div>
 
           <div className={styles.col}>
@@ -24,24 +27,24 @@ export function Footer() {
           <div className={styles.col}>
             <div className="meta-k">Elsewhere</div>
             <ul>
-              <li><a href="https://github.com/nassif7" target="_blank" rel="noopener noreferrer">GitHub</a></li>
-              <li><a href="https://linkedin.com/in/nassif" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
-              <li><a href="mailto:hello@nassif.pro">Email</a></li>
+              {settings.github && <li><a href={settings.github} target="_blank" rel="noopener noreferrer">GitHub</a></li>}
+              {settings.linkedin && <li><a href={settings.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a></li>}
+              <li><a href={`mailto:${settings.email}`}>Email</a></li>
             </ul>
           </div>
 
           <div className={styles.status}>
             <div className="meta-k">Status</div>
             <ul>
-              <li className={styles.statusRow}><span className={styles.dot} />Available Q4 2026</li>
-              <li>Berlin · CET</li>
+              <li className={styles.statusRow}><span className={styles.dot} />{settings.availability}</li>
+              <li>{settings.location} · {settings.timezone}</li>
             </ul>
           </div>
         </div>
 
         <div className={styles.bar}>
-          <span>n|N · Nassif Nassif · Berlin · {new Date().getFullYear()}</span>
-          <span>Professional button-maker.</span>
+          <span>n|N · Nassif Nassif · {settings.location} · {new Date().getFullYear()}</span>
+          <span>{settings.footerJoke}</span>
         </div>
       </div>
     </footer>

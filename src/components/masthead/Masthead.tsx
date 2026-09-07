@@ -26,7 +26,15 @@ const HOME_NAV_ITEMS = [
 
 const PANEL_ID = 'mobile-nav-panel'
 
-export function Masthead() {
+interface MastheadProps {
+  email: string
+  role: string
+  location: string
+  timezone: string
+  availability: string
+}
+
+export function Masthead({ email, role, location, timezone, availability }: MastheadProps) {
   const [active, setActive] = useState('')
   const [menuOpen, setMenuOpen] = useState(false)
   const toggleRef = useRef<HTMLButtonElement>(null)
@@ -91,7 +99,7 @@ export function Masthead() {
       <header className={styles.mast}>
         <div className="wrap">
           <a href="/" className="logo">n<i>/</i>N</a>
-          <span className={styles.logoSub}>Software Engineer</span>
+          <span className={styles.logoSub}>{role}</span>
 
           <nav className={styles.main}>
             {LINKS.map(l => (
@@ -101,7 +109,7 @@ export function Masthead() {
             ))}
           </nav>
 
-          <a href="mailto:hello@nassif.pro" className={clsx('btn btn-fill', styles.cta)}>
+          <a href={`mailto:${email}`} className={clsx('btn btn-fill', styles.cta)}>
             Start a project
           </a>
 
@@ -147,7 +155,7 @@ export function Masthead() {
             </nav>
 
             <div className={styles.panelCtas}>
-              <a href="mailto:hello@nassif.pro" className="btn btn-fill" onClick={closeMenu}>
+              <a href={`mailto:${email}`} className="btn btn-fill" onClick={closeMenu}>
                 Start a project
               </a>
               <a href="/cv" className="btn btn-ghost" onClick={closeMenu}>
@@ -156,9 +164,9 @@ export function Masthead() {
             </div>
 
             <div className={styles.panelInfo}>
-              <span><b>Berlin</b> · CET</span>
-              <span className={styles.panelAvail}><span className={styles.dot} />Available for Q4 2026</span>
-              <a href="mailto:hello@nassif.pro">hello@nassif.pro</a>
+              <span><b>{location}</b> · {timezone}</span>
+              <span className={styles.panelAvail}><span className={styles.dot} />{availability}</span>
+              <a href={`mailto:${email}`}>{email}</a>
             </div>
           </div>
         </div>

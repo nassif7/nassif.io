@@ -35,8 +35,58 @@ export type ProjectMeta = {
   caseStudy: boolean
 }
 
+export type CaseStudySection = {
+  sectionId: string
+  num: string
+  eyebrow: string
+  heading: string
+  body: any
+  pullQuote: string | null
+  spec: { k: string; v: string }[]
+  figureCaption: string | null
+  figureImages: { src: string; alt: string }[]
+  outcomes: { value: string; label: string }[]
+}
+
+export type CaseStudyContent = {
+  eyebrow: string
+  category: string
+  lead: string
+  heroImages: { src: string; alt: string }[]
+  sections: CaseStudySection[]
+  nextEyebrow: string
+  nextTitle: string
+  nextHref: string
+}
+
 export type Project = ProjectMeta & {
   body: any
+  caseStudyContent: CaseStudyContent | null
+}
+
+function normalizeCaseStudyContent(cs: any): CaseStudyContent | null {
+  if (!cs) return null
+  return {
+    eyebrow: cs.eyebrow ?? '',
+    category: cs.category ?? '',
+    lead: cs.lead ?? '',
+    heroImages: (cs.heroImages ?? []).map((img: any) => ({ src: img.url, alt: img.alt ?? '' })),
+    sections: (cs.sections ?? []).map((s: any) => ({
+      sectionId: s.sectionId,
+      num: s.num,
+      eyebrow: s.eyebrow,
+      heading: s.heading,
+      body: s.body ?? null,
+      pullQuote: s.pullQuote || null,
+      spec: (s.spec ?? []).map((row: any) => ({ k: row.k, v: row.v })),
+      figureCaption: s.figureCaption || null,
+      figureImages: (s.figureImages ?? []).map((img: any) => ({ src: img.url, alt: img.alt ?? '' })),
+      outcomes: (s.outcomes ?? []).map((o: any) => ({ value: o.value, label: o.label })),
+    })),
+    nextEyebrow: cs.nextEyebrow ?? '',
+    nextTitle: cs.nextTitle ?? '',
+    nextHref: cs.nextHref ?? '',
+  }
 }
 
 function normalizeProject(doc: any): ProjectMeta {
@@ -112,5 +162,6 @@ export async function getProject(slug: string): Promise<Project | null> {
   return {
     ...normalizeProject(doc),
     body: doc.body,
+    caseStudyContent: normalizeCaseStudyContent(doc.caseStudyContent),
   }
 }

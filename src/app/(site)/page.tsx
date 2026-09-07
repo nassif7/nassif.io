@@ -7,8 +7,12 @@ import { WorkIndex } from '@/components/sections/WorkIndex'
 import { TrackRecord } from '@/components/sections/TrackRecord'
 import { Writing } from '@/components/sections/Writing'
 import { DarkCta } from '@/components/cta/DarkCta'
+import { getHomepage } from '@/lib/homepage'
+import { getSettings } from '@/lib/settings'
 
-export default function Home() {
+export default async function Home() {
+  const [homepage, settings] = await Promise.all([getHomepage(), getSettings()])
+
   return (
     <main>
       <Hero />
@@ -19,9 +23,10 @@ export default function Home() {
       <Writing />
       <DarkCta
         num="07"
-        eyebrow="Next step"
-        heading="You have an idea. I've shipped eight years of them."
-        lead="Available for contract and full-time work from Q4 2026 — Berlin, or remote across European hours."
+        eyebrow={homepage.ctaEyebrow}
+        heading={homepage.ctaHeading}
+        lead={homepage.ctaLead}
+        email={settings.email}
       />
     </main>
   )

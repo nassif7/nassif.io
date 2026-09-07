@@ -1,12 +1,13 @@
 import Link from 'next/link'
 import clsx from 'clsx'
 import { getFeaturedProjects } from '@/lib/projects'
+import { getHomepage } from '@/lib/homepage'
 import { SectionHeader } from './SectionHeader'
 import shared from './section.module.css'
 import styles from './Projects.module.css'
 
 export async function Projects() {
-  const projects = await getFeaturedProjects()
+  const [projects, homepage] = await Promise.all([getFeaturedProjects(), getHomepage()])
 
   return (
     <section id="work" className={shared.band} style={{ paddingTop: 0 }}>
@@ -14,8 +15,8 @@ export async function Projects() {
         <SectionHeader
           num="03"
           eyebrow="Selected work"
-          title="Two projects, in detail."
-          lead="Client products where the constraints were real and the decisions are worth reading about."
+          title={homepage.workSectionTitle}
+          lead={homepage.workSectionLead}
           meta="Full index ↓"
           metaHref="#index"
         />
