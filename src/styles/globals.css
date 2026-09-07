@@ -20,6 +20,21 @@
 
   --gut: 40px;
   --maxw: 1240px;
+
+  /* Legacy aliases — the old token names, kept alive for pages not yet
+     brought into the redesign (/projects, /blog, /blog/[slug], the generic
+     /projects/[slug] template). Without these, those pages silently drop
+     any CSS declaration using an undefined var() — no error, just missing
+     borders/colors/fonts. Remove a given alias only once every page still
+     using it has been redesigned. */
+  --black: var(--ink);
+  --border: var(--line);
+  --border-strong: var(--line-2);
+  --accent-dark: var(--ink);
+  --bg: var(--paper);
+  --bg-soft: var(--paper-2);
+  --bg-tint: var(--paper-3);
+  --font-serif: Georgia, 'Times New Roman', serif;
 }
 
 html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; overflow-x: hidden; }

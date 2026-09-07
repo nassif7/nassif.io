@@ -1,12 +1,23 @@
-.page {
-  max-width: 1024px;
-  margin: 0 auto;
-}
+.hd { padding: 56px 0 24px; }
 
-.list {
-  padding: 0 4rem;
+.back {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 38px;
 }
+.back:hover { color: var(--ink); }
 
-@media (max-width: 640px) {
-  .list { padding: 0 1.25rem; }
+.hd :global(.display) { margin: 0 0 16px; }
+
+.tableWrap { padding-bottom: 88px; }
+
+@media (max-width: 900px) {
+  .hd { padding: 40px 0 20px; }
+  .tableWrap { padding-bottom: 60px; }
 }
