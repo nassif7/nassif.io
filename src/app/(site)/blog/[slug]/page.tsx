@@ -1,11 +1,11 @@
 export const dynamic = 'force-dynamic'
 
 import { getPost, getAllPosts } from '@/lib/posts'
+import { getSettings } from '@/lib/settings'
 import { RichText } from '@payloadcms/richtext-lexical/react'
 import { ProseBody } from '@/components/prose/ProseBody'
-import { CallToAction } from '@/components/cta/CallToAction'
-import { SlugHeader } from '@/components/slug/SlugHeader'
-import { BackLink } from '@/components/layout/BackLink'
+import { DarkCta } from '@/components/cta/DarkCta'
+import { ProjectHeader } from '@/components/project-header/ProjectHeader'
 import { PostHogPageView } from '@/components/analytics/PostHogPageView'
 import { notFound } from 'next/navigation'
 import page from '@/components/layout/SlugPage.module.css'
@@ -24,35 +24,35 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 export default async function PostPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
-  const post = await getPost(slug)
+  const [post, settings] = await Promise.all([getPost(slug), getSettings()])
 
   if (!post || post.hidden) notFound()
 
   return (
-    <main className={page.page}>
+    <main>
       <PostHogPageView event="post_viewed" properties={{ post_title: post.title, slug, tags: post.tags?.join(', ') }} />
 
+      <ProjectHeader
+        backHref="/blog"
+        backLabel="Writing"
+        eyebrowLabel={`${post.tags?.join(' · ') ?? ''} — ${new Date(post.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}`}
+        title={post.title}
+        lead={post.excerpt}
+      />
+
       <div className={page.content}>
-        <BackLink href="/blog" label="Writing" />
-
-        <SlugHeader
-          type="post"
-          tags={post.tags?.join(' · ') ?? ''}
-          date={new Date(post.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}
-          title={post.title}
-          excerpt={post.excerpt}
-        />
-
         <ProseBody>
           <RichText data={post.body} />
         </ProseBody>
       </div>
 
-      <CallToAction
-        label="have something to say?"
-        heading="Send me your thoughts."
-        href={`mailto:n_nassif@icloud.com?subject=Re: ${encodeURIComponent(post.title)}`}
-        buttonText="Write me →"
+      <DarkCta
+        eyebrow={settings.postCtaEyebrow}
+        heading={settings.postCtaHeading}
+        lead={settings.postCtaLead}
+        email={settings.email}
+        writeLabel="Send a comment"
+        mailtoSubject={`Re: ${post.title}`}
       />
     </main>
   )

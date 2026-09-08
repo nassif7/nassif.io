@@ -54,9 +54,6 @@ export type CaseStudyContent = {
   lead: string
   heroImages: { src: string; alt: string }[]
   sections: CaseStudySection[]
-  nextEyebrow: string
-  nextTitle: string
-  nextHref: string
 }
 
 export type Project = ProjectMeta & {
@@ -92,9 +89,6 @@ function normalizeCaseStudyContent(cs: any): CaseStudyContent | null {
         .filter((img: { src: string | null }) => img.src),
       outcomes: (s.outcomes ?? []).map((o: any) => ({ value: o.value, label: o.label })),
     })),
-    nextEyebrow: cs.nextEyebrow ?? '',
-    nextTitle: cs.nextTitle ?? '',
-    nextHref: cs.nextHref ?? '',
   }
 }
 

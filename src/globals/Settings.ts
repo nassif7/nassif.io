@@ -26,9 +26,16 @@ export const Settings: GlobalConfig = {
     {
       name: 'caseStudyCtaEyebrow',
       type: 'text',
-      admin: { description: 'Shared closing CTA band on every case study' },
+      admin: { description: 'Shared closing CTA band on project & case study pages' },
     },
     { name: 'caseStudyCtaHeading', type: 'text' },
     { name: 'caseStudyCtaLead', type: 'textarea' },
+    {
+      name: 'postCtaEyebrow',
+      type: 'text',
+      admin: { description: 'Closing CTA band on blog post pages' },
+    },
+    { name: 'postCtaHeading', type: 'text' },
+    { name: 'postCtaLead', type: 'textarea' },
   ],
 }

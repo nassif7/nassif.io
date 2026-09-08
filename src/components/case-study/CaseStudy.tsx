@@ -1,9 +1,9 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import Link from 'next/link'
 import { RichText } from '@payloadcms/richtext-lexical/react'
 import { DarkCta } from '@/components/cta/DarkCta'
+import { ProjectHeader } from '@/components/project-header/ProjectHeader'
 import { useSetMobileNav } from '@/components/masthead/MobileNavContext'
 import type { Project } from '@/lib/projects'
 import styles from './CaseStudy.module.css'
@@ -46,25 +46,18 @@ export function CaseStudy({ project, cta }: Props) {
 
   return (
     <main>
-      <section className={styles.hd}>
-        <div className="wrap">
-          <Link href="/#index" className={styles.back}>← Work index</Link>
-          <div className={styles.top}>
-            <div className={styles.t}>
-              <div className="eyebrow"><span className="n">{cs.eyebrow}</span>{cs.category}</div>
-              <h1 className={`display ${styles.title}`}>{project.name}</h1>
-              <p className="lead">{cs.lead}</p>
-            </div>
-            <dl className={styles.x}>
-              {project.client && <div><dt className="meta-k">Client</dt><dd>{project.client}</dd></div>}
-              {project.year && <div><dt className="meta-k">Year</dt><dd className="tnum">{project.year}</dd></div>}
-              {project.role && <div><dt className="meta-k">Role</dt><dd>{project.role}</dd></div>}
-              {project.platforms && <div><dt className="meta-k">Platforms</dt><dd>{project.platforms}</dd></div>}
-              {project.status && <div><dt className="meta-k">Status</dt><dd>{project.status}</dd></div>}
-            </dl>
-          </div>
-        </div>
-      </section>
+      <ProjectHeader
+        backHref="/#index"
+        backLabel="Work index"
+        eyebrowLabel={cs.category}
+        title={project.name}
+        lead={cs.lead}
+        client={project.client}
+        year={project.year}
+        role={project.role}
+        platforms={project.platforms}
+        status={project.status}
+      />
 
       <div className={styles.hero}>
         {cs.heroImages.map(img => (
@@ -119,20 +112,6 @@ export function CaseStudy({ project, cta }: Props) {
           </div>
         </div>
       </div>
-
-      {cs.nextHref && (
-        <section className={styles.next}>
-          <div className="wrap">
-            <div className={styles.nextL}>
-              <div className="eyebrow">{cs.nextEyebrow}</div>
-              <h3>{cs.nextTitle}</h3>
-            </div>
-            <div className={styles.nextR}>
-              <Link href={cs.nextHref} className="btn">Read next →</Link>
-            </div>
-          </div>
-        </section>
-      )}
 
       <DarkCta
         eyebrow={cta.eyebrow}

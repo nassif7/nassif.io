@@ -15,7 +15,7 @@ export async function Hero() {
             <p className="lead">{homepage.heroLead}</p>
             <div className={styles.actions}>
               <a href="/#work" className="btn">{homepage.heroPrimaryButton}</a>
-              <a href="/cv" className="btn btn-ghost">{homepage.heroSecondaryButton}</a>
+              <a href="/nassif-nassif-cv.pdf" target="_blank" rel="noopener noreferrer" className="btn btn-ghost">{homepage.heroSecondaryButton}</a>
             </div>
           </div>
 

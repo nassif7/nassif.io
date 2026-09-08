@@ -5,9 +5,8 @@ import { getSettings } from '@/lib/settings'
 import { ProjectGallery } from '@/components/ProjectGallery'
 import { RichText } from '@payloadcms/richtext-lexical/react'
 import { ProseBody } from '@/components/prose/ProseBody'
-import { CallToAction } from '@/components/cta/CallToAction'
-import { SlugHeader } from '@/components/slug/SlugHeader'
-import { BackLink } from '@/components/layout/BackLink'
+import { DarkCta } from '@/components/cta/DarkCta'
+import { ProjectHeader } from '@/components/project-header/ProjectHeader'
 import { PostHogPageView } from '@/components/analytics/PostHogPageView'
 import { ProjectLinks } from '@/components/analytics/ProjectLinks'
 import { CaseStudy } from '@/components/case-study/CaseStudy'
@@ -29,39 +28,40 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 export default async function ProjectPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
-  const project = await getProject(slug)
+  const [project, settings] = await Promise.all([getProject(slug), getSettings()])
   if (!project) notFound()
 
+  const cta = {
+    email: settings.email,
+    eyebrow: settings.caseStudyCtaEyebrow,
+    heading: settings.caseStudyCtaHeading,
+    lead: settings.caseStudyCtaLead,
+  }
+
   if (project.caseStudy) {
-    const settings = await getSettings()
-    return (
-      <CaseStudy
-        project={project}
-        cta={{
-          email: settings.email,
-          eyebrow: settings.caseStudyCtaEyebrow,
-          heading: settings.caseStudyCtaHeading,
-          lead: settings.caseStudyCtaLead,
-        }}
-      />
-    )
+    return <CaseStudy project={project} cta={cta} />
   }
 
   const imageUrls: string[] = project.images ?? []
 
   return (
-    <main className={page.page}>
+    <main>
       <PostHogPageView event="project_viewed" properties={{ project_name: project.name, project_type: project.type, slug }} />
 
+      <ProjectHeader
+        backHref="/projects"
+        backLabel="Work index"
+        eyebrowLabel={project.type}
+        title={project.name}
+        lead={project.desc}
+        client={project.client}
+        year={project.year}
+        role={project.role}
+        platforms={project.platforms}
+        status={project.status}
+      />
+
       <div className={page.content}>
-        <BackLink href="/projects" label="All projects" />
-
-        <SlugHeader
-          type="project"
-          category={project.type}
-          title={project.name}
-        />
-
         <div className={styles.body}>
           <div className={styles.left}>
             {project.brainstorm ? (
@@ -96,14 +96,13 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
           </div>
 
           <div className={styles.info}>
-            <div className={styles.desc}>
-              <ProseBody>
-                {project.body?.root?.children?.length > 0
-                  ? <RichText data={project.body} />
-                  : <p>{project.desc}</p>
-                }
-              </ProseBody>
-            </div>
+            {project.body?.root?.children?.length > 0 && (
+              <div className={styles.desc}>
+                <ProseBody>
+                  <RichText data={project.body} />
+                </ProseBody>
+              </div>
+            )}
 
             {project.stack.length > 0 && (
               <div className={styles.stack}>
@@ -120,11 +119,11 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
         </div>
       </div>
 
-      <CallToAction
-        label="got a similar idea?"
-        heading="Let's build something together."
-        href={`mailto:n_nassif@icloud.com?subject=Re: ${encodeURIComponent(project.name)}`}
-        buttonText="Contact me →"
+      <DarkCta
+        eyebrow={cta.eyebrow}
+        heading={cta.heading}
+        lead={cta.lead}
+        email={cta.email}
       />
     </main>
   )

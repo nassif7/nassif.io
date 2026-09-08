@@ -13,17 +13,14 @@ export async function TrackRecord() {
     <section id="track" className={shared.band} style={{ paddingTop: 0 }}>
       <div className="wrap">
         <SectionHeader num="05" eyebrow="Track record" title={homepage.trackSectionTitle} />
-        <div className={styles.tl}>
+        <div className={styles.timeline}>
           {entries.map(e => (
-            <div key={e.id} className={styles.row}>
-              <div className={clsx(styles.year, /\d/.test(e.year) && 'tnum')}>{e.year}</div>
-              <div className={styles.body}>
-                <div>
-                  <h3>{e.title}</h3>
-                  {e.tag && <span className={styles.tag}>{e.tag}</span>}
-                </div>
-                <p>{e.description}</p>
-              </div>
+            <div key={e.id} className={clsx(styles.row, e.current && styles.current)}>
+              <div className={styles.year}>{e.year}</div>
+              <div className={styles.node} />
+              <h3 className={styles.title}>{e.title}</h3>
+              {e.tag && <span className={styles.org}>{e.tag}</span>}
+              {e.description && <p className={styles.desc}>{e.description}</p>}
             </div>
           ))}
         </div>

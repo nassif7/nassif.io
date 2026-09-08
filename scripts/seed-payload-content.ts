@@ -191,9 +191,6 @@ const MARINERIA_CASE_STUDY = {
       ],
     },
   ],
-  nextEyebrow: 'Case 02 · Side project',
-  nextTitle: 'BookMarquee — a knowledge base with no backend',
-  nextHref: '/projects/bookmarquee',
 }
 
 async function main() {

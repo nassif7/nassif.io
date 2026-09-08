@@ -5,7 +5,8 @@ import { SectionHeader } from './SectionHeader'
 import shared from './section.module.css'
 
 export async function Writing() {
-  const [posts, homepage] = await Promise.all([getFeaturedPosts(), getHomepage()])
+  const [allPosts, homepage] = await Promise.all([getFeaturedPosts(), getHomepage()])
+  const posts = allPosts.slice(0, 5)
 
   return (
     <section id="writing" className={shared.band} style={{ paddingTop: 0 }}>
@@ -15,7 +16,8 @@ export async function Writing() {
           eyebrow="Writing"
           title={homepage.writingSectionTitle}
           lead={homepage.writingSectionLead}
-          meta={`${posts.length} ${posts.length === 1 ? 'post' : 'posts'}`}
+          meta="See all posts →"
+          metaHref="/blog"
         />
         <div className="idx-scroll">
           <table className="idx">

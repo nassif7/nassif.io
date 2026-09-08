@@ -23,7 +23,7 @@ export default async function ProjectsPage({ searchParams }: { searchParams: Pro
       <div className={clsx('wrap', styles.hd)}>
         <Link href="/" className={styles.back}>← nassif.pro</Link>
         <h1 className="display">Work.</h1>
-        <p className="lead">Selected projects — shipped, in progress, and still forming.</p>
+        <p className="lead">Selected projects that are shipped, in progress, or still forming.</p>
       </div>
 
       {allCategories.length > 0 && (
@@ -81,9 +81,9 @@ export default async function ProjectsPage({ searchParams }: { searchParams: Pro
       </div>
 
       <DarkCta
-        eyebrow="Get in touch"
-        heading="You have an idea. Let's build it."
-        lead="Available for contract and full-time work from Q4 2026 — Berlin, or remote across European hours."
+        eyebrow={settings.caseStudyCtaEyebrow}
+        heading={settings.caseStudyCtaHeading}
+        lead={settings.caseStudyCtaLead}
         email={settings.email}
       />
     </main>

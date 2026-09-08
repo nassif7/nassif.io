@@ -11,6 +11,7 @@ export type ExperienceEntry = {
   bullets: string[]
   showInTrackRecord: boolean
   showInCV: boolean
+  current: boolean
   order: number
 }
 
@@ -25,6 +26,7 @@ function normalizeExperience(doc: any): ExperienceEntry {
     bullets: doc.bullets?.map((b: { text: string }) => b.text) ?? [],
     showInTrackRecord: doc.showInTrackRecord ?? true,
     showInCV: doc.showInCV ?? true,
+    current: doc.current ?? false,
     order: doc.order ?? 0,
   }
 }

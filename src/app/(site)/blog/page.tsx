@@ -80,9 +80,9 @@ export default async function BlogPage({ searchParams }: { searchParams: Promise
       </div>
 
       <DarkCta
-        eyebrow="Get in touch"
-        heading="Have something to say?"
-        lead="Available for contract and full-time work from Q4 2026 — Berlin, or remote across European hours."
+        eyebrow={settings.caseStudyCtaEyebrow}
+        heading={settings.caseStudyCtaHeading}
+        lead={settings.caseStudyCtaLead}
         email={settings.email}
       />
     </main>

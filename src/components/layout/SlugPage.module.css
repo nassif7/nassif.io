@@ -1,9 +1,6 @@
-.page {
+.content {
   max-width: 1024px;
   margin: 0 auto;
-}
-
-.content {
   padding: 40px 4rem 80px;
 }
 

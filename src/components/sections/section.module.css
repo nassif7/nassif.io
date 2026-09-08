@@ -14,8 +14,8 @@
 .l { grid-column: 1 / 4; }
 .r { grid-column: 4 / 11; }
 .x { grid-column: 11 / 13; justify-self: end; text-align: right; }
-.r :global(h2.sec) { margin-bottom: 14px; }
-.r :global(.lead) { font-size: 16px; max-width: 40em; }
+.r :global(h2.sec) { margin-bottom: 14px; text-align: center; }
+.r :global(.lead) { font-size: 16px; max-width: 40em; text-align: left; }
 
 @media (max-width: 900px) {
   .band { padding: 60px 0; }

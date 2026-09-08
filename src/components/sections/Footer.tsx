@@ -20,7 +20,7 @@ export async function Footer() {
               <li><a href="/#index">Work index</a></li>
               <li><a href="/#services">Services</a></li>
               <li><a href="/#writing">Writing</a></li>
-              <li><a href="/cv">CV</a></li>
+              <li><a href="/nassif-nassif-cv.pdf" target="_blank" rel="noopener noreferrer">CV</a></li>
             </ul>
           </div>
 

@@ -6,9 +6,15 @@ interface DarkCtaProps {
   heading: string
   lead: string
   email: string
+  writeLabel?: string
+  mailtoSubject?: string
 }
 
-export function DarkCta({ num, eyebrow, heading, lead, email }: DarkCtaProps) {
+export function DarkCta({ num, eyebrow, heading, lead, email, writeLabel = 'Write me', mailtoSubject }: DarkCtaProps) {
+  const mailtoHref = mailtoSubject
+    ? `mailto:${email}?subject=${encodeURIComponent(mailtoSubject)}`
+    : `mailto:${email}`
+
   return (
     <section className={`dark ${styles.band}`}>
       <div className={`wrap ${styles.wrap}`}>
@@ -18,8 +24,8 @@ export function DarkCta({ num, eyebrow, heading, lead, email }: DarkCtaProps) {
           <p className="lead">{lead}</p>
         </div>
         <div className={styles.r}>
-          <a href={`mailto:${email}`} className="btn btn-inv">Write me <span>→</span></a>
-          <a href="/cv" className="btn btn-inv">Download CV <span>↓</span></a>
+          <a href={mailtoHref} className="btn btn-inv">{writeLabel} <span>→</span></a>
+          <a href="/nassif-nassif-cv.pdf" target="_blank" rel="noopener noreferrer" className="btn btn-inv">Download CV <span>↓</span></a>
         </div>
       </div>
     </section>

@@ -17,6 +17,9 @@ export type Settings = {
   caseStudyCtaEyebrow: string
   caseStudyCtaHeading: string
   caseStudyCtaLead: string
+  postCtaEyebrow: string
+  postCtaHeading: string
+  postCtaLead: string
 }
 
 export const getSettings = cache(async (): Promise<Settings> => {
@@ -37,5 +40,8 @@ export const getSettings = cache(async (): Promise<Settings> => {
     caseStudyCtaEyebrow: doc.caseStudyCtaEyebrow ?? '',
     caseStudyCtaHeading: doc.caseStudyCtaHeading ?? '',
     caseStudyCtaLead: doc.caseStudyCtaLead ?? '',
+    postCtaEyebrow: doc.postCtaEyebrow ?? '',
+    postCtaHeading: doc.postCtaHeading ?? '',
+    postCtaLead: doc.postCtaLead ?? '',
   }
 })

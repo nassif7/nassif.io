@@ -29,6 +29,12 @@ export const Experience: CollectionConfig = {
       admin: { position: 'sidebar' },
     },
     {
+      name: 'current',
+      type: 'checkbox',
+      defaultValue: false,
+      admin: { position: 'sidebar', description: 'Filled timeline node — ongoing/current entry' },
+    },
+    {
       name: 'showInCV',
       type: 'checkbox',
       defaultValue: true,

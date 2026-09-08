@@ -10,7 +10,7 @@ const LINKS = [
   { label: 'Services', href: '/#services' },
   { label: 'Track record', href: '/#track' },
   { label: 'Writing', href: '/#writing' },
-  { label: 'CV', href: '/cv' },
+  { label: 'CV', href: '/nassif-nassif-cv.pdf', external: true },
 ]
 
 const SECTION_IDS = ['work', 'services', 'index', 'track', 'writing']
@@ -89,7 +89,7 @@ export function Masthead({ email, role, location, timezone, availability }: Mast
   }
 
   const isOn = (href: string) => {
-    if (href === '/cv') return false
+    if (!href.startsWith('/#')) return false
     const id = href.replace('/#', '')
     return id === 'work' ? active === 'work' || active === 'index' : active === id
   }
@@ -103,7 +103,13 @@ export function Masthead({ email, role, location, timezone, availability }: Mast
 
           <nav className={styles.main}>
             {LINKS.map(l => (
-              <a key={l.href} href={l.href} className={clsx({ [styles.on]: isOn(l.href) })}>
+              <a
+                key={l.href}
+                href={l.href}
+                target={l.external ? '_blank' : undefined}
+                rel={l.external ? 'noopener noreferrer' : undefined}
+                className={clsx({ [styles.on]: isOn(l.href) })}
+              >
                 {l.label}
               </a>
             ))}
@@ -158,7 +164,13 @@ export function Masthead({ email, role, location, timezone, availability }: Mast
               <a href={`mailto:${email}`} className="btn btn-fill" onClick={closeMenu}>
                 Start a project
               </a>
-              <a href="/cv" className="btn btn-ghost" onClick={closeMenu}>
+              <a
+                href="/nassif-nassif-cv.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-ghost"
+                onClick={closeMenu}
+              >
                 Download CV
               </a>
             </div>

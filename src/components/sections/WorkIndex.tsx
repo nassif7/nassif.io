@@ -9,7 +9,7 @@ export async function WorkIndex() {
   // Only projects curated for the redesign (year set) appear in the index —
   // e.g. "Bone Page & Kohle und Meer" predates it and isn't included yet.
   const [allProjects, homepage] = await Promise.all([getAllProjects(), getHomepage()])
-  const projects = allProjects.filter(p => p.year)
+  const projects = allProjects.filter(p => p.year).slice(0, 5)
 
   return (
     <section id="index" className={shared.band} style={{ paddingTop: 0 }}>
@@ -18,7 +18,8 @@ export async function WorkIndex() {
           num="04"
           eyebrow="Work index"
           title={homepage.indexSectionTitle}
-          meta={`${projects.length} entries`}
+          meta="See all projects →"
+          metaHref="/projects"
         />
         <div className="idx-scroll">
           <table className="idx">
