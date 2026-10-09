@@ -18,7 +18,7 @@ export default async function CvPage() {
 
   return (
     <div className={styles.frame}>
-    <div className={styles.chrome}><Header current="/cv" /></div>
+    <div className={styles.chrome}><Header /></div>
     <main className={styles.page}>
       <div className={styles.doc}>
         <div className={styles.hd}>

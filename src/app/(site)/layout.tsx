@@ -7,7 +7,8 @@ import { Analytics } from '@vercel/analytics/next'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import { PostHogProvider } from '@/components/analytics/PostHogProvider'
 import { LabelCursor } from '@/components/cursor/LabelCursor'
-import { getSite } from '@/data'
+import { getProfile, getSite } from '@/data'
+import { ContactProvider } from '@/components/contact/ContactProvider'
 import { PathTracker } from '@/components/site/PathTracker'
 
 const archivo = Archivo({
@@ -34,20 +35,31 @@ export async function generateMetadata(): Promise<Metadata> {
   }
 }
 
-export default function SiteLayout({
+export default async function SiteLayout({
   children,
   modal,
 }: {
   children: React.ReactNode
   modal: React.ReactNode
 }) {
+  const profile = await getProfile()
+  const contact = {
+    email: profile.email,
+    city: profile.city,
+    engagement: profile.engagement,
+    availability: profile.availability,
+    socials: profile.socials,
+  }
+
   return (
     <html lang="en" className={`${archivo.variable} ${dmMono.variable}`}>
       <body>
         <PostHogProvider>
           <PathTracker />
-          {children}
-          {modal}
+          <ContactProvider info={contact}>
+            {children}
+            {modal}
+          </ContactProvider>
           <LabelCursor />
         </PostHogProvider>
         <Analytics />

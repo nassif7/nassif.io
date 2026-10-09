@@ -26,10 +26,11 @@ const READY_CAP = 800
 const prefersReduced = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
 /**
- * Full-screen modal shell. Mounted by the intercepting-route layout, so it stays mounted
- * while the item inside changes: the wipe plays once per open, never on prev/next.
+ * Full-screen modal shell. Route modals mount it from an intercepting-route layout, so it stays mounted
+ * while the item inside changes (the wipe plays once per open, never on prev/next).
+ * Pass `onClose` for a modal that is not a route (e.g. Contact): it is called after the fade-out.
  */
-export function ModalShell({ label, noun, children }: { label: string; noun: string; children: React.ReactNode }) {
+export function ModalShell({ label, noun, onClose, children }: { label: string; noun: string; onClose?: () => void; children: React.ReactNode }) {
   const router = useRouter()
   const [, startTransition] = useTransition()
   const root = useRef<HTMLDivElement>(null)
@@ -89,8 +90,8 @@ export function ModalShell({ label, noun, children }: { label: string; noun: str
       { duration: reduced ? 120 : 200, easing: 'ease-in', fill: 'forwards' },
     )
     anim.current = a
-    a.finished.then(() => router.back()).catch(() => { closing.current = false })
-  }, [router])
+    a.finished.then(() => (onClose ? onClose() : router.back())).catch(() => { closing.current = false })
+  }, [router, onClose])
 
   /* ---------- swap in place (prev/next, more essays) ---------- */
   const navigate = useCallback(

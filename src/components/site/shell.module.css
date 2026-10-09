@@ -10,8 +10,10 @@
 .markLg { height: clamp(30px, 3.2vw, 44px); }
 
 .nav { display: flex; gap: clamp(14px, 2vw, 30px); flex-wrap: wrap; }
-.nav a { position: relative; padding-bottom: 2px; }
-.nav a::after {
+.nav a, .nav button { position: relative; padding-bottom: 2px; font: inherit; letter-spacing: inherit; text-transform: inherit; color: inherit; }
+.nav button:hover { color: var(--acc); }
+.nav a::after,
+.nav button::after {
   content: '';
   position: absolute;
   left: 0; right: 0; bottom: 0;
@@ -23,6 +25,8 @@
 }
 .nav a:hover::after,
 .nav a:focus-visible::after,
+.nav button:hover::after,
+.nav button:focus-visible::after,
 .nav a[aria-current='page']::after { transform: scaleX(1); }
 .nav a[aria-current='page'] { color: var(--acc); }
 
@@ -42,7 +46,7 @@
 .quote { color: var(--acc); }
 
 @media (max-width: 860px) {
-  .nav a { padding: 12px 0 10px; }
+  .nav a, .nav button { padding: 12px 0 10px; }
 }
 @media (max-width: 560px) {
   .header { flex-direction: column; gap: 4px; }
