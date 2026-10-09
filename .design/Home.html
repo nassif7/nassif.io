@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Nassif Nassif — Product Engineer, Berlin</title>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@200;300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--acc:#2F6664;--bg:#FFFFFF;--ink:#000000;--mute:#6b6b6b;--hair:rgba(0,0,0,.18);--g:'Archivo',Helvetica,sans-serif;--m:'DM Mono',ui-monospace,monospace;--pad:clamp(18px,2.6vw,40px)}
+html,body{height:100%;overflow:hidden}
+body{background:var(--bg);color:var(--ink);font-family:var(--g);-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+a:hover{color:var(--acc)}
+.k{font-family:var(--m);font-size:clamp(9.5px,.8vw,11px);letter-spacing:.14em;text-transform:uppercase}
+.sheet{position:fixed;inset:0;padding:var(--pad);display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-rows:auto auto minmax(0,1fr) auto;gap:0 clamp(20px,4vw,64px)}
+header{grid-column:1/-1;grid-row:1;display:flex;justify-content:space-between;align-items:flex-start;gap:20px}
+.top{grid-column:1;grid-row:2;margin-top:clamp(22px,5vh,60px)}
+.mark{height:clamp(30px,3.2vw,44px);width:auto;display:block}
+.l1,.l2{display:block;font-size:clamp(40px,min(7.4vw,12vh),120px);text-transform:uppercase}
+.l1{font-weight:700;line-height:.88;letter-spacing:-.042em}
+.l2{font-weight:200;line-height:.92;letter-spacing:-.045em}
+.l3{display:block;font-weight:500;font-size:clamp(14px,1.6vw,22px);line-height:1.2;letter-spacing:-.018em;text-transform:uppercase;margin-top:.6em}
+.l3 span{font-weight:300;color:var(--mute)}
+.about{font-family:var(--m);font-size:clamp(10px,1vw,13px);letter-spacing:.05em;line-height:1.55;color:var(--mute);margin-top:clamp(14px,2.4vh,26px);max-width:44ch}
+.photo{grid-column:2;grid-row:2;margin-top:clamp(22px,5vh,60px)!important;align-self:start;margin:0;width:clamp(120px,12vw,184px)}
+.photo .f{position:relative;aspect-ratio:4/5}
+.photo canvas{width:100%;height:100%;display:block}
+.photo[data-v="dither"] canvas{image-rendering:pixelated}
+.photo .f::before,.photo .f::after{content:'';position:absolute;width:9px;height:9px;border:0 solid var(--acc)}
+.photo .f::before{left:-6px;top:-6px;border-left-width:1px;border-top-width:1px}
+.photo .f::after{right:-6px;bottom:-6px;border-right-width:1px;border-bottom-width:1px}
+.photo figcaption{margin-top:12px;display:flex;justify-content:space-between;gap:10px;color:var(--mute);white-space:nowrap}
+.idx{grid-column:2;grid-row:2;margin-top:clamp(22px,5vh,60px);align-self:start;display:none;flex-direction:column;gap:7px;text-align:right;color:var(--mute);padding-top:6px}
+.idx b{font-weight:500;color:var(--ink)}
+body[data-portrait="none"] .photo{display:none}
+body[data-portrait="none"] .idx{display:flex}
+.feat{grid-column:1/-1;grid-row:3;min-height:0;display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(20px,3vw,48px);padding:clamp(24px,5vh,56px) 0 clamp(16px,2.6vh,28px)}
+.fi{min-height:0;display:flex;flex-direction:column;gap:12px}
+.fh{display:flex;justify-content:space-between;align-items:baseline;border-top:1px solid var(--ink);padding-top:10px}
+.fh a{color:var(--mute)}.fh a:hover{color:var(--acc)}
+.proj{flex:1;min-height:0;display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:clamp(14px,2vw,28px)}
+.proj .img{min-height:0;overflow:hidden;border:1px solid var(--hair);background:#eee}
+.proj img{width:100%;height:100%;object-fit:cover;object-position:50% 22%;display:block;filter:grayscale(1) contrast(1.05);transition:transform .5s,filter .45s}
+.proj:hover img{transform:scale(1.03);filter:none}
+.pt{display:flex;flex-direction:column;justify-content:space-between;gap:12px;min-width:0}
+.ft{font-weight:700;font-size:clamp(20px,2.4vw,36px);letter-spacing:-.034em;line-height:1;text-transform:uppercase}
+.fd{font-size:clamp(12.5px,1.05vw,15px);font-weight:300;color:var(--mute);line-height:1.45;margin-top:10px;max-width:40ch}
+.meta{display:flex;flex-direction:column;gap:6px;border-top:1px solid var(--hair);padding-top:10px}
+.meta div{display:flex;justify-content:space-between;gap:10px}
+.meta dt{color:var(--mute)}
+.go{display:inline-flex;gap:8px;align-items:center}
+.go span{transition:transform .2s;color:var(--acc)}
+a:hover .go span{transform:translate(3px,-3px)}
+.art{flex:1;min-height:0;display:flex;flex-direction:column;justify-content:space-between;gap:14px}
+.art .ft{font-weight:500;text-transform:none;letter-spacing:-.03em;font-size:clamp(22px,2.6vw,40px);line-height:1.02}
+.art .ab{display:flex;justify-content:space-between;align-items:baseline;gap:10px;color:var(--mute);border-top:1px solid var(--hair);padding-top:10px}
+.art .ab .go{color:var(--ink)}
+.ft{transition:color .2s}
+a:hover .ft{color:var(--acc)}
+.photo figcaption>span:first-child{color:var(--acc)}
+.fh .n{color:var(--acc);margin-right:10px}
+@media(max-height:640px){.fd{display:none}}
+footer{grid-column:1/-1;grid-row:4;display:flex;justify-content:space-between;align-items:baseline;gap:14px;flex-wrap:wrap;border-top:1px solid var(--ink);padding-top:12px}
+nav{display:flex;gap:clamp(14px,2vw,30px);flex-wrap:wrap}
+nav a,.mail{position:relative;padding-bottom:2px}
+nav a::after,.mail::after{content:'';position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--acc);transform:scaleX(0);transform-origin:0 50%;transition:transform .22s}
+nav a:hover::after,.mail:hover::after{transform:scaleX(1)}
+.rv{opacity:0;transform:translateY(12px);animation:up .8s cubic-bezier(.2,.7,.3,1) forwards;animation-delay:var(--d,0ms)}
+@keyframes up{to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;animation:none}}
+@media(max-width:640px),(max-height:440px){
+html,body{height:auto;min-height:100%;overflow:auto}
+.sheet{position:static;min-height:100svh;row-gap:28px}
+.photo{width:96px}.idx{text-align:left;padding-top:0}
+.feat{grid-row:auto;grid-template-columns:1fr;padding:0}
+.proj{grid-template-columns:1fr}.proj .img{aspect-ratio:16/10}
+.fd{display:block}
+footer{flex-direction:column;gap:12px}
+}
+</style>
+</head>
+<body data-portrait="lines">
+<div class="sheet">
+<header class="rv"><a href="Home.html" aria-label="n|N — Nassif Nassif"><svg class="mark" viewBox="3.6 -37.9 93.1 49.05" role="img" aria-label="n|N"><path fill="currentColor" d="M19.95-27.95L19.95-27.95Q24.3-27.95 26.98-25.58 29.65-23.2 29.65-17.9L29.65-17.9 29.65 0 21.25 0 21.25-15.55Q21.25-18.4 20.3-19.85 19.35-21.3 17.3-21.3L17.3-21.3Q14.25-21.3 13.15-19.03 12.05-16.75 12.05-12.5L12.05-12.5 12.05 0 3.6 0 3.6-27.45 10-27.45 11.15-23.9 11.55-23.9Q12.45-25.25 13.7-26.15 14.95-27.05 16.55-27.5 18.150-27.95 19.95-27.95Z"></path><path fill="currentColor" d="M96.7-35.7L96.7 0 85.7 0 71.3-26.15 71.09-26.15Q71.2-24.7 71.27-23.03 71.34-21.35 71.42-19.68 71.5-18 71.55-16.5L71.55-16.5 71.55 0 63.95 0 63.95-35.7 74.9-35.7 89.25-9.85 89.4-9.85Q89.34-11.25 89.27-12.88 89.2-14.5 89.15-16.1 89.09-17.7 89.05-19.15L89.05-19.15 89.05-35.7 96.7-35.7Z"></path><path fill="currentColor" d="M43.5 11.15L43.5-37.9 49.4-37.9 49.4 11.15 43.5 11.15Z"></path></svg></a><nav class="k"><a href="Projects.html">Projects</a><a href="Writing.html">Writing</a><a href="About.html">About</a><a href="CV.html">CV</a></nav></header>
+<div class="top">
+
+<div>
+<h1>
+<span class="l1 rv" style="--d:100ms">Product</span>
+<span class="l2 rv" style="--d:180ms">engineer,</span>
+<span class="l3 rv" style="--d:260ms">whole thing — <span>not a layer of it.</span></span>
+</h1>
+<p class="about rv" style="--d:340ms">Nassif Nassif, Berlin. Eight years between design and engineering — from the first sketch to the store listing.</p>
+</div>
+</div>
+<figure class="photo rv" style="--d:300ms" data-v="dither">
+<div class="f"><canvas role="img" aria-label="Portrait of Nassif Nassif"></canvas></div>
+<figcaption class="k"><span>Fig. 01</span><span>Berlin <span data-clock>--:--</span></span></figcaption>
+</figure>
+<div class="idx k rv" style="--d:300ms"><span><b>Berlin</b> <span data-clock>--:--</span></span><span>52.52° N · 13.40° E</span><span>Open from Q4 2026</span></div>
+<section class="feat">
+<div class="fi rv" style="--d:420ms">
+<div class="fh k"><span><span class="n">01</span>Featured project</span><a href="Projects.html">All projects →</a></div>
+<a href="Project.html?p=marineria" class="proj">
+<div class="img"><img src="public/projects/marineria/marineria1.avif" alt="Marineria.it app screens"></div>
+<div class="pt">
+<div><h2 class="ft">Marineria.it</h2><p class="fd">A recruitment app for three audiences on one codebase — that tells candidates why they don't qualify.</p></div>
+<div><dl class="meta k"><div><dt>Year</dt><dd>2024</dd></div><div><dt>Platform</dt><dd>iOS · Android</dd></div><div><dt>Stack</dt><dd>React Native</dd></div></dl>
+<span class="go k" style="margin-top:14px">Read case study <span>↗</span></span></div>
+</div>
+</a>
+</div>
+<div class="fi rv" style="--d:500ms">
+<div class="fh k"><span><span class="n">02</span>Featured article</span><a href="Writing.html">All writing →</a></div>
+<a href="Article.html?a=croissant-as-a-statement" class="art">
+<div><h2 class="ft">Croissant as a statement</h2><p class="fd">Camus asks us to imagine Sisyphus happy. It sounds simple until you try to live it.</p></div>
+<div class="ab k"><span>Essay · May 2026</span><span class="go">Read <span>↗</span></span></div>
+</a>
+</div>
+</section>
+<footer class="k rv" style="--d:580ms"><span style="color:var(--acc)">Built with love, shipped with hope 🙂</span><span>Berlin · <span data-date></span></span></footer>
+</div>
+<script>
+(function(){var cs=document.querySelectorAll('[data-clock]');function t(){try{var v=new Intl.DateTimeFormat('en-GB',{timeZone:'Europe/Berlin',hour:'2-digit',minute:'2-digit',hour12:false}).format(new Date());cs.forEach(function(c){c.textContent=v})}catch(e){}}t();setInterval(t,20000)})();
+(function(){
+var mode=document.body.getAttribute('data-portrait');if(mode==='none')return;
+var fig=document.querySelector('.photo');fig.setAttribute('data-v',mode);
+var cv=fig.querySelector('canvas');var img=new Image();img.src='public/avatar.png';
+img.onload=function(){
+ function lum(w,h){var s=document.createElement('canvas');s.width=w;s.height=h;var x=s.getContext('2d');x.fillStyle='#fff';x.fillRect(0,0,w,h);
+  x.drawImage(img,50,0,400,500,0,0,w,h);var d=x.getImageData(0,0,w,h).data,L=new Float32Array(w*h);
+  for(var i=0;i<w*h;i++){var v=(.299*d[i*4]+.587*d[i*4+1]+.114*d[i*4+2])/255;v=(v-.5)*1.35+.56;L[i]=v<0?0:v>1?1:v}return L}
+ if(mode==='dither'){
+  var w=96,h=120,L=lum(w,h),B=[0,8,2,10,12,4,14,6,3,11,1,9,15,7,13,5];
+  cv.width=w;cv.height=h;var x=cv.getContext('2d'),o=x.createImageData(w,h);
+  for(var y=0;y<h;y++)for(var X=0;X<w;X++){var i=y*w+X,on=L[i]<(B[(y%4)*4+X%4]+.5)/16,p=i*4;o.data[p]=o.data[p+1]=o.data[p+2]=on?0:255;o.data[p+3]=255}
+  x.putImageData(o,0,0);
+ }else{
+  var W=360,H=450,s=6,L=lum(W,H);cv.width=W;cv.height=H;var x=cv.getContext('2d');x.fillStyle='#fff';x.fillRect(0,0,W,H);x.fillStyle=getComputedStyle(document.documentElement).getPropertyValue('--acc').trim()||'#2F6664';
+  for(var y=s/2;y<H;y+=s){var yy=Math.floor(y);for(var X=0;X<W;X++){var t=(1-L[yy*W+X])*s*.92;if(t>.25)x.fillRect(X,y-t/2,1,t)}}
+ }
+};
+})();
+</script>
+<script>(function(){var v=new Intl.DateTimeFormat('en-GB',{timeZone:'Europe/Berlin',day:'numeric',month:'short',year:'numeric'}).format(new Date());document.querySelectorAll('[data-date]').forEach(function(e){e.textContent=v})})();</script>
+<script src="modal.js"></script>
+</body>
+</html>

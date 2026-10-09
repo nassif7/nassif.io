@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>About — Nassif Nassif</title>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@200;300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--acc:#2F6664;--bg:#FFFFFF;--ink:#000000;--mute:#6b6b6b;--hair:rgba(0,0,0,.18);--g:'Archivo',Helvetica,sans-serif;--m:'DM Mono',ui-monospace,monospace;--pad:clamp(18px,2.6vw,40px)}
+html,body{height:100%;overflow:hidden}
+body{background:var(--bg);color:var(--ink);font-family:var(--g);-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+a:hover{color:var(--acc)}
+.k{font-family:var(--m);font-size:clamp(9.5px,.8vw,11px);letter-spacing:.14em;text-transform:uppercase}
+.sheet{position:fixed;inset:0;padding:var(--pad);display:grid;grid-template-columns:minmax(0,6fr) minmax(0,6fr);grid-template-rows:auto auto minmax(0,1fr) auto;gap:0 clamp(24px,4vw,64px)}
+header{grid-column:1/-1;display:flex;justify-content:space-between;align-items:flex-start;gap:20px}
+.mark{height:clamp(26px,2.6vw,36px);width:auto;display:block}
+nav{display:flex;gap:clamp(14px,2vw,30px);flex-wrap:wrap}
+nav a,.mail{position:relative;padding-bottom:2px}
+nav a::after,.mail::after{content:'';position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--acc);transform:scaleX(0);transform-origin:0 50%;transition:transform .22s}
+nav a:hover::after,.mail:hover::after,nav a.on::after{transform:scaleX(1)}
+nav a.on{color:var(--ink)}
+
+.title{grid-column:1/-1;display:flex;justify-content:space-between;align-items:flex-end;gap:20px;margin-top:clamp(16px,3.4vh,40px);padding-bottom:clamp(14px,2.4vh,24px);border-bottom:1px solid var(--ink)}
+.back{display:block;color:var(--mute);margin-bottom:clamp(10px,2vh,20px)}
+.back:hover{color:var(--acc)}
+h1{font-size:clamp(34px,min(5.4vw,8.6vh),88px);text-transform:uppercase;line-height:.88;letter-spacing:-.042em;font-weight:700}
+h1 span{display:block;font-weight:200;letter-spacing:-.045em;font-size:.5em;line-height:1;margin-top:.12em}
+.tmeta{text-align:right;color:var(--mute);display:flex;flex-direction:column;gap:6px;white-space:nowrap}
+.tmeta b{font-weight:500;color:var(--acc)}
+
+.tlw{grid-column:1;grid-row:3;min-height:0;overflow-y:auto;scrollbar-width:thin;scrollbar-color:var(--hair) transparent;padding:clamp(16px,2.6vh,28px) 8px 8px 0}
+.tlw::-webkit-scrollbar{width:4px}.tlw::-webkit-scrollbar-thumb{background:var(--hair)}
+.tlh{color:var(--mute);display:flex;justify-content:space-between;margin-bottom:14px}
+.tl{position:relative;list-style:none;padding-left:120px}
+.tl::before{content:'';position:absolute;left:96px;top:6px;bottom:6px;width:1px;background:var(--hair)}
+.tl li{position:relative;padding:0 0 clamp(18px,3vh,28px)}
+.tl .y{position:absolute;left:-120px;width:82px;top:1px;text-align:right;color:var(--mute);font-variant-numeric:tabular-nums}
+.tl .nd{position:absolute;left:-28px;top:4px;width:9px;height:9px;border-radius:50%;border:1px solid var(--ink);background:var(--bg)}
+.tl li.now .nd{background:var(--acc);border-color:var(--acc)}
+.tl li.now .y{color:var(--acc)}
+.tl h3{font-weight:600;font-size:clamp(15px,1.25vw,18px);letter-spacing:-.016em;line-height:1.25}
+.tl .org{color:var(--mute);margin-top:4px;display:block}
+.tl p{font-size:clamp(13px,1vw,14.5px);font-weight:300;color:var(--mute);line-height:1.5;margin-top:6px;max-width:44ch}
+.tl li.edu h3{font-weight:500}
+.tl .grp{color:var(--mute);padding:4px 0 clamp(14px,2.4vh,22px)}
+.tl .grp::before{display:none}
+.ab{grid-column:2;grid-row:3;min-height:0;overflow-y:auto;scrollbar-width:thin;scrollbar-color:var(--hair) transparent;padding:clamp(16px,2.6vh,28px) 8px 8px 0;display:flex;flex-direction:column;gap:clamp(18px,3vh,30px)}
+.ab::-webkit-scrollbar{width:4px}.ab::-webkit-scrollbar-thumb{background:var(--hair)}
+.who{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:24px;align-items:start}
+.lede{font-size:clamp(20px,2vw,30px);font-weight:400;letter-spacing:-.024em;line-height:1.28;text-wrap:pretty}
+.lede em{font-style:normal;color:var(--mute);font-weight:300}
+.pt{width:clamp(84px,8vw,124px)}
+.pt .f{position:relative;aspect-ratio:4/5}
+.pt canvas{width:100%;height:100%;display:block}
+.pt .f::before,.pt .f::after{content:'';position:absolute;width:8px;height:8px;border:0 solid var(--acc)}
+.pt .f::before{left:-5px;top:-5px;border-left-width:1px;border-top-width:1px}
+.pt .f::after{right:-5px;bottom:-5px;border-right-width:1px;border-bottom-width:1px}
+.pt figcaption{margin-top:9px;color:var(--acc)}
+.prose p{font-size:clamp(14.5px,1.15vw,17px);font-weight:300;line-height:1.7;color:#222;max-width:36em;margin-bottom:1em;text-wrap:pretty}
+.prose p strong{font-weight:500;color:var(--ink)}
+.facts{display:grid;grid-template-columns:auto 1fr;gap:8px 20px;border-top:1px solid var(--ink);padding-top:12px;max-width:36em}
+.facts dt{color:var(--mute)}.facts dd{text-align:right}
+.facts .live{display:inline-flex;align-items:center;gap:7px}
+.facts .live::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--acc)}
+.links{display:flex;flex-wrap:wrap;gap:10px 24px}
+.links a .go{color:var(--acc);display:inline-block;transition:transform .2s}
+.links a:hover .go{transform:translate(2px,-2px)}
+footer{grid-column:1/-1;grid-row:4;display:flex;justify-content:space-between;align-items:baseline;gap:14px;flex-wrap:wrap;border-top:1px solid var(--ink);padding-top:12px;margin-top:14px}
+@media(max-width:860px),(max-height:480px){
+html,body{height:auto;min-height:100%;overflow:auto}
+.sheet{position:static;min-height:100svh;grid-template-columns:1fr;grid-template-rows:none}
+.ab{grid-row:auto;grid-column:1;overflow:visible;order:1}
+.tlw{grid-row:auto;grid-column:1;overflow:visible}
+footer{grid-row:auto}
+}
+@media(max-width:560px){header{flex-direction:column}.title{flex-direction:column;align-items:flex-start}.tmeta{text-align:left}.tl{padding-left:84px}.tl::before{left:66px}.tl .y{left:-84px;width:56px}.who{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="sheet">
+<header>
+<a href="Home.html" aria-label="n|N — Nassif Nassif, home"><svg class="mark" viewBox="3.6 -37.9 93.1 49.05" role="img" aria-label="n|N"><path fill="currentColor" d="M19.95-27.95L19.95-27.95Q24.3-27.95 26.98-25.58 29.65-23.2 29.65-17.9L29.65-17.9 29.65 0 21.25 0 21.25-15.55Q21.25-18.4 20.3-19.85 19.35-21.3 17.3-21.3L17.3-21.3Q14.25-21.3 13.15-19.03 12.05-16.75 12.05-12.5L12.05-12.5 12.05 0 3.6 0 3.6-27.45 10-27.45 11.15-23.9 11.55-23.9Q12.45-25.25 13.7-26.15 14.95-27.05 16.55-27.5 18.15-27.95 19.95-27.95Z"></path><path fill="currentColor" d="M96.7-35.7L96.7 0 85.7 0 71.3-26.15 71.09-26.15Q71.2-24.7 71.27-23.03 71.34-21.35 71.42-19.68 71.5-18 71.55-16.5L71.55-16.5 71.55 0 63.95 0 63.95-35.7 74.9-35.7 89.25-9.85 89.4-9.85Q89.34-11.25 89.27-12.88 89.2-14.5 89.15-16.1 89.09-17.7 89.05-19.15L89.05-19.150 89.05-35.7 96.7-35.7Z"></path><path fill="currentColor" d="M43.5 11.15L43.5-37.9 49.4-37.9 49.4 11.15 43.5 11.15Z"></path></svg></a>
+<nav class="k"><a href="Projects.html">Projects</a><a href="Writing.html">Writing</a><a href="About.html" class="on" aria-current="page">About</a><a href="CV.html">CV</a></nav>
+</header>
+<div class="title">
+<div><h1>About<span>Nassif Nassif</span></h1></div>
+<div class="tmeta k"><span><b>Product engineer</b></span><span>Berlin · since 2016</span></div>
+</div>
+
+<section class="tlw" tabindex="0" aria-label="Timeline">
+<div class="tlh k"><span>Timeline</span><span>2002 — now</span></div>
+<ol class="tl">
+<li class="now"><span class="y k">Now</span><span class="nd"></span><h3>Keen Studio, in development</h3><span class="org k">Design systems · Product</span><p>Component library and theme engine live; CLI and visual configurator in active development.</p></li>
+<li class="now"><span class="y k">2026</span><span class="nd"></span><h3>Three products shipped independently</h3><span class="org k">Marineria.it · oneMore · BookMarquee</span><p>A client mobile app on both stores, an App Store release of my own, and a cross-browser extension.</p></li>
+<li><span class="y k">2022–25</span><span class="nd"></span><h3>Software Developer UI/UX</h3><span class="org k">Verbraucherzentrale Bundesverband</span><p>Bridged design and backend on a national consumer-protection platform; made complex forms configurable and dynamic.</p></li>
+<li><span class="y k">2019–22</span><span class="nd"></span><h3>Software Developer</h3><span class="org k">LQ Enterprise</span><p>Built the central UI component library used across product teams, plus dynamic form generators and real-time features.</p></li>
+<li><span class="y k">2019</span><span class="nd"></span><h3>Wahl-O-Mat interface study</h3><span class="org k">UX research</span><p>Analysed interface issues, prototyped in Figma, and validated new concepts with direct user feedback.</p></li>
+<li><span class="y k">2017–19</span><span class="nd"></span><h3>Software Engineer</h3><span class="org k">kloeckner.i</span><p>Shipped web applications across Phoenix, Rails, Ember and Vue.js; introduced automated testing and led production releases.</p></li>
+<li><span class="y k">2017</span><span class="nd"></span><h3>Volunteer instructor</h3><span class="org k">ReDI School of Digital Integration</span><p>Taught web development fundamentals to students with refugee and migration backgrounds.</p></li>
+<li class="edu"><span class="y k">2016–17</span><span class="nd"></span><h3>Creative Web Dev / React</h3><span class="org k">ReDI School</span></li>
+<li><span class="y k">2016–17</span><span class="nd"></span><h3>Content moderator</h3><span class="org k">Arvato Bertelsmann</span><p>Moderated Arabic-language online content — first job in Berlin.</p></li>
+<li class="edu"><span class="y k">2006–09</span><span class="nd"></span><h3>B.Sc. Information Technology</h3><span class="org k">Syrian Virtual University</span></li>
+<li class="edu"><span class="y k">2002–05</span><span class="nd"></span><h3>Diploma, Computer Science</h3><span class="org k">Tishreen University</span></li>
+</ol>
+</section>
+
+<section class="ab" aria-label="About me">
+<div class="who">
+<p class="lede">I build products end to end — the flow, the interface, the data, the release. <em>Not frontend. Not backend. The whole thing.</em></p>
+<figure class="pt"><div class="f"><canvas role="img" aria-label="Portrait of Nassif Nassif"></canvas></div><figcaption class="k">Fig. 01</figcaption></figure>
+</div>
+<div class="prose">
+<p>Eight years of building software across corporate platforms, startups, and independent projects. Most of that time has been spent where design and engineering meet — component libraries, configurable forms, real-time interfaces — the places where a product either holds together or quietly doesn’t.</p>
+<p>I started in Berlin in 2016, learned web development at ReDI School, and taught it there a few months later. The habit stuck: <strong>learn it properly, then hand it over.</strong> I still work that way — understanding the whole system before touching one layer of it.</p>
+<p>AI-native in my workflow, grounded in the fundamentals. I care as much about the person on the other side of the screen as about the architecture behind it. Outside of work: reading, writing, chess, bouldering, football, F1, and photography.</p>
+</div>
+<dl class="facts k">
+<dt>Based in</dt><dd>Berlin, Germany</dd>
+<dt>Languages</dt><dd>Arabic · English C1 · German B2</dd>
+<dt>Engagement</dt><dd>Contract · Full-time</dd>
+<dt>Status</dt><dd><span class="live">Available Q4 2026</span></dd>
+</dl>
+<div class="links k">
+<a href="CV.html">Download CV <span class="go">↓</span></a>
+<a href="mailto:hello@nassif.pro">Email <span class="go">↗</span></a>
+<a href="https://github.com/nassif7">GitHub <span class="go">↗</span></a>
+<a href="https://linkedin.com/in/nassif">LinkedIn <span class="go">↗</span></a>
+</div>
+</section>
+
+<footer class="k"><span style="color:var(--acc)">Built with love, shipped with hope 🙂</span><span>Berlin · <span data-date></span></span></footer>
+</div>
+<script>
+(function(){var cs=document.querySelectorAll('[data-clock]');function t(){try{var v=new Intl.DateTimeFormat('en-GB',{timeZone:'Europe/Berlin',hour:'2-digit',minute:'2-digit',hour12:false}).format(new Date());cs.forEach(function(c){c.textContent=v})}catch(e){}}t();setInterval(t,20000)})();
+(function(){var cv=document.querySelector('.pt canvas'),img=new Image();img.src='public/avatar.png';img.onload=function(){
+var W=300,H=375,s=6,c=document.createElement('canvas');c.width=W;c.height=H;var x=c.getContext('2d');x.fillStyle='#fff';x.fillRect(0,0,W,H);x.drawImage(img,50,0,400,500,0,0,W,H);
+var d=x.getImageData(0,0,W,H).data;cv.width=W;cv.height=H;var o=cv.getContext('2d');o.fillStyle='#fff';o.fillRect(0,0,W,H);o.fillStyle=getComputedStyle(document.documentElement).getPropertyValue('--acc').trim()||'#2F6664';
+for(var y=s/2;y<H;y+=s){var yy=Math.floor(y);for(var X=0;X<W;X++){var i=(yy*W+X)*4,v=(.299*d[i]+.587*d[i+1]+.114*d[i+2])/255;v=(v-.5)*1.35+.56;v=v<0?0:v>1?1:v;var t=(1-v)*s*.92;if(t>.25)o.fillRect(X,y-t/2,1,t)}}}})();
+</script>
+<script>(function(){var v=new Intl.DateTimeFormat('en-GB',{timeZone:'Europe/Berlin',day:'numeric',month:'short',year:'numeric'}).format(new Date());document.querySelectorAll('[data-date]').forEach(function(e){e.textContent=v})})();</script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+import type { Post } from './types'
+
+export const posts: Post[] = [
+  {
+    slug: 'croissant-as-a-statement',
+    title: 'Croissant as a statement',
+    date: '2026-05-20',
+    topic: 'Philosophy',
+    featured: true,
+    dek: 'Camus asks us to imagine Sisyphus happy. It sounds simple until you actually try to live it. The croissant understood this before any of us did.',
+    body: [
+      'Every morning you choose. Bread is there, reliable, functional, asking nothing except that you keep going. The croissant is also there. It is not asking you to keep going. It is asking something subtler.',
+      'Camus asks us to imagine Sisyphus happy. It sounds simple until you actually try to live it. The croissant understood this before any of us did.',
+      'It breaks apart too easily. It leaves traces of itself everywhere. It refuses to stay contained. And yet here it is, in every café, every corner, wherever humans are still figuring out how to begin.',
+      'Maybe that is the whole point.',
+      'Bread is a promise. The croissant is a rejection of that entire premise. In the mornings when alarms go off, emails stack up, schedules fill in, and bread sits there doing its dutiful best, the croissant is the only thing on the counter that is smiling.',
+      'Not happiness in some grand philosophical sense. Nothing so dramatic. Just the quiet decision that if the rock is going uphill again anyway, the morning could at least taste good. 🥐☕',
+    ],
+  },
+  {
+    slug: 'on-the-politics-of-interface-design',
+    title: 'On the politics of interface design',
+    date: '2025-03-15',
+    topic: 'Politics',
+    dek: 'Every button is a decision. Every form is a stance. Design is never neutral.',
+    body: [
+      'Every button is a decision. Every form is a stance. Design is never neutral — it encodes values, assumptions, power structures. The question isn’t whether your interface has politics. It does. The question is whether you’re aware of them.',
+      'When you default a gender field to “Male”, that’s a political choice. When you hide the unsubscribe link in gray 8px text, that’s a political choice. When you make the “delete account” flow five steps long and the “upgrade” flow one click, that’s a political choice.',
+      'We don’t talk about this enough in frontend. We talk about accessibility (sometimes), performance (always), and aesthetics (constantly). But the ethics of interface design — the slow, quiet ways our decisions shape behavior — that gets left out.',
+      'I’m not saying every developer needs to be a political philosopher. I’m saying: pay attention to whose interests your defaults serve. Ask who benefits when the UX is “optimized.” Notice when friction is designed in, and for whom.',
+      'The interface is never just the interface.',
+    ],
+  },
+  {
+    slug: 'what-it-means-to-finish-something',
+    title: 'What it means to finish something',
+    date: '2025-02-20',
+    topic: 'Philosophy',
+    dek: 'I have a graveyard of half-built things. I think most developers do.',
+    body: [
+      'I have a graveyard of half-built things. I think most developers do.',
+      'Side projects that got to 80% and stopped. Apps that were almost ready to launch. Tools that solved a real problem but never got the README. They sit in folders with names like <code>v2</code>, <code>new-approach</code>, <code>final-final</code>.',
+      'For a long time I thought this was a discipline problem. Start less, finish more. But I’m not sure anymore.',
+      'Some things are worth finishing. Some things teach you what you needed to learn at 60% and then it’s okay to stop. The problem isn’t the stopping — it’s the shame around it. The feeling that an unshipped thing is a failed thing.',
+      'Finishing is overrated as a virtue. What matters is whether you were honest with yourself about what you were building and why. Did you start it to learn? Did you learn? Then it’s finished, in the way that matters.',
+      'Did you start it to ship? Then ship it, even if it’s not perfect. Especially if it’s not perfect.',
+      'The graveyard is fine. Just don’t lie to yourself about which kind of project you’re building.',
+    ],
+  },
+  {
+    slug: 'the-frontend-is-never-just-frontend',
+    title: 'The frontend is never just frontend',
+    date: '2025-01-10',
+    topic: 'Tech',
+    dek: 'You can’t separate the UI from the system it lives in. Anyone who tells you otherwise hasn’t shipped enough.',
+    body: [
+      'You can’t separate the UI from the system it lives in. Anyone who tells you otherwise hasn’t shipped enough.',
+      'Every state management decision is a product decision. Every loading state is a statement about how you handle uncertainty. Every error message is a moment of trust — or broken trust — with the person using your software.',
+      'Frontend developers have spent years fighting to be taken seriously as engineers. And I get it. The work is real and complex and the “it’s just CSS” dismissal is exhausting.',
+      'But in fighting for that credibility, some of us overcorrected. We became obsessed with the technical purity of our work — the architecture, the bundle size, the TypeScript strictness — and forgot that the thing we’re building is used by actual people with actual problems.',
+      'The best frontend work I’ve ever seen comes from developers who care equally about the code and the person on the other side of the screen. Who know when to push back on a design decision because the API doesn’t support it, and when to push back on an API decision because the design requires it.',
+      'That’s the job. Not frontend. Not backend. The whole thing.',
+    ],
+  },
+]

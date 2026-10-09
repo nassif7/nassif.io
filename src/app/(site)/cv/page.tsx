@@ -5,6 +5,9 @@ import { getAllExperience } from '@/lib/experience'
 import {
   CV_PROJECTS, CV_CORE_STACK, CV_TOOLING, CV_FAMILIAR, CV_LANGUAGES, CV_EDUCATION,
 } from '@/content/cv'
+import { Header } from '@/components/site/Header'
+import { Footer } from '@/components/site/Footer'
+import { Logo } from '@/components/site/Logo'
 import styles from './cv.module.css'
 
 export const metadata = { title: 'CV — Nassif Nassif' }
@@ -13,11 +16,13 @@ export default async function CvPage() {
   const experience = (await getAllExperience()).filter(e => e.showInCV)
 
   return (
+    <div className={styles.frame}>
+    <div className={styles.chrome}><Header current="/cv" /></div>
     <main className={styles.page}>
       <div className={styles.doc}>
         <div className={styles.hd}>
           <div>
-            <span className="logo">n<i>/</i>N</span>
+            <Logo className={styles.logo} />
             <h1>Nassif Nassif</h1>
             <div className={styles.role}>Software Engineer · Platform · Product · UX</div>
           </div>
@@ -115,5 +120,7 @@ export default async function CvPage() {
         </div>
       </div>
     </main>
+    <div className={styles.chrome}><Footer /></div>
+    </div>
   )
 }

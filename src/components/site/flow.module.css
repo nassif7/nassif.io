@@ -1,0 +1,2 @@
+.flow { min-height: 100svh; padding: var(--pad); display: flex; flex-direction: column; }
+.main { flex: 1; }

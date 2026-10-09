@@ -1,22 +1,16 @@
-export const dynamic = 'force-dynamic'
-
 import type { Metadata } from 'next'
-import { DM_Sans, DM_Mono } from 'next/font/google'
+import { Archivo, DM_Mono } from 'next/font/google'
 import '@/styles/globals.css'
 import { Analytics } from '@vercel/analytics/next'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import { PostHogProvider } from '@/components/analytics/PostHogProvider'
-import { UtilityBar } from '@/components/utilitybar/UtilityBar'
-import { Masthead } from '@/components/masthead/Masthead'
-import { MobileNavProvider } from '@/components/masthead/MobileNavContext'
-import { Footer } from '@/components/sections/Footer'
-import { getSettings } from '@/lib/settings'
-import styles from './site.module.css'
+import { LabelCursor } from '@/components/cursor/LabelCursor'
+import { PathTracker } from '@/components/site/PathTracker'
 
-const dmSans = DM_Sans({
+const archivo = Archivo({
   subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700'],
-  variable: '--font-dm-sans',
+  weight: ['200', '300', '400', '500', '600', '700'],
+  variable: '--font-archivo',
   display: 'swap',
 })
 
@@ -27,35 +21,27 @@ const dmMono = DM_Mono({
   display: 'swap',
 })
 
-export async function generateMetadata(): Promise<Metadata> {
-  const settings = await getSettings()
-  return {
-    title: settings.seoTitle,
-    description: settings.seoDescription,
-  }
+export const metadata: Metadata = {
+  metadataBase: new URL('https://nassif.pro'),
+  title: { default: 'Nassif Nassif — Product Engineer, Berlin', template: '%s — Nassif Nassif' },
+  description: 'Product engineer in Berlin. Eight years between design and engineering — from the first sketch to the store listing.',
 }
 
-export default async function SiteLayout({ children }: { children: React.ReactNode }) {
-  const settings = await getSettings()
-
+export default function SiteLayout({
+  children,
+  modal,
+}: {
+  children: React.ReactNode
+  modal: React.ReactNode
+}) {
   return (
-    <html lang="en" className={`${dmSans.variable} ${dmMono.variable}`}>
+    <html lang="en" className={`${archivo.variable} ${dmMono.variable}`}>
       <body>
         <PostHogProvider>
-          <MobileNavProvider>
-            <div className={styles.wrapper}>
-              <UtilityBar />
-              <Masthead
-                email={settings.email}
-                role={settings.role}
-                location={settings.location}
-                timezone={settings.timezone}
-                availability={settings.availability}
-              />
-              {children}
-              <Footer />
-            </div>
-          </MobileNavProvider>
+          <PathTracker />
+          {children}
+          {modal}
+          <LabelCursor />
         </PostHogProvider>
         <Analytics />
         <SpeedInsights />

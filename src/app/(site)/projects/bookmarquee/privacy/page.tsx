@@ -1,3 +1,4 @@
+import { Flow } from '@/components/site/Flow'
 import styles from './privacy.module.css'
 
 export const metadata = {
@@ -6,6 +7,7 @@ export const metadata = {
 
 export default function BookMarqueePrivacy() {
   return (
+    <Flow current="/projects">
     <main className={styles.page}>
       <a href="/projects/bookmarquee" className={styles.back}>← BookMarquee</a>
 
@@ -44,5 +46,6 @@ export default function BookMarqueePrivacy() {
         <p><a href="mailto:hello@nassif.pro">Get in touch</a></p>
       </div>
     </main>
+    </Flow>
   )
 }
