@@ -11,14 +11,13 @@
   --pad: clamp(18px, 2.6vw, 40px);
 
   /* type scale */
-  --fs-label: clamp(11px, .92vw, 13px);           /* mono uppercase labels: dates, metadata, footer, modal bar, loader */
+  --fs-label: clamp(11px, .92vw, 13px);           /* all small mono uppercase labels: dates, metadata, section labels, fact lists, footer, modal bar, loader */
   --fs-nav: clamp(12px, 1.02vw, 14.5px);          /* header nav links */
-  --fs-meta: clamp(12.5px, 1.2vw, 17px);          /* label rows that head/foot a content block */
-  --fs-facts: clamp(13.5px, 1.3vw, 19px);         /* key/value fact lists */
-  --fs-lede: 24px;                                /* descriptions, excerpts, deks, intro paragraphs */
-  --fs-lede-narrow: 24px;                         /* same role, narrow columns (kept as its own token) */
-  --fs-title: clamp(26px, 3.2vw, 50px);           /* project titles (700, uppercase) */
-  --fs-title-essay: clamp(28px, 3.5vw, 56px);     /* essay titles (500, sentence case) */
+  --fs-lede: clamp(14px, 1.2vw, 17px);            /* card/featured descriptions, excerpts, deks */
+  --fs-row: clamp(14px, 1.1vw, 16px);             /* Projects/Writing list-row descriptions */
+  --fs-intro: clamp(12px, 1.08vw, 14.5px);        /* mono "about" line under the home heading */
+  --fs-title: clamp(20px, 2.4vw, 36px);           /* project card titles (700, uppercase) */
+  --fs-title-essay: clamp(22px, 2.6vw, 40px);     /* essay card titles (500, sentence case) */
 }
 
 body {

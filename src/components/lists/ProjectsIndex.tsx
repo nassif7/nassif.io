@@ -55,7 +55,14 @@ export function ProjectsIndex({
             <div>
               <h2>{p.name}</h2>
               <p>{p.summary}</p>
-              <div className={clsx(styles.st, 'k')}>{p.stack.map(s => <span key={s}>{s}</span>)}</div>
+              <div className={styles.stWrap}>
+                <div className={clsx(styles.st, 'k')}>{p.stack.map(s => <span key={s}>{s}</span>)}</div>
+                <dl className={clsx(styles.rowFacts, 'k')} aria-hidden="true">
+                  <div><dt>Role</dt><dd>{p.role}</dd></div>
+                  {p.platform && <div><dt>Platform</dt><dd>{p.platform}</dd></div>}
+                  <div><dt>Stack</dt><dd>{p.stack.slice(0, 3).join(' · ')}</dd></div>
+                </dl>
+              </div>
             </div>
             <span className={clsx(styles.ty, 'k')}>{p.type}</span>
             <span className={clsx(styles.yr, 'k')}>{p.year}</span>

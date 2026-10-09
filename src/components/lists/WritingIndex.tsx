@@ -38,7 +38,7 @@ export function WritingIndex({
 
       <Chips label="Topic" chips={chips} total={posts.length} active={topic} onChange={setTopic} />
 
-      <div className={styles.list} tabIndex={0} aria-label="Essay list" style={{ '--c3': 'clamp(100px, 9vw, 150px)', '--c4': 'clamp(76px, 7vw, 110px)', '--row-title': 'calc(var(--fs-title-essay) * .6)', '--row-weight': 500, '--row-case': 'none' } as React.CSSProperties}>
+      <div className={styles.list} tabIndex={0} aria-label="Essay list" style={{ '--c3': '110px', '--c4': '70px' } as React.CSSProperties}>
         <div className={clsx(styles.thead, 'k')}>
           <span>No.</span><span>Title</span><span>Topic</span><span>Date</span><span />
         </div>
@@ -66,10 +66,11 @@ export function WritingIndex({
       {sel && (
         <aside className={styles.pv} aria-live="polite">
           <div className={clsx(styles.f, styles.text)}>
-            <div>
+            <div className={styles.pBody}>
               <span className={clsx(styles.fig, 'k')}>Essay {pad(selIndex + 1)} — {sel.topic}</span>
               <h2 className={styles.pt}>{sel.title}</h2>
               <p className={styles.dk}>{sel.dek}</p>
+              {sel.opening && <p className={styles.open}>{sel.opening}</p>}
             </div>
             <div className={clsx(styles.rd, 'k')}>
               <span>{formatMonth(sel.date)}</span>

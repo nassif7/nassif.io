@@ -56,6 +56,8 @@ export type Post = {
   featured?: boolean
   /** HTML paragraphs */
   body: string[]
+  /** plain-text opening of the body (precomputed for list pages) */
+  opening?: string
 }
 
 export type TimelineEntry = {
