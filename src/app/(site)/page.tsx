@@ -5,6 +5,7 @@ import { Header } from '@/components/site/Header'
 import { Footer } from '@/components/site/Footer'
 import { Portrait } from '@/components/site/Portrait'
 import { BerlinClock } from '@/components/site/BerlinClock'
+import { FitLines } from '@/components/site/FitLines'
 import { getFeaturedPost, getFeaturedProject, getProfile, formatMonth } from '@/data'
 import styles from './home.module.css'
 
@@ -13,6 +14,11 @@ const delay = (ms: number) => ({ '--d': `${ms}ms` }) as React.CSSProperties
 export default async function Home() {
   const [project, post, profile] = await Promise.all([getFeaturedProject(), getFeaturedPost(), getProfile()])
   const [l1, l2, l3, l3Muted] = profile.headline
+  // hover layer: the opening of the essay, skipping anything identical to the dek
+  const plain = (html: string) => html.replace(/<[^>]+>/g, '').trim()
+  const opening = post
+    ? post.body.map(plain).filter(t => t && t !== plain(post.dek)).slice(0, 3).join(' ')
+    : ''
 
   return (
     <div className={styles.sheet} data-sheet>
@@ -46,19 +52,20 @@ export default async function Home() {
               )}
             </div>
             <div className={styles.pt}>
-              <div>
-                <h2 className={styles.ft}>{project.name}</h2>
-                <p className={styles.fd}>{project.summary}</p>
-              </div>
-              <div>
-                <dl className={clsx(styles.meta, 'k')}>
-                  <div><dt>Year</dt><dd>{project.year}</dd></div>
-                  {project.platform && <div><dt>Platform</dt><dd>{project.platform}</dd></div>}
-                  <div><dt>Stack</dt><dd>{project.stack[1] ?? project.stack[0]}</dd></div>
-                </dl>
-                <span className={clsx(styles.go, 'k')} style={{ marginTop: 14 }}>
-                  {project.kind === 'case-study' ? 'Read case study' : 'View project'} <span>↗</span>
-                </span>
+              <h2 className={styles.ft}>{project.name}</h2>
+              <FitLines className={styles.sw}>
+                <p className={styles.swA} data-fit="a">{project.summary}</p>
+                <div className={styles.swB} data-fit="b">
+                  <dl className={clsx(styles.facts, 'k')}>
+                    <div><dt>Role</dt><dd>{project.role}</dd></div>
+                    {project.platform && <div><dt>Platform</dt><dd>{project.platform}</dd></div>}
+                    <div><dt>Stack</dt><dd>{project.stack.slice(0, 3).join(' · ')}</dd></div>
+                  </dl>
+                </div>
+              </FitLines>
+              <div className={clsx(styles.fr, 'k')}>
+                <span>{project.kind === 'case-study' ? 'Case study' : 'Project'} · {project.year}</span>
+                <span className={styles.go}>Read <span>↗</span></span>
               </div>
             </div>
           </Link>
@@ -72,11 +79,16 @@ export default async function Home() {
             <Link href="/writing">All writing →</Link>
           </div>
           <Link href={`/writing/${post.slug}`} className={styles.art}>
-            <div>
-              <h2 className={styles.ft}>{post.title}</h2>
-              <p className={styles.fd}>{post.dek}</p>
-            </div>
-            <div className={clsx(styles.ab, 'k')}>
+            <h2 className={styles.ft}>{post.title}</h2>
+            <FitLines className={styles.sw} reserveLines={2}>
+              <p className={styles.swA} data-fit="a">{post.dek}</p>
+              {opening && (
+                <div className={styles.swB} data-fit="b">
+                  <p className={styles.open}>{opening}</p>
+                </div>
+              )}
+            </FitLines>
+            <div className={clsx(styles.fr, 'k')}>
               <span>Essay · {formatMonth(post.date)}</span>
               <span className={styles.go}>Read <span>↗</span></span>
             </div>

@@ -9,7 +9,7 @@
 .mark { height: clamp(26px, 2.6vw, 36px); width: auto; display: block; }
 .markLg { height: clamp(30px, 3.2vw, 44px); }
 
-.nav { display: flex; gap: clamp(14px, 2vw, 30px); flex-wrap: wrap; }
+.nav { display: flex; gap: clamp(14px, 2vw, 30px); flex-wrap: wrap; font-size: var(--fs-nav); font-weight: 500; }
 .nav a, .nav button { position: relative; padding-bottom: 2px; font: inherit; letter-spacing: inherit; text-transform: inherit; color: inherit; }
 .nav button:hover { color: var(--acc); }
 .nav a::after,

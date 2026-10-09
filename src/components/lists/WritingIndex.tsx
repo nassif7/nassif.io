@@ -38,7 +38,7 @@ export function WritingIndex({
 
       <Chips label="Topic" chips={chips} total={posts.length} active={topic} onChange={setTopic} />
 
-      <div className={styles.list} tabIndex={0} aria-label="Essay list" style={{ '--c3': '110px', '--c4': '70px' } as React.CSSProperties}>
+      <div className={styles.list} tabIndex={0} aria-label="Essay list" style={{ '--c3': 'clamp(100px, 9vw, 150px)', '--c4': 'clamp(76px, 7vw, 110px)', '--row-title': 'calc(var(--fs-title-essay) * .6)', '--row-weight': 500, '--row-case': 'none' } as React.CSSProperties}>
         <div className={clsx(styles.thead, 'k')}>
           <span>No.</span><span>Title</span><span>Topic</span><span>Date</span><span />
         </div>
