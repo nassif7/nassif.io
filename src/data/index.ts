@@ -1,86 +1,55 @@
-import { projects } from './projects'
-import { posts as allPosts } from './posts'
-import { timeline } from './timeline'
-import { PROJECT_TYPES, TOPICS } from './types'
+import { cache } from 'react'
+import { fetchPosts, fetchProfile, fetchProjects, fetchSite, fetchTimeline } from '@/lib/content'
+import { PROJECT_TYPES } from './types'
 import type { Post, Project, TimelineEntry } from './types'
 
-export { profile, site } from './profile'
+export { site, pad, readingTime, timelineYear, formatDate, formatMonth } from './format'
 export type { Post, Project, TimelineEntry } from './types'
 
-export const pad = (n: number) => String(n).padStart(2, '0')
+// cached per request, so a page and its children share one query
+export const getProjects = cache(fetchProjects)
+export const getPosts = cache(fetchPosts)
+export const getTimeline = cache(fetchTimeline)
+export const getProfile = cache(fetchProfile)
+export const getSite = cache(fetchSite)
 
-export function getProjects(): Project[] {
-  return projects
+export async function getProject(slug: string): Promise<Project | undefined> {
+  return (await getProjects()).find(p => p.slug === slug)
 }
 
-export function getProject(slug: string): Project | undefined {
-  return projects.find(p => p.slug === slug)
+export async function getFeaturedProject(): Promise<Project | undefined> {
+  const list = await getProjects()
+  return list.find(p => p.featured) ?? list[0]
 }
 
-export function getFeaturedProject(): Project {
-  return projects.find(p => p.featured) ?? projects[0]
+export async function getProjectIndex(slug: string): Promise<number> {
+  return (await getProjects()).findIndex(p => p.slug === slug)
 }
 
-/** Previous/next wrap around the list. */
-export function getProjectNeighbours(slug: string) {
-  const i = projects.findIndex(p => p.slug === slug)
-  return {
-    index: i,
-    prev: projects[(i - 1 + projects.length) % projects.length],
-    next: projects[(i + 1) % projects.length],
-  }
+export async function getPost(slug: string): Promise<Post | undefined> {
+  return (await getPosts()).find(p => p.slug === slug)
 }
 
-/** Newest first. */
-export function getPosts(): Post[] {
-  return [...allPosts].sort((a, b) => b.date.localeCompare(a.date))
+export async function getFeaturedPost(): Promise<Post | undefined> {
+  const list = await getPosts()
+  return list.find(p => p.featured) ?? list[0]
 }
 
-export function getPost(slug: string): Post | undefined {
-  return allPosts.find(p => p.slug === slug)
-}
-
-export function getFeaturedPost(): Post {
-  const sorted = getPosts()
-  return sorted.find(p => p.featured) ?? sorted[0]
-}
-
-export function getPostNeighbours(slug: string) {
-  const list = getPosts()
+/** Position of a post in the list, plus the list itself (for "More writing"). */
+export async function getPostNeighbours(slug: string) {
+  const list = await getPosts()
   const i = list.findIndex(p => p.slug === slug)
-  return {
-    index: i,
-    list,
-    prev: list[(i - 1 + list.length) % list.length],
-    next: list[(i + 1) % list.length],
-  }
-}
-
-export function readingTime(post: Post): { words: number; minutes: number } {
-  const words = post.body.join(' ').replace(/<[^>]+>/g, '').split(/\s+/).filter(Boolean).length
-  return { words, minutes: Math.max(1, Math.ceil(words / 230)) }
+  return { index: i, list }
 }
 
 /** Chips: only values with at least one item, in canonical order. */
-export function projectTypeCounts() {
-  return PROJECT_TYPES.map(t => ({ value: t as string, count: projects.filter(p => p.type === t).length })).filter(c => c.count > 0)
+export async function projectTypeCounts() {
+  const list = await getProjects()
+  return PROJECT_TYPES.map(t => ({ value: t as string, count: list.filter(p => p.type === t).length })).filter(c => c.count > 0)
 }
 
-export function topicCounts() {
-  return TOPICS.map(t => ({ value: t as string, count: allPosts.filter(p => p.topic === t).length })).filter(c => c.count > 0)
+export async function topicCounts() {
+  const list = await getPosts()
+  const names = [...new Set(list.map(p => p.topic))].sort((a, b) => a.localeCompare(b))
+  return names.map(t => ({ value: t, count: list.filter(p => p.topic === t).length }))
 }
-
-export function timelineYear(e: TimelineEntry): string {
-  if (e.label) return e.label
-  return e.start === e.end || !e.end ? String(e.start) : `${e.start}–${String(e.end).slice(-2)}`
-}
-
-/** Newest first. */
-export function getTimeline(): TimelineEntry[] {
-  return timeline
-}
-
-const DATE_LONG = new Intl.DateTimeFormat('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' })
-const DATE_MONTH = new Intl.DateTimeFormat('en-GB', { month: 'short', year: 'numeric', timeZone: 'UTC' })
-export const formatDate = (iso: string) => DATE_LONG.format(new Date(iso))
-export const formatMonth = (iso: string) => DATE_MONTH.format(new Date(iso))

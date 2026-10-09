@@ -5,14 +5,13 @@ import { Header } from '@/components/site/Header'
 import { Footer } from '@/components/site/Footer'
 import { Portrait } from '@/components/site/Portrait'
 import { BerlinClock } from '@/components/site/BerlinClock'
-import { getFeaturedPost, getFeaturedProject, profile, formatMonth } from '@/data'
+import { getFeaturedPost, getFeaturedProject, getProfile, formatMonth } from '@/data'
 import styles from './home.module.css'
 
 const delay = (ms: number) => ({ '--d': `${ms}ms` }) as React.CSSProperties
 
-export default function Home() {
-  const project = getFeaturedProject()
-  const post = getFeaturedPost()
+export default async function Home() {
+  const [project, post, profile] = await Promise.all([getFeaturedProject(), getFeaturedPost(), getProfile()])
   const [l1, l2, l3, l3Muted] = profile.headline
 
   return (
@@ -34,6 +33,7 @@ export default function Home() {
       </figure>
 
       <section className={styles.feat}>
+        {project && (
         <div className={clsx(styles.fi, styles.rv)} style={delay(420)}>
           <div className={clsx(styles.fh, 'k')}>
             <span><span className={styles.n}>01</span>Featured project</span>
@@ -63,7 +63,9 @@ export default function Home() {
             </div>
           </Link>
         </div>
+        )}
 
+        {post && (
         <div className={clsx(styles.fi, styles.rv)} style={delay(500)}>
           <div className={clsx(styles.fh, 'k')}>
             <span><span className={styles.n}>02</span>Featured article</span>
@@ -80,6 +82,7 @@ export default function Home() {
             </div>
           </Link>
         </div>
+        )}
       </section>
 
       <Footer />

@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic'
+
 import type { Metadata } from 'next'
 import { Archivo, DM_Mono } from 'next/font/google'
 import '@/styles/globals.css'
@@ -5,6 +7,7 @@ import { Analytics } from '@vercel/analytics/next'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import { PostHogProvider } from '@/components/analytics/PostHogProvider'
 import { LabelCursor } from '@/components/cursor/LabelCursor'
+import { getSite } from '@/data'
 import { PathTracker } from '@/components/site/PathTracker'
 
 const archivo = Archivo({
@@ -21,10 +24,14 @@ const dmMono = DM_Mono({
   display: 'swap',
 })
 
-export const metadata: Metadata = {
-  metadataBase: new URL('https://nassif.pro'),
-  title: { default: 'Nassif Nassif — Product Engineer, Berlin', template: '%s — Nassif Nassif' },
-  description: 'Product engineer in Berlin. Eight years between design and engineering — from the first sketch to the store listing.',
+export async function generateMetadata(): Promise<Metadata> {
+  const site = await getSite()
+  return {
+    metadataBase: new URL('https://nassif.pro'),
+    title: { default: site.seoTitle ?? site.title, template: `%s — ${site.title}` },
+    description: site.description,
+    openGraph: site.ogImage ? { images: [site.ogImage] } : undefined,
+  }
 }
 
 export default function SiteLayout({

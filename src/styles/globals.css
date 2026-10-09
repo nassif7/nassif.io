@@ -45,7 +45,7 @@ html:has([data-sheet]) body { height: 100%; overflow: hidden; }
 html[data-modal-open] { overflow: hidden !important; }
 
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { transition: none !important; animation: none !important; scroll-behavior: auto !important; }
+  *:not([data-allow-motion]), *::before, *::after { transition: none !important; animation: none !important; scroll-behavior: auto !important; }
 }
 
 /* Custom label cursor (desktop, fine pointer only; class set by LabelCursor) */

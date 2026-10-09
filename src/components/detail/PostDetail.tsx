@@ -8,8 +8,8 @@ import { CONTENT_ID } from './ProjectToc'
 import { ReadingProgress } from './ReadingProgress'
 import styles from './detail.module.css'
 
-export function PostDetail({ post, embedded = false }: { post: Post; embedded?: boolean }) {
-  const { index, list, prev, next } = getPostNeighbours(post.slug)
+export async function PostDetail({ post, embedded = false }: { post: Post; embedded?: boolean }) {
+  const { index, list } = await getPostNeighbours(post.slug)
   const { words, minutes } = readingTime(post)
   const date = formatDate(post.date)
 
@@ -19,17 +19,17 @@ export function PostDetail({ post, embedded = false }: { post: Post; embedded?: 
 
       <div className={styles.title}>
         <div>
-          <DetailLink href="/writing" mode="closes" className={clsx(styles.back, 'k')}>← Writing</DetailLink>
-          <h1 className={styles.h1Article}>{post.title}</h1>
+          <DetailLink href="/writing" mode="closes" className={clsx(styles.back, 'k')} data-reveal="" style={{ '--rd': '60ms' } as React.CSSProperties}>← Writing</DetailLink>
+          <h1 className={styles.h1Article} data-reveal="" style={{ '--rd': '120ms' } as React.CSSProperties}>{post.title}</h1>
         </div>
-        <div className={clsx(styles.tmeta, 'k')}>
+        <div className={clsx(styles.tmeta, 'k')} data-reveal="" style={{ '--rd': '180ms' } as React.CSSProperties}>
           <span><b>{post.topic}</b></span>
           <span>Essay {pad(index + 1)} · {minutes} min</span>
         </div>
         <ReadingProgress />
       </div>
 
-      <aside className={styles.sideArticle}>
+      <aside className={styles.sideArticle} data-reveal="body">
         <p className={styles.dek}>{post.dek}</p>
         <dl className={clsx(styles.facts, 'k')}>
           <dt>Published</dt><dd>{date}</dd>
@@ -51,21 +51,13 @@ export function PostDetail({ post, embedded = false }: { post: Post; embedded?: 
         </div>
       </aside>
 
-      <main id={CONTENT_ID} className={clsx(styles.content, styles.contentArticle)} tabIndex={0} aria-label={post.title}>
+      <main data-reveal="body" id={CONTENT_ID} className={clsx(styles.content, styles.contentArticle)} tabIndex={0} aria-label={post.title}>
         <article className={styles.essay}>
           {post.body.map((html, i) => (
             <p key={i} className={i === post.body.length - 1 ? styles.lastP : undefined} dangerouslySetInnerHTML={{ __html: html }} />
           ))}
         </article>
         <div className={clsx(styles.end, 'k')}><span>End</span><span>Nassif Nassif · {date}</span></div>
-        <nav className={clsx(styles.pn, styles.pnArticle)} aria-label="More essays">
-          <DetailLink href={`/writing/${prev.slug}`} mode="swap">
-            <span className="k">← Previous</span><b>{prev.title}</b>
-          </DetailLink>
-          <DetailLink href={`/writing/${next.slug}`} mode="swap">
-            <span className="k">Next →</span><b>{next.title}</b>
-          </DetailLink>
-        </nav>
       </main>
 
       {!embedded && <Footer />}

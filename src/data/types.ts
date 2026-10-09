@@ -44,8 +44,7 @@ export type Project = {
   sections?: CaseSection[]
 }
 
-export const TOPICS = ['Philosophy', 'Politics', 'Tech'] as const
-export type Topic = (typeof TOPICS)[number]
+export type Topic = string
 
 export type Post = {
   slug: string
@@ -68,6 +67,10 @@ export type TimelineEntry = {
   kind: 'work' | 'project' | 'education' | 'volunteer' | 'research'
   current?: boolean
   summary?: string
+  /** CV only */
+  bullets?: string[]
+  cvWhen?: string
+  showOnCV?: boolean
 }
 
 export type Profile = {

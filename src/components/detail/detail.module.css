@@ -13,7 +13,7 @@
 /* inside the modal: no header/footer, sheet fills the dialog body */
 .embed { position: absolute; inset: 0; grid-template-rows: auto minmax(0, 1fr); }
 .embed .title { grid-row: 1; margin-top: 0; }
-.embed .side, .embed .content { grid-row: 2; }
+.embed .side, .embed .sideArticle, .embed .content { grid-row: 2; }
 
 /* ---------- title block ---------- */
 .title {
@@ -146,16 +146,6 @@
 .end { display: flex; justify-content: space-between; gap: 16px; color: var(--mute); border-top: 1px solid var(--ink); padding-top: 12px; margin-top: clamp(20px, 4vh, 40px); max-width: 34em; }
 .end span:first-child { color: var(--acc); }
 
-.pn { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; padding: clamp(22px, 4vh, 40px) 0 4px; }
-.pnProject { border-top: 1px solid var(--ink); }
-.pnArticle { max-width: 34em; padding-top: clamp(20px, 4vh, 36px); padding-bottom: 6px; }
-.pn a { display: flex; flex-direction: column; gap: 8px; }
-.pn a:last-child { text-align: right; }
-.pn :global(.k) { color: var(--mute); }
-.pn b { font-weight: 600; font-size: clamp(16px, 1.4vw, 20px); letter-spacing: -.02em; transition: color .2s; }
-.pnArticle b { font-weight: 500; font-size: clamp(15px, 1.3vw, 19px); letter-spacing: -.018em; line-height: 1.25; }
-.pn a:hover b, .pn a:focus-visible b { color: var(--acc); }
-
 /* ---------- responsive ---------- */
 @media (max-height: 680px) { .fig { max-height: 30vh; } .toc { display: none; } }
 @media (max-height: 700px) { .more { display: none; } }
@@ -165,7 +155,7 @@
   .embed { position: static; min-height: 0; }
   .embed .title, .title { grid-row: auto; }
   .side, .sideArticle, .content { grid-column: 1; grid-row: auto; }
-  .embed .side, .embed .content { grid-row: auto; }
+  .embed .side, .embed .sideArticle, .embed .content { grid-row: auto; }
   .content { overflow: visible; padding-right: 0; }
   .fig { flex: none; aspect-ratio: 16 / 10; max-height: none; }
   .toc, .more, .prog { display: none; }

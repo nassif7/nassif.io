@@ -1,4 +1,4 @@
-import type { Project } from './types'
+import type { Project } from '../types'
 
 /** List order: newest first, as shown on /projects. */
 export const projects: Project[] = [

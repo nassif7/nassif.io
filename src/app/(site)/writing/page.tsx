@@ -6,5 +6,5 @@ export const metadata: Metadata = { title: 'Writing' }
 
 export default async function WritingPage({ searchParams }: { searchParams: Promise<{ topic?: string }> }) {
   const { topic } = await searchParams
-  return <WritingIndex posts={getPosts()} chips={topicCounts()} initialTopic={topic ?? null} />
+  return <WritingIndex posts={await getPosts()} chips={await topicCounts()} initialTopic={topic ?? null} />
 }

@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import clsx from 'clsx'
-import { getProjectNeighbours, pad } from '@/data'
+import { getProjectIndex, pad } from '@/data'
 import type { Project } from '@/data'
 import { Header } from '@/components/site/Header'
 import { Footer } from '@/components/site/Footer'
@@ -24,8 +24,8 @@ function ExternalLinks({ links }: { links: Project['links'] }) {
   )
 }
 
-export function ProjectDetail({ project: p, embedded = false }: { project: Project; embedded?: boolean }) {
-  const { index, prev, next } = getProjectNeighbours(p.slug)
+export async function ProjectDetail({ project: p, embedded = false }: { project: Project; embedded?: boolean }) {
+  const index = await getProjectIndex(p.slug)
   const isCase = p.kind === 'case-study' && !!p.sections?.length
 
   const facts: [string, React.ReactNode][] = [['Role', p.role], ['Year', p.year]]
@@ -40,19 +40,19 @@ export function ProjectDetail({ project: p, embedded = false }: { project: Proje
 
       <div className={styles.title}>
         <div>
-          <DetailLink href="/projects" mode="closes" className={clsx(styles.back, 'k')}>← Projects index</DetailLink>
-          <h1 className={styles.h1Project}>{p.name}<span>{p.type}</span></h1>
+          <DetailLink href="/projects" mode="closes" className={clsx(styles.back, 'k')} data-reveal="" style={{ '--rd': '60ms' } as React.CSSProperties}>← Projects index</DetailLink>
+          <h1 className={styles.h1Project} data-reveal="" style={{ '--rd': '120ms' } as React.CSSProperties}>{p.name}<span>{p.type}</span></h1>
         </div>
-        <div className={clsx(styles.tmeta, 'k')}>
+        <div className={clsx(styles.tmeta, 'k')} data-reveal="" style={{ '--rd': '180ms' } as React.CSSProperties}>
           <span><b>{isCase ? 'Case study' : 'Project entry'}</b></span>
           <span>No. {pad(index + 1)} · {p.year}</span>
         </div>
       </div>
 
-      <aside className={styles.side}>
+      <aside className={styles.side} data-reveal="body">
         {p.cover && (
           <div className={styles.fig}>
-            <Image src={p.cover.src} alt={p.cover.alt} fill sizes="(max-width: 860px) 100vw, 40vw" priority />
+            <Image data-cover="" src={p.cover.src} alt={p.cover.alt} fill sizes="(max-width: 860px) 100vw, 40vw" priority />
           </div>
         )}
         <dl className={clsx(styles.facts, 'k')}>
@@ -64,7 +64,7 @@ export function ProjectDetail({ project: p, embedded = false }: { project: Proje
         {isCase && <ProjectToc sections={p.sections!} />}
       </aside>
 
-      <main id={CONTENT_ID} className={clsx(styles.content, !isCase && styles.entry)} tabIndex={0} aria-label={`${p.name} — details`}>
+      <main data-reveal="body" id={CONTENT_ID} className={clsx(styles.content, !isCase && styles.entry)} tabIndex={0} aria-label={`${p.name} — details`}>
         <p className={styles.lede}>{p.lede}</p>
 
         {isCase ? (
@@ -96,15 +96,6 @@ export function ProjectDetail({ project: p, embedded = false }: { project: Proje
             {p.body.map((html, j) => <p key={j} dangerouslySetInnerHTML={{ __html: html }} />)}
           </section>
         )}
-
-        <nav className={clsx(styles.pn, styles.pnProject)} aria-label="More projects">
-          <DetailLink href={`/projects/${prev.slug}`} mode="swap">
-            <span className="k">← Previous</span><b>{prev.name}</b>
-          </DetailLink>
-          <DetailLink href={`/projects/${next.slug}`} mode="swap">
-            <span className="k">Next →</span><b>{next.name}</b>
-          </DetailLink>
-        </nav>
       </main>
 
       {!embedded && <Footer />}

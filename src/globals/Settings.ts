@@ -2,7 +2,7 @@ import type { GlobalConfig } from 'payload'
 
 export const Settings: GlobalConfig = {
   slug: 'settings',
-  admin: { group: 'Site' },
+  admin: { group: 'Legacy' },
   fields: [
     { name: 'email', type: 'text', required: true },
     { name: 'location', type: 'text', required: true, admin: { description: 'e.g. "Berlin"' } },

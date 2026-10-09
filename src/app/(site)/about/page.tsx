@@ -3,13 +3,14 @@ import clsx from 'clsx'
 import { Header } from '@/components/site/Header'
 import { Footer } from '@/components/site/Footer'
 import { Portrait } from '@/components/site/Portrait'
-import { getTimeline, profile, timelineYear } from '@/data'
+import { getProfile, getTimeline } from '@/data'
+import { timelineYear } from '@/data/format'
 import styles from './about.module.css'
 
 export const metadata: Metadata = { title: 'About' }
 
-export default function AboutPage() {
-  const timeline = getTimeline()
+export default async function AboutPage() {
+  const [timeline, profile] = await Promise.all([getTimeline(), getProfile()])
   const oldest = Math.min(...timeline.map(e => e.start))
   const [lede, ledeMuted] = profile.aboutLede
 

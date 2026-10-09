@@ -12,7 +12,11 @@ import { Projects } from './src/collections/Projects'
 import { PostCollections } from './src/collections/PostCollections'
 import { Media } from './src/collections/Media'
 import { Experience } from './src/collections/Experience'
+import { Timeline } from './src/collections/Timeline'
+import { Roles, Technologies, Statuses, Topics } from './src/collections/Taxonomies'
 import { Settings } from './src/globals/Settings'
+import { Profile } from './src/globals/Profile'
+import { Site } from './src/globals/Site'
 import { Homepage } from './src/globals/Homepage'
 
 const filename = fileURLToPath(import.meta.url)
@@ -25,8 +29,8 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Users, Posts, Projects, PostCollections, Media, Experience],
-  globals: [Settings, Homepage],
+  collections: [Users, Projects, Posts, Timeline, Media, Roles, Technologies, Statuses, Topics, PostCollections, Experience],
+  globals: [Profile, Site, Settings, Homepage],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {

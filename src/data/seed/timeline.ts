@@ -1,4 +1,4 @@
-import type { TimelineEntry } from './types'
+import type { TimelineEntry } from '../types'
 
 /** Newest first. */
 export const timeline: TimelineEntry[] = [

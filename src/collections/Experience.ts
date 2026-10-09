@@ -3,6 +3,7 @@ import type { CollectionConfig } from 'payload'
 export const Experience: CollectionConfig = {
   slug: 'experience',
   admin: {
+    group: 'Legacy',
     useAsTitle: 'title',
     defaultColumns: ['title', 'tag', 'year', 'order'],
   },

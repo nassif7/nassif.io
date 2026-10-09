@@ -1,7 +1,8 @@
 export const dynamic = 'force-dynamic'
 
 import clsx from 'clsx'
-import { getAllExperience } from '@/lib/experience'
+import { getTimeline } from '@/data'
+import { timelineYear } from '@/data/format'
 import {
   CV_PROJECTS, CV_CORE_STACK, CV_TOOLING, CV_FAMILIAR, CV_LANGUAGES, CV_EDUCATION,
 } from '@/content/cv'
@@ -10,10 +11,10 @@ import { Footer } from '@/components/site/Footer'
 import { Logo } from '@/components/site/Logo'
 import styles from './cv.module.css'
 
-export const metadata = { title: 'CV — Nassif Nassif' }
+export const metadata = { title: 'CV' }
 
 export default async function CvPage() {
-  const experience = (await getAllExperience()).filter(e => e.showInCV)
+  const experience = (await getTimeline()).filter(e => e.showOnCV && (e.kind === 'work' || e.kind === 'volunteer'))
 
   return (
     <div className={styles.frame}>
@@ -49,10 +50,10 @@ export default async function CvPage() {
 
         <h2 className={styles.s}>Experience</h2>
         {experience.map(e => (
-          <div key={e.id} className={styles.item}>
-            <div className={styles.org}>{e.tag}</div>
-            <div className={styles.itemTop}><h3>{e.title}</h3><span className={styles.when}>{e.cvWhen}</span></div>
-            {e.bullets.length > 0 && (
+          <div key={`${e.start}-${e.title}`} className={styles.item}>
+            <div className={styles.org}>{e.org}</div>
+            <div className={styles.itemTop}><h3>{e.title}</h3><span className={styles.when}>{e.cvWhen ?? timelineYear(e)}</span></div>
+            {e.bullets && e.bullets.length > 0 && (
               <ul>
                 {e.bullets.map((b, i) => <li key={i}>{b}</li>)}
               </ul>

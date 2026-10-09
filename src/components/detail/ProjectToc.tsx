@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import clsx from 'clsx'
-import { pad } from '@/data'
+import { pad } from '@/data/format'
 import type { CaseSection } from '@/data/types'
 import styles from './detail.module.css'
 

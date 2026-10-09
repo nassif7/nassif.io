@@ -1,5 +1,5 @@
 import clsx from 'clsx'
-import { site } from '@/data'
+import { site } from '@/data/format'
 import { TodayDate } from './TodayDate'
 import styles from './shell.module.css'
 
