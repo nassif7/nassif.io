@@ -109,7 +109,7 @@ export default async function CvPage() {
         <dl className={styles.rows}>
           {CV_EDUCATION.map(ed => (
             <div key={ed.school}>
-              <dt><b>{ed.school}</b> — {ed.detail}</dt>
+              <dt><b>{ed.school}</b>, {ed.detail}</dt>
               <dd className="tnum">{ed.when}</dd>
             </div>
           ))}

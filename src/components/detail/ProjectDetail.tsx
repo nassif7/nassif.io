@@ -64,13 +64,13 @@ export async function ProjectDetail({ project: p, embedded = false }: { project:
         {isCase && <ProjectToc sections={p.sections!} />}
       </aside>
 
-      <main data-reveal="body" id={CONTENT_ID} className={clsx(styles.content, !isCase && styles.entry)} tabIndex={0} aria-label={`${p.name} — details`}>
+      <main data-reveal="body" id={CONTENT_ID} className={clsx(styles.content, !isCase && styles.entry)} tabIndex={0} aria-label={`${p.name} details`}>
         <p className={styles.lede}>{p.lede}</p>
 
         {isCase ? (
           p.sections!.map((s, i) => (
             <section key={s.id} id={s.id} className={clsx(styles.sec, styles.body)}>
-              <span className={clsx(styles.secN, 'k')}>{pad(i + 1)} — {s.label}</span>
+              <span className={clsx(styles.secN, 'k')}>{pad(i + 1)} · {s.label}</span>
               <h2>{s.heading}</h2>
               {s.body.map((html, j) => <p key={j} dangerouslySetInnerHTML={{ __html: html }} />)}
               {s.pull && <p className={styles.pull}>{s.pull}</p>}

@@ -29,7 +29,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const site = await getSite()
   return {
     metadataBase: new URL('https://nassif.pro'),
-    title: { default: site.seoTitle ?? site.title, template: `%s — ${site.title}` },
+    title: { default: site.seoTitle ?? site.title, template: `%s | ${site.title}` },
     description: site.description,
     openGraph: site.ogImage ? { images: [site.ogImage] } : undefined,
   }

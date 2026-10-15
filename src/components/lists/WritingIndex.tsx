@@ -67,7 +67,7 @@ export function WritingIndex({
         <aside className={styles.pv} aria-live="polite">
           <div className={clsx(styles.f, styles.text)}>
             <div className={styles.pBody}>
-              <span className={clsx(styles.fig, 'k')}>Essay {pad(selIndex + 1)} — {sel.topic}</span>
+              <span className={clsx(styles.fig, 'k')}>Essay {pad(selIndex + 1)} · {sel.topic}</span>
               <h2 className={styles.pt}>{sel.title}</h2>
               <p className={styles.dk}>{sel.dek}</p>
               {sel.opening && <p className={styles.open}>{sel.opening}</p>}

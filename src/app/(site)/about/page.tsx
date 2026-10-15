@@ -27,7 +27,7 @@ export default async function AboutPage() {
       </div>
 
       <section className={clsx(styles.scroll, styles.tlw)} tabIndex={0} aria-label="Timeline">
-        <div className={clsx(styles.tlh, 'k')}><span>Timeline</span><span>{oldest} — now</span></div>
+        <div className={clsx(styles.tlh, 'k')}><span>Timeline</span><span>{oldest} to now</span></div>
         <ol className={styles.tl}>
           {timeline.map(e => (
             <li key={`${e.start}-${e.title}`} className={clsx(e.current && styles.now, e.kind === 'education' && styles.edu)}>

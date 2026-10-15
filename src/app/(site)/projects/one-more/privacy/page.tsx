@@ -2,7 +2,7 @@ import { Flow } from '@/components/site/Flow'
 import styles from './privacy.module.css'
 
 export const metadata = {
-  title: 'Privacy Policy — OneMore',
+  title: 'Privacy Policy | OneMore',
 }
 
 export default function OneMorePrivacy() {

@@ -2,7 +2,7 @@ import { Flow } from '@/components/site/Flow'
 import styles from './privacy.module.css'
 
 export const metadata = {
-  title: 'Privacy Policy — BookMarquee',
+  title: 'Privacy Policy | BookMarquee',
 }
 
 export default function BookMarqueePrivacy() {

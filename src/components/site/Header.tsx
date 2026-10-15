@@ -8,7 +8,7 @@ import styles from './shell.module.css'
 export function Header({ current, large }: { current?: string; large?: boolean }) {
   return (
     <header className={styles.header}>
-      <Link href="/" aria-label="n|N — Nassif Nassif, home">
+      <Link href="/" aria-label="Nassif Nassif, home">
         <Logo className={clsx(styles.mark, large && styles.markLg)} />
       </Link>
       <nav className={clsx(styles.nav, 'k')} aria-label="Main">

@@ -56,7 +56,7 @@ export const CV_LANGUAGES = [
 ]
 
 export const CV_EDUCATION = [
-  { school: 'Syrian Virtual University', detail: 'B.Sc. Information Technology', when: '2006 — 2009' },
-  { school: 'Tishreen University', detail: 'Diploma, Computer Science', when: '2002 — 2005' },
-  { school: 'ReDI School', detail: 'Creative Web Dev / React', when: 'Nov 2016 — Mar 2017' },
+  { school: 'Syrian Virtual University', detail: 'B.Sc. Information Technology', when: '2006 to 2009' },
+  { school: 'Tishreen University', detail: 'Diploma, Computer Science', when: '2002 to 2005' },
+  { school: 'ReDI School', detail: 'Creative Web Dev / React', when: 'Nov 2016 to Mar 2017' },
 ]

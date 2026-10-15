@@ -6,7 +6,7 @@ import { lexicalToParagraphs } from './lexical'
 import { CONTENT_TAG } from './revalidate'
 
 // Bump CACHE_VERSION whenever the shape of the cached data changes, so stale entries are never reused.
-const CACHE_VERSION = 'v2'
+const CACHE_VERSION = 'v3'
 
 // Content is cached until it is edited in the admin (see revalidateContent) or an hour passes.
 const cached = <T>(key: string, fn: () => Promise<T>) => unstable_cache(fn, ['content', key, CACHE_VERSION], { tags: [CONTENT_TAG], revalidate: 3600 })
