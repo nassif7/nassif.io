@@ -5,7 +5,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import clsx from 'clsx'
 import type { Project } from '@/data/types'
-import { pad } from '@/data/format'
+import { isTall, pad } from '@/data/format'
 import { Header } from '@/components/site/Header'
 import { Footer } from '@/components/site/Footer'
 import { Chips } from './Chips'
@@ -74,7 +74,7 @@ export function ProjectsIndex({
 
       {sel && (
         <aside className={styles.pv} aria-live="polite">
-          <div className={styles.f}>
+          <div className={clsx(styles.f, isTall(sel.cover) && styles.contain)}>
             {sel.cover ? (
               <Image key={sel.cover.src} src={sel.cover.src} alt={sel.cover.alt} fill sizes="40vw" />
             ) : (

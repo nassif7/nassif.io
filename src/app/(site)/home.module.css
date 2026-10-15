@@ -58,6 +58,7 @@
 .img { position: relative; min-height: 0; overflow: hidden; border: 1px solid var(--hair); background: #eee; }
 .img img { object-fit: cover; object-position: 50% 22%; filter: grayscale(1) contrast(1.05); transition: transform .5s, filter .45s; }
 .proj:hover .img img, .proj:focus-visible .img img { transform: scale(1.03); filter: none; }
+.contain img { object-fit: contain; object-position: 50% 50%; padding: 12px; }
 
 .pt, .art {
   container-type: inline-size;

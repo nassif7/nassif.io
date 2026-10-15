@@ -6,7 +6,7 @@ import { Footer } from '@/components/site/Footer'
 import { Portrait } from '@/components/site/Portrait'
 import { BerlinClock } from '@/components/site/BerlinClock'
 import { FitLines } from '@/components/site/FitLines'
-import { getFeaturedPost, getFeaturedProject, getProfile, formatMonth } from '@/data'
+import { getFeaturedPost, getFeaturedProject, getProfile, formatMonth, isTall } from '@/data'
 import styles from './home.module.css'
 
 const delay = (ms: number) => ({ '--d': `${ms}ms` }) as React.CSSProperties
@@ -45,7 +45,7 @@ export default async function Home() {
             <Link href="/projects">All projects →</Link>
           </div>
           <Link href={`/projects/${project.slug}`} className={styles.proj}>
-            <div className={styles.img}>
+            <div className={clsx(styles.img, isTall(project.cover) && styles.contain)}>
               {project.cover && (
                 <Image src={project.cover.src} alt={project.cover.alt} fill sizes="(max-width: 860px) 100vw, 40vw" priority />
               )}

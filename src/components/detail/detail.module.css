@@ -51,7 +51,9 @@
 .prog { position: absolute; left: 0; bottom: -2px; height: 3px; width: 100%; background: var(--acc); transform: scaleX(0); transform-origin: 0 50%; }
 
 /* ---------- side ---------- */
-.side { grid-column: 1; grid-row: 3; min-height: 0; display: flex; flex-direction: column; gap: 14px; padding-top: clamp(16px, 2.6vh, 28px); }
+.side { grid-column: 1; grid-row: 3; min-height: 0; overflow-y: auto; scrollbar-width: thin; scrollbar-color: var(--hair) transparent; display: flex; flex-direction: column; gap: 14px; padding: clamp(16px, 2.6vh, 28px) 6px 0 0; }
+.side::-webkit-scrollbar { width: 4px; }
+.side::-webkit-scrollbar-thumb { background: var(--hair); }
 .fig {
   position: relative;
   flex: 1;
@@ -63,6 +65,10 @@
 }
 .fig img { object-fit: cover; object-position: 50% 20%; filter: grayscale(1) contrast(1.05); transition: filter .45s; }
 .fig:hover img { filter: none; }
+/* tall/squarish images: shown whole, centred on the panel */
+.fig.contain img, .inlFig.contain img { object-fit: contain; object-position: 50% 50%; padding: 14px; }
+/* a tall cover keeps a readable height; the side column scrolls if everything else needs the room */
+.fig.contain { min-height: 300px; flex: none; }
 .fig::before, .fig::after, .inlFig::before, .inlFig::after { content: ''; position: absolute; width: 9px; height: 9px; border: 0 solid var(--acc); z-index: 2; }
 .fig::before { left: 6px; top: 6px; border-left-width: 1px; border-top-width: 1px; }
 .fig::after { right: 6px; bottom: 6px; border-right-width: 1px; border-bottom-width: 1px; }
@@ -129,6 +135,7 @@
 .inlFig { position: relative; border: 1px solid var(--hair); overflow: hidden; aspect-ratio: 16 / 10; background: #f3f3f3; }
 .inlFig img { object-fit: cover; object-position: 50% 30%; filter: grayscale(1) contrast(1.05); transition: filter .45s; }
 .inl:hover img { filter: none; }
+.inlFig.contain { aspect-ratio: auto; height: min(74vh, 720px); }
 .inlFig::before { left: 6px; top: 6px; border-left-width: 1px; border-top-width: 1px; }
 .inlFig::after { right: 6px; bottom: 6px; border-right-width: 1px; border-bottom-width: 1px; }
 .inl figcaption { display: flex; gap: 12px; color: var(--mute); margin-top: 10px; }
@@ -158,6 +165,8 @@
   .side, .sideArticle, .content { grid-column: 1; grid-row: auto; }
   .embed .side, .embed .sideArticle, .embed .content { grid-row: auto; }
   .content { overflow: visible; padding-right: 0; }
+  .side { overflow: visible; padding-right: 0; }
+  .fig.contain { min-height: 0; aspect-ratio: auto; height: min(70vh, 560px); flex: none; }
   .fig { flex: none; aspect-ratio: 16 / 10; max-height: none; }
   .toc, .more, .prog { display: none; }
 }

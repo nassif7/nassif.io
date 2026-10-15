@@ -1,4 +1,4 @@
-export type Image = { src: string; alt: string }
+export type Image = { src: string; alt: string; width?: number; height?: number }
 export type Link = { label: string; href: string }
 
 export const PROJECT_TYPES = [

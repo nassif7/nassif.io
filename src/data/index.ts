@@ -3,7 +3,7 @@ import { fetchPosts, fetchProfile, fetchProjects, fetchSite, fetchTimeline } fro
 import { PROJECT_TYPES } from './types'
 import type { Post, Project, TimelineEntry } from './types'
 
-export { site, pad, readingTime, timelineYear, formatDate, formatMonth } from './format'
+export { site, pad, isTall, readingTime, timelineYear, formatDate, formatMonth } from './format'
 export type { Post, Project, TimelineEntry } from './types'
 
 // cached per request, so a page and its children share one query

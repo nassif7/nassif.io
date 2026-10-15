@@ -4,12 +4,12 @@ Status when written (2026-10-10): the redesign is committed locally, `main` is 5
 
 ## Must do
 
-- [ ] **Finish the topics migration.** The database has 0 topics and 0 of 6 posts linked, so Writing shows blank topics and an empty filter chip.
+- [x] **Finish the topics migration.** (done 2026-10-15: 3 topics created, 6 posts linked; the live site shows them once its content cache refreshes: save any doc in the live `/admin`, or wait up to an hour) The database has 0 topics and 0 of 6 posts linked, so Writing shows blank topics and an empty filter chip.
   1. Run `npm run dev`. Answer the schema prompts with the first option (`+ … create`). Answer **Yes** to dropping the old `topic` column.
   2. When `/admin` loads, run:
      `NODE_ENV=development node -r ./scripts/_patch-next-env.cjs --import tsx scripts/migrate-topics.ts <scratchpad>/payload-backup-3`
      (`payload-backup-3/` holds the old post topics. If the folder is gone, assign topics by hand: Croissant, What it means to finish something, A human life → Philosophy; Notion project manager, The frontend is never just frontend → Tech; On the politics of interface design → Politics.)
-- [ ] **Deploy code and database together.** The database already has the new schema and content. The live site still runs the old code, which reads the old shape, so it is probably broken until you push and deploy. Production does not push schema changes by itself.
+- [x] **Deploy code and database together.** (done: live site serves the new code) The database already has the new schema and content. The live site still runs the old code, which reads the old shape, so it is probably broken until you push and deploy. Production does not push schema changes by itself.
 - [ ] **Contact form.** Without these it only logs and shows an error with your email:
   - Create a Resend account and an API key; verify the `nassif.pro` domain.
   - Set `RESEND_API_KEY`, `CONTACT_TO_EMAIL`, `CONTACT_FROM_EMAIL` in `.env.local` **and** in the host's environment settings (Vercel).
@@ -30,7 +30,7 @@ Status when written (2026-10-10): the redesign is committed locally, `main` is 5
 
 - [ ] Real devices and Safari (only Chromium was tested).
 - [ ] The modals (project, essay, contact) on a phone.
-- [ ] Lighthouse, accessibility and SEO checks: sitemap, RSS (`/writing/rss.xml`), OG image.
+- [ ] Lighthouse, accessibility and SEO checks: `/sitemap.xml` returns 404 (none exists yet), RSS (`/writing/rss.xml`), OG image.
 
 ## Cleanup (optional)
 

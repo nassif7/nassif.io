@@ -2,6 +2,9 @@ import type { Post, TimelineEntry } from './types'
 
 export { site } from './site'
 
+/** Tall and squarish images are shown whole; only wide ones are cropped to fill the frame. */
+export const isTall = (img?: { width?: number; height?: number }) => !!img?.width && !!img?.height && img.width / img.height < 1.3
+
 export const pad = (n: number) => String(n).padStart(2, '0')
 
 export function readingTime(post: Post): { words: number; minutes: number } {

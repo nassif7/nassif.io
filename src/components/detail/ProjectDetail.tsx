@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import clsx from 'clsx'
-import { getProjectIndex, pad } from '@/data'
+import { getProjectIndex, isTall, pad } from '@/data'
 import type { Project } from '@/data'
 import { Header } from '@/components/site/Header'
 import { Footer } from '@/components/site/Footer'
@@ -51,7 +51,7 @@ export async function ProjectDetail({ project: p, embedded = false }: { project:
 
       <aside className={styles.side} data-reveal="body">
         {p.cover && (
-          <div className={styles.fig}>
+          <div className={clsx(styles.fig, isTall(p.cover) && styles.contain)}>
             <Image data-cover="" src={p.cover.src} alt={p.cover.alt} fill sizes="(max-width: 860px) 100vw, 40vw" priority />
           </div>
         )}
@@ -76,7 +76,7 @@ export async function ProjectDetail({ project: p, embedded = false }: { project:
               {s.pull && <p className={styles.pull}>{s.pull}</p>}
               {s.figure && (
                 <figure className={styles.inl}>
-                  <div className={styles.inlFig}>
+                  <div className={clsx(styles.inlFig, isTall(s.figure.image) && styles.contain)}>
                     <Image src={s.figure.image.src} alt={s.figure.image.alt} fill sizes="(max-width: 860px) 100vw, 55vw" />
                   </div>
                   <figcaption className="k"><span>Fig. {pad(i + 1)}</span><span>{s.figure.caption}</span></figcaption>

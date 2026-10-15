@@ -5,15 +5,18 @@ import type { Image, Link, Post, Profile, Project, TimelineEntry } from '@/data/
 import { lexicalToParagraphs } from './lexical'
 import { CONTENT_TAG } from './revalidate'
 
+// Bump CACHE_VERSION whenever the shape of the cached data changes, so stale entries are never reused.
+const CACHE_VERSION = 'v2'
+
 // Content is cached until it is edited in the admin (see revalidateContent) or an hour passes.
-const cached = <T>(key: string, fn: () => Promise<T>) => unstable_cache(fn, ['content', key], { tags: [CONTENT_TAG], revalidate: 3600 })
+const cached = <T>(key: string, fn: () => Promise<T>) => unstable_cache(fn, ['content', key, CACHE_VERSION], { tags: [CONTENT_TAG], revalidate: 3600 })
 
 export { lexicalToParagraphs } from './lexical'
 
 const db = () => getPayload({ config: configPromise })
 
 const media = (m: any): Image | undefined =>
-  m && typeof m === 'object' && m.url ? { src: m.url, alt: m.alt ?? '' } : undefined
+  m && typeof m === 'object' && m.url ? { src: m.url, alt: m.alt ?? '', width: m.width ?? undefined, height: m.height ?? undefined } : undefined
 
 function toProject(d: any): Project {
   const cover = media(d.cover) ?? (d.coverUrl ? { src: d.coverUrl, alt: d.name } : undefined)
