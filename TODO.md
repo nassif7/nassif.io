@@ -10,10 +10,10 @@ Status when written (2026-10-10): the redesign is committed locally, `main` is 5
      `NODE_ENV=development node -r ./scripts/_patch-next-env.cjs --import tsx scripts/migrate-topics.ts <scratchpad>/payload-backup-3`
      (`payload-backup-3/` holds the old post topics. If the folder is gone, assign topics by hand: Croissant, What it means to finish something, A human life → Philosophy; Notion project manager, The frontend is never just frontend → Tech; On the politics of interface design → Politics.)
 - [x] **Deploy code and database together.** (done: live site serves the new code) The database already has the new schema and content. The live site still runs the old code, which reads the old shape, so it is probably broken until you push and deploy. Production does not push schema changes by itself.
-- [ ] **Contact form.** Without these it only logs and shows an error with your email:
-  - Create a Resend account and an API key; verify the `nassif.pro` domain.
-  - Set `RESEND_API_KEY`, `CONTACT_TO_EMAIL`, `CONTACT_FROM_EMAIL` in `.env.local` **and** in the host's environment settings (Vercel).
-  - Send a test message from the live site.
+- [ ] **Contact form (Web3Forms).** The form posts straight from the browser to Web3Forms; there is no server route any more.
+  - In Web3Forms, create the form (Website URL: `nassif.pro`) and copy the access key.
+  - Set `NEXT_PUBLIC_WEB3FORMS_KEY` in `.env.local` **and** in Vercel (Production), then redeploy (the key is baked in at build time).
+  - Send a test message from the live site and confirm it arrives in the inbox.
 - [ ] **Production environment variables.** Confirm `DATABASE_URL`, `PAYLOAD_SECRET`, `BLOB_READ_WRITE_TOKEN`, `NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN`, `NEXT_PUBLIC_POSTHOG_HOST` are set on the host.
 - [ ] **Check the content cache.** Edit something in the live `/admin` and confirm the public page updates (content is cached until saved or one hour).
 

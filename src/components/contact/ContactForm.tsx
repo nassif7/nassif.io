@@ -2,6 +2,7 @@
 
 import { useRef, useState } from 'react'
 import clsx from 'clsx'
+import posthog from 'posthog-js'
 import styles from './contact.module.css'
 
 type Status = 'idle' | 'sending' | 'sent' | 'error'
@@ -34,18 +35,34 @@ export function ContactForm({ email }: { email: string }) {
       return
     }
 
+    // honeypot or inhumanly fast submit: pretend success so bots learn nothing
+    if (form.get('website') || Date.now() - openedAt.current < 1500) {
+      setSentTo(from)
+      setStatus('sent')
+      return
+    }
+    const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_KEY
+    if (!accessKey) {
+      setServerError('The contact form is not set up yet')
+      setStatus('error')
+      return
+    }
+
     setStatus('sending')
     setServerError('')
     try {
-      const res = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, email: from, message, website: form.get('website'), elapsed: Date.now() - openedAt.current }),
-      })
-      if (!res.ok) {
-        const body = await res.json().catch(() => ({}))
-        throw new Error(body.error || 'Something went wrong')
-      }
+      // plain form post, like Web3Forms' own example (no cross-site preflight request)
+      const payload = new FormData()
+      payload.append('access_key', accessKey)
+      payload.append('subject', `New message from ${name}`)
+      payload.append('from_name', 'nassif.pro')
+      payload.append('name', name)
+      payload.append('email', from)
+      payload.append('message', message)
+      const res = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: payload })
+      const body = await res.json().catch(() => ({}))
+      if (!res.ok || body.success === false) throw new Error(body.message || 'Something went wrong')
+      posthog.capture('contact_sent')
       setSentTo(from)
       setStatus('sent')
     } catch (err) {
