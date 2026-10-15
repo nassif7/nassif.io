@@ -13,7 +13,7 @@ const delay = (ms: number) => ({ '--d': `${ms}ms` }) as React.CSSProperties
 
 export default async function Home() {
   const [project, post, profile] = await Promise.all([getFeaturedProject(), getFeaturedPost(), getProfile()])
-  const [l1, l2, l3, l3Muted] = profile.headline
+  const [l1, l2] = profile.headline
   // hover layer: the opening of the essay, skipping anything identical to the dek
   const plain = (html: string) => html.replace(/<[^>]+>/g, '').trim()
   const opening = post
@@ -28,7 +28,6 @@ export default async function Home() {
         <h1>
           <span className={clsx(styles.l1, styles.rv)} style={delay(100)}>{l1}</span>
           <span className={clsx(styles.l2, styles.rv)} style={delay(180)}>{l2}</span>
-          <span className={clsx(styles.l3, styles.rv)} style={delay(260)}>{l3}<span>{l3Muted}</span></span>
         </h1>
         <p className={clsx(styles.about, styles.rv)} style={delay(340)}>{profile.intro}</p>
       </div>

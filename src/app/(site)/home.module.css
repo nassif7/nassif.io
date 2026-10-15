@@ -13,16 +13,6 @@
 .l1, .l2 { display: block; font-size: clamp(40px, min(7.4vw, 12vh), 120px); text-transform: uppercase; }
 .l1 { font-weight: 700; line-height: .88; letter-spacing: -.042em; }
 .l2 { font-weight: 200; line-height: .92; letter-spacing: -.045em; }
-.l3 {
-  display: block;
-  font-weight: 500;
-  font-size: clamp(14px, 1.6vw, 22px);
-  line-height: 1.2;
-  letter-spacing: -.018em;
-  text-transform: uppercase;
-  margin-top: .6em;
-}
-.l3 span { font-weight: 300; color: var(--mute); }
 .about {
   font-family: var(--m);
   font-size: var(--fs-intro);
