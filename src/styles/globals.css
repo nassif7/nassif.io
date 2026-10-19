@@ -56,7 +56,3 @@ html[data-modal-open] { overflow: hidden !important; }
 @media (prefers-reduced-motion: reduce) {
   *:not([data-allow-motion]), *::before, *::after { transition: none !important; animation: none !important; scroll-behavior: auto !important; }
 }
-
-/* Custom label cursor (desktop, fine pointer only; class set by LabelCursor) */
-html.cursor-on, html.cursor-on * { cursor: none !important; }
-html.cursor-on input, html.cursor-on textarea, html.cursor-on [contenteditable] { cursor: text !important; }

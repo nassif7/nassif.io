@@ -49,34 +49,13 @@ export function LabelCursor() {
     const text = label.current
     if (!el || !text) return
 
-    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    const ease = reduced ? 1 : 0.35
-    const target = { x: -100, y: -100 }
-    const pos = { x: -100, y: -100 }
-    let started = false
     let current: Element | null = null
-    let raf = 0
-
-    document.documentElement.classList.add('cursor-on')
 
     const show = () => el.classList.add(styles.visible)
     const hide = () => el.classList.remove(styles.visible)
 
-    const tick = () => {
-      pos.x += (target.x - pos.x) * ease
-      pos.y += (target.y - pos.y) * ease
-      el.style.transform = `translate(${pos.x}px, ${pos.y}px)`
-      raf = requestAnimationFrame(tick)
-    }
-
     const onMove = (e: MouseEvent) => {
-      target.x = e.clientX
-      target.y = e.clientY
-      if (!started) {
-        pos.x = target.x
-        pos.y = target.y
-        started = true
-      }
+      el.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`
       show()
 
       const t = e.target as Element | null
@@ -95,21 +74,17 @@ export function LabelCursor() {
     document.addEventListener('mousemove', onMove, { passive: true })
     document.addEventListener('mouseleave', hide)
     window.addEventListener('blur', hide)
-    raf = requestAnimationFrame(tick)
 
     return () => {
-      cancelAnimationFrame(raf)
       document.removeEventListener('mousemove', onMove)
       document.removeEventListener('mouseleave', hide)
       window.removeEventListener('blur', hide)
-      document.documentElement.classList.remove('cursor-on')
     }
   }, [enabled])
 
   if (!enabled) return null
   return (
     <div ref={root} className={styles.cursor} aria-hidden="true">
-      <span className={styles.dot} />
       <span ref={label} className={clsx(styles.label, 'k')} />
     </div>
   )
