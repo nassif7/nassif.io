@@ -41,7 +41,7 @@ export default async function Home() {
                   <span className={clsx(styles.year, 'k')}>{timelineYear(entry)}</span>
                   <div className={styles.entryCopy}>
                     <h3>{entry.title}</h3>
-                    <p className={clsx(styles.org, 'k')}>{entry.org}</p>
+                    <p className={styles.org}>{entry.org}</p>
                   </div>
                   <p className={styles.summary}>{entry.summary}</p>
                 </li>

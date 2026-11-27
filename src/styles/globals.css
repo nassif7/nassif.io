@@ -8,6 +8,10 @@
   --hair: rgba(0, 0, 0, .18);
   --g: var(--font-inter), Helvetica, sans-serif;
   --m: var(--font-dm-mono), ui-monospace, monospace;
+  --s: Georgia, 'Times New Roman', serif;
+  --font-sans: var(--g);
+  --font-mono: var(--m);
+  --font-serif: var(--s);
   --pad: clamp(18px, 2.6vw, 40px);
 
   /* type scale */

@@ -68,8 +68,9 @@
   border-left: 1px solid var(--acc);
   padding-left: clamp(16px, 2.4vw, 28px);
   color: #3f3f3d;
+  font-family: var(--s);
   font-size: clamp(21px, 1.9vw, 30px);
-  font-weight: 300;
+  font-weight: 400;
   font-style: italic;
   line-height: 1.5;
   text-wrap: pretty;
