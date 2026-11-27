@@ -1,5 +1,4 @@
 import type { Post, Profile, Project, TimelineEntry } from '@/data/types'
-import { posts } from '@/data/seed/posts'
 import { profile, site } from '@/data/seed/profile'
 import { projects } from '@/data/seed/projects'
 import { timeline } from '@/data/seed/timeline'
@@ -11,7 +10,8 @@ export async function fetchProjects(): Promise<Project[]> {
 }
 
 export async function fetchPosts(): Promise<Post[]> {
-  return [...posts]
+  // Keep article content in the seed, but withhold publication for now.
+  return []
 }
 
 export async function fetchTimeline(): Promise<TimelineEntry[]> {

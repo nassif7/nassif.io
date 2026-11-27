@@ -30,7 +30,7 @@ export function WritingIndex({
             <h1>Writing</h1>
           </div>
 
-          <Chips className={styles.filters} label="Topic" showLabel={false} chips={chips} total={posts.length} active={topic} onChange={setTopic} />
+          {posts.length > 0 && <Chips className={styles.filters} label="Topic" showLabel={false} chips={chips} total={posts.length} active={topic} onChange={setTopic} />}
 
           <div className={styles.content}>
             <div className={styles.list} tabIndex={0} aria-label="Essay list">
@@ -47,7 +47,7 @@ export function WritingIndex({
                   <span className={clsx(styles.topic, 'k')}>{p.topic}</span>
                 </a>
               ))}
-              {!visible.length && <p className={clsx(styles.empty, 'k')}>No essays on this topic.</p>}
+              {!visible.length && <p className={styles.empty}>There are no articles to see yet.</p>}
             </div>
           </div>
         </main>
