@@ -21,9 +21,9 @@ function labelFor(el: Element): string {
     if (href.startsWith('mailto:')) return 'Write'
     if (/^\/projects\/[^/]+\/?$/.test(href)) return 'Open'
     if (/^\/writing\/[^/]+\/?$/.test(href)) return 'Read'
-    if (href === '/cv' || /\.pdf($|\?)/i.test(href)) return 'CV ↓'
+    if (href === '/cv' || /\.pdf($|\?)/i.test(href)) return 'CV'
     try {
-      if (new URL(href, location.href).origin !== location.origin) return 'Visit ↗'
+      if (new URL(href, location.href).origin !== location.origin) return 'Visit'
     } catch {}
     return 'Go'
   }

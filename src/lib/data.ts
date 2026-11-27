@@ -21,8 +21,8 @@ export const STACK_ITEMS = [
 export const WRITING_TAGS = ['Politics', 'Philosophy', 'Tech & Society', 'General'] as const
 
 export const CONTACT_ITEMS = [
-  { type: 'Email', value: 'n_nassif@icloud.com', action: 'Write ↗', href: 'mailto:n_nassif@icloud.com' },
-  { type: 'GitHub', value: '@nassif', action: 'View ↗', href: 'https://github.com' },
-  { type: 'LinkedIn', value: 'Nassif Nassif', action: 'Connect ↗', href: 'https://linkedin.com' },
-  { type: 'Resume', value: 'PDF · 2025', action: 'Download ↗', href: '/resume.pdf' },
+  { type: 'Email', value: 'n_nassif@icloud.com', action: 'Write', href: 'mailto:n_nassif@icloud.com' },
+  { type: 'GitHub', value: '@nassif', action: 'View', href: 'https://github.com' },
+  { type: 'LinkedIn', value: 'Nassif Nassif', action: 'Connect', href: 'https://linkedin.com' },
+  { type: 'Resume', value: 'PDF · 2025', action: 'Download', href: '/resume.pdf' },
 ] as const

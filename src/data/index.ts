@@ -6,7 +6,7 @@ import type { Post, Project, TimelineEntry } from './types'
 export { site, pad, isTall, readingTime, timelineYear, formatDate, formatMonth } from './format'
 export type { Post, Project, TimelineEntry } from './types'
 
-// cached per request, so a page and its children share one query
+// Memoized per request so a page and its children share the same local data.
 export const getProjects = cache(fetchProjects)
 export const getPosts = cache(fetchPosts)
 export const getTimeline = cache(fetchTimeline)

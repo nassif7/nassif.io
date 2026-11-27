@@ -31,22 +31,22 @@
 .aside { grid-column: 1 / 4; position: sticky; top: 110px; align-self: start; }
 .aside ul { list-style: none; display: flex; flex-direction: column; border-top: 1px solid var(--ink); margin-top: 14px; }
 .aside li { border-bottom: 1px solid var(--line); }
-.aside a { display: block; padding: 10px 0; font-size: 13.5px; color: var(--mid); font-weight: 300; }
+.aside a { display: block; padding: 10px 0; font-size: 15.5px; color: var(--mid); font-weight: 300; }
 .aside a:hover { color: var(--ink); }
 .aside li[data-active] a { color: var(--ink); font-weight: 500; }
 .main { grid-column: 5 / 12; }
 
 .sec { padding-bottom: 56px; margin-bottom: 56px; border-bottom: 1px solid var(--line); }
 .sec:last-child { border-bottom: none; }
-.sec h2 { font-size: 29px; font-weight: 500; letter-spacing: -.028em; line-height: 1.12; margin: 14px 0 20px; }
-.sec p { font-size: 16.5px; color: var(--mid); font-weight: 300; line-height: 1.78; margin-bottom: 16px; max-width: 36em; }
+.sec h2 { font-size: 33.3px; font-weight: 500; letter-spacing: -.028em; line-height: 1.12; margin: 14px 0 20px; }
+.sec p { font-size: 19px; color: var(--mid); font-weight: 300; line-height: 1.78; margin-bottom: 16px; max-width: 36em; }
 .sec p strong { color: var(--ink); font-weight: 500; }
 
 .pull {
   border-left: 2px solid var(--accent);
   padding: 4px 0 4px 24px;
   margin: 30px 0;
-  font-size: 20px !important;
+  font-size: 23px !important;
   font-weight: 400 !important;
   letter-spacing: -.015em;
   line-height: 1.45;
@@ -56,14 +56,14 @@
 
 .spec { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0 32px; margin: 32px 0; border-top: 1px solid var(--line); }
 .spec div { padding: 14px 0; border-bottom: 1px solid var(--line); }
-.spec dd { font-size: 14.5px; color: var(--ink); margin-top: 4px; font-weight: 400; }
+.spec dd { font-size: 16.7px; color: var(--ink); margin-top: 4px; font-weight: 400; }
 
 .shots { background: var(--paper-3); border: 1px solid var(--line); padding: 28px; margin: 36px 0; }
 .shotsRow { display: flex; gap: 22px; justify-content: center; }
 .shots img { width: auto; max-height: 420px; box-shadow: 0 3px 22px rgba(24, 20, 16, .15); }
 .shots figcaption {
   font-family: var(--font-mono);
-  font-size: 10.5px;
+  font-size: 12.1px;
   color: var(--muted);
   letter-spacing: .04em;
   margin-top: 24px;
@@ -74,7 +74,7 @@
 .outs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border-top: 1px solid var(--ink); margin-top: 28px; }
 .outs div { padding: 20px 22px 22px; border-left: 1px solid var(--line); border-bottom: 1px solid var(--line); }
 .outs div:first-child { border-left: none; padding-left: 0; }
-.outs strong { display: block; font-size: 24px; font-weight: 500; letter-spacing: -.03em; margin-bottom: 5px; }
+.outs strong { display: block; font-size: 27.6px; font-weight: 500; letter-spacing: -.03em; margin-bottom: 5px; }
 
 @media (max-width: 900px) {
   .body { grid-template-columns: repeat(6, 1fr); }

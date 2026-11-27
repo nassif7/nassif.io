@@ -1,6 +1,7 @@
-# Data models
+# Archived data models
 
-The content model for nassif.io, defined in Payload CMS ([payload.config.ts](payload.config.ts)).
+This documents the retired Payload CMS content model for reference. The site now reads
+local content from `src/data/seed/`; these models are not used by the running application.
 
 - **Database:** Postgres (`postgresAdapter`)
 - **Rich text:** Lexical (`lexicalEditor`)

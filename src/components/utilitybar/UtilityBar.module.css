@@ -8,7 +8,7 @@
   justify-content: space-between;
   height: 34px;
   font-family: var(--font-mono);
-  font-size: 10.5px;
+  font-size: 12.1px;
   letter-spacing: .12em;
   text-transform: uppercase;
   color: var(--muted);
@@ -32,7 +32,7 @@
 .email:hover { color: var(--ink); }
 
 @media (max-width: 900px) {
-  .util :global(.wrap) { font-size: 9.5px; }
+  .util :global(.wrap) { font-size: 10.9px; }
 }
 
 @media (max-width: 560px) {

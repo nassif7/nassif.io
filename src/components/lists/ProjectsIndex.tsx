@@ -41,7 +41,7 @@ export function ProjectsIndex({
 
       <div className={styles.list} tabIndex={0} aria-label="Project list">
         <div className={clsx(styles.thead, 'k')}>
-          <span>No.</span><span>Project</span><span>Type</span><span>Year</span><span />
+          <span>No.</span><span>Project</span><span>Type</span><span>Year</span>
         </div>
         {visible.map(p => (
           <Link
@@ -66,7 +66,6 @@ export function ProjectsIndex({
             </div>
             <span className={clsx(styles.ty, 'k')}>{p.type}</span>
             <span className={clsx(styles.yr, 'k')}>{p.year}</span>
-            <span className={clsx(styles.go, 'k')}>↗</span>
           </Link>
         ))}
         {!visible.length && <p className={clsx(styles.empty, 'k')}>No projects of this type.</p>}

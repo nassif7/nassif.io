@@ -6,6 +6,8 @@
   align-items: flex-start;
   gap: 20px;
 }
+.homeHeader { padding: 18px clamp(22px, 4vw, 54px); border-bottom: 1px solid var(--hair); align-items: center; }
+.homeRail { display: flex; align-items: center; gap: clamp(16px, 2.2vw, 32px); }
 .mark { height: clamp(26px, 2.6vw, 36px); width: auto; display: block; }
 .markLg { height: clamp(30px, 3.2vw, 44px); }
 
@@ -36,19 +38,42 @@
   order: 9;
   display: flex;
   justify-content: space-between;
-  align-items: baseline;
-  gap: 14px;
-  flex-wrap: wrap;
-  border-top: 1px solid var(--ink);
-  padding-top: 12px;
-  margin-top: 14px;
+  align-items: center;
+  gap: 20px;
+  border-top: 1px solid var(--hair);
+  padding: 18px clamp(24px, 4vw, 54px);
+  margin-top: 0;
 }
-.quote { color: var(--acc); }
+.footerSignature { display: flex; align-items: center; gap: 13px; min-width: 0; }
+.footerSeal {
+  width: 32px;
+  height: 32px;
+  flex: 0 0 32px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--ink);
+  color: var(--bg);
+}
+.footerMark { display: block; width: 18px; height: auto; }
+.quote { color: var(--mute); font-size: 11.5px; line-height: 1.5; }
+.footerPlace {
+  display: flex;
+  align-items: center;
+  color: var(--mute);
+  white-space: nowrap;
+}
 
 @media (max-width: 860px) {
   .nav a, .nav button { padding: 12px 0 10px; }
 }
 @media (max-width: 560px) {
   .header { flex-direction: column; gap: 4px; }
-  .footer { flex-direction: column; gap: 8px; }
+  .homeRail { width: 100%; justify-content: space-between; flex-wrap: wrap; gap: 4px 16px; }
+  .footer { gap: 12px; padding: 16px 24px; }
+  .footerSignature { gap: 10px; }
+  .footerSeal { width: 28px; height: 28px; flex-basis: 28px; }
+  .footerMark { width: 16px; }
+  .quote { font-size: 10.3px; }
+  .footerPlace { gap: 7px; font-size: 10.3px; }
 }

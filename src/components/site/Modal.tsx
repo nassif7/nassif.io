@@ -30,7 +30,7 @@ const prefersReduced = () => window.matchMedia('(prefers-reduced-motion: reduce)
  * while the item inside changes (the wipe plays once per open, never on prev/next).
  * Pass `onClose` for a modal that is not a route (e.g. Contact): it is called after the fade-out.
  */
-export function ModalShell({ label, noun, onClose, children }: { label: string; noun: string; onClose?: () => void; children: React.ReactNode }) {
+export function ModalShell({ label, noun, onClose, framed = false, hideLabel = false, hideCloseText = false, children }: { label: string; noun: string; onClose?: () => void; framed?: boolean; hideLabel?: boolean; hideCloseText?: boolean; children: React.ReactNode }) {
   const router = useRouter()
   const [, startTransition] = useTransition()
   const root = useRef<HTMLDivElement>(null)
@@ -157,11 +157,11 @@ export function ModalShell({ label, noun, onClose, children }: { label: string; 
   return (
     <ModalContext.Provider value={api}>
       {backdropOn && <div ref={backdrop} className={styles.backdrop} aria-hidden="true" />}
-      <div ref={root} className={styles.mo} role="dialog" aria-modal="true" aria-label={label}>
-        <div className={clsx(styles.bar, 'k')}>
-          <span className={styles.lb}><b>{label}</b></span>
-          <button ref={closeBtn} type="button" data-cursor="Close" className={styles.x} onClick={close} aria-label="Close">
-            Close <i>Esc</i> ×
+      <div ref={root} className={clsx(styles.mo, framed && styles.framed)} role="dialog" aria-modal="true" aria-label={label}>
+        <div className={clsx(styles.bar, hideLabel && styles.noLabel, 'k')}>
+          {!hideLabel && <span className={styles.lb}><b>{label}</b></span>}
+          <button ref={closeBtn} type="button" data-cursor="Close" className={clsx(styles.x, hideCloseText && styles.hideCloseText)} onClick={close} aria-label="Close">
+            {!hideCloseText && 'Close '}<i>Esc</i><span className={styles.closeIcon}>×</span>
           </button>
           <span className={clsx(styles.progress, loader && styles.on)} aria-hidden="true"><i data-allow-motion /></span>
         </div>

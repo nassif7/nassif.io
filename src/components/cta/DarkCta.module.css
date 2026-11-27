@@ -8,7 +8,7 @@
 }
 .l { grid-column: 1 / 8; }
 .heading {
-  font-size: clamp(30px, 3.6vw, 46px);
+  font-size: clamp(34.5px, 3.6vw, 52.9px);
   font-weight: 500;
   letter-spacing: -.03em;
   line-height: 1.06;

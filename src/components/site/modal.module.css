@@ -16,6 +16,16 @@
   flex-direction: column;
   transform: translateY(100%); /* until the wipe takes over */
 }
+.mo.framed {
+  --frame-pad: clamp(10px, 3vw, 40px);
+  inset: var(--frame-pad);
+  max-width: 1440px;
+  margin: auto;
+  border: 1px solid rgba(10, 10, 10, .12);
+  border-radius: 2px;
+  background: #fdfdfc;
+  box-shadow: 0 0 0 var(--frame-pad) #efefec;
+}
 @media (prefers-reduced-motion: reduce) {
   .mo { transform: none; opacity: 0; }
 }
@@ -29,6 +39,7 @@
   padding: 12px var(--pad);
   border-bottom: 1px solid var(--ink);
 }
+.noLabel { justify-content: flex-end; }
 .lb b { font-weight: 500; color: var(--acc); }
 .x {
   font: inherit;
@@ -42,6 +53,8 @@
 }
 .x:hover, .x:focus-visible { color: var(--acc); }
 .x i { font-style: normal; color: var(--mute); }
+.hideCloseText { gap: 12px; }
+.hideCloseText .closeIcon { font-family: var(--g); font-size: 25px; font-weight: 300; line-height: 1; }
 
 /* loading line on the bar's bottom border */
 .progress {

@@ -1,20 +1,19 @@
 export const dynamic = 'force-dynamic'
 
 import type { Metadata } from 'next'
-import { Archivo, DM_Mono } from 'next/font/google'
+import { Inter, DM_Mono } from 'next/font/google'
 import '@/styles/globals.css'
 import { Analytics } from '@vercel/analytics/next'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import { PostHogProvider } from '@/components/analytics/PostHogProvider'
-import { LabelCursor } from '@/components/cursor/LabelCursor'
 import { getProfile, getSite } from '@/data'
 import { ContactProvider } from '@/components/contact/ContactProvider'
 import { PathTracker } from '@/components/site/PathTracker'
 
-const archivo = Archivo({
+const inter = Inter({
   subsets: ['latin'],
-  weight: ['200', '300', '400', '500', '600', '700'],
-  variable: '--font-archivo',
+  weight: ['200', '300', '400', '500', '600', '700', '800', '900'],
+  variable: '--font-inter',
   display: 'swap',
 })
 
@@ -52,7 +51,7 @@ export default async function SiteLayout({
   }
 
   return (
-    <html lang="en" className={`${archivo.variable} ${dmMono.variable}`}>
+    <html lang="en" className={`${inter.variable} ${dmMono.variable}`}>
       <body>
         <PostHogProvider>
           <PathTracker />
@@ -60,7 +59,6 @@ export default async function SiteLayout({
             {children}
             {modal}
           </ContactProvider>
-          <LabelCursor />
         </PostHogProvider>
         <Analytics />
         <SpeedInsights />

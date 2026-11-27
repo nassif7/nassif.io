@@ -15,9 +15,9 @@ function ExternalLinks({ links }: { links: Project['links'] }) {
     <div className={clsx(styles.ext, 'k')}>
       {links.map(l =>
         l.href.startsWith('/') ? (
-          <Link key={l.href} href={l.href}>{l.label} <span className={styles.go}>→</span></Link>
+          <Link key={l.href} href={l.href}>{l.label}</Link>
         ) : (
-          <a key={l.href} href={l.href} target="_blank" rel="noopener noreferrer">{l.label} <span className={styles.go}>↗</span></a>
+          <a key={l.href} href={l.href} target="_blank" rel="noopener noreferrer">{l.label}</a>
         ),
       )}
     </div>
@@ -40,7 +40,7 @@ export async function ProjectDetail({ project: p, embedded = false }: { project:
 
       <div className={styles.title}>
         <div>
-          <DetailLink href="/projects" mode="closes" className={clsx(styles.back, 'k')} data-reveal="" style={{ '--rd': '60ms' } as React.CSSProperties}>← Projects index</DetailLink>
+          <DetailLink href="/projects" mode="closes" className={clsx(styles.back, 'k')} data-reveal="" style={{ '--rd': '60ms' } as React.CSSProperties}>Projects index</DetailLink>
           <h1 className={styles.h1Project} data-reveal="" style={{ '--rd': '120ms' } as React.CSSProperties}>{p.name}<span>{p.type}</span></h1>
         </div>
         <div className={clsx(styles.tmeta, 'k')} data-reveal="" style={{ '--rd': '180ms' } as React.CSSProperties}>
