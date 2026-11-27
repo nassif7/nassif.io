@@ -9,16 +9,20 @@ export function Chips({
   total,
   active,
   onChange,
+  className,
+  showLabel = true,
 }: {
   label: string
   chips: Chip[]
   total: number
   active: string | null
   onChange: (value: string | null) => void
+  className?: string
+  showLabel?: boolean
 }) {
   return (
-    <div className={styles.filters} role="group" aria-label={`Filter by ${label.toLowerCase()}`}>
-      <span className={clsx(styles.fl, 'k')}>{label}</span>
+    <div className={clsx(styles.filters, className)} role="group" aria-label={`Filter by ${label.toLowerCase()}`}>
+      {showLabel && <span className={clsx(styles.fl, 'k')}>{label}</span>}
       <div className={clsx(styles.chips, 'k')}>
         <button type="button" className={styles.chip} aria-pressed={active === null} onClick={() => onChange(null)}>
           All<sup>{total}</sup>
