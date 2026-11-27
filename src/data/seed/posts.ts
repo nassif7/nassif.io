@@ -10,7 +10,6 @@ export const posts: Post[] = [
     dek: 'Camus asks us to imagine Sisyphus happy. It sounds simple until you actually try to live it. The croissant understood this before any of us did.',
     body: [
       'Every morning you choose. Bread is there, reliable, functional, asking nothing except that you keep going. The croissant is also there. It is not asking you to keep going. It is asking something subtler.',
-      'Camus asks us to imagine Sisyphus happy. It sounds simple until you actually try to live it. The croissant understood this before any of us did.',
       'It breaks apart too easily. It leaves traces of itself everywhere. It refuses to stay contained. And yet here it is, in every café, every corner, wherever humans are still figuring out how to begin.',
       'Maybe that is the whole point.',
       'Bread is a promise. The croissant is a rejection of that entire premise. In the mornings when alarms go off, emails stack up, schedules fill in, and bread sits there doing its dutiful best, the croissant is the only thing on the counter that is smiling.',
@@ -24,7 +23,7 @@ export const posts: Post[] = [
     topic: 'Politics',
     dek: 'Every button is a decision. Every form is a stance. Design is never neutral.',
     body: [
-      'Every button is a decision. Every form is a stance. Design is never neutral — it encodes values, assumptions, power structures. The question isn’t whether your interface has politics. It does. The question is whether you’re aware of them.',
+      'It encodes values, assumptions, power structures. The question isn’t whether your interface has politics. It does. The question is whether you’re aware of them.',
       'When you default a gender field to “Male”, that’s a political choice. When you hide the unsubscribe link in gray 8px text, that’s a political choice. When you make the “delete account” flow five steps long and the “upgrade” flow one click, that’s a political choice.',
       'We don’t talk about this enough in frontend. We talk about accessibility (sometimes), performance (always), and aesthetics (constantly). But the ethics of interface design — the slow, quiet ways our decisions shape behavior — that gets left out.',
       'I’m not saying every developer needs to be a political philosopher. I’m saying: pay attention to whose interests your defaults serve. Ask who benefits when the UX is “optimized.” Notice when friction is designed in, and for whom.',
@@ -38,7 +37,6 @@ export const posts: Post[] = [
     topic: 'Philosophy',
     dek: 'I have a graveyard of half-built things. I think most developers do.',
     body: [
-      'I have a graveyard of half-built things. I think most developers do.',
       'Side projects that got to 80% and stopped. Apps that were almost ready to launch. Tools that solved a real problem but never got the README. They sit in folders with names like <code>v2</code>, <code>new-approach</code>, <code>final-final</code>.',
       'For a long time I thought this was a discipline problem. Start less, finish more. But I’m not sure anymore.',
       'Some things are worth finishing. Some things teach you what you needed to learn at 60% and then it’s okay to stop. The problem isn’t the stopping — it’s the shame around it. The feeling that an unshipped thing is a failed thing.',
@@ -54,7 +52,6 @@ export const posts: Post[] = [
     topic: 'Tech',
     dek: 'You can’t separate the UI from the system it lives in. Anyone who tells you otherwise hasn’t shipped enough.',
     body: [
-      'You can’t separate the UI from the system it lives in. Anyone who tells you otherwise hasn’t shipped enough.',
       'Every state management decision is a product decision. Every loading state is a statement about how you handle uncertainty. Every error message is a moment of trust — or broken trust — with the person using your software.',
       'Frontend developers have spent years fighting to be taken seriously as engineers. And I get it. The work is real and complex and the “it’s just CSS” dismissal is exhausting.',
       'But in fighting for that credibility, some of us overcorrected. We became obsessed with the technical purity of our work — the architecture, the bundle size, the TypeScript strictness — and forgot that the thing we’re building is used by actual people with actual problems.',

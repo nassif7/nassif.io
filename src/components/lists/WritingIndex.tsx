@@ -1,6 +1,5 @@
 'use client'
 
-import Link from 'next/link'
 import clsx from 'clsx'
 import type { Post } from '@/data/types'
 import { Header } from '@/components/site/Header'
@@ -36,7 +35,7 @@ export function WritingIndex({
           <div className={styles.content}>
             <div className={styles.list} tabIndex={0} aria-label="Essay list">
               {visible.map(p => (
-                <Link
+                <a
                   key={p.slug}
                   href={`/writing/${p.slug}`}
                   className={styles.row}
@@ -46,7 +45,7 @@ export function WritingIndex({
                     <p>{p.dek}</p>
                   </div>
                   <span className={clsx(styles.topic, 'k')}>{p.topic}</span>
-                </Link>
+                </a>
               ))}
               {!visible.length && <p className={clsx(styles.empty, 'k')}>No essays on this topic.</p>}
             </div>
