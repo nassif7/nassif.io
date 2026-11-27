@@ -14,6 +14,7 @@
 .nav { display: flex; gap: clamp(14px, 2vw, 30px); flex-wrap: wrap; font-size: var(--fs-nav); font-weight: 500; }
 .nav a, .nav button { position: relative; padding-bottom: 2px; font: inherit; letter-spacing: inherit; text-transform: inherit; color: inherit; }
 .nav button:hover { color: var(--acc); }
+.menuToggle, .mobileNav { display: none; }
 .nav a::after,
 .nav button::after {
   content: '';
@@ -68,12 +69,60 @@
   .nav a, .nav button { padding: 12px 0 10px; }
 }
 @media (max-width: 560px) {
-  .header { flex-direction: column; gap: 4px; }
-  .homeRail { width: 100%; justify-content: space-between; flex-wrap: wrap; gap: 4px 16px; }
-  .footer { gap: 12px; padding: 16px 24px; }
+  .header { position: relative; z-index: 5; flex-direction: row; align-items: center; gap: 12px; }
+  .header > a, .menuToggle { position: relative; z-index: 2; }
+  .homeRail { display: none; }
+  .mark, .markLg { height: 34px; }
+  .menuToggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    min-height: 44px;
+    margin-left: auto;
+    color: var(--ink);
+    font: inherit;
+    font-size: var(--fs-label);
+    letter-spacing: .14em;
+    text-transform: uppercase;
+  }
+  .menuToggle i { display: flex; flex-direction: column; gap: 5px; width: 16px; }
+  .menuToggle b { display: block; width: 16px; height: 2px; background: currentColor; }
+  .menuOpen i { gap: 0; }
+  .menuOpen i b:first-child { transform: translateY(2px) rotate(45deg); }
+  .menuOpen i b:nth-child(2) { opacity: 0; }
+  .menuOpen i b:last-child { transform: translateY(-2px) rotate(-45deg); }
+  .mobileNav {
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 18px;
+    padding: 90px clamp(28px, 10vw, 64px) 36px;
+    background: #fdfdfc;
+  }
+  .mobileNav[hidden] { display: none; }
+  .mobileNav a, .mobileNav button {
+    position: relative;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--hair);
+    color: var(--ink);
+    font: inherit;
+    font-size: clamp(26px, 8vw, 38px);
+    font-weight: 600;
+    letter-spacing: -.035em;
+    text-align: left;
+    text-transform: uppercase;
+  }
+  .mobileNav > :last-child { border-bottom: 0; }
+  .mobileNav a[aria-current='page'] { color: var(--acc); }
+  .mobileNav button:hover, .mobileNav a:hover { color: var(--acc); }
+  .footer { flex-direction: column; align-items: stretch; gap: 12px; padding: 16px 24px; }
   .footerSignature { gap: 10px; }
   .footerSeal { width: 28px; height: 28px; flex-basis: 28px; }
   .footerMark { width: 16px; }
   .quote { font-size: 10.3px; }
-  .footerPlace { gap: 7px; font-size: 10.3px; }
+  .footerPlace { align-self: flex-end; gap: 7px; font-size: 10.3px; }
 }
