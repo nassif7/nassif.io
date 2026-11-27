@@ -16,7 +16,7 @@ export function ContactProvider({ info, children }: { info: ContactInfo; childre
     <ContactContext.Provider value={{ open: show }}>
       {children}
       {open && (
-        <ModalShell label="Contact" noun="form" onClose={close}>
+        <ModalShell label="Contact" noun="form" onClose={close} framed hideLabel hideCloseText>
           <ReadyGate>
             <ContactBody info={info} />
           </ReadyGate>
