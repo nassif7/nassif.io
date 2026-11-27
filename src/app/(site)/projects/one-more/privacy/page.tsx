@@ -9,7 +9,7 @@ export default function OneMorePrivacy() {
   return (
     <Flow current="/projects">
     <main className={styles.page}>
-      <a href="/projects/one-more" className={styles.back}>← oneMore</a>
+      <a href="/projects/one-more" className={styles.back}>oneMore</a>
 
       <header className={styles.header}>
         <span className={styles.label}>oneMore</span>

@@ -76,7 +76,7 @@ export function ContactForm({ email }: { email: string }) {
       <div className={styles.done} role="status">
         <h2>Message sent.</h2>
         <p>Thank you. I’ll reply to {sentTo}, usually within a couple of days.</p>
-        <button type="button" className="k" onClick={() => setStatus('idle')}>Send another →</button>
+        <button type="button" className="k" onClick={() => setStatus('idle')}>Send another</button>
       </div>
     )
   }
@@ -104,7 +104,7 @@ export function ContactForm({ email }: { email: string }) {
       </div>
       <div className={styles.row}>
         <button type="submit" className={styles.send} disabled={status === 'sending'}>
-          {status === 'sending' ? 'Sending…' : 'Send message'} <span aria-hidden="true">↗</span>
+          {status === 'sending' ? 'Sending…' : 'Send message'}
         </button>
         <span className={clsx(styles.hint, 'k')}>
           {status === 'error' ? (

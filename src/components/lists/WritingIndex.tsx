@@ -40,7 +40,7 @@ export function WritingIndex({
 
       <div className={styles.list} tabIndex={0} aria-label="Essay list" style={{ '--c3': '110px', '--c4': '70px' } as React.CSSProperties}>
         <div className={clsx(styles.thead, 'k')}>
-          <span>No.</span><span>Title</span><span>Topic</span><span>Date</span><span />
+          <span>No.</span><span>Title</span><span>Topic</span><span>Date</span>
         </div>
         {visible.map(p => (
           <Link
@@ -57,7 +57,6 @@ export function WritingIndex({
             </div>
             <span className={clsx(styles.ty, 'k')}>{p.topic}</span>
             <span className={clsx(styles.yr, 'k')}>{formatMonth(p.date)}</span>
-            <span className={clsx(styles.go, 'k')}>↗</span>
           </Link>
         ))}
         {!visible.length && <p className={clsx(styles.empty, 'k')}>No essays on this topic.</p>}
@@ -74,7 +73,7 @@ export function WritingIndex({
             </div>
             <div className={clsx(styles.rd, 'k')}>
               <span>{formatMonth(sel.date)}</span>
-              <Link href={`/writing/${sel.slug}`}>Read essay <span className={styles.arrow}>↗</span></Link>
+              <Link href={`/writing/${sel.slug}`}>Read essay</Link>
             </div>
           </div>
         </aside>

@@ -45,8 +45,8 @@ export default async function AboutPage() {
         <div className={styles.who}>
           <p className={styles.lede}>{lede}<em>{ledeMuted}</em></p>
           <figure className={styles.pt}>
-            <div className={styles.frame}><Portrait width={300} /></div>
-            <figcaption className="k">Fig. 01</figcaption>
+            <div className={styles.frame}><Portrait /></div>
+            <figcaption className="k">Portrait</figcaption>
           </figure>
         </div>
 
@@ -62,10 +62,10 @@ export default async function AboutPage() {
         </dl>
 
         <div className={clsx(styles.links, 'k')}>
-          <a href={profile.cv.pdf} download>Download CV <span className={styles.go}>↓</span></a>
-          <a href={`mailto:${profile.email}`}>Email <span className={styles.go}>↗</span></a>
+          <a href={profile.cv.pdf} download>Download CV</a>
+          <a href={`mailto:${profile.email}`}>Email</a>
           {profile.socials.map(s => (
-            <a key={s.href} href={s.href} target="_blank" rel="noopener noreferrer">{s.label} <span className={styles.go}>↗</span></a>
+            <a key={s.href} href={s.href} target="_blank" rel="noopener noreferrer">{s.label}</a>
           ))}
         </div>
       </section>

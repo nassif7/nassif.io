@@ -34,7 +34,7 @@ export function ContactBody({ info }: { info: ContactInfo }) {
         </dl>
         <div className={clsx(detail.ext, 'k')}>
           {info.socials.map(s => (
-            <a key={s.href} href={s.href} target="_blank" rel="noopener noreferrer">{s.label} <span className={detail.go}>↗</span></a>
+            <a key={s.href} href={s.href} target="_blank" rel="noopener noreferrer">{s.label}</a>
           ))}
         </div>
       </aside>

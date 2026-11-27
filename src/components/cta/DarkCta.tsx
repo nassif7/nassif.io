@@ -24,8 +24,8 @@ export function DarkCta({ num, eyebrow, heading, lead, email, writeLabel = 'Writ
           <p className="lead">{lead}</p>
         </div>
         <div className={styles.r}>
-          <a href={mailtoHref} className="btn btn-inv">{writeLabel} <span>→</span></a>
-          <a href="/nassif-nassif-cv.pdf" target="_blank" rel="noopener noreferrer" className="btn btn-inv">Download CV <span>↓</span></a>
+          <a href={mailtoHref} className="btn btn-inv">{writeLabel}</a>
+          <a href="/nassif-nassif-cv.pdf" target="_blank" rel="noopener noreferrer" className="btn btn-inv">Download CV</a>
         </div>
       </div>
     </section>

@@ -9,7 +9,7 @@ export const profile: Profile = {
   since: 2016,
   headline: ['Product', 'engineer,', 'whole thing — ', 'not a layer of it.'],
   intro:
-    'Nassif Nassif, Berlin. Eight years between design and engineering — from the first sketch to the store listing.',
+    'I care about good design and useful apps. I like working across the whole product to make everyday tasks easier, without adding complexity.',
   aboutLede: [
     'I build products end to end — the flow, the interface, the data, the release. ',
     'Not frontend. Not backend. The whole thing.',
@@ -25,7 +25,7 @@ export const profile: Profile = {
     { name: 'German', level: 'B2' },
   ],
   engagement: 'Contract · Full-time',
-  availability: { open: true, label: 'Available Q4 2026' },
+  availability: { open: true, label: 'Available for selected projects' },
   email: 'hello@nassif.pro',
   socials: [
     { label: 'GitHub', href: 'https://github.com/nassif7' },
@@ -36,11 +36,5 @@ export const profile: Profile = {
 
 export const site = {
   title: 'Nassif Nassif',
-  nav: [
-    { label: 'Projects', href: '/projects' },
-    { label: 'Writing', href: '/writing' },
-    { label: 'About', href: '/about' },
-    { label: 'CV', href: '/cv' },
-  ],
-  footerQuote: 'Built with love, shipped with hope 🙂',
+  footerQuote: 'Built with love, shipped with hope',
 }

@@ -20,7 +20,7 @@ export function ProjectHeader({
   return (
     <section className={styles.hd}>
       <div className="wrap">
-        <a href={backHref} className={styles.back}>← {backLabel}</a>
+        <a href={backHref} className={styles.back}>{backLabel}</a>
         <div className={styles.top}>
           <div className={styles.t}>
             <div className="eyebrow">{eyebrowLabel}</div>

@@ -19,7 +19,7 @@ export async function PostDetail({ post, embedded = false }: { post: Post; embed
 
       <div className={styles.title}>
         <div>
-          <DetailLink href="/writing" mode="closes" className={clsx(styles.back, 'k')} data-reveal="" style={{ '--rd': '60ms' } as React.CSSProperties}>← Writing</DetailLink>
+          <DetailLink href="/writing" mode="closes" className={clsx(styles.back, 'k')} data-reveal="" style={{ '--rd': '60ms' } as React.CSSProperties}>Writing</DetailLink>
           <h1 className={styles.h1Article} data-reveal="" style={{ '--rd': '120ms' } as React.CSSProperties}>{post.title}</h1>
         </div>
         <div className={clsx(styles.tmeta, 'k')} data-reveal="" style={{ '--rd': '180ms' } as React.CSSProperties}>
@@ -39,7 +39,7 @@ export async function PostDetail({ post, embedded = false }: { post: Post; embed
         <div className={clsx(styles.more, 'k')}>
           <div className={styles.moreHd}>
             <span>More writing</span>
-            <DetailLink href="/writing" mode="closes">All →</DetailLink>
+            <DetailLink href="/writing" mode="closes">All</DetailLink>
           </div>
           {list.map((o, j) =>
             o.slug === post.slug ? null : (

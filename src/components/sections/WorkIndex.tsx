@@ -18,7 +18,7 @@ export async function WorkIndex() {
           num="04"
           eyebrow="Work index"
           title={homepage.indexSectionTitle}
-          meta="See all projects →"
+          meta="See all projects"
           metaHref="/projects"
         />
         <div className="idx-scroll">
@@ -46,7 +46,6 @@ export async function WorkIndex() {
                   <td className="idx-hide"><span className="ix-t">{p.type}</span></td>
                   <td className="idx-hide ix-s">{p.stack.join(' · ') || '—'}</td>
                   <td><span className={clsx('pill', p.statusVariant !== 'default' && p.statusVariant)}>{p.status}</span></td>
-                  <td><span className="ix-arrow">↗</span></td>
                 </tr>
               ))}
             </tbody>

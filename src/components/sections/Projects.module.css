@@ -25,8 +25,8 @@
 .case:hover .caseImg img { transform: scale(1.028); filter: saturate(1) contrast(1); }
 
 .caseB { grid-column: 8 / 13; display: flex; flex-direction: column; align-items: flex-start; }
-.caseB h3 { font-size: 31px; font-weight: 500; letter-spacing: -.03em; margin: 16px 0 12px; line-height: 1.1; }
-.caseB p { font-size: 15px; color: var(--mid); font-weight: 300; line-height: 1.72; }
+.caseB h3 { font-size: 35.6px; font-weight: 500; letter-spacing: -.03em; margin: 16px 0 12px; line-height: 1.1; }
+.caseB p { font-size: 17.2px; color: var(--mid); font-weight: 300; line-height: 1.72; }
 
 .caseMeta {
   display: grid;
@@ -37,7 +37,7 @@
   border-top: 1px solid var(--line);
 }
 .caseMeta div { padding: 13px 0; border-bottom: 1px solid var(--line); }
-.caseMeta dd { font-family: var(--font-mono); font-size: 11.5px; color: var(--ink); margin-top: 4px; }
+.caseMeta dd { font-family: var(--font-mono); font-size: 13.2px; color: var(--ink); margin-top: 4px; }
 
 .caseAlt .caseImg { grid-column: 7 / 13; order: 2; }
 .caseAlt .caseB { grid-column: 1 / 6; order: 1; }

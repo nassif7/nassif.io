@@ -56,7 +56,6 @@ export function Contact() {
               onClick={() => posthog.capture('social_link_clicked', { link_name: l.name, href: l.href })}>
               <span className={styles.linkName}>{l.name}</span>
               <span className={styles.linkHandle}>{l.handle}</span>
-              <span className={styles.linkArrow}>↗</span>
             </a>
           ))}
         </div>
@@ -80,7 +79,7 @@ export function Contact() {
             <textarea name="message" value={form.message} onChange={handleChange} required placeholder="What's on your mind..." rows={4} className={styles.textarea} />
           </div>
           <button type="submit" className={styles.btn} disabled={status === 'sending' || status === 'sent'}>
-            {status === 'idle'    && 'Send it →'}
+            {status === 'idle'    && 'Send it'}
             {status === 'sending' && 'Sending…'}
             {status === 'sent'    && '✓ Sent!'}
             {status === 'error'   && 'Try again'}

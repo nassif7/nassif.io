@@ -85,7 +85,7 @@ export const fetchPosts = cached('posts', async (): Promise<Post[]> => {
 export const fetchTimeline = cached('timeline', async (): Promise<TimelineEntry[]> => {
   const payload = await db()
   const { docs } = await payload.find({ collection: 'timeline', limit: 500, depth: 0, pagination: false })
-  return docs
+  const entries = docs
     .map((d: any): TimelineEntry => ({
       start: d.start,
       end: d.end ?? null,
@@ -99,6 +99,20 @@ export const fetchTimeline = cached('timeline', async (): Promise<TimelineEntry[
       cvWhen: d.cvWhen || undefined,
       showOnCV: d.showOnCV !== false,
     }))
+    // These two former independent-project entries are now represented by one current role.
+    .filter(e => !['Keen Studio, in development', 'Three products shipped independently'].includes(e.title))
+  entries.push({
+    start: 2026,
+    end: null,
+    label: 'Now',
+    title: 'Product Engineer',
+    org: 'n|N Independent App Studio',
+    kind: 'work',
+    current: true,
+    summary: 'Building apps independently: developing products of my own and creating apps for a client.',
+    showOnCV: true,
+  })
+  return entries
     .sort((a, b) => b.start - a.start || (b.end ?? 9999) - (a.end ?? 9999))
 })
 
@@ -113,12 +127,12 @@ export const fetchProfile = cached('profile', async (): Promise<Profile> => {
     coords: p.coords ?? '',
     since: p.since ?? 0,
     headline: [p.headline?.line1, p.headline?.line2, p.headline?.line3, p.headline?.line3Muted],
-    intro: p.intro,
+    intro: 'I care about good design and useful apps. I like working across the whole product to make everyday tasks easier, without adding complexity.',
     aboutLede: [p.aboutLede?.main ?? '', p.aboutLede?.muted ?? ''],
     aboutBody: (p.aboutBody ?? []).map((b: any) => b.text),
     languages: (p.languages ?? []).map((l: any) => ({ name: l.name, level: l.level })),
     engagement: p.engagement ?? '',
-    availability: { open: !!p.availability?.open, label: p.availability?.label ?? '' },
+    availability: { open: !!p.availability?.open, label: p.availability?.open ? 'Available' : p.availability?.label ?? '' },
     email: p.email,
     socials: (p.socials ?? []).map((s: any) => ({ label: s.label, href: s.href })),
     cv: { pdf: p.cvPdf ?? '/nassif-nassif-cv.pdf' },

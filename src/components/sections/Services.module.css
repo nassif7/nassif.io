@@ -7,7 +7,7 @@
 .cap:first-child { border-left: none; padding-left: 0; }
 .cap:last-child { padding-right: 0; }
 .cap h3 { margin: 14px 0 10px; }
-.cap p { font-size: 14.5px; color: var(--mid); font-weight: 300; line-height: 1.7; }
+.cap p { font-size: 16.7px; color: var(--mid); font-weight: 300; line-height: 1.7; }
 .cap ul {
   list-style: none;
   margin-top: 20px;
@@ -17,7 +17,7 @@
 }
 .cap li {
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: 12.6px;
   color: var(--muted);
   padding: 9px 0;
   border-bottom: 1px solid var(--line);

@@ -1,11 +1,11 @@
 .form { max-width: 36em; display: flex; flex-direction: column; gap: clamp(18px, 3vh, 28px); padding-bottom: 24px; }
-.lede { font-size: clamp(19px, 1.9vw, 28px); font-weight: 400; letter-spacing: -.022em; line-height: 1.3; max-width: 22em; text-wrap: pretty; margin-bottom: clamp(18px, 3vh, 30px); }
+.lede { font-size: clamp(21.8px, 1.9vw, 32.2px); font-weight: 400; letter-spacing: -.022em; line-height: 1.3; max-width: 22em; text-wrap: pretty; margin-bottom: clamp(18px, 3vh, 30px); }
 .field { display: flex; flex-direction: column; gap: 8px; }
 .field label { color: var(--mute); }
 .field label span { color: var(--acc); }
 .field input, .field textarea {
   font: inherit;
-  font-size: clamp(16px, 1.3vw, 19px);
+  font-size: clamp(18.4px, 1.3vw, 21.8px);
   font-weight: 300;
   color: var(--ink);
   background: transparent;
@@ -41,8 +41,8 @@
 .send:disabled { opacity: .55; cursor: default; }
 .hint { color: var(--mute); }
 .done { border-top: 1px solid var(--ink); padding-top: 16px; max-width: 30em; }
-.done h2 { font-weight: 600; font-size: clamp(20px, 1.9vw, 28px); letter-spacing: -.026em; line-height: 1.15; }
-.done p { font-size: clamp(14.5px, 1.15vw, 17px); font-weight: 300; line-height: 1.7; color: #333; margin-top: 12px; }
+.done h2 { font-weight: 600; font-size: clamp(23px, 1.9vw, 32.2px); letter-spacing: -.026em; line-height: 1.15; }
+.done p { font-size: clamp(16.7px, 1.15vw, 19.5px); font-weight: 300; line-height: 1.7; color: #333; margin-top: 12px; }
 .done button { margin-top: 18px; color: var(--mute); }
 .done button:hover { color: var(--acc); }
 .mailto { color: var(--acc); }

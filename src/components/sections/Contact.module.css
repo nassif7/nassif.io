@@ -9,7 +9,7 @@
 }
 
 .sub {
-  font-size: 14px;
+  font-size: 16.1px;
   color: var(--mid);
   font-weight: 300;
   line-height: 1.7;
@@ -30,26 +30,20 @@
 }
 
 .linkRow:hover { padding-left: 8px; }
-.linkRow:hover .linkArrow { color: var(--accent); }
 
 .linkName {
   font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: 13.8px;
   color: var(--black);
   letter-spacing: 0.04em;
 }
 
 .linkHandle {
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: 12.6px;
   color: var(--muted);
 }
 
-.linkArrow {
-  font-size: 14px;
-  color: var(--border);
-  transition: color 0.15s;
-}
 
 .form { display: flex; flex-direction: column; }
 
@@ -65,7 +59,7 @@
 
 .fieldLabel {
   font-family: var(--font-mono);
-  font-size: 9px;
+  font-size: 10.3px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--muted);
@@ -78,7 +72,7 @@
   border: none;
   outline: none;
   font-family: var(--font-sans);
-  font-size: 14px;
+  font-size: 16.1px;
   color: var(--black);
   resize: none;
   font-weight: 300;
@@ -93,7 +87,7 @@
 .btn {
   margin-top: 24px;
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: 12.6px;
   font-weight: 500;
   letter-spacing: 0.1em;
   text-transform: uppercase;

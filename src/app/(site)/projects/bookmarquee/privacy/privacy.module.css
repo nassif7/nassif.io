@@ -6,7 +6,7 @@
 
 .back {
   font-family: var(--m);
-  font-size: 11px;
+  font-size: 12.6px;
   letter-spacing: 0.08em;
   color: var(--mute);
   text-decoration: none;
@@ -24,7 +24,7 @@
 
 .label {
   font-family: var(--m);
-  font-size: 9px;
+  font-size: 10.3px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--acc);
@@ -34,7 +34,7 @@
 
 .title {
   font-family: var(--g);
-  font-size: clamp(32px, 5vw, 52px);
+  font-size: clamp(36.8px, 5vw, 59.8px);
   font-weight: 400;
   color: var(--ink);
   letter-spacing: -0.02em;
@@ -44,12 +44,12 @@
 
 .date {
   font-family: var(--m);
-  font-size: 10px;
+  font-size: 11.5px;
   color: var(--mute);
 }
 
 .body {
-  font-size: 15px;
+  font-size: 17.2px;
   line-height: 1.85;
   color: #444;
   font-weight: 300;
@@ -60,7 +60,7 @@
 
 .body h2 {
   font-family: var(--g);
-  font-size: 22px;
+  font-size: 25.3px;
   font-weight: 400;
   color: var(--ink);
   margin: 2em 0 0.6em;
@@ -78,7 +78,7 @@
 
 .body code {
   font-family: var(--m);
-  font-size: 12px;
+  font-size: 13.8px;
   background: #f3f3f3;
   border: 1px solid var(--hair);
   border-radius: 2px;

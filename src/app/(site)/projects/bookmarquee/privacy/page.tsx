@@ -9,7 +9,7 @@ export default function BookMarqueePrivacy() {
   return (
     <Flow current="/projects">
     <main className={styles.page}>
-      <a href="/projects/bookmarquee" className={styles.back}>← BookMarquee</a>
+      <a href="/projects/bookmarquee" className={styles.back}>BookMarquee</a>
 
       <header className={styles.header}>
         <span className={styles.label}>BookMarquee</span>

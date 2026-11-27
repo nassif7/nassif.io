@@ -16,7 +16,7 @@ export async function Writing() {
           eyebrow="Writing"
           title={homepage.writingSectionTitle}
           lead={homepage.writingSectionLead}
-          meta="See all posts →"
+          meta="See all posts"
           metaHref="/blog"
         />
         <div className="idx-scroll">
@@ -42,7 +42,6 @@ export async function Writing() {
                     </Link>
                   </td>
                   <td className="idx-hide"><span className="ix-t">{post.tags?.[0] ?? ''}</span></td>
-                  <td><span className="ix-arrow">↗</span></td>
                 </tr>
               ))}
             </tbody>

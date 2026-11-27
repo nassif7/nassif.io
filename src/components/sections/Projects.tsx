@@ -17,7 +17,7 @@ export async function Projects() {
           eyebrow="Selected work"
           title={homepage.workSectionTitle}
           lead={homepage.workSectionLead}
-          meta="Full index ↓"
+          meta="Full index"
           metaHref="#index"
         />
 
@@ -43,7 +43,7 @@ export async function Projects() {
                   <div><dt className="meta-k">Stack</dt><dd>{p.stack.join(' · ')}</dd></div>
                   {p.status && <div><dt className="meta-k">Status</dt><dd>{p.status}</dd></div>}
                 </dl>
-                <span className="btn btn-ghost">{p.caseStudy ? 'Read case study →' : 'View project →'}</span>
+                <span className="btn btn-ghost">{p.caseStudy ? 'Read case study' : 'View project'}</span>
               </div>
             </Link>
           )

@@ -2,8 +2,7 @@ import type { TimelineEntry } from '../types'
 
 /** Newest first. */
 export const timeline: TimelineEntry[] = [
-  { start: 2026, end: null, label: 'Now', title: 'Keen Studio, in development', org: 'Design systems · Product', kind: 'project', current: true, summary: 'Component library and theme engine live; CLI and visual configurator in active development.' },
-  { start: 2026, end: 2026, title: 'Three products shipped independently', org: 'Marineria.it · oneMore · BookMarquee', kind: 'project', current: true, summary: 'A client mobile app on both stores, an App Store release of my own, and a cross-browser extension.' },
+  { start: 2026, end: null, label: 'Now', title: 'Product Engineer', org: 'n|N Independent App Studio', kind: 'work', current: true, summary: 'Building apps independently: developing products of my own and creating apps for a client.' },
   { start: 2022, end: 2025, title: 'Software Developer UI/UX', org: 'Verbraucherzentrale Bundesverband', kind: 'work', summary: 'Bridged design and backend on a national consumer-protection platform; made complex forms configurable and dynamic.' },
   { start: 2019, end: 2022, title: 'Software Developer', org: 'LQ Enterprise', kind: 'work', summary: 'Built the central UI component library used across product teams, plus dynamic form generators and real-time features.' },
   { start: 2019, end: 2019, title: 'Wahl-O-Mat interface study', org: 'UX research', kind: 'research', summary: 'Analysed interface issues, prototyped in Figma, and validated new concepts with direct user feedback.' },
